@@ -10,20 +10,18 @@
         FontFamily="Calibri"
         FontSize="14"
         ShowActivated="False"
-        
+        Padding="1"
         >
     <StackPanel Margin="0">
         <Menu x:Name="mainMenu" 
               VerticalAlignment="Top" 
-              Padding="2,2,2,2"
+              Padding="1"
               Background="Azure"
               BorderBrush="DarkCyan"
               BorderThickness="0.5"
-              Margin="2,0,2,0"
               FontFamily="Calibri"
               FontSize="14"
               FontWeight="Normal"
-              
               >
             <MenuItem Header="Tập _tin" 
                       Background="Azure"
@@ -33,8 +31,6 @@
                           Name="mnAddFiles"/>
                 <MenuItem Header="Thêm hình ảnh từ thư mục"
                           Name="mnAddFolder"/>
-
-
             </MenuItem>
             <MenuItem Header="Tùy chọn"
                       Name="mnOption" Visibility="Visible">
@@ -44,47 +40,23 @@
                           IsChecked="True"/>
             </MenuItem>
         </Menu>
+        <Grid Background="WhiteSmoke">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Something here" HorizontalAlignment="Left" TextAlignment="Center" ClipToBounds="False"/>
-        <TextBlock Text="More Something here..." HorizontalAlignment="Center" TextAlignment="Center" ClipToBounds="True"/>
-        <TextBox Text="This is first textbox.." 
-                 TextDecorations="underline"
-                 TextWrapping="WrapWithOverflow"
-                 
-                 BorderBrush="DarkRed" 
-                 HorizontalContentAlignment="Center"
-                 VerticalContentAlignment="Center"
-                 Height="auto"
-                 Background="Aqua" 
-                 Foreground="DarkBlue"
-                 BorderThickness="1"
-                 HorizontalAlignment="Center"/>
-        <Button x:Name="btnFirst"
-                Content="The First button"               
-                BorderBrush="DeepSkyBlue"
-                BorderThickness="1"
-                Background="DeepPink"
-                HorizontalAlignment="Center"
-                HorizontalContentAlignment="Center"
-                FontWeight="DemiBold"
-                FlowDirection="LeftToRight"
-                Width="200"
-                Padding="10">
-        </Button>
-        <Rectangle RadiusX="-12"
-                   RadiusY="-12"
-                   Fill="Transparent"
-                   Opacity="85"
-                   Stroke="Black"
-                   StrokeThickness="1"
-                   StrokeDashOffset="2"
-                   StrokeDashArray="6,2,1,2"
-                   Margin="4"
-                   Width="160"
-                   Height="60"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Bottom">
-        </Rectangle>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <ListView x:Name="lsbFiles" 
+                      Grid.Row="0" 
+                      Grid.Column="0"
+                      Grid.ColumnSpan="1"
+                      />
+            
+        </Grid>
+        
 
     </StackPanel>
 </Window>
