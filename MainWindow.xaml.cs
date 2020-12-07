@@ -23,6 +23,7 @@ namespace ImgRW
         public MainWindow()
         {
             InitializeComponent();
+            
         }
     }
 }

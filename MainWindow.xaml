@@ -25,7 +25,7 @@
               >
             <MenuItem Header="Tập _tin" 
                       Background="Azure"
-                      x:Name="mnFile"
+                      Name="mnFile"
                       IsHitTestVisible="True">
                 <MenuItem Header="Thêm tập tin hình ảnh" 
                           Name="mnAddFiles"/>
@@ -33,9 +33,13 @@
                           Name="mnAddFolder"/>
             </MenuItem>
             <MenuItem Header="Tùy chọn"
-                      Name="mnOption" Visibility="Visible">
+                      x:Name="mnOption" Visibility="Visible">
                 <MenuItem Header="Tự động mở thư mục kết quả"
                           Name="mnAutoOpenOutput"
+                          IsCheckable="True"
+                          IsChecked="True"/>
+                <MenuItem Header="Xử lý song song"
+                          Name="mnMultithread"
                           IsCheckable="True"
                           IsChecked="True"/>
             </MenuItem>
@@ -47,16 +51,44 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="50" />
+                <RowDefinition Height="1*" MinHeight="30"/>
+                <RowDefinition Height="1*" MinHeight="30"/>
             </Grid.RowDefinitions>
+            <Label HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Content="Danh sách tập tin"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   FontWeight="DemiBold"/>
+            <Button x:Name="btnAddFiles"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Content="+"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Width="24"/>
             <ListView x:Name="lsbFiles" 
-                      Grid.Row="0" 
+                      Grid.Row="1" 
                       Grid.Column="0"
-                      Grid.ColumnSpan="1"
-                      />
-            
+                      Background="Red">
+                
+            </ListView>
+            <ComboBox Name="cmbFonts"
+                      Grid.Column="1"
+                      Grid.Row="0"
+                      BorderBrush="Black"
+                      Grid.RowSpan="2"
+                      ItemsSource="{x:Static Fonts.SystemFontFamilies}"
+                      >
+                <ComboBox.ItemTemplate Content="{x:Satatic binding}" 
+                              FontFamily="{Binding}">
+                    
+                </ComboBox.ItemTemplate>
+            </ComboBox>
         </Grid>
-        
-
+        <Frame Background="GreenYellow"
+               Content="Frame" Height="auto"/>
     </StackPanel>
 </Window>
