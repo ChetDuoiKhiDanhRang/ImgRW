@@ -73,7 +73,7 @@
                       Grid.Row="1" 
                       Grid.Column="0"
                       Background="Red">
-                
+
             </ListView>
             <ComboBox Name="cmbFonts"
                       Grid.Column="1"
@@ -90,11 +90,16 @@
                             FontFamily="{Binding}"
                             />
                     </DataTemplate>
-                    
+
                 </ComboBox.ItemTemplate>
             </ComboBox>
         </Grid>
         <Frame Background="GreenYellow"
                Content="Frame" Height="auto"/>
+        <StatusBar Height="28" 
+                   BorderBrush="DarkCyan" 
+                   Background="Azure"
+                   VerticalAlignment="Bottom">
+        </StatusBar>
     </StackPanel>
 </Window>
