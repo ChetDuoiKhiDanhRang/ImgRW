@@ -94,11 +94,10 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
         </Grid>
-        <Frame Background="GreenYellow"
-               Content="Frame" Height="auto"/>
         <StatusBar Height="28" 
-                   BorderBrush="DarkCyan" 
                    Background="Azure"
+                   BorderBrush="DarkCyan" 
+                   BorderThickness="1"
                    VerticalAlignment="Bottom">
         </StatusBar>
     </StackPanel>
