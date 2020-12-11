@@ -12,7 +12,8 @@
         ShowActivated="False"
         Padding="1" 
         >
-    <StackPanel Margin="0">
+    <StackPanel Margin="1">
+        
         <Menu x:Name="mainMenu" 
               Background="Azure"
               BorderBrush="DarkCyan"
@@ -44,50 +45,24 @@
                           IsChecked="True"/>
             </MenuItem>
         </Menu>
-        <Grid Background="WhiteSmoke" >
+        <Grid Background="WhiteSmoke" Margin="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*" MinHeight="30"/>
-                <RowDefinition Height="1*" MinHeight="30"/>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
-            <Label HorizontalAlignment="Center"
+            <Label
                    VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
                    Content="Danh sách tập tin"
                    Grid.Column="0"
-                   Grid.Row="0"
-                   FontWeight="DemiBold"/>
-
-            <ListView x:Name="lsbFiles" 
-                      Grid.Row="1" 
-                      Grid.Column="0"
-                      Background="Red">
-            </ListView>
-            <ComboBox Name="cmbFonts"
-                      Grid.Column="1"
-                      Grid.Row="0"
-                      BorderBrush="Black"
-                      Grid.RowSpan="1"
-                      ItemsSource="{x:Static Fonts.SystemFontFamilies}"
-                      VerticalContentAlignment="Center">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock
-                            Text="{Binding}" 
-                            FontFamily="{Binding}"/>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-            <ListBox x:Name="lsbFonts"
-                     Grid.Row="1"
-                     Grid.Column="1"
-                     Height="30"
-                     VerticalContentAlignment="Center"
-                     ScrollViewer.VerticalScrollBarVisibility="Auto">
-            </ListBox>
+                   FontWeight="DemiBold"
+                   Margin="2"
+                />
         </Grid>
         <StatusBar Height="28" 
                    Background="Azure"
