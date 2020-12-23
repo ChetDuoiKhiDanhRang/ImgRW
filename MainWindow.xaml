@@ -12,9 +12,10 @@
         ShowActivated="False"
         Padding="1" 
         >
-    <StackPanel Margin="1">
+    <Grid Margin="1">
         
         <Menu x:Name="mainMenu" 
+              VerticalAlignment="Top"
               Background="Azure"
               BorderBrush="DarkCyan"
               BorderThickness="1"
@@ -45,30 +46,25 @@
                           IsChecked="True"/>
             </MenuItem>
         </Menu>
-        <Grid Background="WhiteSmoke" Margin="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
-            <Label
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   Content="Danh sách tập tin"
-                   Grid.Column="0"
-                   FontWeight="DemiBold"
-                   Margin="2"
-                />
-        </Grid>
+            <ComboBox Name="cmbFonts"
+                      SelectedIndex="0"
+                      ItemsSource="{x:Static Fonts.SystemFontFamilies}"
+                      VerticalContentAlignment="Center"
+                      VerticalAlignment="Top">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" FontFamily="{Binding}"
+                                   VerticalAlignment="Center"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
         <StatusBar Height="28" 
                    Background="Azure"
                    BorderBrush="DarkCyan" 
                    BorderThickness="1"
-                   VerticalAlignment="Bottom">
+                   VerticalAlignment="Bottom"
+                   >
         </StatusBar>
-    </StackPanel>
+    </Grid>
 </Window>
