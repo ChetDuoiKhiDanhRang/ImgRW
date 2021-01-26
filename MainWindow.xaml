@@ -13,58 +13,6 @@
         Padding="1" 
         >
     <Grid Margin="1">
-        
-        <Menu x:Name="mainMenu" 
-              VerticalAlignment="Top"
-              Background="Azure"
-              BorderBrush="DarkCyan"
-              BorderThickness="1"
-              FontFamily="Calibri"
-              FontSize="14"
-              FontWeight="Normal"
-              Height="auto"
-              >
-            <MenuItem Header="Tập _tin" 
-                      Background="Azure"
-                      Name="mnFile"
-                      >
-                <MenuItem Header="Thêm tập tin hình ảnh" 
-                          Name="mnAddFiles"
-                          VerticalAlignment="Center"/>
-                <MenuItem Header="Thêm hình ảnh từ thư mục"
-                          Name="mnAddFolder"/>
-            </MenuItem>
-            <MenuItem Header="Tùy chọn"
-                      x:Name="mnOption" Visibility="Visible">
-                <MenuItem Header="Tự động mở thư mục kết quả"
-                          Name="mnAutoOpenOutput"
-                          IsCheckable="True"
-                          IsChecked="True"/>
-                <MenuItem Header="Xử lý song song"
-                          Name="mnMultithread"
-                          IsCheckable="True"
-                          IsChecked="True"/>
-            </MenuItem>
-        </Menu>
 
-            <ComboBox Name="cmbFonts"
-                      SelectedIndex="0"
-                      ItemsSource="{x:Static Fonts.SystemFontFamilies}"
-                      VerticalContentAlignment="Center"
-                      VerticalAlignment="Top">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding}" FontFamily="{Binding}"
-                                   VerticalAlignment="Center"/>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-        <StatusBar Height="28" 
-                   Background="Azure"
-                   BorderBrush="DarkCyan" 
-                   BorderThickness="1"
-                   VerticalAlignment="Bottom"
-                   >
-        </StatusBar>
     </Grid>
 </Window>
