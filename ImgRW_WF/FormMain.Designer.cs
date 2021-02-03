@@ -29,46 +29,55 @@ namespace ImgRW_WF
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.pibPreview = new System.Windows.Forms.PictureBox();
+            this.lsvFiles = new System.Windows.Forms.ListView();
+            ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // pibPreview
             // 
-            this.button1.Location = new System.Drawing.Point(489, 202);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.pibPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pibPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pibPreview.Location = new System.Drawing.Point(13, 13);
+            this.pibPreview.Name = "pibPreview";
+            this.pibPreview.Size = new System.Drawing.Size(524, 425);
+            this.pibPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pibPreview.TabIndex = 0;
+            this.pibPreview.TabStop = false;
             // 
-            // textBox1
+            // lsvFiles
             // 
-            this.textBox1.Location = new System.Drawing.Point(47, 38);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(357, 322);
-            this.textBox1.TabIndex = 1;
+            this.lsvFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lsvFiles.FullRowSelect = true;
+            this.lsvFiles.GridLines = true;
+            this.lsvFiles.HideSelection = false;
+            this.lsvFiles.Location = new System.Drawing.Point(543, 13);
+            this.lsvFiles.Name = "lsvFiles";
+            this.lsvFiles.Size = new System.Drawing.Size(421, 425);
+            this.lsvFiles.TabIndex = 1;
+            this.lsvFiles.UseCompatibleStateImageBehavior = false;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(976, 644);
+            this.Controls.Add(this.lsvFiles);
+            this.Controls.Add(this.pibPreview);
             this.Name = "FormMain";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.PictureBox pibPreview;
+        private System.Windows.Forms.ListView lsvFiles;
     }
 }
 
