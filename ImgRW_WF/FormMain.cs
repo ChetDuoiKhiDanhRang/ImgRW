@@ -20,18 +20,20 @@ namespace ImgRW_WF
             InitializeComponent();
         }
 
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                FileStream openStream = new FileStream(@"D:\Z.NguyenNgocCuong\Pictures\b1628f6d7b35b7a957f3026c9459e220.jpg", FileMode.Open);
+                FileStream openStream = new FileStream(@"D:\b1628f6d7b35b7a957f3026c9459e22.jpg", FileMode.Open);
                 Image source = Image.FromStream(openStream);
                 openStream.Close();
 
                 var re = Resizer.ResizeImage(source, 1400, 1800);
                 source.Dispose();
 
-                FileStream saveStream = new FileStream(@"D:\Z.NguyenNgocCuong\re.png", FileMode.Create);
+                FileStream saveStream = new FileStream(@"D:\re.png", FileMode.Create);
                 re.Save(saveStream, ImageFormat.Png);
                 saveStream.Close();
                 re.Dispose();
@@ -39,8 +41,13 @@ namespace ImgRW_WF
             }
             catch (Exception ex)
             {
-                textBox1.Text = ex.Message;
+                
             }
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
