@@ -43,6 +43,7 @@ namespace ImgRW_WF
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.ckbResize = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.colorPanelString = new Controls_dotNetFrw.ColorPanel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.ckbItalic = new System.Windows.Forms.CheckBox();
             this.ckbBold = new System.Windows.Forms.CheckBox();
@@ -50,7 +51,8 @@ namespace ImgRW_WF
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.colorPanel1 = new Controls_dotNetFrw.ColorPanel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -218,13 +220,15 @@ namespace ImgRW_WF
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.colorPanel1);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.colorPanelString);
             this.panel2.Controls.Add(this.checkBox1);
             this.panel2.Controls.Add(this.ckbItalic);
             this.panel2.Controls.Add(this.ckbBold);
             this.panel2.Controls.Add(this.ckbString);
             this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.textBox5);
             this.panel2.Controls.Add(this.textBox4);
             this.panel2.Location = new System.Drawing.Point(13, 155);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
@@ -234,35 +238,52 @@ namespace ImgRW_WF
             this.panel2.TabIndex = 2;
             this.panel2.Click += new System.EventHandler(this.button1_Click);
             // 
+            // colorPanelString
+            // 
+            this.colorPanelString.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPanelString.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorPanelString.Location = new System.Drawing.Point(10, 138);
+            this.colorPanelString.Margin = new System.Windows.Forms.Padding(4);
+            this.colorPanelString.MinimumSize = new System.Drawing.Size(85, 78);
+            this.colorPanelString.Name = "colorPanelString";
+            this.colorPanelString.Padding = new System.Windows.Forms.Padding(1);
+            this.colorPanelString.Size = new System.Drawing.Size(233, 78);
+            this.colorPanelString.TabIndex = 4;
+            // 
             // checkBox1
             // 
+            this.checkBox1.Appearance = System.Windows.Forms.Appearance.Button;
             this.checkBox1.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(267, 118);
+            this.checkBox1.Location = new System.Drawing.Point(327, 36);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(88, 20);
+            this.checkBox1.Size = new System.Drawing.Size(28, 28);
             this.checkBox1.TabIndex = 5;
-            this.checkBox1.Text = "Gạch chân";
+            this.checkBox1.Text = "U";
+            this.checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // ckbItalic
             // 
-            this.ckbItalic.AutoSize = true;
+            this.ckbItalic.Appearance = System.Windows.Forms.Appearance.Button;
             this.ckbItalic.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbItalic.Location = new System.Drawing.Point(267, 92);
+            this.ckbItalic.Location = new System.Drawing.Point(293, 36);
             this.ckbItalic.Name = "ckbItalic";
-            this.ckbItalic.Size = new System.Drawing.Size(88, 20);
+            this.ckbItalic.Size = new System.Drawing.Size(28, 28);
             this.ckbItalic.TabIndex = 5;
-            this.ckbItalic.Text = "In nghiêng";
+            this.ckbItalic.Text = "I";
+            this.ckbItalic.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ckbItalic.UseVisualStyleBackColor = true;
             // 
             // ckbBold
             // 
+            this.ckbBold.Appearance = System.Windows.Forms.Appearance.Button;
             this.ckbBold.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbBold.Location = new System.Drawing.Point(267, 66);
+            this.ckbBold.Location = new System.Drawing.Point(259, 36);
             this.ckbBold.Name = "ckbBold";
-            this.ckbBold.Size = new System.Drawing.Size(88, 20);
+            this.ckbBold.Size = new System.Drawing.Size(28, 28);
             this.ckbBold.TabIndex = 5;
-            this.ckbBold.Text = "In đậm";
+            this.ckbBold.Text = "B";
+            this.ckbBold.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ckbBold.UseVisualStyleBackColor = true;
             // 
             // ckbString
@@ -278,7 +299,7 @@ namespace ImgRW_WF
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(171, 36);
+            this.comboBox1.Location = new System.Drawing.Point(117, 235);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(184, 24);
             this.comboBox1.TabIndex = 3;
@@ -286,7 +307,7 @@ namespace ImgRW_WF
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(81, 39);
+            this.label4.Location = new System.Drawing.Point(27, 238);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 17);
             this.label4.TabIndex = 2;
@@ -301,17 +322,25 @@ namespace ImgRW_WF
             this.textBox4.Text = "Whatever";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // colorPanel1
+            // label5
             // 
-            this.colorPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorPanel1.Location = new System.Drawing.Point(10, 67);
-            this.colorPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.colorPanel1.MinimumSize = new System.Drawing.Size(85, 78);
-            this.colorPanel1.Name = "colorPanel1";
-            this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
-            this.colorPanel1.Size = new System.Drawing.Size(233, 103);
-            this.colorPanel1.TabIndex = 4;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(79, 42);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(78, 17);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Kích thước:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(171, 39);
+            this.textBox5.MaxLength = 3;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(72, 23);
+            this.textBox5.TabIndex = 1;
+            this.textBox5.Text = "444";
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FormMain
             // 
@@ -361,7 +390,9 @@ namespace ImgRW_WF
         private System.Windows.Forms.CheckBox ckbItalic;
         private System.Windows.Forms.CheckBox ckbBold;
         private System.Windows.Forms.CheckBox ckbString;
-        private Controls_dotNetFrw.ColorPanel colorPanel1;
+        private Controls_dotNetFrw.ColorPanel colorPanelString;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox5;
     }
 }
 
