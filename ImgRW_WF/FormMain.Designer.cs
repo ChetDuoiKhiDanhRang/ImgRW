@@ -31,7 +31,7 @@ namespace ImgRW_WF
         {
             this.pibPreview = new System.Windows.Forms.PictureBox();
             this.lsvFiles = new System.Windows.Forms.ListView();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelResize = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,9 +50,8 @@ namespace ImgRW_WF
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.colorPanel1 = new Controls_dotNetFrw.ColorPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.panelResize.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,26 +85,26 @@ namespace ImgRW_WF
             this.lsvFiles.TabIndex = 1;
             this.lsvFiles.UseCompatibleStateImageBehavior = false;
             // 
-            // panel1
+            // panelResize
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.radioButton3);
-            this.panel1.Controls.Add(this.radioButton2);
-            this.panel1.Controls.Add(this.radioButton1);
-            this.panel1.Enabled = false;
-            this.panel1.Location = new System.Drawing.Point(13, 44);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.panel1.Size = new System.Drawing.Size(367, 103);
-            this.panel1.TabIndex = 2;
-            this.panel1.Click += new System.EventHandler(this.button1_Click);
+            this.panelResize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelResize.Controls.Add(this.label3);
+            this.panelResize.Controls.Add(this.label2);
+            this.panelResize.Controls.Add(this.label1);
+            this.panelResize.Controls.Add(this.textBox3);
+            this.panelResize.Controls.Add(this.textBox2);
+            this.panelResize.Controls.Add(this.textBox1);
+            this.panelResize.Controls.Add(this.radioButton3);
+            this.panelResize.Controls.Add(this.radioButton2);
+            this.panelResize.Controls.Add(this.radioButton1);
+            this.panelResize.Enabled = false;
+            this.panelResize.Location = new System.Drawing.Point(13, 44);
+            this.panelResize.Margin = new System.Windows.Forms.Padding(4);
+            this.panelResize.Name = "panelResize";
+            this.panelResize.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.panelResize.Size = new System.Drawing.Size(367, 103);
+            this.panelResize.TabIndex = 2;
+            this.panelResize.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
@@ -218,11 +217,9 @@ namespace ImgRW_WF
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.colorPanel1);
             this.panel2.Controls.Add(this.checkBox1);
             this.panel2.Controls.Add(this.ckbItalic);
             this.panel2.Controls.Add(this.ckbBold);
-            this.panel2.Controls.Add(this.ckbString);
             this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.textBox4);
@@ -268,12 +265,13 @@ namespace ImgRW_WF
             // ckbString
             // 
             this.ckbString.AutoSize = true;
-            this.ckbString.Location = new System.Drawing.Point(10, 9);
+            this.ckbString.Location = new System.Drawing.Point(20, 165);
             this.ckbString.Name = "ckbString";
             this.ckbString.Size = new System.Drawing.Size(155, 21);
             this.ckbString.TabIndex = 4;
             this.ckbString.Text = "Đặt dấu bằng chuỗi:";
             this.ckbString.UseVisualStyleBackColor = true;
+            this.ckbString.CheckedChanged += new System.EventHandler(this.ckbString_CheckedChanged);
             // 
             // comboBox1
             // 
@@ -301,36 +299,25 @@ namespace ImgRW_WF
             this.textBox4.Text = "Whatever";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // colorPanel1
-            // 
-            this.colorPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorPanel1.Location = new System.Drawing.Point(10, 67);
-            this.colorPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.colorPanel1.MinimumSize = new System.Drawing.Size(85, 78);
-            this.colorPanel1.Name = "colorPanel1";
-            this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
-            this.colorPanel1.Size = new System.Drawing.Size(233, 103);
-            this.colorPanel1.TabIndex = 4;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 625);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.ckbString);
+            this.Controls.Add(this.panelResize);
             this.Controls.Add(this.lsvFiles);
             this.Controls.Add(this.ckbResize);
             this.Controls.Add(this.pibPreview);
+            this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMain";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelResize.ResumeLayout(false);
+            this.panelResize.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -342,7 +329,7 @@ namespace ImgRW_WF
 
         private System.Windows.Forms.PictureBox pibPreview;
         private System.Windows.Forms.ListView lsvFiles;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelResize;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox ckbResize;
@@ -361,7 +348,6 @@ namespace ImgRW_WF
         private System.Windows.Forms.CheckBox ckbItalic;
         private System.Windows.Forms.CheckBox ckbBold;
         private System.Windows.Forms.CheckBox ckbString;
-        private Controls_dotNetFrw.ColorPanel colorPanel1;
     }
 }
 

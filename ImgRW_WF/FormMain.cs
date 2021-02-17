@@ -47,8 +47,13 @@ namespace ImgRW_WF
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            panel1.BackColor = Color.FromArgb(Int32.Parse("FF0000", System.Globalization.NumberStyles.HexNumber));
-            panel1.Invalidate();
+            panelResize.BackColor = Color.FromArgb(Int32.Parse("FF0000", System.Globalization.NumberStyles.HexNumber));
+            panelResize.Invalidate();
+        }
+
+        private void ckbString_CheckedChanged(object sender, EventArgs e)
+        {
+            panel2.Enabled = ckbString.Checked;
         }
     }
 }
