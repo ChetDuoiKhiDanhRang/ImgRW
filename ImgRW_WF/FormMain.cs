@@ -47,13 +47,17 @@ namespace ImgRW_WF
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            panelResize.BackColor = Color.FromArgb(Int32.Parse("FF0000", System.Globalization.NumberStyles.HexNumber));
-            panelResize.Invalidate();
+            
         }
 
         private void ckbString_CheckedChanged(object sender, EventArgs e)
         {
-            panel2.Enabled = ckbString.Checked;
+            panelWatermarkString.Enabled = ckbString.Checked;
+        }
+
+        private void ckbResize_CheckedChanged(object sender, EventArgs e)
+        {
+            panelResize.Enabled = ckbResize.Checked;
         }
     }
 }
