@@ -46,14 +46,14 @@ namespace ImgRW_WF
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.colorPanel1 = new Controls_dotNetFrw.ColorPanel();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.ckbItalic = new System.Windows.Forms.CheckBox();
             this.ckbBold = new System.Windows.Forms.CheckBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.ckbString = new System.Windows.Forms.CheckBox();
+            this.colorPanel1 = new Controls_dotNetFrw.ColorPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).BeginInit();
             this.panelResize.SuspendLayout();
             this.panelWatermarkString.SuspendLayout();
@@ -108,7 +108,6 @@ namespace ImgRW_WF
             this.panelResize.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.panelResize.Size = new System.Drawing.Size(367, 132);
             this.panelResize.TabIndex = 2;
-            this.panelResize.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
@@ -224,10 +223,10 @@ namespace ImgRW_WF
             // panelWatermarkString
             // 
             this.panelWatermarkString.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelWatermarkString.Controls.Add(this.colorPanel1);
             this.panelWatermarkString.Controls.Add(this.numericUpDown2);
             this.panelWatermarkString.Controls.Add(this.numericUpDown1);
             this.panelWatermarkString.Controls.Add(this.checkBox2);
-            this.panelWatermarkString.Controls.Add(this.colorPanel1);
             this.panelWatermarkString.Controls.Add(this.checkBox1);
             this.panelWatermarkString.Controls.Add(this.ckbItalic);
             this.panelWatermarkString.Controls.Add(this.ckbBold);
@@ -240,7 +239,6 @@ namespace ImgRW_WF
             this.panelWatermarkString.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.panelWatermarkString.Size = new System.Drawing.Size(367, 216);
             this.panelWatermarkString.TabIndex = 2;
-            this.panelWatermarkString.Click += new System.EventHandler(this.button1_Click);
             // 
             // numericUpDown2
             // 
@@ -274,32 +272,6 @@ namespace ImgRW_WF
             this.checkBox2.TabIndex = 7;
             this.checkBox2.Text = "Khung viền:";
             this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // colorPanel1
-            // 
-            this.colorPanel1.AutoSize = true;
-            this.colorPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPanel1.CurrentColor = System.Drawing.Color.Empty;
-            this.colorPanel1.CurrentColorHexString = null;
-            this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colorPanel1.Location = new System.Drawing.Point(6, 66);
-            this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
-            this.colorPanel1.Name = "colorPanel1";
-            this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
-            this.colorPanel1.PanelStyle = Controls_dotNetFrw.PanelStyles.Panel;
-            this.colorPanel1.RefObject = this.textBox4;
-            this.colorPanel1.Size = new System.Drawing.Size(152, 141);
-            this.colorPanel1.TabIndex = 6;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(171, 7);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(184, 23);
-            this.textBox4.TabIndex = 1;
-            this.textBox4.Text = "Whatever";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // checkBox1
             // 
@@ -354,6 +326,15 @@ namespace ImgRW_WF
             this.label4.TabIndex = 2;
             this.label4.Text = "Font chữ:";
             // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(171, 7);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(184, 23);
+            this.textBox4.TabIndex = 1;
+            this.textBox4.Text = "Whatever";
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // ckbString
             // 
             this.ckbString.AutoSize = true;
@@ -366,6 +347,22 @@ namespace ImgRW_WF
             this.ckbString.Text = "Đặt dấu bằng chuỗi:";
             this.ckbString.UseVisualStyleBackColor = true;
             this.ckbString.CheckedChanged += new System.EventHandler(this.ckbString_CheckedChanged);
+            // 
+            // colorPanel1
+            // 
+            this.colorPanel1.AutoSize = true;
+            this.colorPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.colorPanel1.CurrentColor = System.Drawing.Color.Cyan;
+            this.colorPanel1.CurrentColorHexString = null;
+            this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorPanel1.Location = new System.Drawing.Point(11, 66);
+            this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
+            this.colorPanel1.Name = "colorPanel1";
+            this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
+            this.colorPanel1.PanelStyle = Controls_dotNetFrw.PanelStyles.Panel;
+            this.colorPanel1.RefObject = null;
+            this.colorPanel1.Size = new System.Drawing.Size(147, 139);
+            this.colorPanel1.TabIndex = 9;
             // 
             // FormMain
             // 
@@ -418,10 +415,10 @@ namespace ImgRW_WF
         private System.Windows.Forms.CheckBox ckbItalic;
         private System.Windows.Forms.CheckBox ckbBold;
         private System.Windows.Forms.CheckBox ckbString;
-        private Controls_dotNetFrw.ColorPanel colorPanel1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private Controls_dotNetFrw.ColorPanel colorPanel1;
     }
 }
 
