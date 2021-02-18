@@ -20,6 +20,10 @@ namespace ImgRW_WF
             InitializeComponent();
         }
 
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            
+        }
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -45,10 +49,6 @@ namespace ImgRW_WF
             }
         }
 
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-            
-        }
 
         private void ckbString_CheckedChanged(object sender, EventArgs e)
         {
@@ -58,6 +58,11 @@ namespace ImgRW_WF
         private void ckbResize_CheckedChanged(object sender, EventArgs e)
         {
             panelResize.Enabled = ckbResize.Checked;
+        }
+
+        private void rdbLocation_CheckedChanged(object sender, EventArgs e)
+        {
+            nudWSLocationX.Enabled = nudWSLocationY.Enabled = rdbWSLocation.Checked;
         }
     }
 }

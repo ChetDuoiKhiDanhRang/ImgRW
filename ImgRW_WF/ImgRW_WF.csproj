@@ -99,8 +99,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\CxxLibs\Controls_dotNetFrw\Controls_dotNetFrw.csproj">
-      <Project>{90ABA1DF-B297-4696-94F9-C8DDB4238719}</Project>
+    <ProjectReference Include="..\..\CxxLibs\Controls_dotNetFrw\Controls_dotNetFrw.csproj">
+      <Project>{90aba1df-b297-4696-94f9-c8ddb4238719}</Project>
       <Name>Controls_dotNetFrw</Name>
     </ProjectReference>
     <ProjectReference Include="..\ImageModifier\ImageModifier.csproj">
