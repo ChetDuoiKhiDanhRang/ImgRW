@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,10 +16,16 @@ namespace ImgRW_WF
 {
     public partial class FormMain : Form
     {
+        public List<string> FontNames { get; set; }
         public FormMain()
         {
             InitializeComponent();
+            FontNames = (new InstalledFontCollection()).Families.Select(f => f.Name).ToList();
+            FontNames.Sort();
+            cmbFont.DataSource = FontNames;
+            
         }
+
 
         private void FormMain_Load(object sender, EventArgs e)
         {

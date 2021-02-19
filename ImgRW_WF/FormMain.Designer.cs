@@ -42,6 +42,8 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.ckbResize = new System.Windows.Forms.CheckBox();
             this.panelWatermarkString = new System.Windows.Forms.Panel();
+            this.colorPanel1 = new Controls_dotNetFrw.ColorPanel();
+            this.txbWString = new System.Windows.Forms.TextBox();
             this.rdbWSLocation = new System.Windows.Forms.RadioButton();
             this.rdbBottomCenter = new System.Windows.Forms.RadioButton();
             this.rdbBottomRight = new System.Windows.Forms.RadioButton();
@@ -52,7 +54,6 @@
             this.rdbMiddleLeft = new System.Windows.Forms.RadioButton();
             this.rdbTopRight = new System.Windows.Forms.RadioButton();
             this.rdbTopLeft = new System.Windows.Forms.RadioButton();
-            this.txbWString = new System.Windows.Forms.TextBox();
             this.nudFontSize = new System.Windows.Forms.NumericUpDown();
             this.nudWSLocationY = new System.Windows.Forms.NumericUpDown();
             this.nudWSLocationX = new System.Windows.Forms.NumericUpDown();
@@ -65,7 +66,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.ckbString = new System.Windows.Forms.CheckBox();
-            this.colorPanel1 = new Controls_dotNetFrw.ColorPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).BeginInit();
             this.panelResize.SuspendLayout();
             this.panelWatermarkString.SuspendLayout();
@@ -267,6 +267,31 @@
             this.panelWatermarkString.Size = new System.Drawing.Size(367, 216);
             this.panelWatermarkString.TabIndex = 2;
             // 
+            // colorPanel1
+            // 
+            this.colorPanel1.AutoSize = true;
+            this.colorPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPanel1.CurrentColor = System.Drawing.Color.Cyan;
+            this.colorPanel1.CurrentColorHexString = null;
+            this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorPanel1.Location = new System.Drawing.Point(8, 67);
+            this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
+            this.colorPanel1.Name = "colorPanel1";
+            this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
+            this.colorPanel1.PanelStyle = Controls_dotNetFrw.PanelStyles.Wheel;
+            this.colorPanel1.RefControl = this.txbWString;
+            this.colorPanel1.Size = new System.Drawing.Size(148, 141);
+            this.colorPanel1.TabIndex = 11;
+            // 
+            // txbWString
+            // 
+            this.txbWString.Location = new System.Drawing.Point(186, 7);
+            this.txbWString.Name = "txbWString";
+            this.txbWString.Size = new System.Drawing.Size(169, 23);
+            this.txbWString.TabIndex = 1;
+            this.txbWString.Text = "Whatever";
+            this.txbWString.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // rdbWSLocation
             // 
             this.rdbWSLocation.AutoSize = true;
@@ -369,23 +394,29 @@
             this.rdbTopLeft.TabStop = true;
             this.rdbTopLeft.UseVisualStyleBackColor = true;
             // 
-            // txbWString
-            // 
-            this.txbWString.Location = new System.Drawing.Point(186, 7);
-            this.txbWString.Name = "txbWString";
-            this.txbWString.Size = new System.Drawing.Size(169, 23);
-            this.txbWString.TabIndex = 1;
-            this.txbWString.Text = "Whatever";
-            this.txbWString.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // nudFontSize
             // 
             this.nudFontSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nudFontSize.Location = new System.Drawing.Point(300, 69);
+            this.nudFontSize.Maximum = new decimal(new int[] {
+            1024,
+            0,
+            0,
+            0});
+            this.nudFontSize.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             this.nudFontSize.Name = "nudFontSize";
             this.nudFontSize.Size = new System.Drawing.Size(55, 23);
             this.nudFontSize.TabIndex = 8;
             this.nudFontSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nudFontSize.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
             // nudWSLocationY
             // 
@@ -419,6 +450,11 @@
             // 
             this.nudFrameSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nudFrameSize.Location = new System.Drawing.Point(300, 100);
+            this.nudFrameSize.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             this.nudFrameSize.Name = "nudFrameSize";
             this.nudFrameSize.Size = new System.Drawing.Size(55, 23);
             this.nudFrameSize.TabIndex = 8;
@@ -514,22 +550,6 @@
             this.ckbString.Text = "Đặt dấu bằng chuỗi:";
             this.ckbString.UseVisualStyleBackColor = true;
             this.ckbString.CheckedChanged += new System.EventHandler(this.ckbString_CheckedChanged);
-            // 
-            // colorPanel1
-            // 
-            this.colorPanel1.AutoSize = true;
-            this.colorPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPanel1.CurrentColor = System.Drawing.Color.Cyan;
-            this.colorPanel1.CurrentColorHexString = null;
-            this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorPanel1.Location = new System.Drawing.Point(8, 67);
-            this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
-            this.colorPanel1.Name = "colorPanel1";
-            this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
-            this.colorPanel1.PanelStyle = Controls_dotNetFrw.PanelStyles.Wheel;
-            this.colorPanel1.RefControl = this.txbWString;
-            this.colorPanel1.Size = new System.Drawing.Size(148, 141);
-            this.colorPanel1.TabIndex = 11;
             // 
             // FormMain
             // 
