@@ -66,6 +66,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.ckbString = new System.Windows.Forms.CheckBox();
+            this.colorPanel2 = new Controls_dotNetFrw.ColorPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).BeginInit();
             this.panelResize.SuspendLayout();
             this.panelWatermarkString.SuspendLayout();
@@ -81,10 +82,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pibPreview.BackColor = System.Drawing.SystemColors.Window;
             this.pibPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pibPreview.Location = new System.Drawing.Point(579, 15);
+            this.pibPreview.Location = new System.Drawing.Point(623, 15);
             this.pibPreview.Margin = new System.Windows.Forms.Padding(4);
             this.pibPreview.Name = "pibPreview";
-            this.pibPreview.Size = new System.Drawing.Size(359, 356);
+            this.pibPreview.Size = new System.Drawing.Size(359, 441);
             this.pibPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pibPreview.TabIndex = 0;
             this.pibPreview.TabStop = false;
@@ -100,7 +101,7 @@
             this.lsvFiles.Location = new System.Drawing.Point(388, 15);
             this.lsvFiles.Margin = new System.Windows.Forms.Padding(4);
             this.lsvFiles.Name = "lsvFiles";
-            this.lsvFiles.Size = new System.Drawing.Size(183, 356);
+            this.lsvFiles.Size = new System.Drawing.Size(227, 356);
             this.lsvFiles.TabIndex = 1;
             this.lsvFiles.UseCompatibleStateImageBehavior = false;
             // 
@@ -551,11 +552,27 @@
             this.ckbString.UseVisualStyleBackColor = true;
             this.ckbString.CheckedChanged += new System.EventHandler(this.ckbString_CheckedChanged);
             // 
+            // colorPanel2
+            // 
+            this.colorPanel2.AutoSize = true;
+            this.colorPanel2.CurrentColor = System.Drawing.Color.Cyan;
+            this.colorPanel2.CurrentColorHexString = null;
+            this.colorPanel2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorPanel2.Location = new System.Drawing.Point(13, 378);
+            this.colorPanel2.MinimumSize = new System.Drawing.Size(64, 64);
+            this.colorPanel2.Name = "colorPanel2";
+            this.colorPanel2.Padding = new System.Windows.Forms.Padding(1);
+            this.colorPanel2.PanelStyle = Controls_dotNetFrw.PanelStyles.Wheel;
+            this.colorPanel2.RefControl = null;
+            this.colorPanel2.Size = new System.Drawing.Size(367, 254);
+            this.colorPanel2.TabIndex = 5;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(951, 559);
+            this.ClientSize = new System.Drawing.Size(995, 644);
+            this.Controls.Add(this.colorPanel2);
             this.Controls.Add(this.ckbString);
             this.Controls.Add(this.lsvFiles);
             this.Controls.Add(this.ckbResize);
@@ -621,6 +638,7 @@
         private System.Windows.Forms.NumericUpDown nudWSLocationX;
         private System.Windows.Forms.Label label6;
         private Controls_dotNetFrw.ColorPanel colorPanel1;
+        private Controls_dotNetFrw.ColorPanel colorPanel2;
     }
 }
 
