@@ -42,6 +42,7 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.ckbResize = new System.Windows.Forms.CheckBox();
             this.panelWatermarkString = new System.Windows.Forms.Panel();
+            this.ckbString = new System.Windows.Forms.CheckBox();
             this.txbWString = new System.Windows.Forms.TextBox();
             this.rdbWSLocation = new System.Windows.Forms.RadioButton();
             this.rdbBottomCenter = new System.Windows.Forms.RadioButton();
@@ -64,7 +65,6 @@
             this.cmbFont = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.ckbString = new System.Windows.Forms.CheckBox();
             this.colorPanel1 = new Controls_dotNetFrw.ColorPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).BeginInit();
             this.panelResize.SuspendLayout();
@@ -81,10 +81,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pibPreview.BackColor = System.Drawing.SystemColors.Window;
             this.pibPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pibPreview.Location = new System.Drawing.Point(623, 15);
+            this.pibPreview.Location = new System.Drawing.Point(749, 15);
             this.pibPreview.Margin = new System.Windows.Forms.Padding(4);
             this.pibPreview.Name = "pibPreview";
-            this.pibPreview.Size = new System.Drawing.Size(359, 356);
+            this.pibPreview.Size = new System.Drawing.Size(246, 356);
             this.pibPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pibPreview.TabIndex = 0;
             this.pibPreview.TabStop = false;
@@ -100,7 +100,7 @@
             this.lsvFiles.Location = new System.Drawing.Point(388, 15);
             this.lsvFiles.Margin = new System.Windows.Forms.Padding(4);
             this.lsvFiles.Name = "lsvFiles";
-            this.lsvFiles.Size = new System.Drawing.Size(227, 356);
+            this.lsvFiles.Size = new System.Drawing.Size(353, 356);
             this.lsvFiles.TabIndex = 1;
             this.lsvFiles.UseCompatibleStateImageBehavior = false;
             // 
@@ -237,7 +237,6 @@
             // panelWatermarkString
             // 
             this.panelWatermarkString.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelWatermarkString.Controls.Add(this.ckbString);
             this.panelWatermarkString.Controls.Add(this.colorPanel1);
             this.panelWatermarkString.Controls.Add(this.rdbWSLocation);
             this.panelWatermarkString.Controls.Add(this.rdbBottomCenter);
@@ -267,6 +266,20 @@
             this.panelWatermarkString.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.panelWatermarkString.Size = new System.Drawing.Size(367, 216);
             this.panelWatermarkString.TabIndex = 2;
+            // 
+            // ckbString
+            // 
+            this.ckbString.AutoSize = true;
+            this.ckbString.Checked = true;
+            this.ckbString.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckbString.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckbString.Location = new System.Drawing.Point(20, 164);
+            this.ckbString.Name = "ckbString";
+            this.ckbString.Size = new System.Drawing.Size(174, 21);
+            this.ckbString.TabIndex = 4;
+            this.ckbString.Text = "Đặt dấu bằng chuỗi:";
+            this.ckbString.UseVisualStyleBackColor = true;
+            this.ckbString.CheckedChanged += new System.EventHandler(this.ckbString_CheckedChanged);
             // 
             // txbWString
             // 
@@ -523,20 +536,6 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "Font chữ:";
             // 
-            // ckbString
-            // 
-            this.ckbString.AutoSize = true;
-            this.ckbString.Checked = true;
-            this.ckbString.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbString.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbString.Location = new System.Drawing.Point(6, 9);
-            this.ckbString.Name = "ckbString";
-            this.ckbString.Size = new System.Drawing.Size(174, 21);
-            this.ckbString.TabIndex = 4;
-            this.ckbString.Text = "Đặt dấu bằng chuỗi:";
-            this.ckbString.UseVisualStyleBackColor = true;
-            this.ckbString.CheckedChanged += new System.EventHandler(this.ckbString_CheckedChanged);
-            // 
             // colorPanel1
             // 
             this.colorPanel1.AutoSize = true;
@@ -557,7 +556,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(995, 644);
+            this.ClientSize = new System.Drawing.Size(1008, 644);
+            this.Controls.Add(this.ckbString);
             this.Controls.Add(this.lsvFiles);
             this.Controls.Add(this.ckbResize);
             this.Controls.Add(this.panelWatermarkString);
