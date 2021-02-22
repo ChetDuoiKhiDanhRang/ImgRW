@@ -25,6 +25,8 @@ namespace ImgRW_WF
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            LoadSettings();
+
             cmbFont.Invoke((Action)(() =>
             {
                 FontNames = (new InstalledFontCollection()).Families.Select(f => f.Name).ToList();
@@ -33,6 +35,15 @@ namespace ImgRW_WF
             }));
         }
 
+        private void LoadSettings()
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void SaveSettings()
+        {
+
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -40,6 +51,7 @@ namespace ImgRW_WF
             {
                 FileStream openStream = new FileStream(@"D:\b1628f6d7b35b7a957f3026c9459e22.jpg", FileMode.Open);
                 Image source = Image.FromStream(openStream);
+                openStream.Dispose();
                 openStream.Close();
 
                 var re = Resizer.ResizeImage(source, 1400, 1800);
