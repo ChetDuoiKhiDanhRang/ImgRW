@@ -20,16 +20,17 @@ namespace ImgRW_WF
         public FormMain()
         {
             InitializeComponent();
-            FontNames = (new InstalledFontCollection()).Families.Select(f => f.Name).ToList();
-            FontNames.Sort();
-            cmbFont.DataSource = FontNames;
-            
         }
 
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            
+            cmbFont.Invoke((Action)(() =>
+            {
+                FontNames = (new InstalledFontCollection()).Families.Select(f => f.Name).ToList();
+                FontNames.Sort();
+                cmbFont.DataSource = FontNames;
+            }));
         }
 
 
@@ -52,7 +53,7 @@ namespace ImgRW_WF
             }
             catch (Exception ex)
             {
-                
+
             }
         }
 

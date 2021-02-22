@@ -296,7 +296,7 @@
             // rdbWSLocation
             // 
             this.rdbWSLocation.AutoSize = true;
-            this.rdbWSLocation.Location = new System.Drawing.Point(171, 129);
+            this.rdbWSLocation.Location = new System.Drawing.Point(187, 129);
             this.rdbWSLocation.Name = "rdbWSLocation";
             this.rdbWSLocation.Size = new System.Drawing.Size(39, 21);
             this.rdbWSLocation.TabIndex = 10;
@@ -308,7 +308,7 @@
             // rdbBottomCenter
             // 
             this.rdbBottomCenter.AutoSize = true;
-            this.rdbBottomCenter.Location = new System.Drawing.Point(279, 196);
+            this.rdbBottomCenter.Location = new System.Drawing.Point(263, 196);
             this.rdbBottomCenter.Name = "rdbBottomCenter";
             this.rdbBottomCenter.Size = new System.Drawing.Size(14, 13);
             this.rdbBottomCenter.TabIndex = 10;
@@ -328,7 +328,7 @@
             // rdbMiddleCenter
             // 
             this.rdbMiddleCenter.AutoSize = true;
-            this.rdbMiddleCenter.Location = new System.Drawing.Point(279, 177);
+            this.rdbMiddleCenter.Location = new System.Drawing.Point(263, 177);
             this.rdbMiddleCenter.Name = "rdbMiddleCenter";
             this.rdbMiddleCenter.Size = new System.Drawing.Size(14, 13);
             this.rdbMiddleCenter.TabIndex = 10;
@@ -348,7 +348,7 @@
             // rdbBottomLeft
             // 
             this.rdbBottomLeft.AutoSize = true;
-            this.rdbBottomLeft.Location = new System.Drawing.Point(218, 196);
+            this.rdbBottomLeft.Location = new System.Drawing.Point(187, 196);
             this.rdbBottomLeft.Name = "rdbBottomLeft";
             this.rdbBottomLeft.Size = new System.Drawing.Size(14, 13);
             this.rdbBottomLeft.TabIndex = 10;
@@ -358,7 +358,7 @@
             // rdbTopCenter
             // 
             this.rdbTopCenter.AutoSize = true;
-            this.rdbTopCenter.Location = new System.Drawing.Point(279, 158);
+            this.rdbTopCenter.Location = new System.Drawing.Point(263, 158);
             this.rdbTopCenter.Name = "rdbTopCenter";
             this.rdbTopCenter.Size = new System.Drawing.Size(14, 13);
             this.rdbTopCenter.TabIndex = 10;
@@ -368,7 +368,7 @@
             // rdbMiddleLeft
             // 
             this.rdbMiddleLeft.AutoSize = true;
-            this.rdbMiddleLeft.Location = new System.Drawing.Point(218, 177);
+            this.rdbMiddleLeft.Location = new System.Drawing.Point(187, 177);
             this.rdbMiddleLeft.Name = "rdbMiddleLeft";
             this.rdbMiddleLeft.Size = new System.Drawing.Size(14, 13);
             this.rdbMiddleLeft.TabIndex = 10;
@@ -378,7 +378,7 @@
             // rdbTopRight
             // 
             this.rdbTopRight.AutoSize = true;
-            this.rdbTopRight.Location = new System.Drawing.Point(340, 158);
+            this.rdbTopRight.Location = new System.Drawing.Point(339, 158);
             this.rdbTopRight.Name = "rdbTopRight";
             this.rdbTopRight.Size = new System.Drawing.Size(14, 13);
             this.rdbTopRight.TabIndex = 10;
@@ -388,7 +388,7 @@
             // rdbTopLeft
             // 
             this.rdbTopLeft.AutoSize = true;
-            this.rdbTopLeft.Location = new System.Drawing.Point(218, 158);
+            this.rdbTopLeft.Location = new System.Drawing.Point(187, 158);
             this.rdbTopLeft.Name = "rdbTopLeft";
             this.rdbTopLeft.Size = new System.Drawing.Size(14, 13);
             this.rdbTopLeft.TabIndex = 10;
@@ -398,7 +398,7 @@
             // nudFontSize
             // 
             this.nudFontSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nudFontSize.Location = new System.Drawing.Point(300, 69);
+            this.nudFontSize.Location = new System.Drawing.Point(307, 69);
             this.nudFontSize.Maximum = new decimal(new int[] {
             1024,
             0,
@@ -410,11 +410,11 @@
             0,
             0});
             this.nudFontSize.Name = "nudFontSize";
-            this.nudFontSize.Size = new System.Drawing.Size(55, 23);
+            this.nudFontSize.Size = new System.Drawing.Size(48, 23);
             this.nudFontSize.TabIndex = 8;
             this.nudFontSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nudFontSize.Value = new decimal(new int[] {
-            3,
+            14,
             0,
             0,
             0});
@@ -422,9 +422,9 @@
             // nudWSLocationY
             // 
             this.nudWSLocationY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nudWSLocationY.Location = new System.Drawing.Point(300, 129);
+            this.nudWSLocationY.Location = new System.Drawing.Point(307, 129);
             this.nudWSLocationY.Name = "nudWSLocationY";
-            this.nudWSLocationY.Size = new System.Drawing.Size(55, 23);
+            this.nudWSLocationY.Size = new System.Drawing.Size(48, 23);
             this.nudWSLocationY.TabIndex = 8;
             this.nudWSLocationY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nudWSLocationY.Value = new decimal(new int[] {
@@ -436,9 +436,9 @@
             // nudWSLocationX
             // 
             this.nudWSLocationX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nudWSLocationX.Location = new System.Drawing.Point(214, 129);
+            this.nudWSLocationX.Location = new System.Drawing.Point(232, 129);
             this.nudWSLocationX.Name = "nudWSLocationX";
-            this.nudWSLocationX.Size = new System.Drawing.Size(55, 23);
+            this.nudWSLocationX.Size = new System.Drawing.Size(48, 23);
             this.nudWSLocationX.TabIndex = 8;
             this.nudWSLocationX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nudWSLocationX.Value = new decimal(new int[] {
@@ -450,14 +450,14 @@
             // nudFrameSize
             // 
             this.nudFrameSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nudFrameSize.Location = new System.Drawing.Point(300, 100);
+            this.nudFrameSize.Location = new System.Drawing.Point(307, 100);
             this.nudFrameSize.Minimum = new decimal(new int[] {
             3,
             0,
             0,
             0});
             this.nudFrameSize.Name = "nudFrameSize";
-            this.nudFrameSize.Size = new System.Drawing.Size(55, 23);
+            this.nudFrameSize.Size = new System.Drawing.Size(48, 23);
             this.nudFrameSize.TabIndex = 8;
             this.nudFrameSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nudFrameSize.Value = new decimal(new int[] {
@@ -514,6 +514,7 @@
             // 
             // cmbFont
             // 
+            this.cmbFont.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFont.FormattingEnabled = true;
             this.cmbFont.Location = new System.Drawing.Point(186, 36);
             this.cmbFont.Name = "cmbFont";
@@ -523,7 +524,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(275, 131);
+            this.label6.Location = new System.Drawing.Point(286, 131);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(21, 17);
             this.label6.TabIndex = 2;
