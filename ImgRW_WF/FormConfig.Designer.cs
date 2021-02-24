@@ -1,6 +1,6 @@
 ﻿namespace ImgRW_WF
 {
-    partial class FormMain
+    partial class FormConfig
     {
         /// <summary>
         /// Required designer variable.
@@ -42,7 +42,7 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.ckbResize = new System.Windows.Forms.CheckBox();
             this.panelWatermarkString = new System.Windows.Forms.Panel();
-            this.ckbString = new System.Windows.Forms.CheckBox();
+            this.colorPanel1 = new Controls_dotNetFrw.ColorPanel();
             this.txbWString = new System.Windows.Forms.TextBox();
             this.rdbWSLocation = new System.Windows.Forms.RadioButton();
             this.rdbBottomCenter = new System.Windows.Forms.RadioButton();
@@ -65,7 +65,25 @@
             this.cmbFont = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.colorPanel1 = new Controls_dotNetFrw.ColorPanel();
+            this.ckbString = new System.Windows.Forms.CheckBox();
+            this.panelWatermarkImage = new System.Windows.Forms.Panel();
+            this.valueSlider1 = new Controls_dotNetFrw.ValueSlider();
+            this.pibWatermarkImage = new System.Windows.Forms.PictureBox();
+            this.rdbWILocation = new System.Windows.Forms.RadioButton();
+            this.rdbWIBottomCenter = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.rdbWIBottomRight = new System.Windows.Forms.RadioButton();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.rdbWIMiddleCenter = new System.Windows.Forms.RadioButton();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.rdbWIMiddleRight = new System.Windows.Forms.RadioButton();
+            this.rdbWITopLeft = new System.Windows.Forms.RadioButton();
+            this.rdbWIBottomLeft = new System.Windows.Forms.RadioButton();
+            this.rdbWITopRight = new System.Windows.Forms.RadioButton();
+            this.rdbWITopCenter = new System.Windows.Forms.RadioButton();
+            this.rdbWIMiddleLeft = new System.Windows.Forms.RadioButton();
+            this.lblWITransparent = new System.Windows.Forms.Label();
+            this.ckbWatermarkImage = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).BeginInit();
             this.panelResize.SuspendLayout();
             this.panelWatermarkString.SuspendLayout();
@@ -73,6 +91,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudWSLocationY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWSLocationX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudFrameSize)).BeginInit();
+            this.panelWatermarkImage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pibWatermarkImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // pibPreview
@@ -91,16 +113,17 @@
             // 
             // lsvFiles
             // 
+            this.lsvFiles.AllowDrop = true;
             this.lsvFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lsvFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvFiles.FullRowSelect = true;
             this.lsvFiles.GridLines = true;
             this.lsvFiles.HideSelection = false;
-            this.lsvFiles.Location = new System.Drawing.Point(388, 15);
+            this.lsvFiles.Location = new System.Drawing.Point(388, 155);
             this.lsvFiles.Margin = new System.Windows.Forms.Padding(4);
             this.lsvFiles.Name = "lsvFiles";
-            this.lsvFiles.Size = new System.Drawing.Size(353, 356);
+            this.lsvFiles.Size = new System.Drawing.Size(353, 253);
             this.lsvFiles.TabIndex = 1;
             this.lsvFiles.UseCompatibleStateImageBehavior = false;
             // 
@@ -116,11 +139,11 @@
             this.panelResize.Controls.Add(this.radioButton3);
             this.panelResize.Controls.Add(this.radioButton2);
             this.panelResize.Controls.Add(this.radioButton1);
-            this.panelResize.Location = new System.Drawing.Point(13, 15);
+            this.panelResize.Location = new System.Drawing.Point(388, 15);
             this.panelResize.Margin = new System.Windows.Forms.Padding(4);
             this.panelResize.Name = "panelResize";
             this.panelResize.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.panelResize.Size = new System.Drawing.Size(367, 132);
+            this.panelResize.Size = new System.Drawing.Size(353, 132);
             this.panelResize.TabIndex = 2;
             // 
             // label3
@@ -225,7 +248,7 @@
             this.ckbResize.Checked = true;
             this.ckbResize.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckbResize.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbResize.Location = new System.Drawing.Point(20, 28);
+            this.ckbResize.Location = new System.Drawing.Point(396, 25);
             this.ckbResize.Margin = new System.Windows.Forms.Padding(4);
             this.ckbResize.Name = "ckbResize";
             this.ckbResize.Size = new System.Drawing.Size(158, 21);
@@ -260,26 +283,28 @@
             this.panelWatermarkString.Controls.Add(this.label6);
             this.panelWatermarkString.Controls.Add(this.label4);
             this.panelWatermarkString.Controls.Add(this.txbWString);
-            this.panelWatermarkString.Location = new System.Drawing.Point(13, 155);
+            this.panelWatermarkString.Location = new System.Drawing.Point(13, 15);
             this.panelWatermarkString.Margin = new System.Windows.Forms.Padding(4);
             this.panelWatermarkString.Name = "panelWatermarkString";
             this.panelWatermarkString.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.panelWatermarkString.Size = new System.Drawing.Size(367, 216);
             this.panelWatermarkString.TabIndex = 2;
             // 
-            // ckbString
+            // colorPanel1
             // 
-            this.ckbString.AutoSize = true;
-            this.ckbString.Checked = true;
-            this.ckbString.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbString.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbString.Location = new System.Drawing.Point(20, 164);
-            this.ckbString.Name = "ckbString";
-            this.ckbString.Size = new System.Drawing.Size(174, 21);
-            this.ckbString.TabIndex = 4;
-            this.ckbString.Text = "Đặt dấu bằng chuỗi:";
-            this.ckbString.UseVisualStyleBackColor = true;
-            this.ckbString.CheckedChanged += new System.EventHandler(this.ckbString_CheckedChanged);
+            this.colorPanel1.AutoSize = true;
+            this.colorPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colorPanel1.CurrentColor = System.Drawing.Color.Cyan;
+            this.colorPanel1.CurrentColorHexString = null;
+            this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorPanel1.Location = new System.Drawing.Point(8, 67);
+            this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
+            this.colorPanel1.Name = "colorPanel1";
+            this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
+            this.colorPanel1.PanelStyle = Controls_dotNetFrw.PanelStyles.Wheel;
+            this.colorPanel1.RefControl = this.txbWString;
+            this.colorPanel1.Size = new System.Drawing.Size(148, 141);
+            this.colorPanel1.TabIndex = 11;
             // 
             // txbWString
             // 
@@ -513,6 +538,7 @@
             // 
             this.cmbFont.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFont.FormattingEnabled = true;
+            this.cmbFont.IntegralHeight = false;
             this.cmbFont.Location = new System.Drawing.Point(186, 36);
             this.cmbFont.Name = "cmbFont";
             this.cmbFont.Size = new System.Drawing.Size(169, 24);
@@ -536,36 +562,253 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "Font chữ:";
             // 
-            // colorPanel1
+            // ckbString
             // 
-            this.colorPanel1.AutoSize = true;
-            this.colorPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPanel1.CurrentColor = System.Drawing.Color.Cyan;
-            this.colorPanel1.CurrentColorHexString = null;
-            this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorPanel1.Location = new System.Drawing.Point(8, 67);
-            this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
-            this.colorPanel1.Name = "colorPanel1";
-            this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
-            this.colorPanel1.PanelStyle = Controls_dotNetFrw.PanelStyles.Wheel;
-            this.colorPanel1.RefControl = this.txbWString;
-            this.colorPanel1.Size = new System.Drawing.Size(148, 141);
-            this.colorPanel1.TabIndex = 11;
+            this.ckbString.AutoSize = true;
+            this.ckbString.Checked = true;
+            this.ckbString.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckbString.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckbString.Location = new System.Drawing.Point(20, 25);
+            this.ckbString.Name = "ckbString";
+            this.ckbString.Size = new System.Drawing.Size(174, 21);
+            this.ckbString.TabIndex = 4;
+            this.ckbString.Text = "Đặt dấu bằng chuỗi:";
+            this.ckbString.UseVisualStyleBackColor = true;
+            this.ckbString.CheckedChanged += new System.EventHandler(this.ckbString_CheckedChanged);
             // 
-            // FormMain
+            // panelWatermarkImage
+            // 
+            this.panelWatermarkImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelWatermarkImage.Controls.Add(this.valueSlider1);
+            this.panelWatermarkImage.Controls.Add(this.pibWatermarkImage);
+            this.panelWatermarkImage.Controls.Add(this.rdbWILocation);
+            this.panelWatermarkImage.Controls.Add(this.rdbWIBottomCenter);
+            this.panelWatermarkImage.Controls.Add(this.label5);
+            this.panelWatermarkImage.Controls.Add(this.rdbWIBottomRight);
+            this.panelWatermarkImage.Controls.Add(this.numericUpDown1);
+            this.panelWatermarkImage.Controls.Add(this.rdbWIMiddleCenter);
+            this.panelWatermarkImage.Controls.Add(this.numericUpDown2);
+            this.panelWatermarkImage.Controls.Add(this.rdbWIMiddleRight);
+            this.panelWatermarkImage.Controls.Add(this.rdbWITopLeft);
+            this.panelWatermarkImage.Controls.Add(this.rdbWIBottomLeft);
+            this.panelWatermarkImage.Controls.Add(this.rdbWITopRight);
+            this.panelWatermarkImage.Controls.Add(this.rdbWITopCenter);
+            this.panelWatermarkImage.Controls.Add(this.rdbWIMiddleLeft);
+            this.panelWatermarkImage.Controls.Add(this.lblWITransparent);
+            this.panelWatermarkImage.Location = new System.Drawing.Point(13, 238);
+            this.panelWatermarkImage.Name = "panelWatermarkImage";
+            this.panelWatermarkImage.Size = new System.Drawing.Size(367, 170);
+            this.panelWatermarkImage.TabIndex = 5;
+            // 
+            // valueSlider1
+            // 
+            this.valueSlider1.Location = new System.Drawing.Point(92, 144);
+            this.valueSlider1.MaxValue = 100F;
+            this.valueSlider1.MinValue = 1F;
+            this.valueSlider1.Name = "valueSlider1";
+            this.valueSlider1.OffsetLines = false;
+            this.valueSlider1.OffsetLinesColor = System.Drawing.Color.DarkGray;
+            this.valueSlider1.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
+            this.valueSlider1.PointerSize = 6;
+            this.valueSlider1.PointerStyle = Controls_dotNetFrw.PointerStyles.Dot;
+            this.valueSlider1.Size = new System.Drawing.Size(261, 12);
+            this.valueSlider1.Style = Controls_dotNetFrw.ValueSliderStyles.GradientLine;
+            this.valueSlider1.TabIndex = 11;
+            this.valueSlider1.Text = "valueSlider1";
+            this.valueSlider1.Value = 85F;
+            this.valueSlider1.ValueBackColor = System.Drawing.Color.LightGray;
+            this.valueSlider1.ValueColor = System.Drawing.Color.DodgerBlue;
+            this.valueSlider1.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // pibWatermarkImage
+            // 
+            this.pibWatermarkImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pibWatermarkImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pibWatermarkImage.Location = new System.Drawing.Point(186, 9);
+            this.pibWatermarkImage.Name = "pibWatermarkImage";
+            this.pibWatermarkImage.Size = new System.Drawing.Size(167, 127);
+            this.pibWatermarkImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pibWatermarkImage.TabIndex = 0;
+            this.pibWatermarkImage.TabStop = false;
+            // 
+            // rdbWILocation
+            // 
+            this.rdbWILocation.AutoSize = true;
+            this.rdbWILocation.Location = new System.Drawing.Point(6, 35);
+            this.rdbWILocation.Name = "rdbWILocation";
+            this.rdbWILocation.Size = new System.Drawing.Size(39, 21);
+            this.rdbWILocation.TabIndex = 10;
+            this.rdbWILocation.TabStop = true;
+            this.rdbWILocation.Text = "X:";
+            this.rdbWILocation.UseVisualStyleBackColor = true;
+            this.rdbWILocation.CheckedChanged += new System.EventHandler(this.rdbLocation_CheckedChanged);
+            // 
+            // rdbWIBottomCenter
+            // 
+            this.rdbWIBottomCenter.AutoSize = true;
+            this.rdbWIBottomCenter.Location = new System.Drawing.Point(82, 112);
+            this.rdbWIBottomCenter.Name = "rdbWIBottomCenter";
+            this.rdbWIBottomCenter.Size = new System.Drawing.Size(14, 13);
+            this.rdbWIBottomCenter.TabIndex = 10;
+            this.rdbWIBottomCenter.TabStop = true;
+            this.rdbWIBottomCenter.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(103, 37);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(21, 17);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Y:";
+            // 
+            // rdbWIBottomRight
+            // 
+            this.rdbWIBottomRight.AutoSize = true;
+            this.rdbWIBottomRight.Location = new System.Drawing.Point(158, 112);
+            this.rdbWIBottomRight.Name = "rdbWIBottomRight";
+            this.rdbWIBottomRight.Size = new System.Drawing.Size(14, 13);
+            this.rdbWIBottomRight.TabIndex = 10;
+            this.rdbWIBottomRight.TabStop = true;
+            this.rdbWIBottomRight.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numericUpDown1.Location = new System.Drawing.Point(124, 35);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(48, 23);
+            this.numericUpDown1.TabIndex = 8;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // rdbWIMiddleCenter
+            // 
+            this.rdbWIMiddleCenter.AutoSize = true;
+            this.rdbWIMiddleCenter.Location = new System.Drawing.Point(82, 93);
+            this.rdbWIMiddleCenter.Name = "rdbWIMiddleCenter";
+            this.rdbWIMiddleCenter.Size = new System.Drawing.Size(14, 13);
+            this.rdbWIMiddleCenter.TabIndex = 10;
+            this.rdbWIMiddleCenter.TabStop = true;
+            this.rdbWIMiddleCenter.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numericUpDown2.Location = new System.Drawing.Point(49, 35);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(48, 23);
+            this.numericUpDown2.TabIndex = 8;
+            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // rdbWIMiddleRight
+            // 
+            this.rdbWIMiddleRight.AutoSize = true;
+            this.rdbWIMiddleRight.Location = new System.Drawing.Point(158, 93);
+            this.rdbWIMiddleRight.Name = "rdbWIMiddleRight";
+            this.rdbWIMiddleRight.Size = new System.Drawing.Size(14, 13);
+            this.rdbWIMiddleRight.TabIndex = 10;
+            this.rdbWIMiddleRight.TabStop = true;
+            this.rdbWIMiddleRight.UseVisualStyleBackColor = true;
+            // 
+            // rdbWITopLeft
+            // 
+            this.rdbWITopLeft.AutoSize = true;
+            this.rdbWITopLeft.Location = new System.Drawing.Point(6, 74);
+            this.rdbWITopLeft.Name = "rdbWITopLeft";
+            this.rdbWITopLeft.Size = new System.Drawing.Size(14, 13);
+            this.rdbWITopLeft.TabIndex = 10;
+            this.rdbWITopLeft.TabStop = true;
+            this.rdbWITopLeft.UseVisualStyleBackColor = true;
+            // 
+            // rdbWIBottomLeft
+            // 
+            this.rdbWIBottomLeft.AutoSize = true;
+            this.rdbWIBottomLeft.Location = new System.Drawing.Point(6, 112);
+            this.rdbWIBottomLeft.Name = "rdbWIBottomLeft";
+            this.rdbWIBottomLeft.Size = new System.Drawing.Size(14, 13);
+            this.rdbWIBottomLeft.TabIndex = 10;
+            this.rdbWIBottomLeft.TabStop = true;
+            this.rdbWIBottomLeft.UseVisualStyleBackColor = true;
+            // 
+            // rdbWITopRight
+            // 
+            this.rdbWITopRight.AutoSize = true;
+            this.rdbWITopRight.Location = new System.Drawing.Point(158, 74);
+            this.rdbWITopRight.Name = "rdbWITopRight";
+            this.rdbWITopRight.Size = new System.Drawing.Size(14, 13);
+            this.rdbWITopRight.TabIndex = 10;
+            this.rdbWITopRight.TabStop = true;
+            this.rdbWITopRight.UseVisualStyleBackColor = true;
+            // 
+            // rdbWITopCenter
+            // 
+            this.rdbWITopCenter.AutoSize = true;
+            this.rdbWITopCenter.Location = new System.Drawing.Point(82, 74);
+            this.rdbWITopCenter.Name = "rdbWITopCenter";
+            this.rdbWITopCenter.Size = new System.Drawing.Size(14, 13);
+            this.rdbWITopCenter.TabIndex = 10;
+            this.rdbWITopCenter.TabStop = true;
+            this.rdbWITopCenter.UseVisualStyleBackColor = true;
+            // 
+            // rdbWIMiddleLeft
+            // 
+            this.rdbWIMiddleLeft.AutoSize = true;
+            this.rdbWIMiddleLeft.Location = new System.Drawing.Point(6, 93);
+            this.rdbWIMiddleLeft.Name = "rdbWIMiddleLeft";
+            this.rdbWIMiddleLeft.Size = new System.Drawing.Size(14, 13);
+            this.rdbWIMiddleLeft.TabIndex = 10;
+            this.rdbWIMiddleLeft.TabStop = true;
+            this.rdbWIMiddleLeft.UseVisualStyleBackColor = true;
+            // 
+            // lblWITransparent
+            // 
+            this.lblWITransparent.AutoSize = true;
+            this.lblWITransparent.Location = new System.Drawing.Point(5, 140);
+            this.lblWITransparent.Name = "lblWITransparent";
+            this.lblWITransparent.Size = new System.Drawing.Size(81, 17);
+            this.lblWITransparent.TabIndex = 2;
+            this.lblWITransparent.Text = "Trong suốt:";
+            // 
+            // ckbWatermarkImage
+            // 
+            this.ckbWatermarkImage.AutoSize = true;
+            this.ckbWatermarkImage.Checked = true;
+            this.ckbWatermarkImage.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckbWatermarkImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckbWatermarkImage.Location = new System.Drawing.Point(20, 245);
+            this.ckbWatermarkImage.Name = "ckbWatermarkImage";
+            this.ckbWatermarkImage.Size = new System.Drawing.Size(162, 21);
+            this.ckbWatermarkImage.TabIndex = 4;
+            this.ckbWatermarkImage.Text = "Đặt dấu bằng ảnh:";
+            this.ckbWatermarkImage.UseVisualStyleBackColor = true;
+            this.ckbWatermarkImage.CheckedChanged += new System.EventHandler(this.ckbWatermarkImage_CheckedChanged);
+            // 
+            // FormConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 644);
+            this.Controls.Add(this.ckbWatermarkImage);
             this.Controls.Add(this.ckbString);
             this.Controls.Add(this.lsvFiles);
             this.Controls.Add(this.ckbResize);
             this.Controls.Add(this.panelWatermarkString);
             this.Controls.Add(this.panelResize);
             this.Controls.Add(this.pibPreview);
+            this.Controls.Add(this.panelWatermarkImage);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "FormMain";
+            this.Name = "FormConfig";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).EndInit();
@@ -577,6 +820,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudWSLocationY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWSLocationX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudFrameSize)).EndInit();
+            this.panelWatermarkImage.ResumeLayout(false);
+            this.panelWatermarkImage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pibWatermarkImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -622,6 +870,24 @@
         private System.Windows.Forms.NumericUpDown nudWSLocationX;
         private System.Windows.Forms.Label label6;
         private Controls_dotNetFrw.ColorPanel colorPanel1;
+        private System.Windows.Forms.Panel panelWatermarkImage;
+        private System.Windows.Forms.CheckBox ckbWatermarkImage;
+        private System.Windows.Forms.PictureBox pibWatermarkImage;
+        private System.Windows.Forms.RadioButton rdbWILocation;
+        private System.Windows.Forms.RadioButton rdbWIBottomCenter;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RadioButton rdbWIBottomRight;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.RadioButton rdbWIMiddleCenter;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.RadioButton rdbWIMiddleRight;
+        private System.Windows.Forms.RadioButton rdbWITopLeft;
+        private System.Windows.Forms.RadioButton rdbWIBottomLeft;
+        private System.Windows.Forms.RadioButton rdbWITopRight;
+        private System.Windows.Forms.RadioButton rdbWITopCenter;
+        private System.Windows.Forms.RadioButton rdbWIMiddleLeft;
+        private Controls_dotNetFrw.ValueSlider valueSlider1;
+        private System.Windows.Forms.Label lblWITransparent;
     }
 }
 

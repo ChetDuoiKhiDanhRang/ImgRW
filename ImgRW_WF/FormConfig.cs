@@ -14,10 +14,10 @@ using System.Windows.Forms;
 
 namespace ImgRW_WF
 {
-    public partial class FormMain : Form
+    public partial class FormConfig : Form
     {
         public List<string> FontNames { get; set; }
-        public FormMain()
+        public FormConfig()
         {
             InitializeComponent();
         }
@@ -83,6 +83,17 @@ namespace ImgRW_WF
         private void rdbLocation_CheckedChanged(object sender, EventArgs e)
         {
             nudWSLocationX.Enabled = nudWSLocationY.Enabled = rdbWSLocation.Checked;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Bitmap bm = Controls_dotNetFrw.Generator.GenerateColorsPanel_Wheel(new SizeF(256, 256));
+            bm.Save(@"D:\ava/png", ImageFormat.Png);
+        }
+
+        private void ckbWatermarkImage_CheckedChanged(object sender, EventArgs e)
+        {
+            panelWatermarkImage.Enabled = ckbWatermarkImage.Checked;
         }
     }
 }
