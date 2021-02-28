@@ -99,14 +99,12 @@
             // 
             // pibPreview
             // 
-            this.pibPreview.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pibPreview.BackColor = System.Drawing.SystemColors.Window;
             this.pibPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pibPreview.Location = new System.Drawing.Point(749, 15);
+            this.pibPreview.Location = new System.Drawing.Point(11, 145);
             this.pibPreview.Margin = new System.Windows.Forms.Padding(4);
             this.pibPreview.Name = "pibPreview";
-            this.pibPreview.Size = new System.Drawing.Size(246, 356);
+            this.pibPreview.Size = new System.Drawing.Size(225, 235);
             this.pibPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pibPreview.TabIndex = 0;
             this.pibPreview.TabStop = false;
@@ -114,16 +112,14 @@
             // lsvFiles
             // 
             this.lsvFiles.AllowDrop = true;
-            this.lsvFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.lsvFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvFiles.FullRowSelect = true;
             this.lsvFiles.GridLines = true;
             this.lsvFiles.HideSelection = false;
-            this.lsvFiles.Location = new System.Drawing.Point(388, 155);
+            this.lsvFiles.Location = new System.Drawing.Point(243, 11);
             this.lsvFiles.Margin = new System.Windows.Forms.Padding(4);
             this.lsvFiles.Name = "lsvFiles";
-            this.lsvFiles.Size = new System.Drawing.Size(353, 253);
+            this.lsvFiles.Size = new System.Drawing.Size(330, 370);
             this.lsvFiles.TabIndex = 1;
             this.lsvFiles.UseCompatibleStateImageBehavior = false;
             // 
@@ -139,69 +135,69 @@
             this.panelResize.Controls.Add(this.radioButton3);
             this.panelResize.Controls.Add(this.radioButton2);
             this.panelResize.Controls.Add(this.radioButton1);
-            this.panelResize.Location = new System.Drawing.Point(388, 15);
+            this.panelResize.Location = new System.Drawing.Point(11, 12);
             this.panelResize.Margin = new System.Windows.Forms.Padding(4);
             this.panelResize.Name = "panelResize";
-            this.panelResize.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.panelResize.Size = new System.Drawing.Size(353, 132);
+            this.panelResize.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.panelResize.Size = new System.Drawing.Size(225, 124);
             this.panelResize.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(250, 102);
+            this.label3.Location = new System.Drawing.Point(179, 96);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 17);
+            this.label3.Size = new System.Drawing.Size(26, 15);
             this.label3.TabIndex = 4;
             this.label3.Text = "(%)";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(250, 73);
+            this.label2.Location = new System.Drawing.Point(179, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 17);
+            this.label2.Size = new System.Drawing.Size(41, 15);
             this.label2.TabIndex = 4;
             this.label2.Text = "(pixel)";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(250, 44);
+            this.label1.Location = new System.Drawing.Point(179, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.Size = new System.Drawing.Size(41, 15);
             this.label1.TabIndex = 4;
             this.label1.Text = "(pixel)";
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(187, 99);
+            this.textBox3.Location = new System.Drawing.Point(125, 93);
             this.textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox3.MaxLength = 4;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(56, 23);
+            this.textBox3.Size = new System.Drawing.Size(50, 21);
             this.textBox3.TabIndex = 1;
             this.textBox3.Text = "50";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(187, 70);
+            this.textBox2.Location = new System.Drawing.Point(125, 66);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.MaxLength = 4;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(56, 23);
+            this.textBox2.Size = new System.Drawing.Size(50, 21);
             this.textBox2.TabIndex = 1;
             this.textBox2.Text = "700";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(187, 41);
+            this.textBox1.Location = new System.Drawing.Point(125, 38);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.MaxLength = 4;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(56, 23);
+            this.textBox1.Size = new System.Drawing.Size(50, 21);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "700";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -209,10 +205,10 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(30, 100);
+            this.radioButton3.Location = new System.Drawing.Point(10, 94);
             this.radioButton3.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(89, 21);
+            this.radioButton3.Size = new System.Drawing.Size(78, 19);
             this.radioButton3.TabIndex = 0;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Theo tỉ lệ:";
@@ -221,10 +217,10 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(30, 71);
+            this.radioButton2.Location = new System.Drawing.Point(10, 67);
             this.radioButton2.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(128, 21);
+            this.radioButton2.Size = new System.Drawing.Size(112, 19);
             this.radioButton2.TabIndex = 0;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Theo chiều cao:";
@@ -233,10 +229,10 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(30, 42);
+            this.radioButton1.Location = new System.Drawing.Point(10, 39);
             this.radioButton1.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(134, 21);
+            this.radioButton1.Size = new System.Drawing.Size(117, 19);
             this.radioButton1.TabIndex = 0;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Theo chiều rộng:";
@@ -248,7 +244,7 @@
             this.ckbResize.Checked = true;
             this.ckbResize.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckbResize.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbResize.Location = new System.Drawing.Point(396, 25);
+            this.ckbResize.Location = new System.Drawing.Point(17, 22);
             this.ckbResize.Margin = new System.Windows.Forms.Padding(4);
             this.ckbResize.Name = "ckbResize";
             this.ckbResize.Size = new System.Drawing.Size(158, 21);
@@ -259,6 +255,7 @@
             // 
             // panelWatermarkString
             // 
+            this.panelWatermarkString.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelWatermarkString.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelWatermarkString.Controls.Add(this.colorPanel1);
             this.panelWatermarkString.Controls.Add(this.rdbWSLocation);
@@ -283,11 +280,11 @@
             this.panelWatermarkString.Controls.Add(this.label6);
             this.panelWatermarkString.Controls.Add(this.label4);
             this.panelWatermarkString.Controls.Add(this.txbWString);
-            this.panelWatermarkString.Location = new System.Drawing.Point(13, 15);
+            this.panelWatermarkString.Location = new System.Drawing.Point(680, 12);
             this.panelWatermarkString.Margin = new System.Windows.Forms.Padding(4);
             this.panelWatermarkString.Name = "panelWatermarkString";
-            this.panelWatermarkString.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.panelWatermarkString.Size = new System.Drawing.Size(367, 216);
+            this.panelWatermarkString.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.panelWatermarkString.Size = new System.Drawing.Size(321, 203);
             this.panelWatermarkString.TabIndex = 2;
             // 
             // colorPanel1
@@ -297,20 +294,20 @@
             this.colorPanel1.CurrentColor = System.Drawing.Color.Cyan;
             this.colorPanel1.CurrentColorHexString = null;
             this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorPanel1.Location = new System.Drawing.Point(8, 67);
-            this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
+            this.colorPanel1.Location = new System.Drawing.Point(7, 63);
+            this.colorPanel1.MinimumSize = new System.Drawing.Size(56, 60);
             this.colorPanel1.Name = "colorPanel1";
             this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
             this.colorPanel1.PanelStyle = Controls_dotNetFrw.PanelStyles.Wheel;
             this.colorPanel1.RefControl = this.txbWString;
-            this.colorPanel1.Size = new System.Drawing.Size(148, 141);
+            this.colorPanel1.Size = new System.Drawing.Size(130, 132);
             this.colorPanel1.TabIndex = 11;
             // 
             // txbWString
             // 
-            this.txbWString.Location = new System.Drawing.Point(186, 7);
+            this.txbWString.Location = new System.Drawing.Point(163, 7);
             this.txbWString.Name = "txbWString";
-            this.txbWString.Size = new System.Drawing.Size(169, 23);
+            this.txbWString.Size = new System.Drawing.Size(148, 21);
             this.txbWString.TabIndex = 1;
             this.txbWString.Text = "Whatever";
             this.txbWString.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -318,9 +315,9 @@
             // rdbWSLocation
             // 
             this.rdbWSLocation.AutoSize = true;
-            this.rdbWSLocation.Location = new System.Drawing.Point(187, 129);
+            this.rdbWSLocation.Location = new System.Drawing.Point(164, 121);
             this.rdbWSLocation.Name = "rdbWSLocation";
-            this.rdbWSLocation.Size = new System.Drawing.Size(39, 21);
+            this.rdbWSLocation.Size = new System.Drawing.Size(36, 19);
             this.rdbWSLocation.TabIndex = 10;
             this.rdbWSLocation.TabStop = true;
             this.rdbWSLocation.Text = "X:";
@@ -330,7 +327,7 @@
             // rdbBottomCenter
             // 
             this.rdbBottomCenter.AutoSize = true;
-            this.rdbBottomCenter.Location = new System.Drawing.Point(263, 196);
+            this.rdbBottomCenter.Location = new System.Drawing.Point(230, 184);
             this.rdbBottomCenter.Name = "rdbBottomCenter";
             this.rdbBottomCenter.Size = new System.Drawing.Size(14, 13);
             this.rdbBottomCenter.TabIndex = 10;
@@ -340,7 +337,7 @@
             // rdbBottomRight
             // 
             this.rdbBottomRight.AutoSize = true;
-            this.rdbBottomRight.Location = new System.Drawing.Point(339, 196);
+            this.rdbBottomRight.Location = new System.Drawing.Point(297, 184);
             this.rdbBottomRight.Name = "rdbBottomRight";
             this.rdbBottomRight.Size = new System.Drawing.Size(14, 13);
             this.rdbBottomRight.TabIndex = 10;
@@ -350,7 +347,7 @@
             // rdbMiddleCenter
             // 
             this.rdbMiddleCenter.AutoSize = true;
-            this.rdbMiddleCenter.Location = new System.Drawing.Point(263, 177);
+            this.rdbMiddleCenter.Location = new System.Drawing.Point(230, 166);
             this.rdbMiddleCenter.Name = "rdbMiddleCenter";
             this.rdbMiddleCenter.Size = new System.Drawing.Size(14, 13);
             this.rdbMiddleCenter.TabIndex = 10;
@@ -360,7 +357,7 @@
             // rdbMiddleRight
             // 
             this.rdbMiddleRight.AutoSize = true;
-            this.rdbMiddleRight.Location = new System.Drawing.Point(339, 177);
+            this.rdbMiddleRight.Location = new System.Drawing.Point(297, 166);
             this.rdbMiddleRight.Name = "rdbMiddleRight";
             this.rdbMiddleRight.Size = new System.Drawing.Size(14, 13);
             this.rdbMiddleRight.TabIndex = 10;
@@ -370,7 +367,7 @@
             // rdbBottomLeft
             // 
             this.rdbBottomLeft.AutoSize = true;
-            this.rdbBottomLeft.Location = new System.Drawing.Point(187, 196);
+            this.rdbBottomLeft.Location = new System.Drawing.Point(164, 184);
             this.rdbBottomLeft.Name = "rdbBottomLeft";
             this.rdbBottomLeft.Size = new System.Drawing.Size(14, 13);
             this.rdbBottomLeft.TabIndex = 10;
@@ -380,7 +377,7 @@
             // rdbTopCenter
             // 
             this.rdbTopCenter.AutoSize = true;
-            this.rdbTopCenter.Location = new System.Drawing.Point(263, 158);
+            this.rdbTopCenter.Location = new System.Drawing.Point(230, 148);
             this.rdbTopCenter.Name = "rdbTopCenter";
             this.rdbTopCenter.Size = new System.Drawing.Size(14, 13);
             this.rdbTopCenter.TabIndex = 10;
@@ -390,7 +387,7 @@
             // rdbMiddleLeft
             // 
             this.rdbMiddleLeft.AutoSize = true;
-            this.rdbMiddleLeft.Location = new System.Drawing.Point(187, 177);
+            this.rdbMiddleLeft.Location = new System.Drawing.Point(164, 166);
             this.rdbMiddleLeft.Name = "rdbMiddleLeft";
             this.rdbMiddleLeft.Size = new System.Drawing.Size(14, 13);
             this.rdbMiddleLeft.TabIndex = 10;
@@ -400,7 +397,7 @@
             // rdbTopRight
             // 
             this.rdbTopRight.AutoSize = true;
-            this.rdbTopRight.Location = new System.Drawing.Point(339, 158);
+            this.rdbTopRight.Location = new System.Drawing.Point(297, 148);
             this.rdbTopRight.Name = "rdbTopRight";
             this.rdbTopRight.Size = new System.Drawing.Size(14, 13);
             this.rdbTopRight.TabIndex = 10;
@@ -410,7 +407,7 @@
             // rdbTopLeft
             // 
             this.rdbTopLeft.AutoSize = true;
-            this.rdbTopLeft.Location = new System.Drawing.Point(187, 158);
+            this.rdbTopLeft.Location = new System.Drawing.Point(164, 148);
             this.rdbTopLeft.Name = "rdbTopLeft";
             this.rdbTopLeft.Size = new System.Drawing.Size(14, 13);
             this.rdbTopLeft.TabIndex = 10;
@@ -420,7 +417,7 @@
             // nudFontSize
             // 
             this.nudFontSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nudFontSize.Location = new System.Drawing.Point(307, 69);
+            this.nudFontSize.Location = new System.Drawing.Point(269, 65);
             this.nudFontSize.Maximum = new decimal(new int[] {
             1024,
             0,
@@ -432,7 +429,7 @@
             0,
             0});
             this.nudFontSize.Name = "nudFontSize";
-            this.nudFontSize.Size = new System.Drawing.Size(48, 23);
+            this.nudFontSize.Size = new System.Drawing.Size(42, 21);
             this.nudFontSize.TabIndex = 8;
             this.nudFontSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nudFontSize.Value = new decimal(new int[] {
@@ -444,9 +441,9 @@
             // nudWSLocationY
             // 
             this.nudWSLocationY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nudWSLocationY.Location = new System.Drawing.Point(307, 129);
+            this.nudWSLocationY.Location = new System.Drawing.Point(269, 121);
             this.nudWSLocationY.Name = "nudWSLocationY";
-            this.nudWSLocationY.Size = new System.Drawing.Size(48, 23);
+            this.nudWSLocationY.Size = new System.Drawing.Size(42, 21);
             this.nudWSLocationY.TabIndex = 8;
             this.nudWSLocationY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nudWSLocationY.Value = new decimal(new int[] {
@@ -458,9 +455,9 @@
             // nudWSLocationX
             // 
             this.nudWSLocationX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nudWSLocationX.Location = new System.Drawing.Point(232, 129);
+            this.nudWSLocationX.Location = new System.Drawing.Point(203, 121);
             this.nudWSLocationX.Name = "nudWSLocationX";
-            this.nudWSLocationX.Size = new System.Drawing.Size(48, 23);
+            this.nudWSLocationX.Size = new System.Drawing.Size(42, 21);
             this.nudWSLocationX.TabIndex = 8;
             this.nudWSLocationX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nudWSLocationX.Value = new decimal(new int[] {
@@ -472,14 +469,14 @@
             // nudFrameSize
             // 
             this.nudFrameSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nudFrameSize.Location = new System.Drawing.Point(307, 100);
+            this.nudFrameSize.Location = new System.Drawing.Point(269, 94);
             this.nudFrameSize.Minimum = new decimal(new int[] {
             3,
             0,
             0,
             0});
             this.nudFrameSize.Name = "nudFrameSize";
-            this.nudFrameSize.Size = new System.Drawing.Size(48, 23);
+            this.nudFrameSize.Size = new System.Drawing.Size(42, 21);
             this.nudFrameSize.TabIndex = 8;
             this.nudFrameSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nudFrameSize.Value = new decimal(new int[] {
@@ -491,9 +488,9 @@
             // ckbFrame
             // 
             this.ckbFrame.AutoSize = true;
-            this.ckbFrame.Location = new System.Drawing.Point(187, 100);
+            this.ckbFrame.Location = new System.Drawing.Point(164, 94);
             this.ckbFrame.Name = "ckbFrame";
-            this.ckbFrame.Size = new System.Drawing.Size(102, 21);
+            this.ckbFrame.Size = new System.Drawing.Size(90, 19);
             this.ckbFrame.TabIndex = 7;
             this.ckbFrame.Text = "Khung viền:";
             this.ckbFrame.UseVisualStyleBackColor = true;
@@ -502,9 +499,9 @@
             // 
             this.checkBox1.Appearance = System.Windows.Forms.Appearance.Button;
             this.checkBox1.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(265, 66);
+            this.checkBox1.Location = new System.Drawing.Point(232, 62);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(28, 28);
+            this.checkBox1.Size = new System.Drawing.Size(24, 26);
             this.checkBox1.TabIndex = 5;
             this.checkBox1.Text = "U";
             this.checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -514,9 +511,9 @@
             // 
             this.ckbItalic.Appearance = System.Windows.Forms.Appearance.Button;
             this.ckbItalic.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbItalic.Location = new System.Drawing.Point(226, 66);
+            this.ckbItalic.Location = new System.Drawing.Point(198, 62);
             this.ckbItalic.Name = "ckbItalic";
-            this.ckbItalic.Size = new System.Drawing.Size(28, 28);
+            this.ckbItalic.Size = new System.Drawing.Size(24, 26);
             this.ckbItalic.TabIndex = 5;
             this.ckbItalic.Text = "I";
             this.ckbItalic.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -526,9 +523,9 @@
             // 
             this.ckbBold.Appearance = System.Windows.Forms.Appearance.Button;
             this.ckbBold.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbBold.Location = new System.Drawing.Point(187, 66);
+            this.ckbBold.Location = new System.Drawing.Point(164, 62);
             this.ckbBold.Name = "ckbBold";
-            this.ckbBold.Size = new System.Drawing.Size(28, 28);
+            this.ckbBold.Size = new System.Drawing.Size(24, 26);
             this.ckbBold.TabIndex = 5;
             this.ckbBold.Text = "B";
             this.ckbBold.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -539,38 +536,39 @@
             this.cmbFont.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFont.FormattingEnabled = true;
             this.cmbFont.IntegralHeight = false;
-            this.cmbFont.Location = new System.Drawing.Point(186, 36);
+            this.cmbFont.Location = new System.Drawing.Point(163, 34);
             this.cmbFont.Name = "cmbFont";
-            this.cmbFont.Size = new System.Drawing.Size(169, 24);
+            this.cmbFont.Size = new System.Drawing.Size(148, 23);
             this.cmbFont.TabIndex = 3;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(286, 131);
+            this.label6.Location = new System.Drawing.Point(250, 123);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(21, 17);
+            this.label6.Size = new System.Drawing.Size(17, 15);
             this.label6.TabIndex = 2;
             this.label6.Text = "Y:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(109, 39);
+            this.label4.Location = new System.Drawing.Point(95, 37);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 17);
+            this.label4.Size = new System.Drawing.Size(57, 15);
             this.label4.TabIndex = 2;
             this.label4.Text = "Font chữ:";
             // 
             // ckbString
             // 
+            this.ckbString.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ckbString.AutoSize = true;
             this.ckbString.Checked = true;
             this.ckbString.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbString.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbString.Location = new System.Drawing.Point(20, 25);
+            this.ckbString.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckbString.Location = new System.Drawing.Point(687, 22);
             this.ckbString.Name = "ckbString";
-            this.ckbString.Size = new System.Drawing.Size(174, 21);
+            this.ckbString.Size = new System.Drawing.Size(155, 19);
             this.ckbString.TabIndex = 4;
             this.ckbString.Text = "Đặt dấu bằng chuỗi:";
             this.ckbString.UseVisualStyleBackColor = true;
@@ -578,6 +576,7 @@
             // 
             // panelWatermarkImage
             // 
+            this.panelWatermarkImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelWatermarkImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelWatermarkImage.Controls.Add(this.valueSlider1);
             this.panelWatermarkImage.Controls.Add(this.pibWatermarkImage);
@@ -595,14 +594,14 @@
             this.panelWatermarkImage.Controls.Add(this.rdbWITopCenter);
             this.panelWatermarkImage.Controls.Add(this.rdbWIMiddleLeft);
             this.panelWatermarkImage.Controls.Add(this.lblWITransparent);
-            this.panelWatermarkImage.Location = new System.Drawing.Point(13, 238);
+            this.panelWatermarkImage.Location = new System.Drawing.Point(681, 221);
             this.panelWatermarkImage.Name = "panelWatermarkImage";
-            this.panelWatermarkImage.Size = new System.Drawing.Size(367, 170);
+            this.panelWatermarkImage.Size = new System.Drawing.Size(321, 160);
             this.panelWatermarkImage.TabIndex = 5;
             // 
             // valueSlider1
             // 
-            this.valueSlider1.Location = new System.Drawing.Point(92, 144);
+            this.valueSlider1.Location = new System.Drawing.Point(80, 135);
             this.valueSlider1.MaxValue = 100F;
             this.valueSlider1.MinValue = 1F;
             this.valueSlider1.Name = "valueSlider1";
@@ -611,7 +610,7 @@
             this.valueSlider1.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
             this.valueSlider1.PointerSize = 6;
             this.valueSlider1.PointerStyle = Controls_dotNetFrw.PointerStyles.Dot;
-            this.valueSlider1.Size = new System.Drawing.Size(261, 12);
+            this.valueSlider1.Size = new System.Drawing.Size(228, 11);
             this.valueSlider1.Style = Controls_dotNetFrw.ValueSliderStyles.GradientLine;
             this.valueSlider1.TabIndex = 11;
             this.valueSlider1.Text = "valueSlider1";
@@ -624,9 +623,9 @@
             // 
             this.pibWatermarkImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pibWatermarkImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pibWatermarkImage.Location = new System.Drawing.Point(186, 9);
+            this.pibWatermarkImage.Location = new System.Drawing.Point(163, 8);
             this.pibWatermarkImage.Name = "pibWatermarkImage";
-            this.pibWatermarkImage.Size = new System.Drawing.Size(167, 127);
+            this.pibWatermarkImage.Size = new System.Drawing.Size(146, 119);
             this.pibWatermarkImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pibWatermarkImage.TabIndex = 0;
             this.pibWatermarkImage.TabStop = false;
@@ -634,9 +633,9 @@
             // rdbWILocation
             // 
             this.rdbWILocation.AutoSize = true;
-            this.rdbWILocation.Location = new System.Drawing.Point(6, 35);
+            this.rdbWILocation.Location = new System.Drawing.Point(5, 33);
             this.rdbWILocation.Name = "rdbWILocation";
-            this.rdbWILocation.Size = new System.Drawing.Size(39, 21);
+            this.rdbWILocation.Size = new System.Drawing.Size(36, 19);
             this.rdbWILocation.TabIndex = 10;
             this.rdbWILocation.TabStop = true;
             this.rdbWILocation.Text = "X:";
@@ -646,7 +645,7 @@
             // rdbWIBottomCenter
             // 
             this.rdbWIBottomCenter.AutoSize = true;
-            this.rdbWIBottomCenter.Location = new System.Drawing.Point(82, 112);
+            this.rdbWIBottomCenter.Location = new System.Drawing.Point(72, 105);
             this.rdbWIBottomCenter.Name = "rdbWIBottomCenter";
             this.rdbWIBottomCenter.Size = new System.Drawing.Size(14, 13);
             this.rdbWIBottomCenter.TabIndex = 10;
@@ -656,16 +655,16 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(103, 37);
+            this.label5.Location = new System.Drawing.Point(90, 35);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(21, 17);
+            this.label5.Size = new System.Drawing.Size(17, 15);
             this.label5.TabIndex = 2;
             this.label5.Text = "Y:";
             // 
             // rdbWIBottomRight
             // 
             this.rdbWIBottomRight.AutoSize = true;
-            this.rdbWIBottomRight.Location = new System.Drawing.Point(158, 112);
+            this.rdbWIBottomRight.Location = new System.Drawing.Point(138, 105);
             this.rdbWIBottomRight.Name = "rdbWIBottomRight";
             this.rdbWIBottomRight.Size = new System.Drawing.Size(14, 13);
             this.rdbWIBottomRight.TabIndex = 10;
@@ -675,9 +674,9 @@
             // numericUpDown1
             // 
             this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numericUpDown1.Location = new System.Drawing.Point(124, 35);
+            this.numericUpDown1.Location = new System.Drawing.Point(108, 33);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(48, 23);
+            this.numericUpDown1.Size = new System.Drawing.Size(42, 21);
             this.numericUpDown1.TabIndex = 8;
             this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDown1.Value = new decimal(new int[] {
@@ -689,7 +688,7 @@
             // rdbWIMiddleCenter
             // 
             this.rdbWIMiddleCenter.AutoSize = true;
-            this.rdbWIMiddleCenter.Location = new System.Drawing.Point(82, 93);
+            this.rdbWIMiddleCenter.Location = new System.Drawing.Point(72, 87);
             this.rdbWIMiddleCenter.Name = "rdbWIMiddleCenter";
             this.rdbWIMiddleCenter.Size = new System.Drawing.Size(14, 13);
             this.rdbWIMiddleCenter.TabIndex = 10;
@@ -699,9 +698,9 @@
             // numericUpDown2
             // 
             this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numericUpDown2.Location = new System.Drawing.Point(49, 35);
+            this.numericUpDown2.Location = new System.Drawing.Point(43, 33);
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(48, 23);
+            this.numericUpDown2.Size = new System.Drawing.Size(42, 21);
             this.numericUpDown2.TabIndex = 8;
             this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDown2.Value = new decimal(new int[] {
@@ -713,7 +712,7 @@
             // rdbWIMiddleRight
             // 
             this.rdbWIMiddleRight.AutoSize = true;
-            this.rdbWIMiddleRight.Location = new System.Drawing.Point(158, 93);
+            this.rdbWIMiddleRight.Location = new System.Drawing.Point(138, 87);
             this.rdbWIMiddleRight.Name = "rdbWIMiddleRight";
             this.rdbWIMiddleRight.Size = new System.Drawing.Size(14, 13);
             this.rdbWIMiddleRight.TabIndex = 10;
@@ -723,7 +722,7 @@
             // rdbWITopLeft
             // 
             this.rdbWITopLeft.AutoSize = true;
-            this.rdbWITopLeft.Location = new System.Drawing.Point(6, 74);
+            this.rdbWITopLeft.Location = new System.Drawing.Point(5, 69);
             this.rdbWITopLeft.Name = "rdbWITopLeft";
             this.rdbWITopLeft.Size = new System.Drawing.Size(14, 13);
             this.rdbWITopLeft.TabIndex = 10;
@@ -733,7 +732,7 @@
             // rdbWIBottomLeft
             // 
             this.rdbWIBottomLeft.AutoSize = true;
-            this.rdbWIBottomLeft.Location = new System.Drawing.Point(6, 112);
+            this.rdbWIBottomLeft.Location = new System.Drawing.Point(5, 105);
             this.rdbWIBottomLeft.Name = "rdbWIBottomLeft";
             this.rdbWIBottomLeft.Size = new System.Drawing.Size(14, 13);
             this.rdbWIBottomLeft.TabIndex = 10;
@@ -743,7 +742,7 @@
             // rdbWITopRight
             // 
             this.rdbWITopRight.AutoSize = true;
-            this.rdbWITopRight.Location = new System.Drawing.Point(158, 74);
+            this.rdbWITopRight.Location = new System.Drawing.Point(138, 69);
             this.rdbWITopRight.Name = "rdbWITopRight";
             this.rdbWITopRight.Size = new System.Drawing.Size(14, 13);
             this.rdbWITopRight.TabIndex = 10;
@@ -753,7 +752,7 @@
             // rdbWITopCenter
             // 
             this.rdbWITopCenter.AutoSize = true;
-            this.rdbWITopCenter.Location = new System.Drawing.Point(82, 74);
+            this.rdbWITopCenter.Location = new System.Drawing.Point(72, 69);
             this.rdbWITopCenter.Name = "rdbWITopCenter";
             this.rdbWITopCenter.Size = new System.Drawing.Size(14, 13);
             this.rdbWITopCenter.TabIndex = 10;
@@ -763,7 +762,7 @@
             // rdbWIMiddleLeft
             // 
             this.rdbWIMiddleLeft.AutoSize = true;
-            this.rdbWIMiddleLeft.Location = new System.Drawing.Point(6, 93);
+            this.rdbWIMiddleLeft.Location = new System.Drawing.Point(5, 87);
             this.rdbWIMiddleLeft.Name = "rdbWIMiddleLeft";
             this.rdbWIMiddleLeft.Size = new System.Drawing.Size(14, 13);
             this.rdbWIMiddleLeft.TabIndex = 10;
@@ -773,21 +772,22 @@
             // lblWITransparent
             // 
             this.lblWITransparent.AutoSize = true;
-            this.lblWITransparent.Location = new System.Drawing.Point(5, 140);
+            this.lblWITransparent.Location = new System.Drawing.Point(4, 131);
             this.lblWITransparent.Name = "lblWITransparent";
-            this.lblWITransparent.Size = new System.Drawing.Size(81, 17);
+            this.lblWITransparent.Size = new System.Drawing.Size(68, 15);
             this.lblWITransparent.TabIndex = 2;
             this.lblWITransparent.Text = "Trong suốt:";
             // 
             // ckbWatermarkImage
             // 
+            this.ckbWatermarkImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ckbWatermarkImage.AutoSize = true;
             this.ckbWatermarkImage.Checked = true;
             this.ckbWatermarkImage.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbWatermarkImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbWatermarkImage.Location = new System.Drawing.Point(20, 245);
+            this.ckbWatermarkImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckbWatermarkImage.Location = new System.Drawing.Point(688, 232);
             this.ckbWatermarkImage.Name = "ckbWatermarkImage";
-            this.ckbWatermarkImage.Size = new System.Drawing.Size(162, 21);
+            this.ckbWatermarkImage.Size = new System.Drawing.Size(144, 19);
             this.ckbWatermarkImage.TabIndex = 4;
             this.ckbWatermarkImage.Text = "Đặt dấu bằng ảnh:";
             this.ckbWatermarkImage.UseVisualStyleBackColor = true;
@@ -795,9 +795,9 @@
             // 
             // FormConfig
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 644);
+            this.ClientSize = new System.Drawing.Size(1012, 650);
             this.Controls.Add(this.ckbWatermarkImage);
             this.Controls.Add(this.ckbString);
             this.Controls.Add(this.lsvFiles);
@@ -806,7 +806,7 @@
             this.Controls.Add(this.panelResize);
             this.Controls.Add(this.pibPreview);
             this.Controls.Add(this.panelWatermarkImage);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormConfig";
             this.Text = "Form1";
