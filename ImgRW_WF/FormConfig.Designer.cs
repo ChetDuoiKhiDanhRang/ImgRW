@@ -42,7 +42,6 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.ckbResize = new System.Windows.Forms.CheckBox();
             this.panelWatermarkString = new System.Windows.Forms.Panel();
-            this.colorPanel1 = new Controls_dotNetFrw.ColorPanel();
             this.txbWString = new System.Windows.Forms.TextBox();
             this.rdbWSLocation = new System.Windows.Forms.RadioButton();
             this.rdbBottomCenter = new System.Windows.Forms.RadioButton();
@@ -84,6 +83,7 @@
             this.rdbWIMiddleLeft = new System.Windows.Forms.RadioButton();
             this.lblWITransparent = new System.Windows.Forms.Label();
             this.ckbWatermarkImage = new System.Windows.Forms.CheckBox();
+            this.colorPanel1 = new Controls_dotNetFrw.ColorPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).BeginInit();
             this.panelResize.SuspendLayout();
             this.panelWatermarkString.SuspendLayout();
@@ -100,11 +100,13 @@
             // pibPreview
             // 
             this.pibPreview.BackColor = System.Drawing.SystemColors.Window;
+            this.pibPreview.BackgroundImage = global::ImgRW_WF.Properties.Resources.WindowsXPBliss_mod1;
+            this.pibPreview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pibPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pibPreview.Location = new System.Drawing.Point(11, 145);
+            this.pibPreview.Location = new System.Drawing.Point(244, 12);
             this.pibPreview.Margin = new System.Windows.Forms.Padding(4);
             this.pibPreview.Name = "pibPreview";
-            this.pibPreview.Size = new System.Drawing.Size(225, 235);
+            this.pibPreview.Size = new System.Drawing.Size(428, 300);
             this.pibPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pibPreview.TabIndex = 0;
             this.pibPreview.TabStop = false;
@@ -116,10 +118,10 @@
             this.lsvFiles.FullRowSelect = true;
             this.lsvFiles.GridLines = true;
             this.lsvFiles.HideSelection = false;
-            this.lsvFiles.Location = new System.Drawing.Point(243, 11);
+            this.lsvFiles.Location = new System.Drawing.Point(11, 144);
             this.lsvFiles.Margin = new System.Windows.Forms.Padding(4);
             this.lsvFiles.Name = "lsvFiles";
-            this.lsvFiles.Size = new System.Drawing.Size(330, 370);
+            this.lsvFiles.Size = new System.Drawing.Size(225, 238);
             this.lsvFiles.TabIndex = 1;
             this.lsvFiles.UseCompatibleStateImageBehavior = false;
             // 
@@ -286,22 +288,6 @@
             this.panelWatermarkString.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.panelWatermarkString.Size = new System.Drawing.Size(321, 203);
             this.panelWatermarkString.TabIndex = 2;
-            // 
-            // colorPanel1
-            // 
-            this.colorPanel1.AutoSize = true;
-            this.colorPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.colorPanel1.CurrentColor = System.Drawing.Color.Cyan;
-            this.colorPanel1.CurrentColorHexString = null;
-            this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorPanel1.Location = new System.Drawing.Point(7, 63);
-            this.colorPanel1.MinimumSize = new System.Drawing.Size(56, 60);
-            this.colorPanel1.Name = "colorPanel1";
-            this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
-            this.colorPanel1.PanelStyle = Controls_dotNetFrw.PanelStyles.Wheel;
-            this.colorPanel1.RefControl = this.txbWString;
-            this.colorPanel1.Size = new System.Drawing.Size(130, 132);
-            this.colorPanel1.TabIndex = 11;
             // 
             // txbWString
             // 
@@ -594,7 +580,7 @@
             this.panelWatermarkImage.Controls.Add(this.rdbWITopCenter);
             this.panelWatermarkImage.Controls.Add(this.rdbWIMiddleLeft);
             this.panelWatermarkImage.Controls.Add(this.lblWITransparent);
-            this.panelWatermarkImage.Location = new System.Drawing.Point(681, 221);
+            this.panelWatermarkImage.Location = new System.Drawing.Point(680, 222);
             this.panelWatermarkImage.Name = "panelWatermarkImage";
             this.panelWatermarkImage.Size = new System.Drawing.Size(321, 160);
             this.panelWatermarkImage.TabIndex = 5;
@@ -793,6 +779,21 @@
             this.ckbWatermarkImage.UseVisualStyleBackColor = true;
             this.ckbWatermarkImage.CheckedChanged += new System.EventHandler(this.ckbWatermarkImage_CheckedChanged);
             // 
+            // colorPanel1
+            // 
+            this.colorPanel1.AutoSize = true;
+            this.colorPanel1.CurrentColor = System.Drawing.Color.Cyan;
+            this.colorPanel1.CurrentColorHexString = null;
+            this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorPanel1.Location = new System.Drawing.Point(6, 62);
+            this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
+            this.colorPanel1.Name = "colorPanel1";
+            this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
+            this.colorPanel1.PanelStyle = Controls_dotNetFrw.PanelStyles.Wheel;
+            this.colorPanel1.RefControl = null;
+            this.colorPanel1.Size = new System.Drawing.Size(144, 130);
+            this.colorPanel1.TabIndex = 6;
+            // 
             // FormConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -869,7 +870,6 @@
         private System.Windows.Forms.NumericUpDown nudWSLocationY;
         private System.Windows.Forms.NumericUpDown nudWSLocationX;
         private System.Windows.Forms.Label label6;
-        private Controls_dotNetFrw.ColorPanel colorPanel1;
         private System.Windows.Forms.Panel panelWatermarkImage;
         private System.Windows.Forms.CheckBox ckbWatermarkImage;
         private System.Windows.Forms.PictureBox pibWatermarkImage;
@@ -888,6 +888,7 @@
         private System.Windows.Forms.RadioButton rdbWIMiddleLeft;
         private Controls_dotNetFrw.ValueSlider valueSlider1;
         private System.Windows.Forms.Label lblWITransparent;
+        private Controls_dotNetFrw.ColorPanel colorPanel1;
     }
 }
 
