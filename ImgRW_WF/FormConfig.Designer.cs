@@ -42,7 +42,6 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.ckbResize = new System.Windows.Forms.CheckBox();
             this.panelWatermarkString = new System.Windows.Forms.Panel();
-            this.txbWString = new System.Windows.Forms.TextBox();
             this.rdbWSLocation = new System.Windows.Forms.RadioButton();
             this.rdbBottomCenter = new System.Windows.Forms.RadioButton();
             this.rdbBottomRight = new System.Windows.Forms.RadioButton();
@@ -64,9 +63,9 @@
             this.cmbFont = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.txbWString = new System.Windows.Forms.TextBox();
             this.ckbString = new System.Windows.Forms.CheckBox();
             this.panelWatermarkImage = new System.Windows.Forms.Panel();
-            this.valueSlider1 = new CxxLibs_CustomControlsDFW.ValueSlider();
             this.pibWatermarkImage = new System.Windows.Forms.PictureBox();
             this.rdbWILocation = new System.Windows.Forms.RadioButton();
             this.rdbWIBottomCenter = new System.Windows.Forms.RadioButton();
@@ -81,9 +80,12 @@
             this.rdbWITopRight = new System.Windows.Forms.RadioButton();
             this.rdbWITopCenter = new System.Windows.Forms.RadioButton();
             this.rdbWIMiddleLeft = new System.Windows.Forms.RadioButton();
-            this.lblWITransparent = new System.Windows.Forms.Label();
             this.ckbWatermarkImage = new System.Windows.Forms.CheckBox();
+            this.valueCircular2 = new CxxLibs_CustomControlsDFW.ValueCircular();
+            this.valueCircular1 = new CxxLibs_CustomControlsDFW.ValueCircular();
             this.colorPanel1 = new CxxLibs_CustomControlsDFW.ColorPanel();
+            this.valueSlider1 = new CxxLibs_CustomControlsDFW.ValueSlider();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).BeginInit();
             this.panelResize.SuspendLayout();
             this.panelWatermarkString.SuspendLayout();
@@ -99,7 +101,6 @@
             // 
             // pibPreview
             // 
-            this.pibPreview.BackColor = System.Drawing.SystemColors.Window;
             this.pibPreview.BackgroundImage = global::ImgRW_WF.Properties.Resources.WindowsXPBliss_mod1;
             this.pibPreview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pibPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -114,6 +115,7 @@
             // lsvFiles
             // 
             this.lsvFiles.AllowDrop = true;
+            this.lsvFiles.BackColor = System.Drawing.SystemColors.Control;
             this.lsvFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvFiles.FullRowSelect = true;
             this.lsvFiles.GridLines = true;
@@ -127,6 +129,7 @@
             // 
             // panelResize
             // 
+            this.panelResize.BackColor = System.Drawing.SystemColors.Control;
             this.panelResize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelResize.Controls.Add(this.label3);
             this.panelResize.Controls.Add(this.label2);
@@ -140,7 +143,7 @@
             this.panelResize.Location = new System.Drawing.Point(11, 12);
             this.panelResize.Margin = new System.Windows.Forms.Padding(4);
             this.panelResize.Name = "panelResize";
-            this.panelResize.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.panelResize.Padding = new System.Windows.Forms.Padding(6);
             this.panelResize.Size = new System.Drawing.Size(225, 124);
             this.panelResize.TabIndex = 2;
             // 
@@ -243,21 +246,23 @@
             // ckbResize
             // 
             this.ckbResize.AutoSize = true;
+            this.ckbResize.BackColor = System.Drawing.SystemColors.Control;
             this.ckbResize.Checked = true;
             this.ckbResize.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbResize.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckbResize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ckbResize.Location = new System.Drawing.Point(17, 22);
             this.ckbResize.Margin = new System.Windows.Forms.Padding(4);
             this.ckbResize.Name = "ckbResize";
-            this.ckbResize.Size = new System.Drawing.Size(158, 21);
+            this.ckbResize.Size = new System.Drawing.Size(141, 19);
             this.ckbResize.TabIndex = 3;
             this.ckbResize.Text = "Đặt lại kích thước:";
-            this.ckbResize.UseVisualStyleBackColor = true;
+            this.ckbResize.UseVisualStyleBackColor = false;
             this.ckbResize.CheckedChanged += new System.EventHandler(this.ckbResize_CheckedChanged);
             // 
             // panelWatermarkString
             // 
             this.panelWatermarkString.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelWatermarkString.BackColor = System.Drawing.SystemColors.Control;
             this.panelWatermarkString.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelWatermarkString.Controls.Add(this.colorPanel1);
             this.panelWatermarkString.Controls.Add(this.rdbWSLocation);
@@ -280,28 +285,20 @@
             this.panelWatermarkString.Controls.Add(this.ckbBold);
             this.panelWatermarkString.Controls.Add(this.cmbFont);
             this.panelWatermarkString.Controls.Add(this.label6);
+            this.panelWatermarkString.Controls.Add(this.label7);
             this.panelWatermarkString.Controls.Add(this.label4);
             this.panelWatermarkString.Controls.Add(this.txbWString);
             this.panelWatermarkString.Location = new System.Drawing.Point(680, 12);
             this.panelWatermarkString.Margin = new System.Windows.Forms.Padding(4);
             this.panelWatermarkString.Name = "panelWatermarkString";
-            this.panelWatermarkString.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.panelWatermarkString.Size = new System.Drawing.Size(321, 203);
+            this.panelWatermarkString.Padding = new System.Windows.Forms.Padding(6);
+            this.panelWatermarkString.Size = new System.Drawing.Size(321, 245);
             this.panelWatermarkString.TabIndex = 2;
-            // 
-            // txbWString
-            // 
-            this.txbWString.Location = new System.Drawing.Point(163, 7);
-            this.txbWString.Name = "txbWString";
-            this.txbWString.Size = new System.Drawing.Size(148, 21);
-            this.txbWString.TabIndex = 1;
-            this.txbWString.Text = "Whatever";
-            this.txbWString.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // rdbWSLocation
             // 
             this.rdbWSLocation.AutoSize = true;
-            this.rdbWSLocation.Location = new System.Drawing.Point(164, 121);
+            this.rdbWSLocation.Location = new System.Drawing.Point(163, 132);
             this.rdbWSLocation.Name = "rdbWSLocation";
             this.rdbWSLocation.Size = new System.Drawing.Size(36, 19);
             this.rdbWSLocation.TabIndex = 10;
@@ -313,7 +310,7 @@
             // rdbBottomCenter
             // 
             this.rdbBottomCenter.AutoSize = true;
-            this.rdbBottomCenter.Location = new System.Drawing.Point(230, 184);
+            this.rdbBottomCenter.Location = new System.Drawing.Point(229, 220);
             this.rdbBottomCenter.Name = "rdbBottomCenter";
             this.rdbBottomCenter.Size = new System.Drawing.Size(14, 13);
             this.rdbBottomCenter.TabIndex = 10;
@@ -323,7 +320,7 @@
             // rdbBottomRight
             // 
             this.rdbBottomRight.AutoSize = true;
-            this.rdbBottomRight.Location = new System.Drawing.Point(297, 184);
+            this.rdbBottomRight.Location = new System.Drawing.Point(296, 220);
             this.rdbBottomRight.Name = "rdbBottomRight";
             this.rdbBottomRight.Size = new System.Drawing.Size(14, 13);
             this.rdbBottomRight.TabIndex = 10;
@@ -333,7 +330,7 @@
             // rdbMiddleCenter
             // 
             this.rdbMiddleCenter.AutoSize = true;
-            this.rdbMiddleCenter.Location = new System.Drawing.Point(230, 166);
+            this.rdbMiddleCenter.Location = new System.Drawing.Point(229, 194);
             this.rdbMiddleCenter.Name = "rdbMiddleCenter";
             this.rdbMiddleCenter.Size = new System.Drawing.Size(14, 13);
             this.rdbMiddleCenter.TabIndex = 10;
@@ -343,7 +340,7 @@
             // rdbMiddleRight
             // 
             this.rdbMiddleRight.AutoSize = true;
-            this.rdbMiddleRight.Location = new System.Drawing.Point(297, 166);
+            this.rdbMiddleRight.Location = new System.Drawing.Point(296, 194);
             this.rdbMiddleRight.Name = "rdbMiddleRight";
             this.rdbMiddleRight.Size = new System.Drawing.Size(14, 13);
             this.rdbMiddleRight.TabIndex = 10;
@@ -353,7 +350,7 @@
             // rdbBottomLeft
             // 
             this.rdbBottomLeft.AutoSize = true;
-            this.rdbBottomLeft.Location = new System.Drawing.Point(164, 184);
+            this.rdbBottomLeft.Location = new System.Drawing.Point(163, 220);
             this.rdbBottomLeft.Name = "rdbBottomLeft";
             this.rdbBottomLeft.Size = new System.Drawing.Size(14, 13);
             this.rdbBottomLeft.TabIndex = 10;
@@ -363,7 +360,7 @@
             // rdbTopCenter
             // 
             this.rdbTopCenter.AutoSize = true;
-            this.rdbTopCenter.Location = new System.Drawing.Point(230, 148);
+            this.rdbTopCenter.Location = new System.Drawing.Point(229, 168);
             this.rdbTopCenter.Name = "rdbTopCenter";
             this.rdbTopCenter.Size = new System.Drawing.Size(14, 13);
             this.rdbTopCenter.TabIndex = 10;
@@ -373,7 +370,7 @@
             // rdbMiddleLeft
             // 
             this.rdbMiddleLeft.AutoSize = true;
-            this.rdbMiddleLeft.Location = new System.Drawing.Point(164, 166);
+            this.rdbMiddleLeft.Location = new System.Drawing.Point(163, 194);
             this.rdbMiddleLeft.Name = "rdbMiddleLeft";
             this.rdbMiddleLeft.Size = new System.Drawing.Size(14, 13);
             this.rdbMiddleLeft.TabIndex = 10;
@@ -383,7 +380,7 @@
             // rdbTopRight
             // 
             this.rdbTopRight.AutoSize = true;
-            this.rdbTopRight.Location = new System.Drawing.Point(297, 148);
+            this.rdbTopRight.Location = new System.Drawing.Point(296, 168);
             this.rdbTopRight.Name = "rdbTopRight";
             this.rdbTopRight.Size = new System.Drawing.Size(14, 13);
             this.rdbTopRight.TabIndex = 10;
@@ -393,7 +390,7 @@
             // rdbTopLeft
             // 
             this.rdbTopLeft.AutoSize = true;
-            this.rdbTopLeft.Location = new System.Drawing.Point(164, 148);
+            this.rdbTopLeft.Location = new System.Drawing.Point(163, 168);
             this.rdbTopLeft.Name = "rdbTopLeft";
             this.rdbTopLeft.Size = new System.Drawing.Size(14, 13);
             this.rdbTopLeft.TabIndex = 10;
@@ -427,7 +424,7 @@
             // nudWSLocationY
             // 
             this.nudWSLocationY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nudWSLocationY.Location = new System.Drawing.Point(269, 121);
+            this.nudWSLocationY.Location = new System.Drawing.Point(268, 131);
             this.nudWSLocationY.Name = "nudWSLocationY";
             this.nudWSLocationY.Size = new System.Drawing.Size(42, 21);
             this.nudWSLocationY.TabIndex = 8;
@@ -441,7 +438,7 @@
             // nudWSLocationX
             // 
             this.nudWSLocationX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nudWSLocationX.Location = new System.Drawing.Point(203, 121);
+            this.nudWSLocationX.Location = new System.Drawing.Point(202, 131);
             this.nudWSLocationX.Name = "nudWSLocationX";
             this.nudWSLocationX.Size = new System.Drawing.Size(42, 21);
             this.nudWSLocationX.TabIndex = 8;
@@ -455,7 +452,7 @@
             // nudFrameSize
             // 
             this.nudFrameSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nudFrameSize.Location = new System.Drawing.Point(269, 94);
+            this.nudFrameSize.Location = new System.Drawing.Point(268, 95);
             this.nudFrameSize.Minimum = new decimal(new int[] {
             3,
             0,
@@ -474,7 +471,7 @@
             // ckbFrame
             // 
             this.ckbFrame.AutoSize = true;
-            this.ckbFrame.Location = new System.Drawing.Point(164, 94);
+            this.ckbFrame.Location = new System.Drawing.Point(164, 96);
             this.ckbFrame.Name = "ckbFrame";
             this.ckbFrame.Size = new System.Drawing.Size(90, 19);
             this.ckbFrame.TabIndex = 7;
@@ -530,7 +527,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(250, 123);
+            this.label6.Location = new System.Drawing.Point(249, 133);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(17, 15);
             this.label6.TabIndex = 2;
@@ -538,17 +535,27 @@
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(95, 37);
+            this.label4.Location = new System.Drawing.Point(93, 37);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 15);
             this.label4.TabIndex = 2;
             this.label4.Text = "Font chữ:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txbWString
+            // 
+            this.txbWString.Location = new System.Drawing.Point(163, 7);
+            this.txbWString.Name = "txbWString";
+            this.txbWString.Size = new System.Drawing.Size(148, 21);
+            this.txbWString.TabIndex = 1;
+            this.txbWString.Text = "Whatever";
+            this.txbWString.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ckbString
             // 
             this.ckbString.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ckbString.AutoSize = true;
+            this.ckbString.BackColor = System.Drawing.SystemColors.Control;
             this.ckbString.Checked = true;
             this.ckbString.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckbString.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -557,12 +564,13 @@
             this.ckbString.Size = new System.Drawing.Size(155, 19);
             this.ckbString.TabIndex = 4;
             this.ckbString.Text = "Đặt dấu bằng chuỗi:";
-            this.ckbString.UseVisualStyleBackColor = true;
+            this.ckbString.UseVisualStyleBackColor = false;
             this.ckbString.CheckedChanged += new System.EventHandler(this.ckbString_CheckedChanged);
             // 
             // panelWatermarkImage
             // 
             this.panelWatermarkImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelWatermarkImage.BackColor = System.Drawing.SystemColors.Control;
             this.panelWatermarkImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelWatermarkImage.Controls.Add(this.valueSlider1);
             this.panelWatermarkImage.Controls.Add(this.pibWatermarkImage);
@@ -579,31 +587,10 @@
             this.panelWatermarkImage.Controls.Add(this.rdbWITopRight);
             this.panelWatermarkImage.Controls.Add(this.rdbWITopCenter);
             this.panelWatermarkImage.Controls.Add(this.rdbWIMiddleLeft);
-            this.panelWatermarkImage.Controls.Add(this.lblWITransparent);
-            this.panelWatermarkImage.Location = new System.Drawing.Point(680, 222);
+            this.panelWatermarkImage.Location = new System.Drawing.Point(680, 264);
             this.panelWatermarkImage.Name = "panelWatermarkImage";
-            this.panelWatermarkImage.Size = new System.Drawing.Size(321, 160);
+            this.panelWatermarkImage.Size = new System.Drawing.Size(321, 151);
             this.panelWatermarkImage.TabIndex = 5;
-            // 
-            // valueSlider1
-            // 
-            this.valueSlider1.Location = new System.Drawing.Point(80, 135);
-            this.valueSlider1.MaxValue = 100F;
-            this.valueSlider1.MinValue = 1F;
-            this.valueSlider1.Name = "valueSlider1";
-            this.valueSlider1.OffsetLines = false;
-            this.valueSlider1.OffsetLinesColor = System.Drawing.Color.DarkGray;
-            this.valueSlider1.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
-            this.valueSlider1.PointerSize = 6;
-            this.valueSlider1.PointerStyle = CxxLibs_CustomControlsDFW.PointerStyles.Dot;
-            this.valueSlider1.Size = new System.Drawing.Size(228, 11);
-            this.valueSlider1.Style = CxxLibs_CustomControlsDFW.ValueSliderStyles.GradientLine;
-            this.valueSlider1.TabIndex = 11;
-            this.valueSlider1.Text = "valueSlider1";
-            this.valueSlider1.Value = 85F;
-            this.valueSlider1.ValueBackColor = System.Drawing.Color.LightGray;
-            this.valueSlider1.ValueColor = System.Drawing.Color.DodgerBlue;
-            this.valueSlider1.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // pibWatermarkImage
             // 
@@ -611,7 +598,7 @@
             this.pibWatermarkImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pibWatermarkImage.Location = new System.Drawing.Point(163, 8);
             this.pibWatermarkImage.Name = "pibWatermarkImage";
-            this.pibWatermarkImage.Size = new System.Drawing.Size(146, 119);
+            this.pibWatermarkImage.Size = new System.Drawing.Size(146, 110);
             this.pibWatermarkImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pibWatermarkImage.TabIndex = 0;
             this.pibWatermarkImage.TabStop = false;
@@ -755,50 +742,114 @@
             this.rdbWIMiddleLeft.TabStop = true;
             this.rdbWIMiddleLeft.UseVisualStyleBackColor = true;
             // 
-            // lblWITransparent
-            // 
-            this.lblWITransparent.AutoSize = true;
-            this.lblWITransparent.Location = new System.Drawing.Point(4, 131);
-            this.lblWITransparent.Name = "lblWITransparent";
-            this.lblWITransparent.Size = new System.Drawing.Size(68, 15);
-            this.lblWITransparent.TabIndex = 2;
-            this.lblWITransparent.Text = "Trong suốt:";
-            // 
             // ckbWatermarkImage
             // 
             this.ckbWatermarkImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ckbWatermarkImage.AutoSize = true;
+            this.ckbWatermarkImage.BackColor = System.Drawing.SystemColors.Control;
             this.ckbWatermarkImage.Checked = true;
             this.ckbWatermarkImage.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckbWatermarkImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbWatermarkImage.Location = new System.Drawing.Point(688, 232);
+            this.ckbWatermarkImage.Location = new System.Drawing.Point(688, 274);
             this.ckbWatermarkImage.Name = "ckbWatermarkImage";
             this.ckbWatermarkImage.Size = new System.Drawing.Size(144, 19);
             this.ckbWatermarkImage.TabIndex = 4;
             this.ckbWatermarkImage.Text = "Đặt dấu bằng ảnh:";
-            this.ckbWatermarkImage.UseVisualStyleBackColor = true;
+            this.ckbWatermarkImage.UseVisualStyleBackColor = false;
             this.ckbWatermarkImage.CheckedChanged += new System.EventHandler(this.ckbWatermarkImage_CheckedChanged);
+            // 
+            // valueCircular2
+            // 
+            this.valueCircular2.ColorCircle = System.Drawing.Color.Black;
+            this.valueCircular2.DigitNumber = 0;
+            this.valueCircular2.HandColor = System.Drawing.Color.DarkBlue;
+            this.valueCircular2.HandWidth = 1F;
+            this.valueCircular2.LineWidth = 1F;
+            this.valueCircular2.Location = new System.Drawing.Point(848, 432);
+            this.valueCircular2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.valueCircular2.MaxValue = 360F;
+            this.valueCircular2.MinValue = 0F;
+            this.valueCircular2.Name = "valueCircular2";
+            this.valueCircular2.Orthor = true;
+            this.valueCircular2.ShowValue = true;
+            this.valueCircular2.Size = new System.Drawing.Size(153, 136);
+            this.valueCircular2.TabIndex = 11;
+            this.valueCircular2.UnitString = "˚";
+            this.valueCircular2.Value = 30F;
+            this.valueCircular2.ValueLabel = "xoay hình";
+            // 
+            // valueCircular1
+            // 
+            this.valueCircular1.ColorCircle = System.Drawing.Color.Black;
+            this.valueCircular1.DigitNumber = 0;
+            this.valueCircular1.HandColor = System.Drawing.Color.DarkBlue;
+            this.valueCircular1.HandWidth = 1F;
+            this.valueCircular1.LineWidth = 1F;
+            this.valueCircular1.Location = new System.Drawing.Point(680, 432);
+            this.valueCircular1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.valueCircular1.MaxValue = 360F;
+            this.valueCircular1.MinValue = 0F;
+            this.valueCircular1.Name = "valueCircular1";
+            this.valueCircular1.Orthor = true;
+            this.valueCircular1.ShowValue = true;
+            this.valueCircular1.Size = new System.Drawing.Size(153, 136);
+            this.valueCircular1.TabIndex = 11;
+            this.valueCircular1.UnitString = "˚";
+            this.valueCircular1.Value = 30F;
+            this.valueCircular1.ValueLabel = "xoay chuỗi";
             // 
             // colorPanel1
             // 
             this.colorPanel1.AutoSize = true;
-            this.colorPanel1.CurrentColor = System.Drawing.Color.Cyan;
-            this.colorPanel1.CurrentColorHexString = null;
+            this.colorPanel1.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.colorPanel1.CurrentColorHexString = "#B4000000";
             this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorPanel1.Location = new System.Drawing.Point(6, 62);
+            this.colorPanel1.Location = new System.Drawing.Point(6, 96);
             this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
             this.colorPanel1.Name = "colorPanel1";
             this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
             this.colorPanel1.PanelStyle = CxxLibs_CustomControlsDFW.PanelStyles.Wheel;
             this.colorPanel1.RefControl = null;
-            this.colorPanel1.Size = new System.Drawing.Size(144, 130);
+            this.colorPanel1.Size = new System.Drawing.Size(152, 146);
             this.colorPanel1.TabIndex = 6;
+            // 
+            // valueSlider1
+            // 
+            this.valueSlider1.Location = new System.Drawing.Point(5, 124);
+            this.valueSlider1.MaxValue = 100F;
+            this.valueSlider1.MinValue = 1F;
+            this.valueSlider1.Name = "valueSlider1";
+            this.valueSlider1.OffsetLines = false;
+            this.valueSlider1.OffsetLinesColor = System.Drawing.Color.DarkGray;
+            this.valueSlider1.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
+            this.valueSlider1.PointerSize = 6;
+            this.valueSlider1.PointerStyle = CxxLibs_CustomControlsDFW.PointerStyles.Dot;
+            this.valueSlider1.Size = new System.Drawing.Size(304, 11);
+            this.valueSlider1.Style = CxxLibs_CustomControlsDFW.ValueSliderStyles.GradientLine;
+            this.valueSlider1.TabIndex = 11;
+            this.valueSlider1.Text = "valueSlider1";
+            this.valueSlider1.Value = 85F;
+            this.valueSlider1.ValueBackColor = System.Drawing.Color.LightGray;
+            this.valueSlider1.ValueColor = System.Drawing.Color.DodgerBlue;
+            this.valueSlider1.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(19, 66);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(131, 16);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Kiểu chữ và kích thước:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // FormConfig
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1012, 650);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1012, 583);
+            this.Controls.Add(this.valueCircular2);
+            this.Controls.Add(this.valueCircular1);
             this.Controls.Add(this.ckbWatermarkImage);
             this.Controls.Add(this.ckbString);
             this.Controls.Add(this.lsvFiles);
@@ -887,8 +938,10 @@
         private System.Windows.Forms.RadioButton rdbWITopCenter;
         private System.Windows.Forms.RadioButton rdbWIMiddleLeft;
         private CxxLibs_CustomControlsDFW.ValueSlider valueSlider1;
-        private System.Windows.Forms.Label lblWITransparent;
         private CxxLibs_CustomControlsDFW.ColorPanel colorPanel1;
+        private CxxLibs_CustomControlsDFW.ValueCircular valueCircular1;
+        private CxxLibs_CustomControlsDFW.ValueCircular valueCircular2;
+        private System.Windows.Forms.Label label7;
     }
 }
 

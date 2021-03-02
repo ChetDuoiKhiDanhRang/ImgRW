@@ -85,12 +85,6 @@ namespace ImgRW_WF
             nudWSLocationX.Enabled = nudWSLocationY.Enabled = rdbWSLocation.Checked;
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            Bitmap bm = Controls_dotNetFrw.Generator.GenerateColorsPanel_Wheel(new SizeF(256, 256));
-            bm.Save(@"D:\ava/png", ImageFormat.Png);
-        }
-
         private void ckbWatermarkImage_CheckedChanged(object sender, EventArgs e)
         {
             panelWatermarkImage.Enabled = ckbWatermarkImage.Checked;
