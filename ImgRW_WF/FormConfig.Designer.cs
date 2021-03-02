@@ -66,7 +66,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.ckbString = new System.Windows.Forms.CheckBox();
             this.panelWatermarkImage = new System.Windows.Forms.Panel();
-            this.valueSlider1 = new Controls_dotNetFrw.ValueSlider();
+            this.valueSlider1 = new CxxLibs_CustomControlsDFW.ValueSlider();
             this.pibWatermarkImage = new System.Windows.Forms.PictureBox();
             this.rdbWILocation = new System.Windows.Forms.RadioButton();
             this.rdbWIBottomCenter = new System.Windows.Forms.RadioButton();
@@ -83,7 +83,7 @@
             this.rdbWIMiddleLeft = new System.Windows.Forms.RadioButton();
             this.lblWITransparent = new System.Windows.Forms.Label();
             this.ckbWatermarkImage = new System.Windows.Forms.CheckBox();
-            this.colorPanel1 = new Controls_dotNetFrw.ColorPanel();
+            this.colorPanel1 = new CxxLibs_CustomControlsDFW.ColorPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).BeginInit();
             this.panelResize.SuspendLayout();
             this.panelWatermarkString.SuspendLayout();
@@ -595,9 +595,9 @@
             this.valueSlider1.OffsetLinesColor = System.Drawing.Color.DarkGray;
             this.valueSlider1.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
             this.valueSlider1.PointerSize = 6;
-            this.valueSlider1.PointerStyle = Controls_dotNetFrw.PointerStyles.Dot;
+            this.valueSlider1.PointerStyle = CxxLibs_CustomControlsDFW.PointerStyles.Dot;
             this.valueSlider1.Size = new System.Drawing.Size(228, 11);
-            this.valueSlider1.Style = Controls_dotNetFrw.ValueSliderStyles.GradientLine;
+            this.valueSlider1.Style = CxxLibs_CustomControlsDFW.ValueSliderStyles.GradientLine;
             this.valueSlider1.TabIndex = 11;
             this.valueSlider1.Text = "valueSlider1";
             this.valueSlider1.Value = 85F;
@@ -789,7 +789,7 @@
             this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
             this.colorPanel1.Name = "colorPanel1";
             this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
-            this.colorPanel1.PanelStyle = Controls_dotNetFrw.PanelStyles.Wheel;
+            this.colorPanel1.PanelStyle = CxxLibs_CustomControlsDFW.PanelStyles.Wheel;
             this.colorPanel1.RefControl = null;
             this.colorPanel1.Size = new System.Drawing.Size(144, 130);
             this.colorPanel1.TabIndex = 6;
@@ -886,9 +886,9 @@
         private System.Windows.Forms.RadioButton rdbWITopRight;
         private System.Windows.Forms.RadioButton rdbWITopCenter;
         private System.Windows.Forms.RadioButton rdbWIMiddleLeft;
-        private Controls_dotNetFrw.ValueSlider valueSlider1;
+        private CxxLibs_CustomControlsDFW.ValueSlider valueSlider1;
         private System.Windows.Forms.Label lblWITransparent;
-        private Controls_dotNetFrw.ColorPanel colorPanel1;
+        private CxxLibs_CustomControlsDFW.ColorPanel colorPanel1;
     }
 }
 

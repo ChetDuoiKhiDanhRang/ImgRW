@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImgRW_WF", "ImgRW_WF\ImgRW_
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageModifier", "ImageModifier\ImageModifier.csproj", "{38971893-FB83-46BB-B12E-5D64AFB48DC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls_dotNetFrw", "..\CxxLibs\Controls_dotNetFrw\Controls_dotNetFrw.csproj", "{90ABA1DF-B297-4696-94F9-C8DDB4238719}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CxxLibs_CustomControlsDFW", "..\CxxLibs\Controls_dotNetFrw\CxxLibs_CustomControlsDFW.csproj", "{90ABA1DF-B297-4696-94F9-C8DDB4238719}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
