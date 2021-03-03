@@ -28,8 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pibPreview = new System.Windows.Forms.PictureBox();
             this.lsvFiles = new System.Windows.Forms.ListView();
+            this.col1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.col2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.col3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ctmMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ctmAddFiles = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctmDeleteSelected = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctmClearList = new System.Windows.Forms.ToolStripMenuItem();
             this.panelResize = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,6 +50,7 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.ckbResize = new System.Windows.Forms.CheckBox();
             this.panelWatermarkString = new System.Windows.Forms.Panel();
+            this.colorPanel1 = new CxxLibs_CustomControlsDFW.ColorPanel();
             this.rdbWSLocation = new System.Windows.Forms.RadioButton();
             this.rdbBottomCenter = new System.Windows.Forms.RadioButton();
             this.rdbBottomRight = new System.Windows.Forms.RadioButton();
@@ -62,10 +71,12 @@
             this.ckbBold = new System.Windows.Forms.CheckBox();
             this.cmbFont = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txbWString = new System.Windows.Forms.TextBox();
             this.ckbString = new System.Windows.Forms.CheckBox();
             this.panelWatermarkImage = new System.Windows.Forms.Panel();
+            this.valueSlider1 = new CxxLibs_CustomControlsDFW.ValueSlider();
             this.pibWatermarkImage = new System.Windows.Forms.PictureBox();
             this.rdbWILocation = new System.Windows.Forms.RadioButton();
             this.rdbWIBottomCenter = new System.Windows.Forms.RadioButton();
@@ -81,12 +92,21 @@
             this.rdbWITopCenter = new System.Windows.Forms.RadioButton();
             this.rdbWIMiddleLeft = new System.Windows.Forms.RadioButton();
             this.ckbWatermarkImage = new System.Windows.Forms.CheckBox();
-            this.valueCircular2 = new CxxLibs_CustomControlsDFW.ValueCircular();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pibOutputPath = new System.Windows.Forms.PictureBox();
+            this.txbOutputPath = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cmbOutputFormat = new System.Windows.Forms.ComboBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.valueCircular1 = new CxxLibs_CustomControlsDFW.ValueCircular();
-            this.colorPanel1 = new CxxLibs_CustomControlsDFW.ColorPanel();
-            this.valueSlider1 = new CxxLibs_CustomControlsDFW.ValueSlider();
-            this.label7 = new System.Windows.Forms.Label();
+            this.valueSlider2 = new CxxLibs_CustomControlsDFW.ValueSlider();
+            this.valueSlider3 = new CxxLibs_CustomControlsDFW.ValueSlider();
+            this.valueCircular2 = new CxxLibs_CustomControlsDFW.ValueCircular();
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).BeginInit();
+            this.ctmMenu.SuspendLayout();
             this.panelResize.SuspendLayout();
             this.panelWatermarkString.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudFontSize)).BeginInit();
@@ -97,6 +117,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pibWatermarkImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pibOutputPath)).BeginInit();
             this.SuspendLayout();
             // 
             // pibPreview
@@ -107,25 +132,77 @@
             this.pibPreview.Location = new System.Drawing.Point(244, 12);
             this.pibPreview.Margin = new System.Windows.Forms.Padding(4);
             this.pibPreview.Name = "pibPreview";
-            this.pibPreview.Size = new System.Drawing.Size(428, 300);
+            this.pibPreview.Size = new System.Drawing.Size(428, 375);
             this.pibPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pibPreview.TabIndex = 0;
             this.pibPreview.TabStop = false;
             // 
             // lsvFiles
             // 
+            this.lsvFiles.AllowColumnReorder = true;
             this.lsvFiles.AllowDrop = true;
-            this.lsvFiles.BackColor = System.Drawing.SystemColors.Control;
-            this.lsvFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lsvFiles.BackColor = System.Drawing.Color.White;
+            this.lsvFiles.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lsvFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.col1,
+            this.col2,
+            this.col3});
+            this.lsvFiles.ContextMenuStrip = this.ctmMenu;
             this.lsvFiles.FullRowSelect = true;
             this.lsvFiles.GridLines = true;
             this.lsvFiles.HideSelection = false;
             this.lsvFiles.Location = new System.Drawing.Point(11, 144);
             this.lsvFiles.Margin = new System.Windows.Forms.Padding(4);
             this.lsvFiles.Name = "lsvFiles";
-            this.lsvFiles.Size = new System.Drawing.Size(225, 238);
+            this.lsvFiles.Size = new System.Drawing.Size(225, 243);
             this.lsvFiles.TabIndex = 1;
             this.lsvFiles.UseCompatibleStateImageBehavior = false;
+            this.lsvFiles.View = System.Windows.Forms.View.Details;
+            // 
+            // col1
+            // 
+            this.col1.Text = "Tập tin";
+            this.col1.Width = 100;
+            // 
+            // col2
+            // 
+            this.col2.Text = "#";
+            this.col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.col2.Width = 40;
+            // 
+            // col3
+            // 
+            this.col3.Text = "Kích thước";
+            this.col3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.col3.Width = 80;
+            // 
+            // ctmMenu
+            // 
+            this.ctmMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ctmAddFiles,
+            this.ctmDeleteSelected,
+            this.ctmClearList});
+            this.ctmMenu.Name = "ctmMenu";
+            this.ctmMenu.Size = new System.Drawing.Size(175, 70);
+            this.ctmMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ctmMenu_ItemClicked);
+            // 
+            // ctmAddFiles
+            // 
+            this.ctmAddFiles.Name = "ctmAddFiles";
+            this.ctmAddFiles.Size = new System.Drawing.Size(174, 22);
+            this.ctmAddFiles.Text = "Thêm file ảnh";
+            // 
+            // ctmDeleteSelected
+            // 
+            this.ctmDeleteSelected.Name = "ctmDeleteSelected";
+            this.ctmDeleteSelected.Size = new System.Drawing.Size(174, 22);
+            this.ctmDeleteSelected.Text = "Loại bỏ file đã chọn";
+            // 
+            // ctmClearList
+            // 
+            this.ctmClearList.Name = "ctmClearList";
+            this.ctmClearList.Size = new System.Drawing.Size(174, 22);
+            this.ctmClearList.Text = "Loại bỏ danh sách";
             // 
             // panelResize
             // 
@@ -210,7 +287,7 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(10, 94);
+            this.radioButton3.Location = new System.Drawing.Point(9, 94);
             this.radioButton3.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(78, 19);
@@ -222,7 +299,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(10, 67);
+            this.radioButton2.Location = new System.Drawing.Point(9, 66);
             this.radioButton2.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(112, 19);
@@ -234,7 +311,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(10, 39);
+            this.radioButton1.Location = new System.Drawing.Point(9, 38);
             this.radioButton1.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(117, 19);
@@ -292,8 +369,23 @@
             this.panelWatermarkString.Margin = new System.Windows.Forms.Padding(4);
             this.panelWatermarkString.Name = "panelWatermarkString";
             this.panelWatermarkString.Padding = new System.Windows.Forms.Padding(6);
-            this.panelWatermarkString.Size = new System.Drawing.Size(321, 245);
+            this.panelWatermarkString.Size = new System.Drawing.Size(321, 217);
             this.panelWatermarkString.TabIndex = 2;
+            // 
+            // colorPanel1
+            // 
+            this.colorPanel1.AutoSize = true;
+            this.colorPanel1.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
+            this.colorPanel1.CurrentColorHexString = "#FFAA00";
+            this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorPanel1.Location = new System.Drawing.Point(6, 85);
+            this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
+            this.colorPanel1.Name = "colorPanel1";
+            this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
+            this.colorPanel1.PanelStyle = CxxLibs_CustomControlsDFW.PanelStyles.Wheel;
+            this.colorPanel1.RefControl = null;
+            this.colorPanel1.Size = new System.Drawing.Size(152, 131);
+            this.colorPanel1.TabIndex = 6;
             // 
             // rdbWSLocation
             // 
@@ -310,7 +402,7 @@
             // rdbBottomCenter
             // 
             this.rdbBottomCenter.AutoSize = true;
-            this.rdbBottomCenter.Location = new System.Drawing.Point(229, 220);
+            this.rdbBottomCenter.Location = new System.Drawing.Point(229, 196);
             this.rdbBottomCenter.Name = "rdbBottomCenter";
             this.rdbBottomCenter.Size = new System.Drawing.Size(14, 13);
             this.rdbBottomCenter.TabIndex = 10;
@@ -320,7 +412,7 @@
             // rdbBottomRight
             // 
             this.rdbBottomRight.AutoSize = true;
-            this.rdbBottomRight.Location = new System.Drawing.Point(296, 220);
+            this.rdbBottomRight.Location = new System.Drawing.Point(296, 196);
             this.rdbBottomRight.Name = "rdbBottomRight";
             this.rdbBottomRight.Size = new System.Drawing.Size(14, 13);
             this.rdbBottomRight.TabIndex = 10;
@@ -330,7 +422,7 @@
             // rdbMiddleCenter
             // 
             this.rdbMiddleCenter.AutoSize = true;
-            this.rdbMiddleCenter.Location = new System.Drawing.Point(229, 194);
+            this.rdbMiddleCenter.Location = new System.Drawing.Point(229, 178);
             this.rdbMiddleCenter.Name = "rdbMiddleCenter";
             this.rdbMiddleCenter.Size = new System.Drawing.Size(14, 13);
             this.rdbMiddleCenter.TabIndex = 10;
@@ -340,7 +432,7 @@
             // rdbMiddleRight
             // 
             this.rdbMiddleRight.AutoSize = true;
-            this.rdbMiddleRight.Location = new System.Drawing.Point(296, 194);
+            this.rdbMiddleRight.Location = new System.Drawing.Point(296, 178);
             this.rdbMiddleRight.Name = "rdbMiddleRight";
             this.rdbMiddleRight.Size = new System.Drawing.Size(14, 13);
             this.rdbMiddleRight.TabIndex = 10;
@@ -350,7 +442,7 @@
             // rdbBottomLeft
             // 
             this.rdbBottomLeft.AutoSize = true;
-            this.rdbBottomLeft.Location = new System.Drawing.Point(163, 220);
+            this.rdbBottomLeft.Location = new System.Drawing.Point(163, 196);
             this.rdbBottomLeft.Name = "rdbBottomLeft";
             this.rdbBottomLeft.Size = new System.Drawing.Size(14, 13);
             this.rdbBottomLeft.TabIndex = 10;
@@ -360,7 +452,7 @@
             // rdbTopCenter
             // 
             this.rdbTopCenter.AutoSize = true;
-            this.rdbTopCenter.Location = new System.Drawing.Point(229, 168);
+            this.rdbTopCenter.Location = new System.Drawing.Point(229, 160);
             this.rdbTopCenter.Name = "rdbTopCenter";
             this.rdbTopCenter.Size = new System.Drawing.Size(14, 13);
             this.rdbTopCenter.TabIndex = 10;
@@ -370,7 +462,7 @@
             // rdbMiddleLeft
             // 
             this.rdbMiddleLeft.AutoSize = true;
-            this.rdbMiddleLeft.Location = new System.Drawing.Point(163, 194);
+            this.rdbMiddleLeft.Location = new System.Drawing.Point(163, 178);
             this.rdbMiddleLeft.Name = "rdbMiddleLeft";
             this.rdbMiddleLeft.Size = new System.Drawing.Size(14, 13);
             this.rdbMiddleLeft.TabIndex = 10;
@@ -380,7 +472,7 @@
             // rdbTopRight
             // 
             this.rdbTopRight.AutoSize = true;
-            this.rdbTopRight.Location = new System.Drawing.Point(296, 168);
+            this.rdbTopRight.Location = new System.Drawing.Point(296, 160);
             this.rdbTopRight.Name = "rdbTopRight";
             this.rdbTopRight.Size = new System.Drawing.Size(14, 13);
             this.rdbTopRight.TabIndex = 10;
@@ -390,7 +482,7 @@
             // rdbTopLeft
             // 
             this.rdbTopLeft.AutoSize = true;
-            this.rdbTopLeft.Location = new System.Drawing.Point(163, 168);
+            this.rdbTopLeft.Location = new System.Drawing.Point(163, 160);
             this.rdbTopLeft.Name = "rdbTopLeft";
             this.rdbTopLeft.Size = new System.Drawing.Size(14, 13);
             this.rdbTopLeft.TabIndex = 10;
@@ -533,6 +625,15 @@
             this.label6.TabIndex = 2;
             this.label6.Text = "Y:";
             // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(19, 66);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(131, 16);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Kiểu chữ và kích thước:";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // label4
             // 
             this.label4.Location = new System.Drawing.Point(93, 37);
@@ -587,10 +688,30 @@
             this.panelWatermarkImage.Controls.Add(this.rdbWITopRight);
             this.panelWatermarkImage.Controls.Add(this.rdbWITopCenter);
             this.panelWatermarkImage.Controls.Add(this.rdbWIMiddleLeft);
-            this.panelWatermarkImage.Location = new System.Drawing.Point(680, 264);
+            this.panelWatermarkImage.Location = new System.Drawing.Point(680, 236);
             this.panelWatermarkImage.Name = "panelWatermarkImage";
             this.panelWatermarkImage.Size = new System.Drawing.Size(321, 151);
             this.panelWatermarkImage.TabIndex = 5;
+            // 
+            // valueSlider1
+            // 
+            this.valueSlider1.Location = new System.Drawing.Point(5, 124);
+            this.valueSlider1.MaxValue = 100F;
+            this.valueSlider1.MinValue = 1F;
+            this.valueSlider1.Name = "valueSlider1";
+            this.valueSlider1.OffsetLines = false;
+            this.valueSlider1.OffsetLinesColor = System.Drawing.Color.DarkGray;
+            this.valueSlider1.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
+            this.valueSlider1.PointerSize = 6;
+            this.valueSlider1.PointerStyle = CxxLibs_CustomControlsDFW.PointerStyles.Dot;
+            this.valueSlider1.Size = new System.Drawing.Size(304, 11);
+            this.valueSlider1.Style = CxxLibs_CustomControlsDFW.ValueSliderStyles.GradientLine;
+            this.valueSlider1.TabIndex = 11;
+            this.valueSlider1.Text = "valueSlider1";
+            this.valueSlider1.Value = 85F;
+            this.valueSlider1.ValueBackColor = System.Drawing.Color.LightGray;
+            this.valueSlider1.ValueColor = System.Drawing.Color.DodgerBlue;
+            this.valueSlider1.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // pibWatermarkImage
             // 
@@ -750,7 +871,7 @@
             this.ckbWatermarkImage.Checked = true;
             this.ckbWatermarkImage.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckbWatermarkImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckbWatermarkImage.Location = new System.Drawing.Point(688, 274);
+            this.ckbWatermarkImage.Location = new System.Drawing.Point(688, 246);
             this.ckbWatermarkImage.Name = "ckbWatermarkImage";
             this.ckbWatermarkImage.Size = new System.Drawing.Size(144, 19);
             this.ckbWatermarkImage.TabIndex = 4;
@@ -758,98 +879,189 @@
             this.ckbWatermarkImage.UseVisualStyleBackColor = false;
             this.ckbWatermarkImage.CheckedChanged += new System.EventHandler(this.ckbWatermarkImage_CheckedChanged);
             // 
-            // valueCircular2
+            // panel1
             // 
-            this.valueCircular2.ColorCircle = System.Drawing.Color.Black;
-            this.valueCircular2.DigitNumber = 0;
-            this.valueCircular2.HandColor = System.Drawing.Color.DarkBlue;
-            this.valueCircular2.HandWidth = 1F;
-            this.valueCircular2.LineWidth = 1F;
-            this.valueCircular2.Location = new System.Drawing.Point(848, 432);
-            this.valueCircular2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.valueCircular2.MaxValue = 360F;
-            this.valueCircular2.MinValue = 0F;
-            this.valueCircular2.Name = "valueCircular2";
-            this.valueCircular2.Orthor = true;
-            this.valueCircular2.ShowValue = true;
-            this.valueCircular2.Size = new System.Drawing.Size(153, 136);
-            this.valueCircular2.TabIndex = 11;
-            this.valueCircular2.UnitString = "˚";
-            this.valueCircular2.Value = 30F;
-            this.valueCircular2.ValueLabel = "xoay hình";
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.pictureBox3);
+            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.pibOutputPath);
+            this.panel1.Controls.Add(this.txbOutputPath);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.cmbOutputFormat);
+            this.panel1.Location = new System.Drawing.Point(11, 394);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(225, 132);
+            this.panel1.TabIndex = 12;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(3, 31);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(115, 97);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(94, 30);
+            this.pictureBox3.TabIndex = 5;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(11, 97);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(94, 30);
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pibOutputPath
+            // 
+            this.pibOutputPath.Location = new System.Drawing.Point(3, 66);
+            this.pibOutputPath.Name = "pibOutputPath";
+            this.pibOutputPath.Size = new System.Drawing.Size(25, 25);
+            this.pibOutputPath.TabIndex = 5;
+            this.pibOutputPath.TabStop = false;
+            // 
+            // txbOutputPath
+            // 
+            this.txbOutputPath.Location = new System.Drawing.Point(34, 68);
+            this.txbOutputPath.Name = "txbOutputPath";
+            this.txbOutputPath.Size = new System.Drawing.Size(186, 21);
+            this.txbOutputPath.TabIndex = 4;
+            // 
+            // label9
+            // 
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(8, 5);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(103, 20);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Tập tin xuất:";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cmbOutputFormat
+            // 
+            this.cmbOutputFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbOutputFormat.FormattingEnabled = true;
+            this.cmbOutputFormat.IntegralHeight = false;
+            this.cmbOutputFormat.Location = new System.Drawing.Point(34, 32);
+            this.cmbOutputFormat.Name = "cmbOutputFormat";
+            this.cmbOutputFormat.Size = new System.Drawing.Size(186, 23);
+            this.cmbOutputFormat.TabIndex = 3;
+            // 
+            // textBox4
+            // 
+            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBox4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.textBox4.Location = new System.Drawing.Point(244, 394);
+            this.textBox4.Multiline = true;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(428, 100);
+            this.textBox4.TabIndex = 13;
+            this.textBox4.Text = "Image";
             // 
             // valueCircular1
             // 
-            this.valueCircular1.ColorCircle = System.Drawing.Color.Black;
+            this.valueCircular1.ColorStyle = System.Drawing.Color.DodgerBlue;
             this.valueCircular1.DigitNumber = 0;
-            this.valueCircular1.HandColor = System.Drawing.Color.DarkBlue;
+            this.valueCircular1.FillWithGradient = true;
+            this.valueCircular1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valueCircular1.HandColor = System.Drawing.Color.Black;
             this.valueCircular1.HandWidth = 1F;
-            this.valueCircular1.LineWidth = 1F;
-            this.valueCircular1.Location = new System.Drawing.Point(680, 432);
+            this.valueCircular1.LineWidth = 2F;
+            this.valueCircular1.Location = new System.Drawing.Point(680, 393);
             this.valueCircular1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.valueCircular1.MaxValue = 360F;
             this.valueCircular1.MinValue = 0F;
             this.valueCircular1.Name = "valueCircular1";
             this.valueCircular1.Orthor = true;
             this.valueCircular1.ShowValue = true;
-            this.valueCircular1.Size = new System.Drawing.Size(153, 136);
-            this.valueCircular1.TabIndex = 11;
+            this.valueCircular1.Size = new System.Drawing.Size(151, 128);
+            this.valueCircular1.TabIndex = 14;
             this.valueCircular1.UnitString = "˚";
-            this.valueCircular1.Value = 30F;
-            this.valueCircular1.ValueLabel = "xoay chuỗi";
+            this.valueCircular1.Value = 120F;
+            this.valueCircular1.ValueLabel = "Xoay chuỗi";
             // 
-            // colorPanel1
+            // valueSlider2
             // 
-            this.colorPanel1.AutoSize = true;
-            this.colorPanel1.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.colorPanel1.CurrentColorHexString = "#B4000000";
-            this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorPanel1.Location = new System.Drawing.Point(6, 96);
-            this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
-            this.colorPanel1.Name = "colorPanel1";
-            this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
-            this.colorPanel1.PanelStyle = CxxLibs_CustomControlsDFW.PanelStyles.Wheel;
-            this.colorPanel1.RefControl = null;
-            this.colorPanel1.Size = new System.Drawing.Size(152, 146);
-            this.colorPanel1.TabIndex = 6;
+            this.valueSlider2.Location = new System.Drawing.Point(244, 516);
+            this.valueSlider2.MaxValue = 100F;
+            this.valueSlider2.MinValue = 1F;
+            this.valueSlider2.Name = "valueSlider2";
+            this.valueSlider2.OffsetLines = false;
+            this.valueSlider2.OffsetLinesColor = System.Drawing.Color.DarkGray;
+            this.valueSlider2.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
+            this.valueSlider2.PointerSize = 6;
+            this.valueSlider2.PointerStyle = CxxLibs_CustomControlsDFW.PointerStyles.None;
+            this.valueSlider2.Size = new System.Drawing.Size(428, 10);
+            this.valueSlider2.Style = CxxLibs_CustomControlsDFW.ValueSliderStyles.GradientRounded;
+            this.valueSlider2.TabIndex = 11;
+            this.valueSlider2.Text = "valueSlider1";
+            this.valueSlider2.Value = 85F;
+            this.valueSlider2.ValueBackColor = System.Drawing.Color.LightGray;
+            this.valueSlider2.ValueColor = System.Drawing.Color.DodgerBlue;
+            this.valueSlider2.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // valueSlider1
+            // valueSlider3
             // 
-            this.valueSlider1.Location = new System.Drawing.Point(5, 124);
-            this.valueSlider1.MaxValue = 100F;
-            this.valueSlider1.MinValue = 1F;
-            this.valueSlider1.Name = "valueSlider1";
-            this.valueSlider1.OffsetLines = false;
-            this.valueSlider1.OffsetLinesColor = System.Drawing.Color.DarkGray;
-            this.valueSlider1.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
-            this.valueSlider1.PointerSize = 6;
-            this.valueSlider1.PointerStyle = CxxLibs_CustomControlsDFW.PointerStyles.Dot;
-            this.valueSlider1.Size = new System.Drawing.Size(304, 11);
-            this.valueSlider1.Style = CxxLibs_CustomControlsDFW.ValueSliderStyles.GradientLine;
-            this.valueSlider1.TabIndex = 11;
-            this.valueSlider1.Text = "valueSlider1";
-            this.valueSlider1.Value = 85F;
-            this.valueSlider1.ValueBackColor = System.Drawing.Color.LightGray;
-            this.valueSlider1.ValueColor = System.Drawing.Color.DodgerBlue;
-            this.valueSlider1.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
+            this.valueSlider3.Location = new System.Drawing.Point(244, 500);
+            this.valueSlider3.MaxValue = 100F;
+            this.valueSlider3.MinValue = 0F;
+            this.valueSlider3.Name = "valueSlider3";
+            this.valueSlider3.OffsetLines = false;
+            this.valueSlider3.OffsetLinesColor = System.Drawing.Color.DarkGray;
+            this.valueSlider3.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
+            this.valueSlider3.PointerSize = 6;
+            this.valueSlider3.PointerStyle = CxxLibs_CustomControlsDFW.PointerStyles.None;
+            this.valueSlider3.Size = new System.Drawing.Size(428, 10);
+            this.valueSlider3.Style = CxxLibs_CustomControlsDFW.ValueSliderStyles.GradientRounded;
+            this.valueSlider3.TabIndex = 11;
+            this.valueSlider3.Text = "valueSlider1";
+            this.valueSlider3.Value = 0F;
+            this.valueSlider3.ValueBackColor = System.Drawing.Color.LightGray;
+            this.valueSlider3.ValueColor = System.Drawing.Color.DodgerBlue;
+            this.valueSlider3.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // label7
+            // valueCircular2
             // 
-            this.label7.Location = new System.Drawing.Point(19, 66);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(131, 16);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Kiểu chữ và kích thước:";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.valueCircular2.ColorStyle = System.Drawing.Color.DodgerBlue;
+            this.valueCircular2.DigitNumber = 0;
+            this.valueCircular2.FillWithGradient = true;
+            this.valueCircular2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valueCircular2.HandColor = System.Drawing.Color.Black;
+            this.valueCircular2.HandWidth = 1F;
+            this.valueCircular2.LineWidth = 2F;
+            this.valueCircular2.Location = new System.Drawing.Point(850, 393);
+            this.valueCircular2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.valueCircular2.MaxValue = 360F;
+            this.valueCircular2.MinValue = 0F;
+            this.valueCircular2.Name = "valueCircular2";
+            this.valueCircular2.Orthor = true;
+            this.valueCircular2.ShowValue = true;
+            this.valueCircular2.Size = new System.Drawing.Size(151, 128);
+            this.valueCircular2.TabIndex = 14;
+            this.valueCircular2.UnitString = "˚";
+            this.valueCircular2.Value = 120F;
+            this.valueCircular2.ValueLabel = "Xoay hình";
             // 
             // FormConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1012, 583);
+            this.ClientSize = new System.Drawing.Size(1012, 533);
             this.Controls.Add(this.valueCircular2);
             this.Controls.Add(this.valueCircular1);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.valueSlider2);
+            this.Controls.Add(this.valueSlider3);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.ckbWatermarkImage);
             this.Controls.Add(this.ckbString);
             this.Controls.Add(this.lsvFiles);
@@ -864,6 +1076,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).EndInit();
+            this.ctmMenu.ResumeLayout(false);
             this.panelResize.ResumeLayout(false);
             this.panelResize.PerformLayout();
             this.panelWatermarkString.ResumeLayout(false);
@@ -877,6 +1090,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pibWatermarkImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pibOutputPath)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -939,9 +1158,27 @@
         private System.Windows.Forms.RadioButton rdbWIMiddleLeft;
         private CxxLibs_CustomControlsDFW.ValueSlider valueSlider1;
         private CxxLibs_CustomControlsDFW.ColorPanel colorPanel1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cmbOutputFormat;
+        private CxxLibs_CustomControlsDFW.ValueSlider valueSlider3;
+        private CxxLibs_CustomControlsDFW.ValueSlider valueSlider2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pibOutputPath;
+        private System.Windows.Forms.TextBox txbOutputPath;
+        private System.Windows.Forms.TextBox textBox4;
         private CxxLibs_CustomControlsDFW.ValueCircular valueCircular1;
         private CxxLibs_CustomControlsDFW.ValueCircular valueCircular2;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ContextMenuStrip ctmMenu;
+        private System.Windows.Forms.ToolStripMenuItem ctmAddFiles;
+        private System.Windows.Forms.ToolStripMenuItem ctmDeleteSelected;
+        private System.Windows.Forms.ToolStripMenuItem ctmClearList;
+        private System.Windows.Forms.ColumnHeader col1;
+        private System.Windows.Forms.ColumnHeader col2;
+        private System.Windows.Forms.ColumnHeader col3;
     }
 }
 

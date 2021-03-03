@@ -26,11 +26,9 @@ namespace ImageModifier
             g.SmoothingMode          = SmoothingMode.AntiAlias;
             g.InterpolationMode      = InterpolationMode.HighQualityBicubic;
             g.PixelOffsetMode        = PixelOffsetMode.HighQuality;
-            g.SmoothingMode          = SmoothingMode.AntiAlias;
             g.TextRenderingHint      = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             g.CompositingQuality     = CompositingQuality.GammaCorrected;
-            //ImageAttributes attrib = new ImageAttributes();
-            //attrib.SetWrapMode(WrapMode.Clamp);
+
             g.Clear(Color.Transparent);
             g.DrawImage(sourceImage, new Rectangle(0, 0, destW, destH), new Rectangle(0, 0, clone.Width, clone.Height), GraphicsUnit.Pixel);
             clone.Dispose();
