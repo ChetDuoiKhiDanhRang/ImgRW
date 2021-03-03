@@ -42,12 +42,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.txbScale = new System.Windows.Forms.TextBox();
+            this.txbFixHeight = new System.Windows.Forms.TextBox();
+            this.txbFixWidth = new System.Windows.Forms.TextBox();
+            this.radScale = new System.Windows.Forms.RadioButton();
+            this.radFixHeight = new System.Windows.Forms.RadioButton();
+            this.radFixWidth = new System.Windows.Forms.RadioButton();
             this.ckbResize = new System.Windows.Forms.CheckBox();
             this.panelWatermarkString = new System.Windows.Forms.Panel();
             this.colorPanel1 = new CxxLibs_CustomControlsDFW.ColorPanel();
@@ -141,7 +141,6 @@
             // 
             this.lsvFiles.AllowColumnReorder = true;
             this.lsvFiles.AllowDrop = true;
-            this.lsvFiles.BackColor = System.Drawing.Color.White;
             this.lsvFiles.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lsvFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.col1,
@@ -151,29 +150,32 @@
             this.lsvFiles.FullRowSelect = true;
             this.lsvFiles.GridLines = true;
             this.lsvFiles.HideSelection = false;
+            this.lsvFiles.ImeMode = System.Windows.Forms.ImeMode.AlphaFull;
             this.lsvFiles.Location = new System.Drawing.Point(11, 144);
             this.lsvFiles.Margin = new System.Windows.Forms.Padding(4);
             this.lsvFiles.Name = "lsvFiles";
             this.lsvFiles.Size = new System.Drawing.Size(225, 243);
+            this.lsvFiles.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lsvFiles.TabIndex = 1;
             this.lsvFiles.UseCompatibleStateImageBehavior = false;
             this.lsvFiles.View = System.Windows.Forms.View.Details;
             // 
             // col1
             // 
-            this.col1.Text = "Tập tin";
+            this.col1.Text = "[ - ]";
             this.col1.Width = 100;
             // 
             // col2
             // 
-            this.col2.Text = "#";
+            this.col2.DisplayIndex = 2;
+            this.col2.Text = "[↔]";
             this.col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.col2.Width = 40;
             // 
             // col3
             // 
-            this.col3.Text = "Kích thước";
-            this.col3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.col3.DisplayIndex = 1;
+            this.col3.Text = "[ × ]";
             this.col3.Width = 80;
             // 
             // ctmMenu
@@ -183,25 +185,25 @@
             this.ctmDeleteSelected,
             this.ctmClearList});
             this.ctmMenu.Name = "ctmMenu";
-            this.ctmMenu.Size = new System.Drawing.Size(175, 70);
+            this.ctmMenu.Size = new System.Drawing.Size(179, 70);
             this.ctmMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ctmMenu_ItemClicked);
             // 
             // ctmAddFiles
             // 
             this.ctmAddFiles.Name = "ctmAddFiles";
-            this.ctmAddFiles.Size = new System.Drawing.Size(174, 22);
+            this.ctmAddFiles.Size = new System.Drawing.Size(178, 22);
             this.ctmAddFiles.Text = "Thêm file ảnh";
             // 
             // ctmDeleteSelected
             // 
             this.ctmDeleteSelected.Name = "ctmDeleteSelected";
-            this.ctmDeleteSelected.Size = new System.Drawing.Size(174, 22);
+            this.ctmDeleteSelected.Size = new System.Drawing.Size(178, 22);
             this.ctmDeleteSelected.Text = "Loại bỏ file đã chọn";
             // 
             // ctmClearList
             // 
             this.ctmClearList.Name = "ctmClearList";
-            this.ctmClearList.Size = new System.Drawing.Size(174, 22);
+            this.ctmClearList.Size = new System.Drawing.Size(178, 22);
             this.ctmClearList.Text = "Loại bỏ danh sách";
             // 
             // panelResize
@@ -211,12 +213,12 @@
             this.panelResize.Controls.Add(this.label3);
             this.panelResize.Controls.Add(this.label2);
             this.panelResize.Controls.Add(this.label1);
-            this.panelResize.Controls.Add(this.textBox3);
-            this.panelResize.Controls.Add(this.textBox2);
-            this.panelResize.Controls.Add(this.textBox1);
-            this.panelResize.Controls.Add(this.radioButton3);
-            this.panelResize.Controls.Add(this.radioButton2);
-            this.panelResize.Controls.Add(this.radioButton1);
+            this.panelResize.Controls.Add(this.txbScale);
+            this.panelResize.Controls.Add(this.txbFixHeight);
+            this.panelResize.Controls.Add(this.txbFixWidth);
+            this.panelResize.Controls.Add(this.radScale);
+            this.panelResize.Controls.Add(this.radFixHeight);
+            this.panelResize.Controls.Add(this.radFixWidth);
             this.panelResize.Location = new System.Drawing.Point(11, 12);
             this.panelResize.Margin = new System.Windows.Forms.Padding(4);
             this.panelResize.Name = "panelResize";
@@ -251,74 +253,74 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "(pixel)";
             // 
-            // textBox3
+            // txbScale
             // 
-            this.textBox3.Location = new System.Drawing.Point(125, 93);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox3.MaxLength = 4;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(50, 21);
-            this.textBox3.TabIndex = 1;
-            this.textBox3.Text = "50";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txbScale.Location = new System.Drawing.Point(125, 93);
+            this.txbScale.Margin = new System.Windows.Forms.Padding(4);
+            this.txbScale.MaxLength = 4;
+            this.txbScale.Name = "txbScale";
+            this.txbScale.Size = new System.Drawing.Size(50, 21);
+            this.txbScale.TabIndex = 1;
+            this.txbScale.Text = "50";
+            this.txbScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox2
+            // txbFixHeight
             // 
-            this.textBox2.Location = new System.Drawing.Point(125, 66);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.MaxLength = 4;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(50, 21);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "700";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txbFixHeight.Location = new System.Drawing.Point(125, 66);
+            this.txbFixHeight.Margin = new System.Windows.Forms.Padding(4);
+            this.txbFixHeight.MaxLength = 4;
+            this.txbFixHeight.Name = "txbFixHeight";
+            this.txbFixHeight.Size = new System.Drawing.Size(50, 21);
+            this.txbFixHeight.TabIndex = 1;
+            this.txbFixHeight.Text = "700";
+            this.txbFixHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox1
+            // txbFixWidth
             // 
-            this.textBox1.Location = new System.Drawing.Point(125, 38);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.MaxLength = 4;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(50, 21);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "700";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txbFixWidth.Location = new System.Drawing.Point(125, 38);
+            this.txbFixWidth.Margin = new System.Windows.Forms.Padding(4);
+            this.txbFixWidth.MaxLength = 4;
+            this.txbFixWidth.Name = "txbFixWidth";
+            this.txbFixWidth.Size = new System.Drawing.Size(50, 21);
+            this.txbFixWidth.TabIndex = 1;
+            this.txbFixWidth.Text = "700";
+            this.txbFixWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // radioButton3
+            // radScale
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(9, 94);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(4);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(78, 19);
-            this.radioButton3.TabIndex = 0;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Theo tỉ lệ:";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radScale.AutoSize = true;
+            this.radScale.Location = new System.Drawing.Point(9, 94);
+            this.radScale.Margin = new System.Windows.Forms.Padding(4);
+            this.radScale.Name = "radScale";
+            this.radScale.Size = new System.Drawing.Size(78, 19);
+            this.radScale.TabIndex = 0;
+            this.radScale.TabStop = true;
+            this.radScale.Text = "Theo tỉ lệ:";
+            this.radScale.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // radFixHeight
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(9, 66);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(4);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(112, 19);
-            this.radioButton2.TabIndex = 0;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Theo chiều cao:";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radFixHeight.AutoSize = true;
+            this.radFixHeight.Location = new System.Drawing.Point(9, 66);
+            this.radFixHeight.Margin = new System.Windows.Forms.Padding(4);
+            this.radFixHeight.Name = "radFixHeight";
+            this.radFixHeight.Size = new System.Drawing.Size(112, 19);
+            this.radFixHeight.TabIndex = 0;
+            this.radFixHeight.TabStop = true;
+            this.radFixHeight.Text = "Theo chiều cao:";
+            this.radFixHeight.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // radFixWidth
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(9, 38);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(4);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(117, 19);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Theo chiều rộng:";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radFixWidth.AutoSize = true;
+            this.radFixWidth.Location = new System.Drawing.Point(9, 38);
+            this.radFixWidth.Margin = new System.Windows.Forms.Padding(4);
+            this.radFixWidth.Name = "radFixWidth";
+            this.radFixWidth.Size = new System.Drawing.Size(117, 19);
+            this.radFixWidth.TabIndex = 0;
+            this.radFixWidth.TabStop = true;
+            this.radFixWidth.Text = "Theo chiều rộng:";
+            this.radFixWidth.UseVisualStyleBackColor = true;
             // 
             // ckbResize
             // 
@@ -905,7 +907,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(115, 97);
+            this.pictureBox3.Location = new System.Drawing.Point(117, 97);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(94, 30);
             this.pictureBox3.TabIndex = 5;
@@ -968,13 +970,14 @@
             // 
             // valueCircular1
             // 
-            this.valueCircular1.ColorStyle = System.Drawing.Color.DodgerBlue;
+            this.valueCircular1.ColorStyle = System.Drawing.Color.MediumSeaGreen;
             this.valueCircular1.DigitNumber = 0;
             this.valueCircular1.FillWithGradient = true;
             this.valueCircular1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.valueCircular1.HandColor = System.Drawing.Color.Black;
             this.valueCircular1.HandWidth = 1F;
-            this.valueCircular1.LineWidth = 2F;
+            this.valueCircular1.Label = "Xoay chuỗi";
+            this.valueCircular1.LineWidth = 1F;
             this.valueCircular1.Location = new System.Drawing.Point(680, 393);
             this.valueCircular1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.valueCircular1.MaxValue = 360F;
@@ -985,14 +988,13 @@
             this.valueCircular1.Size = new System.Drawing.Size(151, 128);
             this.valueCircular1.TabIndex = 14;
             this.valueCircular1.UnitString = "˚";
-            this.valueCircular1.Value = 120F;
-            this.valueCircular1.ValueLabel = "Xoay chuỗi";
+            this.valueCircular1.Value = 0F;
             // 
             // valueSlider2
             // 
             this.valueSlider2.Location = new System.Drawing.Point(244, 516);
             this.valueSlider2.MaxValue = 100F;
-            this.valueSlider2.MinValue = 1F;
+            this.valueSlider2.MinValue = 0F;
             this.valueSlider2.Name = "valueSlider2";
             this.valueSlider2.OffsetLines = false;
             this.valueSlider2.OffsetLinesColor = System.Drawing.Color.DarkGray;
@@ -1003,7 +1005,7 @@
             this.valueSlider2.Style = CxxLibs_CustomControlsDFW.ValueSliderStyles.GradientRounded;
             this.valueSlider2.TabIndex = 11;
             this.valueSlider2.Text = "valueSlider1";
-            this.valueSlider2.Value = 85F;
+            this.valueSlider2.Value = 0F;
             this.valueSlider2.ValueBackColor = System.Drawing.Color.LightGray;
             this.valueSlider2.ValueColor = System.Drawing.Color.DodgerBlue;
             this.valueSlider2.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
@@ -1030,13 +1032,14 @@
             // 
             // valueCircular2
             // 
-            this.valueCircular2.ColorStyle = System.Drawing.Color.DodgerBlue;
+            this.valueCircular2.ColorStyle = System.Drawing.Color.LightSeaGreen;
             this.valueCircular2.DigitNumber = 0;
             this.valueCircular2.FillWithGradient = true;
             this.valueCircular2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.valueCircular2.HandColor = System.Drawing.Color.Black;
             this.valueCircular2.HandWidth = 1F;
-            this.valueCircular2.LineWidth = 2F;
+            this.valueCircular2.Label = "Xoay hình";
+            this.valueCircular2.LineWidth = 1F;
             this.valueCircular2.Location = new System.Drawing.Point(850, 393);
             this.valueCircular2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.valueCircular2.MaxValue = 360F;
@@ -1047,8 +1050,7 @@
             this.valueCircular2.Size = new System.Drawing.Size(151, 128);
             this.valueCircular2.TabIndex = 14;
             this.valueCircular2.UnitString = "˚";
-            this.valueCircular2.Value = 120F;
-            this.valueCircular2.ValueLabel = "Xoay hình";
+            this.valueCircular2.Value = 30F;
             // 
             // FormConfig
             // 
@@ -1109,13 +1111,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox ckbResize;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.TextBox txbFixHeight;
+        private System.Windows.Forms.TextBox txbFixWidth;
+        private System.Windows.Forms.RadioButton radFixHeight;
+        private System.Windows.Forms.RadioButton radFixWidth;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.TextBox txbScale;
+        private System.Windows.Forms.RadioButton radScale;
         private System.Windows.Forms.Panel panelWatermarkString;
         private System.Windows.Forms.ComboBox cmbFont;
         private System.Windows.Forms.Label label4;
