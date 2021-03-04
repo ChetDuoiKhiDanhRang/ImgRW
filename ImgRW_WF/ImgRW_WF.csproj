@@ -125,5 +125,20 @@
   <ItemGroup>
     <None Include="Resources\WindowsXPBliss_mod1.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\picture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\remove.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -156,6 +156,11 @@ namespace ImgRW_WF
                     lsvFiles.Items.Remove(item);
                 }
             }
+            else if (e.ClickedItem.Name == "ctmClearList")
+            {
+                lsvFiles.Items.Clear();
+                files.Clear();
+            }
         }
 
         string CalculateBytes(long _value)
