@@ -31,8 +31,17 @@ namespace ImgRW_WF
             }
         }
 
-        Dictionary<string, ListViewItem> files;
 
+        public event EventHandler<ResizeModes> ResizeModeChanged;
+        private ResizeModes resizeMode;
+        public ResizeModes ResizeMode
+        {
+            get { return resizeMode; }
+            set { resizeMode = value; ResizeModeChanged?.Invoke(this, resizeMode); }
+        }
+
+
+        Dictionary<string, ListViewItem> files;
         public FormConfig()
         {
             InitializeComponent();
@@ -87,27 +96,53 @@ namespace ImgRW_WF
             }
         }
 
-
+        //Draw Watermark String or not
         private void ckbString_CheckedChanged(object sender, EventArgs e)
         {
             panelWatermarkString.Enabled = ckbString.Checked;
         }
 
+        //Binding location Watermark String
+        private void rdbLocation_CheckedChanged(object sender, EventArgs e)
+        {
+            nudWSLocationX.Enabled = nudWSLocationY.Enabled = rdbWSLocation.Checked;
+        }
+        
+        //Draw Watermark Image or not
+        private void ckbWatermarkImage_CheckedChanged(object sender, EventArgs e)
+        {
+            panelWatermarkImage.Enabled = ckbWatermarkImage.Checked;
+        }
+        
+        
+        //Resize images or not
         private void ckbResize_CheckedChanged(object sender, EventArgs e)
         {
             panelResize.Enabled = ckbResize.Checked;
         }
 
-        private void rdbLocation_CheckedChanged(object sender, EventArgs e)
+        //Set ResizeMode
+        private void radResizeMode_CheckedChanged(object sender, EventArgs e)
         {
-            nudWSLocationX.Enabled = nudWSLocationY.Enabled = rdbWSLocation.Checked;
+            var ob = (RadioButton)sender;
+            if (!ob.Checked) return;
+            if (ob.Name == radFixHeight.Name)
+            {
+                ResizeMode = ResizeModes.FixHeight;
+            }
+            else if (ob.Name == radFixWidth.Name)
+            {
+                ResizeMode = ResizeModes.FixWidth;
+            }
+            else if (ob.Name ==radScale.Name)
+            {
+                ResizeMode = ResizeModes.Scale;
+            }
+
         }
 
-        private void ckbWatermarkImage_CheckedChanged(object sender, EventArgs e)
-        {
-            panelWatermarkImage.Enabled = ckbWatermarkImage.Checked;
-        }
-
+        
+        //add and remove files list
         private void ctmMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             ctmMenu.Visible = false;
@@ -144,6 +179,10 @@ namespace ImgRW_WF
                         {
                             lsvFiles.Items.Add(item.Value);
                         }
+                        for (int i = 0; i < lsvFiles.Columns.Count; i++)
+                        {
+                            lsvFiles.Columns[i].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
+                        }
                     }
                 }
             }
@@ -163,6 +202,7 @@ namespace ImgRW_WF
             }
         }
 
+        //Length of files in friendly
         string CalculateBytes(long _value)
         {
             int count = 0;
@@ -203,5 +243,6 @@ namespace ImgRW_WF
 
             return cal.ToString("0") + rs;
         }
+
     }
 }
