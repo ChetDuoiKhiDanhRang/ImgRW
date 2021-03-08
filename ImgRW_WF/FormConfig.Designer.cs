@@ -65,7 +65,7 @@
             this.nudWSLocationX = new System.Windows.Forms.NumericUpDown();
             this.nudFrameSize = new System.Windows.Forms.NumericUpDown();
             this.ckbFrame = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.ckbUnderline = new System.Windows.Forms.CheckBox();
             this.ckbItalic = new System.Windows.Forms.CheckBox();
             this.ckbBold = new System.Windows.Forms.CheckBox();
             this.cmbFont = new System.Windows.Forms.ComboBox();
@@ -146,6 +146,7 @@
             this.lsvFiles.TabIndex = 1;
             this.lsvFiles.UseCompatibleStateImageBehavior = false;
             this.lsvFiles.View = System.Windows.Forms.View.Details;
+            this.lsvFiles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lsvFiles_KeyDown);
             // 
             // col1
             // 
@@ -287,7 +288,6 @@
             this.radScale.Name = "radScale";
             this.radScale.Size = new System.Drawing.Size(84, 20);
             this.radScale.TabIndex = 0;
-            this.radScale.TabStop = true;
             this.radScale.Text = "Theo tỉ lệ:";
             this.radScale.UseVisualStyleBackColor = true;
             this.radScale.CheckedChanged += new System.EventHandler(this.radResizeMode_CheckedChanged);
@@ -301,7 +301,6 @@
             this.radFixHeight.Name = "radFixHeight";
             this.radFixHeight.Size = new System.Drawing.Size(118, 20);
             this.radFixHeight.TabIndex = 0;
-            this.radFixHeight.TabStop = true;
             this.radFixHeight.Text = "Theo chiều cao:";
             this.radFixHeight.UseVisualStyleBackColor = true;
             this.radFixHeight.CheckedChanged += new System.EventHandler(this.radResizeMode_CheckedChanged);
@@ -309,6 +308,7 @@
             // radFixWidth
             // 
             this.radFixWidth.AutoSize = true;
+            this.radFixWidth.Checked = true;
             this.radFixWidth.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.radFixWidth.Location = new System.Drawing.Point(9, 38);
             this.radFixWidth.Margin = new System.Windows.Forms.Padding(4);
@@ -357,7 +357,7 @@
             this.panelWatermarkString.Controls.Add(this.nudWSLocationX);
             this.panelWatermarkString.Controls.Add(this.nudFrameSize);
             this.panelWatermarkString.Controls.Add(this.ckbFrame);
-            this.panelWatermarkString.Controls.Add(this.checkBox1);
+            this.panelWatermarkString.Controls.Add(this.ckbUnderline);
             this.panelWatermarkString.Controls.Add(this.ckbItalic);
             this.panelWatermarkString.Controls.Add(this.ckbBold);
             this.panelWatermarkString.Controls.Add(this.cmbFont);
@@ -570,17 +570,17 @@
             this.ckbFrame.Text = "Khung viền:";
             this.ckbFrame.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // ckbUnderline
             // 
-            this.checkBox1.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox1.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(232, 62);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(24, 26);
-            this.checkBox1.TabIndex = 5;
-            this.checkBox1.Text = "U";
-            this.checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.ckbUnderline.Appearance = System.Windows.Forms.Appearance.Button;
+            this.ckbUnderline.Font = new System.Drawing.Font("Cambria", 10F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckbUnderline.Location = new System.Drawing.Point(232, 62);
+            this.ckbUnderline.Name = "ckbUnderline";
+            this.ckbUnderline.Size = new System.Drawing.Size(24, 26);
+            this.ckbUnderline.TabIndex = 5;
+            this.ckbUnderline.Text = "U";
+            this.ckbUnderline.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ckbUnderline.UseVisualStyleBackColor = true;
             // 
             // ckbItalic
             // 
@@ -1136,7 +1136,7 @@
         private System.Windows.Forms.ComboBox cmbFont;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txbWString;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox ckbUnderline;
         private System.Windows.Forms.CheckBox ckbItalic;
         private System.Windows.Forms.CheckBox ckbBold;
         private System.Windows.Forms.CheckBox ckbString;

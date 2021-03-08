@@ -44,13 +44,7 @@ namespace ImgRW_WF
             }
         }
 
-        public event EventHandler<Font> WMStringFont_Changed;
-        private Font wMStringFont;
-        public Font WMStringFont
-        {
-            get { return wMStringFont; }
-            set { wMStringFont = value; WMStringFont_Changed?.Invoke(this, wMStringFont); }
-        }
+
 
         public event EventHandler<Color> WMStringColor_Changed;
         private Color wMStringColor;

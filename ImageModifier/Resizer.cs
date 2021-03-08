@@ -33,7 +33,6 @@ namespace ImageModifier
             g.SmoothingMode          = SmoothingMode.AntiAlias;
             g.InterpolationMode      = InterpolationMode.HighQualityBicubic;
             g.PixelOffsetMode        = PixelOffsetMode.HighQuality;
-            g.TextRenderingHint      = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             g.CompositingQuality     = CompositingQuality.GammaCorrected;
 
             g.Clear(Color.Transparent);

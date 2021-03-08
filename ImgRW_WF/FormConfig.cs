@@ -16,7 +16,6 @@ namespace ImgRW_WF
 {
     public partial class FormConfig : Form
     {
-
         public List<string> FontNames { get; set; }
 
         public event EventHandler<string> LanguageChanged;
@@ -40,11 +39,42 @@ namespace ImgRW_WF
             set { resizeMode = value; ResizeModeChanged?.Invoke(this, resizeMode); }
         }
 
+        Watermark WM;
+
+        public event EventHandler<bool> Draw_WS_String_Changed;
+        private bool draw_WS_String;
+        public bool Draw_WS_String
+        {
+            get { return draw_WS_String; }
+            set { draw_WS_String = value; Draw_WS_String_Changed?.Invoke(this, draw_WS_String); }
+        }
+
+        public event EventHandler<Font> WStringFont_Changed;
+        private Font wStringFont;
+        public Font WStringFont
+        {
+            get { return wStringFont; }
+            set { wStringFont = value; WStringFont_Changed?.Invoke(this, wStringFont); }
+        }
+
+
+
+
+        public event EventHandler<bool> Draw_WS_Image_Changed;
+        private bool draw_WS_Image;
+        public bool Draw_WS_Image
+        {
+            get { return draw_WS_Image; }
+            set { draw_WS_Image = value; Draw_WS_Image_Changed?.Invoke(this, draw_WS_String); }
+        }
+
 
         Dictionary<string, ListViewItem> files;
         public FormConfig()
         {
             InitializeComponent();
+            WM = new Watermark();
+            
             files = new Dictionary<string, ListViewItem>();
         }
 
@@ -107,14 +137,14 @@ namespace ImgRW_WF
         {
             nudWSLocationX.Enabled = nudWSLocationY.Enabled = rdbWSLocation.Checked;
         }
-        
+
         //Draw Watermark Image or not
         private void ckbWatermarkImage_CheckedChanged(object sender, EventArgs e)
         {
             panelWatermarkImage.Enabled = ckbWatermarkImage.Checked;
         }
-        
-        
+
+
         //Resize images or not
         private void ckbResize_CheckedChanged(object sender, EventArgs e)
         {
@@ -134,14 +164,14 @@ namespace ImgRW_WF
             {
                 ResizeMode = ResizeModes.FixWidth;
             }
-            else if (ob.Name ==radScale.Name)
+            else if (ob.Name == radScale.Name)
             {
                 ResizeMode = ResizeModes.Scale;
             }
 
         }
 
-        
+
         //add and remove files list
         private void ctmMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -157,12 +187,12 @@ namespace ImgRW_WF
                     {
                         foreach (var item in ofd.FileNames)
                         {
+                            if (files.ContainsKey(item))
+                            {
+                                continue;
+                            }
                             using (FileStream fileStream = new FileStream(item, FileMode.Open))
                             {
-                                if (files.ContainsKey(item))
-                                {
-                                    continue;
-                                }
                                 Image i = Image.FromStream(fileStream);
                                 FileInfo fi = new FileInfo(item);
                                 ListViewItem li = new ListViewItem(fi.Name);
@@ -191,14 +221,14 @@ namespace ImgRW_WF
                 if (lsvFiles.SelectedItems.Count == 0) return;
                 foreach (ListViewItem item in lsvFiles.SelectedItems)
                 {
-                    files.Remove((string)item.Text);
+                    files.Remove((string)item.Tag);
                     lsvFiles.Items.Remove(item);
                 }
             }
             else if (e.ClickedItem.Name == "ctmClearList")
             {
-                lsvFiles.Items.Clear();
                 files.Clear();
+                lsvFiles.Items.Clear();
             }
         }
 
@@ -207,13 +237,13 @@ namespace ImgRW_WF
         {
             int count = 0;
             long cal = _value;
-            string rs = "Bytes";
             while (cal >= 1024)
             {
                 cal /= 1024;
                 count++;
             }
 
+            string rs;
             switch (count)
             {
                 case 0:
@@ -244,5 +274,17 @@ namespace ImgRW_WF
             return cal.ToString("0") + rs;
         }
 
+        private void lsvFiles_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                if (lsvFiles.SelectedItems.Count == 0) return;
+                foreach (ListViewItem item in lsvFiles.SelectedItems)
+                {
+                    files.Remove((string)item.Tag);
+                    lsvFiles.Items.Remove(item);
+                }
+            }
+        }
     }
 }
