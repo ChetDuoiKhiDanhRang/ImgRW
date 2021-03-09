@@ -59,8 +59,45 @@ namespace ImgRW_WF
         {
             InitializeComponent();
             //PreviewLayer = new Bitmap(pibPreview.BackgroundImage.Width, pibPreview.BackgroundImage.Height, PixelFormat.Format32bppArgb);
+            content = txbWString.Text;
+            GenerateFont();
+            stringColor = colorPanel1.CurrentColor;
 
             files = new Dictionary<string, ListViewItem>();
+
+            //Controls events
+            //Resize
+            this.ckbResize.CheckedChanged += new System.EventHandler(this.ckbResize_CheckedChanged);
+            this.radFixHeight.CheckedChanged += new System.EventHandler(this.radResizeMode_CheckedChanged);
+            this.radFixWidth.CheckedChanged += new System.EventHandler(this.radResizeMode_CheckedChanged);
+            this.radScale.CheckedChanged += new System.EventHandler(this.radResizeMode_CheckedChanged);
+
+            //String
+            this.ckbString.CheckedChanged += new System.EventHandler(this.ckbString_CheckedChanged);
+            
+            this.txbWString.TextChanged += new System.EventHandler(this.txbWString_TextChanged);
+
+            this.cmbFont.SelectedIndexChanged += new System.EventHandler(this.cmbFont_SelectedIndexChanged);
+            this.nudFontSize.ValueChanged += new System.EventHandler(this.nudFontSize_ValueChanged);
+            
+            this.rdbWSLocation.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
+            this.rdbTopLeft.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
+            this.rdbTopCenter.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
+            this.rdbTopRight.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
+            this.rdbMiddleLeft.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
+            this.rdbMiddleCenter.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
+            this.rdbMiddleRight.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
+            this.rdbBottomLeft.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
+            this.rdbBottomCenter.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
+            this.rdbBottomRight.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
+
+            this.colorPanel1.CurrentColor_Changed += new System.EventHandler<System.Drawing.Color>(this.colorPanel1_CurrentColor_Changed);
+            
+            this.nudFrameSize.ValueChanged += new System.EventHandler(this.nudFrameSize_ValueChanged);
+            this.ckbFrame.CheckedChanged += new System.EventHandler(this.ckbFrame_CheckedChanged);
+
+
+            this.lsvFiles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lsvFiles_KeyDown);
         }
 
 
@@ -292,37 +329,13 @@ namespace ImgRW_WF
             var bold = (ckbBold.Enabled & ckbBold.Checked) ? 1 : 0;
             var italic = (ckbItalic.Enabled & ckbItalic.Checked) ? 2 : 0;
             var underline = (ckbUnderline.Enabled & ckbUnderline.Checked) ? 4 : 0;
-
-            wsFont = new Font((string)cmbFont.SelectedItem, (float)nudFontSize.Value);
             wsFontStyle = (FontStyle)(bold | italic | underline);
+
+            wsFont = new Font((string)cmbFont.SelectedItem, (float)nudFontSize.Value, wsFontStyle);
         }
 
-        private void pibWatermarkImage_BackgroundImageChanged(object sender, EventArgs e)
-        {
 
-        }
 
-        private void pibWatermarkImage_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog()
-            {
-                Filter = "Image files|*.png;*.bmp;*.jpeg;*.jpg;*.gif;*.tiff",
-                Multiselect = false,
-                RestoreDirectory = true
-            };
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                using (FileStream fs = new FileStream(ofd.FileName, FileMode.Open))
-                {
-                    Image background = Image.FromStream(fs);
-                    pibWatermarkImage.BackgroundImage?.Dispose();
-                    pibWatermarkImage.BackgroundImage = background;
-                }
-            }
-            ofd.Dispose();
-        }
-
-        //events needs to draw preview
         string content;
         private void txbWString_TextChanged(object sender, EventArgs e)
         {
@@ -351,7 +364,6 @@ namespace ImgRW_WF
 
 
         
-        LocationModes StringLocationMode;
         private void DrawStringWatermark(Bitmap previewLayer)
         {
             if (previewLayer == null) return;
@@ -405,6 +417,7 @@ namespace ImgRW_WF
             }
             graph.TranslateTransform(location.X, location.Y);
             graph.RotateTransform(0 - stringRotateAngle);
+            //graph.FillRectangle(Brushes.Black, 0, 0, 256, 256); //test
 
             using (Brush b = new SolidBrush(stringColor))
             {
@@ -422,16 +435,9 @@ namespace ImgRW_WF
             graph.Dispose();
         }
 
-        private void pibPreview_BackgroundImageChanged(object sender, EventArgs e)
-        {
-            if (pibPreview.BackgroundImage == null) return;
-            PreviewLayer?.Dispose();
-            PreviewLayer = new Bitmap(pibPreview.BackgroundImage.Width, pibPreview.BackgroundImage.Height, PixelFormat.Format32bppArgb);
-            DrawWatermarkLayer(PreviewLayer);
 
-            pibPreview.Image = PreviewLayer;
-        }
 
+        //rectangle around string
         bool drawStringFrame;
         private void ckbFrame_CheckedChanged(object sender, EventArgs e)
         {
@@ -447,10 +453,11 @@ namespace ImgRW_WF
         }
 
         //String watermark locations
+        LocationModes StringLocationMode;
         private void rdbStingLocationModes_CheckedChanged(object sender, EventArgs e)
         {
-
             var r = (RadioButton)sender;
+            if (r.Checked == false) return;
             if (r.Name == rdbWSLocation.Name)
             {
                 nudWSLocationX.Enabled = nudWSLocationY.Enabled = rdbWSLocation.Checked;
@@ -492,22 +499,62 @@ namespace ImgRW_WF
             {
                 StringLocationMode = LocationModes.BottomRight;
             }
+            RedrawPreview();
+        }
+
+        void RedrawPreview()
+        {
             PreviewLayer?.Dispose();
             PreviewLayer = new Bitmap(pibPreview.BackgroundImage.Width, pibPreview.BackgroundImage.Height, PixelFormat.Format32bppArgb);
             DrawWatermarkLayer(PreviewLayer);
             pibPreview.Image = PreviewLayer;
         }
 
+        //String watermark rotation angle
         float stringRotateAngle;
         private void valueCircular1_ValueChanged(object sender, float e)
         {
             stringRotateAngle = valueCircular1.Value;
         }
 
-        Color stringColor;
+        //String watermark color
+        Color stringColor = Color.Cyan;
         private void colorPanel1_CurrentColor_Changed(object sender, Color e)
         {
             stringColor = colorPanel1.CurrentColor;
+            RedrawPreview();
+        }
+
+
+        private void pibPreview_BackgroundImageChanged(object sender, EventArgs e)
+        {
+            if (pibPreview.BackgroundImage == null) return;
+            RedrawPreview();
+        }
+
+        private void pibWatermarkImage_BackgroundImageChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pibWatermarkImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog()
+            {
+                Filter = "Image files|*.png;*.bmp;*.jpeg;*.jpg;*.gif;*.tiff",
+                Multiselect = false,
+                RestoreDirectory = true
+            };
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream fs = new FileStream(ofd.FileName, FileMode.Open))
+                {
+                    Image background = Image.FromStream(fs);
+                    pibWatermarkImage.BackgroundImage?.Dispose();
+                    pibWatermarkImage.BackgroundImage = background;
+                }
+            }
+            ofd.Dispose();
         }
     }
 }

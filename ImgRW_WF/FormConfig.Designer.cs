@@ -146,7 +146,6 @@
             this.lsvFiles.TabIndex = 1;
             this.lsvFiles.UseCompatibleStateImageBehavior = false;
             this.lsvFiles.View = System.Windows.Forms.View.Details;
-            this.lsvFiles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lsvFiles_KeyDown);
             // 
             // col1
             // 
@@ -277,7 +276,6 @@
             this.txbFixWidth.Size = new System.Drawing.Size(50, 21);
             this.txbFixWidth.TabIndex = 1;
             this.txbFixWidth.Text = "700";
-            this.txbFixWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // radScale
             // 
@@ -290,7 +288,6 @@
             this.radScale.TabIndex = 0;
             this.radScale.Text = "Theo tỉ lệ:";
             this.radScale.UseVisualStyleBackColor = true;
-            this.radScale.CheckedChanged += new System.EventHandler(this.radResizeMode_CheckedChanged);
             // 
             // radFixHeight
             // 
@@ -303,7 +300,6 @@
             this.radFixHeight.TabIndex = 0;
             this.radFixHeight.Text = "Theo chiều cao:";
             this.radFixHeight.UseVisualStyleBackColor = true;
-            this.radFixHeight.CheckedChanged += new System.EventHandler(this.radResizeMode_CheckedChanged);
             // 
             // radFixWidth
             // 
@@ -318,7 +314,6 @@
             this.radFixWidth.TabStop = true;
             this.radFixWidth.Text = "Theo chiều rộng:";
             this.radFixWidth.UseVisualStyleBackColor = true;
-            this.radFixWidth.CheckedChanged += new System.EventHandler(this.radResizeMode_CheckedChanged);
             // 
             // ckbResize
             // 
@@ -334,7 +329,6 @@
             this.ckbResize.TabIndex = 3;
             this.ckbResize.Text = "Đặt lại kích thước:";
             this.ckbResize.UseVisualStyleBackColor = false;
-            this.ckbResize.CheckedChanged += new System.EventHandler(this.ckbResize_CheckedChanged);
             // 
             // panelWatermarkString
             // 
@@ -386,7 +380,6 @@
             this.colorPanel1.RefControl = null;
             this.colorPanel1.Size = new System.Drawing.Size(152, 131);
             this.colorPanel1.TabIndex = 6;
-            this.colorPanel1.CurrentColor_Changed += new System.EventHandler<System.Drawing.Color>(this.colorPanel1_CurrentColor_Changed);
             // 
             // rdbWSLocation
             // 
@@ -398,7 +391,6 @@
             this.rdbWSLocation.TabStop = true;
             this.rdbWSLocation.Text = "X:";
             this.rdbWSLocation.UseVisualStyleBackColor = true;
-            this.rdbWSLocation.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
             // 
             // rdbBottomCenter
             // 
@@ -409,7 +401,6 @@
             this.rdbBottomCenter.TabIndex = 10;
             this.rdbBottomCenter.TabStop = true;
             this.rdbBottomCenter.UseVisualStyleBackColor = true;
-            this.rdbBottomCenter.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
             // 
             // rdbBottomRight
             // 
@@ -420,7 +411,6 @@
             this.rdbBottomRight.TabIndex = 10;
             this.rdbBottomRight.TabStop = true;
             this.rdbBottomRight.UseVisualStyleBackColor = true;
-            this.rdbBottomRight.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
             // 
             // rdbMiddleCenter
             // 
@@ -431,7 +421,6 @@
             this.rdbMiddleCenter.TabIndex = 10;
             this.rdbMiddleCenter.TabStop = true;
             this.rdbMiddleCenter.UseVisualStyleBackColor = true;
-            this.rdbMiddleCenter.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
             // 
             // rdbMiddleRight
             // 
@@ -442,7 +431,6 @@
             this.rdbMiddleRight.TabIndex = 10;
             this.rdbMiddleRight.TabStop = true;
             this.rdbMiddleRight.UseVisualStyleBackColor = true;
-            this.rdbMiddleRight.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
             // 
             // rdbBottomLeft
             // 
@@ -453,7 +441,6 @@
             this.rdbBottomLeft.TabIndex = 10;
             this.rdbBottomLeft.TabStop = true;
             this.rdbBottomLeft.UseVisualStyleBackColor = true;
-            this.rdbBottomLeft.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
             // 
             // rdbTopCenter
             // 
@@ -464,7 +451,6 @@
             this.rdbTopCenter.TabIndex = 10;
             this.rdbTopCenter.TabStop = true;
             this.rdbTopCenter.UseVisualStyleBackColor = true;
-            this.rdbTopCenter.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
             // 
             // rdbMiddleLeft
             // 
@@ -475,7 +461,6 @@
             this.rdbMiddleLeft.TabIndex = 10;
             this.rdbMiddleLeft.TabStop = true;
             this.rdbMiddleLeft.UseVisualStyleBackColor = true;
-            this.rdbMiddleLeft.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
             // 
             // rdbTopRight
             // 
@@ -486,7 +471,6 @@
             this.rdbTopRight.TabIndex = 10;
             this.rdbTopRight.TabStop = true;
             this.rdbTopRight.UseVisualStyleBackColor = true;
-            this.rdbTopRight.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
             // 
             // rdbTopLeft
             // 
@@ -497,7 +481,6 @@
             this.rdbTopLeft.TabIndex = 10;
             this.rdbTopLeft.TabStop = true;
             this.rdbTopLeft.UseVisualStyleBackColor = true;
-            this.rdbTopLeft.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
             // 
             // nudFontSize
             // 
@@ -522,7 +505,6 @@
             0,
             0,
             0});
-            this.nudFontSize.ValueChanged += new System.EventHandler(this.nudFontSize_ValueChanged);
             // 
             // nudWSLocationY
             // 
@@ -570,7 +552,6 @@
             0,
             0,
             0});
-            this.nudFrameSize.ValueChanged += new System.EventHandler(this.nudFrameSize_ValueChanged);
             // 
             // ckbFrame
             // 
@@ -581,7 +562,6 @@
             this.ckbFrame.TabIndex = 7;
             this.ckbFrame.Text = "Khung viền:";
             this.ckbFrame.UseVisualStyleBackColor = true;
-            this.ckbFrame.CheckedChanged += new System.EventHandler(this.ckbFrame_CheckedChanged);
             // 
             // ckbUnderline
             // 
@@ -628,7 +608,6 @@
             this.cmbFont.Name = "cmbFont";
             this.cmbFont.Size = new System.Drawing.Size(148, 23);
             this.cmbFont.TabIndex = 3;
-            this.cmbFont.SelectedIndexChanged += new System.EventHandler(this.cmbFont_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -665,7 +644,6 @@
             this.txbWString.TabIndex = 1;
             this.txbWString.Text = "Whatever";
             this.txbWString.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txbWString.TextChanged += new System.EventHandler(this.txbWString_TextChanged);
             // 
             // ckbString
             // 
@@ -681,7 +659,6 @@
             this.ckbString.TabIndex = 4;
             this.ckbString.Text = "Đặt dấu bằng chuỗi:";
             this.ckbString.UseVisualStyleBackColor = false;
-            this.ckbString.CheckedChanged += new System.EventHandler(this.ckbString_CheckedChanged);
             // 
             // panelWatermarkImage
             // 
