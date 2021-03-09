@@ -44,8 +44,6 @@ namespace ImgRW_WF
             }
         }
 
-
-
         public event EventHandler<Color> WMStringColor_Changed;
         private Color wMStringColor;
         public Color WMStringColor
