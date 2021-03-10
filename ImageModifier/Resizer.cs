@@ -4,13 +4,6 @@ using System.Drawing.Drawing2D;
 
 namespace ImageModifier
 {
-    public enum ResizeModes
-    {
-        FixWidth,
-        FixHeight,
-        Scale
-    }
-
     public class Resizer
     {
         public static double CalculateRatio(Image sourceImage)
