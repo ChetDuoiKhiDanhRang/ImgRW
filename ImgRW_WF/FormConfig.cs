@@ -31,21 +31,20 @@ namespace ImgRW_WF
             }
         }
 
-
         Dictionary<string, ListViewItem> files;
-
 
         public FormConfig()
         {
             InitializeComponent();
             //PreviewLayer = new Bitmap(pibPreview.BackgroundImage.Width, pibPreview.BackgroundImage.Height, PixelFormat.Format32bppArgb);
             files = new Dictionary<string, ListViewItem>();
+            PreviewLayer = new Bitmap(pibPreview.BackgroundImage.Width, pibPreview.BackgroundImage.Height, PixelFormat.Format32bppArgb);
             //LoadSettings();
 
 
 
 
-            InitialEvents();
+            //InitialEvents();
         }
 
         private void InitialEvents()
@@ -64,6 +63,8 @@ namespace ImgRW_WF
             ckbBold.CheckedChanged += ckbFontStyle_Changed;
             ckbItalic.CheckedChanged += ckbFontStyle_Changed;
             ckbUnderline.CheckedChanged += ckbFontStyle_Changed;
+
+            vccString.ValueChanged += VccString_ValueChanged;
 
             this.cmbFont.SelectedIndexChanged += new System.EventHandler(this.cmbFont_SelectedIndexChanged);
             this.nudFontSize.ValueChanged += new System.EventHandler(this.nudFontSize_ValueChanged);
@@ -108,8 +109,11 @@ namespace ImgRW_WF
             nudWIX.ValueChanged += nudWILocation_ValueChanged;
         }
 
+
+
         private void LoadSettings()
         {
+
             var x = Properties.Settings.Default;
             //Resize
             ckbResize.Checked = x.resize;
@@ -157,7 +161,9 @@ namespace ImgRW_WF
             GenerateFont();
 
             ckbFrame.Checked = x.frameString;
+            drawStringFrame = x.frameString;
             nudFrameLineWidth.Value = x.frameLineWidth;
+            frameLineWidth = (float)x.frameLineWidth;
 
             nudWSLocationX.Value = x.stringLocationX;
             stringLocationX = (float)x.stringLocationX;
@@ -295,7 +301,6 @@ namespace ImgRW_WF
             InitialEvents();
         }
 
-
         //add and remove files list
         private void ctmMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -369,11 +374,9 @@ namespace ImgRW_WF
             }
         }
 
-
-
         #region FIELDS===============================================================================================
         Bitmap PreviewLayer;
-        
+
         //Resize images or not
         bool resizeImages;
         float resizeValue;
@@ -402,6 +405,7 @@ namespace ImgRW_WF
         float imageOptical;
         string imagePath;
         bool drawImage;
+        Bitmap imageWatermark;
         #endregion
 
         #region WATERMARK STRING EVENTS============================================================================================
@@ -448,7 +452,6 @@ namespace ImgRW_WF
         }
 
         //Generate font and style from UI controls
-
         private void GenerateFont()
         {
             var bold = (ckbBold.Enabled & ckbBold.Checked) ? 1 : 0;
@@ -531,7 +534,7 @@ namespace ImgRW_WF
         }
 
         //String watermark rotation angle
-        private void valueCircular1_ValueChanged(object sender, float e)
+        private void VccString_ValueChanged(object sender, float e)
         {
             stringRotateAngle = vccString.Value;
             RedrawPreview();
@@ -555,9 +558,11 @@ namespace ImgRW_WF
             RedrawPreview();
         }
 
+        //change image waterimage
         private void pibWatermarkImage_BackgroundImageChanged(object sender, EventArgs e)
         {
             if (pibWatermarkImage.BackgroundImage == null) return;
+            imageWatermark = pibWatermarkImage.BackgroundImage.Clone() as Bitmap;
             RedrawPreview();
         }
 
@@ -679,16 +684,12 @@ namespace ImgRW_WF
             }
 
         }
-
-
         #endregion
 
         #region DRAW AND OTHERS METHODS ===================================================================================
-        
+
         private void pibPreview_BackgroundImageChanged(object sender, EventArgs e)
         {
-            if (pibPreview.BackgroundImage == null) return;
-            if (!ckbWatermarkImage.Checked) return;
 
             RedrawPreview();
         }
@@ -703,73 +704,71 @@ namespace ImgRW_WF
 
         private void DrawWatermarkLayer(Bitmap previewLayer)
         {
+            if (drawImage && pibWatermarkImage.BackgroundImage != null)
+            {
+                DrawImage(previewLayer, imageWatermark);
+            }
             if (drawString)
             {
                 DrawString(previewLayer);
-            }
-            if (drawImage && pibWatermarkImage.BackgroundImage != null)
-            {
-                Bitmap imageWatermark = pibWatermarkImage.BackgroundImage.Clone() as Bitmap;
-                DrawImage(previewLayer, imageWatermark);
-                imageWatermark.Dispose();
             }
         }
 
         private void DrawImage(Bitmap previewLayer, Bitmap imgWatermark)
         {
-            Graphics graph = Graphics.FromImage(previewLayer);
-            graph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            graph.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            graph.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            graph.TextRenderingHint = TextRenderingHint.AntiAlias;
-            var size = imgWatermark.Size;
-            PointF location;
-            switch (imageLocationMode)
+            using (Graphics graph = Graphics.FromImage(previewLayer))
             {
-                case LocationModes.Custom:
-                    location = new PointF(imageLocationX, imageLocationY);
-                    break;
-                case LocationModes.TopLeft:
-                    location = new PointF(0, 0);
-                    break;
-                case LocationModes.TopCenter:
-                    location = new PointF((previewLayer.Width - size.Width) / 2, 0);
-                    break;
-                case LocationModes.TopRight:
-                    location = new PointF((previewLayer.Width - size.Width), 0);
-                    break;
-                case LocationModes.MiddleLeft:
-                    location = new PointF(0, (previewLayer.Height - size.Height) / 2);
-                    break;
-                case LocationModes.MiddleCenter:
-                    location = new PointF((previewLayer.Width - size.Width) / 2, (previewLayer.Height - size.Height) / 2);
-                    break;
-                case LocationModes.MiddleRight:
-                    location = new PointF((previewLayer.Width - size.Width), (previewLayer.Height - size.Height) / 2);
-                    break;
-                case LocationModes.BottomLeft:
-                    location = new PointF(0, (previewLayer.Height - size.Height));
-                    break;
-                case LocationModes.BottomCenter:
-                    location = new PointF((previewLayer.Width - size.Width) / 2, (previewLayer.Height - size.Height));
-                    break;
-                case LocationModes.BottomRight:
-                    location = new PointF((previewLayer.Width - size.Width), (previewLayer.Height - size.Height));
-                    break;
-                default:
-                    location = new PointF(0, 0);
-                    break;
-            }
+                //graph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
+                //graph.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                //graph.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+                //graph.TextRenderingHint = TextRenderingHint.AntiAlias;
+                var size = imgWatermark.Size;
+                PointF location;
+                switch (imageLocationMode)
+                {
+                    case LocationModes.Custom:
+                        location = new PointF(imageLocationX, imageLocationY);
+                        break;
+                    case LocationModes.TopLeft:
+                        location = new PointF(0, 0);
+                        break;
+                    case LocationModes.TopCenter:
+                        location = new PointF((previewLayer.Width - size.Width) / 2, 0);
+                        break;
+                    case LocationModes.TopRight:
+                        location = new PointF((previewLayer.Width - size.Width), 0);
+                        break;
+                    case LocationModes.MiddleLeft:
+                        location = new PointF(0, (previewLayer.Height - size.Height) / 2);
+                        break;
+                    case LocationModes.MiddleCenter:
+                        location = new PointF((previewLayer.Width - size.Width) / 2, (previewLayer.Height - size.Height) / 2);
+                        break;
+                    case LocationModes.MiddleRight:
+                        location = new PointF((previewLayer.Width - size.Width), (previewLayer.Height - size.Height) / 2);
+                        break;
+                    case LocationModes.BottomLeft:
+                        location = new PointF(0, (previewLayer.Height - size.Height));
+                        break;
+                    case LocationModes.BottomCenter:
+                        location = new PointF((previewLayer.Width - size.Width) / 2, (previewLayer.Height - size.Height));
+                        break;
+                    case LocationModes.BottomRight:
+                        location = new PointF((previewLayer.Width - size.Width), (previewLayer.Height - size.Height));
+                        break;
+                    default:
+                        location = new PointF(0, 0);
+                        break;
+                }
 
-            using (ImageAttributes ia = new ImageAttributes())
-            {
-                ia.SetColorMatrix(new ColorMatrix() { Matrix33 = imageOptical });
-                graph.TranslateTransform(location.X, location.Y);
-                graph.RotateTransform(0 - imageRotateAngle);
-                graph.DrawImage(imgWatermark, new Rectangle(0, 0, size.Width, size.Height),
-                    0, 0, size.Width, size.Height, GraphicsUnit.Pixel, ia);
+                using (ImageAttributes ia = new ImageAttributes())
+                {
+                    ia.SetColorMatrix(new ColorMatrix() { Matrix33 = imageOptical });
+                    graph.TranslateTransform(location.X, location.Y);
+                    graph.RotateTransform(0-imageRotateAngle);
+                    graph.DrawImage(imgWatermark, new Rectangle(0, 0, size.Width, size.Height), 0, 0, size.Width, size.Height, GraphicsUnit.Pixel, ia);
+                }
             }
-            graph.Dispose();
         }
 
         private void DrawString(Bitmap previewLayer)

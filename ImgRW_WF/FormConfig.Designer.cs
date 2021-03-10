@@ -1030,7 +1030,6 @@
             this.vccString.TabIndex = 14;
             this.vccString.UnitString = "˚";
             this.vccString.Value = 0F;
-            this.vccString.ValueChanged += new System.EventHandler<float>(this.valueCircular1_ValueChanged);
             // 
             // valueSlider2
             // 
