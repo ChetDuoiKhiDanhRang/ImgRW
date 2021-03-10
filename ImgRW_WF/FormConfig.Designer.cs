@@ -63,7 +63,7 @@
             this.nudFontSize = new System.Windows.Forms.NumericUpDown();
             this.nudWSLocationY = new System.Windows.Forms.NumericUpDown();
             this.nudWSLocationX = new System.Windows.Forms.NumericUpDown();
-            this.nudFrameSize = new System.Windows.Forms.NumericUpDown();
+            this.nudFrameLineWidth = new System.Windows.Forms.NumericUpDown();
             this.ckbFrame = new System.Windows.Forms.CheckBox();
             this.ckbUnderline = new System.Windows.Forms.CheckBox();
             this.ckbItalic = new System.Windows.Forms.CheckBox();
@@ -75,15 +75,15 @@
             this.txbWString = new System.Windows.Forms.TextBox();
             this.ckbString = new System.Windows.Forms.CheckBox();
             this.panelWatermarkImage = new System.Windows.Forms.Panel();
-            this.valueSlider1 = new CxxLibs_CustomControlsDFW.ValueSlider();
+            this.vldImageOptical = new CxxLibs_CustomControlsDFW.ValueSlider();
             this.pibWatermarkImage = new System.Windows.Forms.PictureBox();
             this.rdbWILocation = new System.Windows.Forms.RadioButton();
             this.rdbWIBottomCenter = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
             this.rdbWIBottomRight = new System.Windows.Forms.RadioButton();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nudWIY = new System.Windows.Forms.NumericUpDown();
             this.rdbWIMiddleCenter = new System.Windows.Forms.RadioButton();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.nudWIX = new System.Windows.Forms.NumericUpDown();
             this.rdbWIMiddleRight = new System.Windows.Forms.RadioButton();
             this.rdbWITopLeft = new System.Windows.Forms.RadioButton();
             this.rdbWIBottomLeft = new System.Windows.Forms.RadioButton();
@@ -100,22 +100,22 @@
             this.label9 = new System.Windows.Forms.Label();
             this.cmbOutputFormat = new System.Windows.Forms.ComboBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.valueCircular1 = new CxxLibs_CustomControlsDFW.ValueCircular();
+            this.pibPreview = new System.Windows.Forms.PictureBox();
+            this.vccImage = new CxxLibs_CustomControlsDFW.ValueCircular();
+            this.vccString = new CxxLibs_CustomControlsDFW.ValueCircular();
             this.valueSlider2 = new CxxLibs_CustomControlsDFW.ValueSlider();
             this.valueSlider3 = new CxxLibs_CustomControlsDFW.ValueSlider();
-            this.valueCircular2 = new CxxLibs_CustomControlsDFW.ValueCircular();
-            this.pibPreview = new System.Windows.Forms.PictureBox();
             this.ctmMenu.SuspendLayout();
             this.panelResize.SuspendLayout();
             this.panelWatermarkString.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudFontSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWSLocationY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWSLocationX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudFrameSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFrameLineWidth)).BeginInit();
             this.panelWatermarkImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pibWatermarkImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWIY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWIX)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -276,6 +276,7 @@
             this.txbFixWidth.Size = new System.Drawing.Size(50, 21);
             this.txbFixWidth.TabIndex = 1;
             this.txbFixWidth.Text = "700";
+            this.txbFixWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // radScale
             // 
@@ -349,7 +350,7 @@
             this.panelWatermarkString.Controls.Add(this.nudFontSize);
             this.panelWatermarkString.Controls.Add(this.nudWSLocationY);
             this.panelWatermarkString.Controls.Add(this.nudWSLocationX);
-            this.panelWatermarkString.Controls.Add(this.nudFrameSize);
+            this.panelWatermarkString.Controls.Add(this.nudFrameLineWidth);
             this.panelWatermarkString.Controls.Add(this.ckbFrame);
             this.panelWatermarkString.Controls.Add(this.ckbUnderline);
             this.panelWatermarkString.Controls.Add(this.ckbItalic);
@@ -369,8 +370,8 @@
             // colorPanel1
             // 
             this.colorPanel1.AutoSize = true;
-            this.colorPanel1.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
-            this.colorPanel1.CurrentColorHexString = "#FFAA00";
+            this.colorPanel1.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
+            this.colorPanel1.CurrentColorHexString = "#88FFAA00";
             this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
             this.colorPanel1.Location = new System.Drawing.Point(6, 85);
             this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
@@ -510,6 +511,11 @@
             // 
             this.nudWSLocationY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nudWSLocationY.Location = new System.Drawing.Point(268, 131);
+            this.nudWSLocationY.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             this.nudWSLocationY.Name = "nudWSLocationY";
             this.nudWSLocationY.Size = new System.Drawing.Size(42, 21);
             this.nudWSLocationY.TabIndex = 8;
@@ -524,6 +530,11 @@
             // 
             this.nudWSLocationX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nudWSLocationX.Location = new System.Drawing.Point(202, 131);
+            this.nudWSLocationX.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             this.nudWSLocationX.Name = "nudWSLocationX";
             this.nudWSLocationX.Size = new System.Drawing.Size(42, 21);
             this.nudWSLocationX.TabIndex = 8;
@@ -534,20 +545,20 @@
             0,
             0});
             // 
-            // nudFrameSize
+            // nudFrameLineWidth
             // 
-            this.nudFrameSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nudFrameSize.Location = new System.Drawing.Point(268, 95);
-            this.nudFrameSize.Minimum = new decimal(new int[] {
+            this.nudFrameLineWidth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nudFrameLineWidth.Location = new System.Drawing.Point(268, 95);
+            this.nudFrameLineWidth.Minimum = new decimal(new int[] {
             3,
             0,
             0,
             0});
-            this.nudFrameSize.Name = "nudFrameSize";
-            this.nudFrameSize.Size = new System.Drawing.Size(42, 21);
-            this.nudFrameSize.TabIndex = 8;
-            this.nudFrameSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.nudFrameSize.Value = new decimal(new int[] {
+            this.nudFrameLineWidth.Name = "nudFrameLineWidth";
+            this.nudFrameLineWidth.Size = new System.Drawing.Size(42, 21);
+            this.nudFrameLineWidth.TabIndex = 8;
+            this.nudFrameLineWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nudFrameLineWidth.Value = new decimal(new int[] {
             3,
             0,
             0,
@@ -665,15 +676,15 @@
             this.panelWatermarkImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelWatermarkImage.BackColor = System.Drawing.SystemColors.Control;
             this.panelWatermarkImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelWatermarkImage.Controls.Add(this.valueSlider1);
+            this.panelWatermarkImage.Controls.Add(this.vldImageOptical);
             this.panelWatermarkImage.Controls.Add(this.pibWatermarkImage);
             this.panelWatermarkImage.Controls.Add(this.rdbWILocation);
             this.panelWatermarkImage.Controls.Add(this.rdbWIBottomCenter);
             this.panelWatermarkImage.Controls.Add(this.label5);
             this.panelWatermarkImage.Controls.Add(this.rdbWIBottomRight);
-            this.panelWatermarkImage.Controls.Add(this.numericUpDown1);
+            this.panelWatermarkImage.Controls.Add(this.nudWIY);
             this.panelWatermarkImage.Controls.Add(this.rdbWIMiddleCenter);
-            this.panelWatermarkImage.Controls.Add(this.numericUpDown2);
+            this.panelWatermarkImage.Controls.Add(this.nudWIX);
             this.panelWatermarkImage.Controls.Add(this.rdbWIMiddleRight);
             this.panelWatermarkImage.Controls.Add(this.rdbWITopLeft);
             this.panelWatermarkImage.Controls.Add(this.rdbWIBottomLeft);
@@ -685,25 +696,25 @@
             this.panelWatermarkImage.Size = new System.Drawing.Size(321, 151);
             this.panelWatermarkImage.TabIndex = 5;
             // 
-            // valueSlider1
+            // vldImageOptical
             // 
-            this.valueSlider1.Location = new System.Drawing.Point(5, 124);
-            this.valueSlider1.MaxValue = 100F;
-            this.valueSlider1.MinValue = 1F;
-            this.valueSlider1.Name = "valueSlider1";
-            this.valueSlider1.OffsetLines = false;
-            this.valueSlider1.OffsetLinesColor = System.Drawing.Color.DarkGray;
-            this.valueSlider1.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
-            this.valueSlider1.PointerSize = 6;
-            this.valueSlider1.PointerStyle = CxxLibs_CustomControlsDFW.PointerStyles.Dot;
-            this.valueSlider1.Size = new System.Drawing.Size(304, 11);
-            this.valueSlider1.Style = CxxLibs_CustomControlsDFW.ValueSliderStyles.GradientLine;
-            this.valueSlider1.TabIndex = 11;
-            this.valueSlider1.Text = "valueSlider1";
-            this.valueSlider1.Value = 85F;
-            this.valueSlider1.ValueBackColor = System.Drawing.Color.LightGray;
-            this.valueSlider1.ValueColor = System.Drawing.Color.DodgerBlue;
-            this.valueSlider1.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
+            this.vldImageOptical.Location = new System.Drawing.Point(5, 124);
+            this.vldImageOptical.MaxValue = 1F;
+            this.vldImageOptical.MinValue = 0F;
+            this.vldImageOptical.Name = "vldImageOptical";
+            this.vldImageOptical.OffsetLines = false;
+            this.vldImageOptical.OffsetLinesColor = System.Drawing.Color.DarkGray;
+            this.vldImageOptical.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
+            this.vldImageOptical.PointerSize = 6;
+            this.vldImageOptical.PointerStyle = CxxLibs_CustomControlsDFW.PointerStyles.Dot;
+            this.vldImageOptical.Size = new System.Drawing.Size(304, 11);
+            this.vldImageOptical.Style = CxxLibs_CustomControlsDFW.ValueSliderStyles.GradientLine;
+            this.vldImageOptical.TabIndex = 11;
+            this.vldImageOptical.Text = "valueSlider1";
+            this.vldImageOptical.Value = 0.8F;
+            this.vldImageOptical.ValueBackColor = System.Drawing.Color.LightGray;
+            this.vldImageOptical.ValueColor = System.Drawing.Color.DodgerBlue;
+            this.vldImageOptical.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // pibWatermarkImage
             // 
@@ -759,15 +770,15 @@
             this.rdbWIBottomRight.TabStop = true;
             this.rdbWIBottomRight.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown1
+            // nudWIY
             // 
-            this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numericUpDown1.Location = new System.Drawing.Point(108, 33);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(42, 21);
-            this.numericUpDown1.TabIndex = 8;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.nudWIY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nudWIY.Location = new System.Drawing.Point(108, 33);
+            this.nudWIY.Name = "nudWIY";
+            this.nudWIY.Size = new System.Drawing.Size(42, 21);
+            this.nudWIY.TabIndex = 8;
+            this.nudWIY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nudWIY.Value = new decimal(new int[] {
             50,
             0,
             0,
@@ -783,15 +794,15 @@
             this.rdbWIMiddleCenter.TabStop = true;
             this.rdbWIMiddleCenter.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown2
+            // nudWIX
             // 
-            this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numericUpDown2.Location = new System.Drawing.Point(43, 33);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(42, 21);
-            this.numericUpDown2.TabIndex = 8;
-            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.nudWIX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nudWIX.Location = new System.Drawing.Point(43, 33);
+            this.nudWIX.Name = "nudWIX";
+            this.nudWIX.Size = new System.Drawing.Size(42, 21);
+            this.nudWIX.TabIndex = 8;
+            this.nudWIX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nudWIX.Value = new decimal(new int[] {
             50,
             0,
             0,
@@ -871,7 +882,6 @@
             this.ckbWatermarkImage.TabIndex = 4;
             this.ckbWatermarkImage.Text = "Đặt dấu bằng ảnh:";
             this.ckbWatermarkImage.UseVisualStyleBackColor = false;
-            this.ckbWatermarkImage.CheckedChanged += new System.EventHandler(this.ckbWatermarkImage_CheckedChanged);
             // 
             // panel1
             // 
@@ -963,28 +973,64 @@
             this.textBox4.TabIndex = 13;
             this.textBox4.Text = "Image";
             // 
-            // valueCircular1
+            // pibPreview
             // 
-            this.valueCircular1.ColorStyle = System.Drawing.Color.MediumSeaGreen;
-            this.valueCircular1.DigitNumber = 0;
-            this.valueCircular1.FillWithGradient = true;
-            this.valueCircular1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valueCircular1.HandColor = System.Drawing.Color.Black;
-            this.valueCircular1.HandWidth = 1F;
-            this.valueCircular1.Label = "Xoay chuỗi";
-            this.valueCircular1.LineWidth = 1F;
-            this.valueCircular1.Location = new System.Drawing.Point(680, 393);
-            this.valueCircular1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.valueCircular1.MaxValue = 360F;
-            this.valueCircular1.MinValue = 0F;
-            this.valueCircular1.Name = "valueCircular1";
-            this.valueCircular1.Orthor = true;
-            this.valueCircular1.ShowValue = true;
-            this.valueCircular1.Size = new System.Drawing.Size(151, 128);
-            this.valueCircular1.TabIndex = 14;
-            this.valueCircular1.UnitString = "˚";
-            this.valueCircular1.Value = 0F;
-            this.valueCircular1.ValueChanged += new System.EventHandler<float>(this.valueCircular1_ValueChanged);
+            this.pibPreview.BackgroundImage = global::ImgRW_WF.Properties.Resources.WindowsXPBliss_mod1;
+            this.pibPreview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pibPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pibPreview.Location = new System.Drawing.Point(244, 12);
+            this.pibPreview.Margin = new System.Windows.Forms.Padding(4);
+            this.pibPreview.Name = "pibPreview";
+            this.pibPreview.Size = new System.Drawing.Size(428, 375);
+            this.pibPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pibPreview.TabIndex = 0;
+            this.pibPreview.TabStop = false;
+            this.pibPreview.BackgroundImageChanged += new System.EventHandler(this.pibPreview_BackgroundImageChanged);
+            // 
+            // vccImage
+            // 
+            this.vccImage.ColorStyle = System.Drawing.Color.LightSeaGreen;
+            this.vccImage.DigitNumber = 0;
+            this.vccImage.FillWithGradient = true;
+            this.vccImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vccImage.HandColor = System.Drawing.Color.Black;
+            this.vccImage.HandWidth = 1F;
+            this.vccImage.Label = "Xoay hình";
+            this.vccImage.LineWidth = 1F;
+            this.vccImage.Location = new System.Drawing.Point(850, 393);
+            this.vccImage.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.vccImage.MaxValue = 360F;
+            this.vccImage.MinValue = 0F;
+            this.vccImage.Name = "vccImage";
+            this.vccImage.Orthor = true;
+            this.vccImage.ShowValue = true;
+            this.vccImage.Size = new System.Drawing.Size(151, 128);
+            this.vccImage.TabIndex = 14;
+            this.vccImage.UnitString = "˚";
+            this.vccImage.Value = 30F;
+            // 
+            // vccString
+            // 
+            this.vccString.ColorStyle = System.Drawing.Color.MediumSeaGreen;
+            this.vccString.DigitNumber = 0;
+            this.vccString.FillWithGradient = true;
+            this.vccString.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vccString.HandColor = System.Drawing.Color.Black;
+            this.vccString.HandWidth = 1F;
+            this.vccString.Label = "Xoay chuỗi";
+            this.vccString.LineWidth = 1F;
+            this.vccString.Location = new System.Drawing.Point(680, 393);
+            this.vccString.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.vccString.MaxValue = 360F;
+            this.vccString.MinValue = 0F;
+            this.vccString.Name = "vccString";
+            this.vccString.Orthor = true;
+            this.vccString.ShowValue = true;
+            this.vccString.Size = new System.Drawing.Size(151, 128);
+            this.vccString.TabIndex = 14;
+            this.vccString.UnitString = "˚";
+            this.vccString.Value = 0F;
+            this.vccString.ValueChanged += new System.EventHandler<float>(this.valueCircular1_ValueChanged);
             // 
             // valueSlider2
             // 
@@ -1026,50 +1072,14 @@
             this.valueSlider3.ValueColor = System.Drawing.Color.DodgerBlue;
             this.valueSlider3.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // valueCircular2
-            // 
-            this.valueCircular2.ColorStyle = System.Drawing.Color.LightSeaGreen;
-            this.valueCircular2.DigitNumber = 0;
-            this.valueCircular2.FillWithGradient = true;
-            this.valueCircular2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valueCircular2.HandColor = System.Drawing.Color.Black;
-            this.valueCircular2.HandWidth = 1F;
-            this.valueCircular2.Label = "Xoay hình";
-            this.valueCircular2.LineWidth = 1F;
-            this.valueCircular2.Location = new System.Drawing.Point(850, 393);
-            this.valueCircular2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.valueCircular2.MaxValue = 360F;
-            this.valueCircular2.MinValue = 0F;
-            this.valueCircular2.Name = "valueCircular2";
-            this.valueCircular2.Orthor = true;
-            this.valueCircular2.ShowValue = true;
-            this.valueCircular2.Size = new System.Drawing.Size(151, 128);
-            this.valueCircular2.TabIndex = 14;
-            this.valueCircular2.UnitString = "˚";
-            this.valueCircular2.Value = 30F;
-            // 
-            // pibPreview
-            // 
-            this.pibPreview.BackgroundImage = global::ImgRW_WF.Properties.Resources.WindowsXPBliss_mod1;
-            this.pibPreview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pibPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pibPreview.Location = new System.Drawing.Point(244, 12);
-            this.pibPreview.Margin = new System.Windows.Forms.Padding(4);
-            this.pibPreview.Name = "pibPreview";
-            this.pibPreview.Size = new System.Drawing.Size(428, 375);
-            this.pibPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pibPreview.TabIndex = 0;
-            this.pibPreview.TabStop = false;
-            this.pibPreview.BackgroundImageChanged += new System.EventHandler(this.pibPreview_BackgroundImageChanged);
-            // 
             // FormConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1012, 537);
-            this.Controls.Add(this.valueCircular2);
-            this.Controls.Add(this.valueCircular1);
+            this.Controls.Add(this.vccImage);
+            this.Controls.Add(this.vccString);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.valueSlider2);
             this.Controls.Add(this.valueSlider3);
@@ -1095,12 +1105,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudFontSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWSLocationY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWSLocationX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudFrameSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFrameLineWidth)).EndInit();
             this.panelWatermarkImage.ResumeLayout(false);
             this.panelWatermarkImage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pibWatermarkImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWIY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudWIX)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1136,7 +1146,7 @@
         private System.Windows.Forms.CheckBox ckbItalic;
         private System.Windows.Forms.CheckBox ckbBold;
         private System.Windows.Forms.CheckBox ckbString;
-        private System.Windows.Forms.NumericUpDown nudFrameSize;
+        private System.Windows.Forms.NumericUpDown nudFrameLineWidth;
         private System.Windows.Forms.CheckBox ckbFrame;
         private System.Windows.Forms.NumericUpDown nudFontSize;
         private System.Windows.Forms.RadioButton rdbWSLocation;
@@ -1159,16 +1169,16 @@
         private System.Windows.Forms.RadioButton rdbWIBottomCenter;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton rdbWIBottomRight;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nudWIY;
         private System.Windows.Forms.RadioButton rdbWIMiddleCenter;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown nudWIX;
         private System.Windows.Forms.RadioButton rdbWIMiddleRight;
         private System.Windows.Forms.RadioButton rdbWITopLeft;
         private System.Windows.Forms.RadioButton rdbWIBottomLeft;
         private System.Windows.Forms.RadioButton rdbWITopRight;
         private System.Windows.Forms.RadioButton rdbWITopCenter;
         private System.Windows.Forms.RadioButton rdbWIMiddleLeft;
-        private CxxLibs_CustomControlsDFW.ValueSlider valueSlider1;
+        private CxxLibs_CustomControlsDFW.ValueSlider vldImageOptical;
         private CxxLibs_CustomControlsDFW.ColorPanel colorPanel1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel1;
@@ -1182,8 +1192,8 @@
         private System.Windows.Forms.PictureBox pibOutputPath;
         private System.Windows.Forms.TextBox txbOutputPath;
         private System.Windows.Forms.TextBox textBox4;
-        private CxxLibs_CustomControlsDFW.ValueCircular valueCircular1;
-        private CxxLibs_CustomControlsDFW.ValueCircular valueCircular2;
+        private CxxLibs_CustomControlsDFW.ValueCircular vccString;
+        private CxxLibs_CustomControlsDFW.ValueCircular vccImage;
         private System.Windows.Forms.ContextMenuStrip ctmMenu;
         private System.Windows.Forms.ToolStripMenuItem ctmAddFiles;
         private System.Windows.Forms.ToolStripMenuItem ctmDeleteSelected;

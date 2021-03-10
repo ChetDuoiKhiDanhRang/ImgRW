@@ -31,26 +31,25 @@ namespace ImgRW_WF
             }
         }
 
-        public event EventHandler<ResizeModes> ResizeModeChanged;
-        private ResizeModes resizeMode;
-        public ResizeModes ResizeMode
-        {
-            get { return resizeMode; }
-            set { resizeMode = value; ResizeModeChanged?.Invoke(this, resizeMode); }
-        }
 
         Dictionary<string, ListViewItem> files;
+
+
         public FormConfig()
         {
             InitializeComponent();
             //PreviewLayer = new Bitmap(pibPreview.BackgroundImage.Width, pibPreview.BackgroundImage.Height, PixelFormat.Format32bppArgb);
-            content = txbWString.Text;
-            GenerateFont();
-            stringColor = colorPanel1.CurrentColor;
-
             files = new Dictionary<string, ListViewItem>();
+            //LoadSettings();
 
-            //Controls events
+
+
+
+            InitialEvents();
+        }
+
+        private void InitialEvents()
+        {
             //Resize
             this.ckbResize.CheckedChanged += new System.EventHandler(this.ckbResize_CheckedChanged);
             this.radFixHeight.CheckedChanged += new System.EventHandler(this.radResizeMode_CheckedChanged);
@@ -59,7 +58,6 @@ namespace ImgRW_WF
 
             //String-----------------------------------------------------------------------------------
             this.ckbString.CheckedChanged += new System.EventHandler(this.ckbString_CheckedChanged);
-
 
             this.txbWString.TextChanged += new System.EventHandler(this.txbWString_TextChanged);
 
@@ -70,9 +68,12 @@ namespace ImgRW_WF
             this.cmbFont.SelectedIndexChanged += new System.EventHandler(this.cmbFont_SelectedIndexChanged);
             this.nudFontSize.ValueChanged += new System.EventHandler(this.nudFontSize_ValueChanged);
 
+            this.nudWSLocationY.ValueChanged += new System.EventHandler(this.nudWSLocation_ValueChanged);
+            this.nudWSLocationX.ValueChanged += new System.EventHandler(this.nudWSLocation_ValueChanged);
+
 
             this.ckbFrame.CheckedChanged += new System.EventHandler(this.ckbFrame_CheckedChanged);
-            this.nudFrameSize.ValueChanged += new System.EventHandler(this.nudFrameSize_ValueChanged);
+            this.nudFrameLineWidth.ValueChanged += new System.EventHandler(this.nudFrameLineWidth_ValueChanged);
 
             this.rdbWSLocation.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
             this.rdbTopLeft.CheckedChanged += new System.EventHandler(this.rdbStingLocationModes_CheckedChanged);
@@ -87,27 +88,34 @@ namespace ImgRW_WF
 
             this.colorPanel1.CurrentColor_Changed += new System.EventHandler<System.Drawing.Color>(this.colorPanel1_CurrentColor_Changed);
 
+
+            //images-------------------------------------------------------------------------------------------------------------------
+            this.ckbWatermarkImage.CheckedChanged += new System.EventHandler(this.ckbWatermarkImage_CheckedChanged);
             this.lsvFiles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lsvFiles_KeyDown);
+            rdbWILocation.CheckedChanged += rdbWILocation_CheckChanged;
+            rdbWITopLeft.CheckedChanged += rdbWILocation_CheckChanged;
+            rdbWITopCenter.CheckedChanged += rdbWILocation_CheckChanged;
+            rdbWITopRight.CheckedChanged += rdbWILocation_CheckChanged;
+            rdbWIMiddleLeft.CheckedChanged += rdbWILocation_CheckChanged;
+            rdbWIMiddleCenter.CheckedChanged += rdbWILocation_CheckChanged;
+            rdbWIMiddleRight.CheckedChanged += rdbWILocation_CheckChanged;
+            rdbWIBottomLeft.CheckedChanged += rdbWILocation_CheckChanged;
+            rdbWIBottomCenter.CheckedChanged += rdbWILocation_CheckChanged;
+            rdbWIBottomRight.CheckedChanged += rdbWILocation_CheckChanged;
+
+            vldImageOptical.ValueChanged += VldImageOptical_ValueChanged;
+            vccImage.ValueChanged += VccImage_ValueChanged;
+            nudWIX.ValueChanged += nudWILocation_ValueChanged;
         }
 
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-            LoadSettings();
-
-            cmbFont.Invoke((Action)(() =>
-            {
-                FontNames = (new InstalledFontCollection()).Families.Select(f => f.Name).ToList();
-                FontNames.Sort();
-                cmbFont.DataSource = FontNames;
-            }));
-
-        }
-
-        float resizeValue;
         private void LoadSettings()
         {
             var x = Properties.Settings.Default;
+            //Resize
             ckbResize.Checked = x.resize;
+            panelResize.Enabled = ckbResize.Checked;
+            resizeImages = x.resize;
+
             switch (x.resizeMode)
             {
                 case ResizeModes.FixWidth:
@@ -127,10 +135,13 @@ namespace ImgRW_WF
             }
             resizeMode = x.resizeMode;
             resizeValue = x.resizeValue;
-           
+
             //Watermark string
             ckbString.Checked = x.drawString;
+            drawString = x.drawString;
+            panelWatermarkString.Enabled = ckbString.Checked;
             content = txbWString.Text = x.content;
+            cmbFont.SelectedIndex = 0;
             foreach (var item in cmbFont.Items)
             {
                 if ((string)item == x.fontName)
@@ -143,9 +154,21 @@ namespace ImgRW_WF
             ckbItalic.Checked = x.fontStyleItalic;
             ckbUnderline.Checked = x.fontStyleUnderline;
             nudFontSize.Value = x.fontSize;
+            GenerateFont();
+
+            ckbFrame.Checked = x.frameString;
+            nudFrameLineWidth.Value = x.frameLineWidth;
+
+            nudWSLocationX.Value = x.stringLocationX;
+            stringLocationX = (float)x.stringLocationX;
+            nudWSLocationY.Value = x.stringLocationY;
+            stringLocationY = (float)x.stringLocationY;
+
+
             colorPanel1.CurrentColorHexString = x.stringColor;
             stringColor = ColorTranslator.FromHtml(x.stringColor);
-            stringRotateAngle = valueCircular1.Value = x.stringRotateAngle;
+
+            stringRotateAngle = vccString.Value = x.stringRotateAngle;
 
             stringLocationMode = x.imageLocationMode;
             switch (x.stringLocationMode)
@@ -188,35 +211,70 @@ namespace ImgRW_WF
             nudWSLocationY.Value = x.stringLocationY;
             nudWSLocationX.Enabled = nudWSLocationY.Enabled = rdbWSLocation.Checked;
 
-
+            //Watermark image
             ckbWatermarkImage.Checked = x.drawImage;
+            drawImage = x.drawImage;
+            panelWatermarkImage.Enabled = ckbWatermarkImage.Checked;
+
+            imagePath = x.imagePath;
+            if (File.Exists(imagePath))
+            {
+                using (FileStream fs = new FileStream(imagePath, FileMode.Open))
+                {
+                    pibWatermarkImage.BackgroundImage = Image.FromStream(fs);
+                }
+            }
+
+            nudWIX.Value = x.imageLocationX;
+            imageLocationX = (float)x.imageLocationX;
+            nudWIY.Value = x.imageLocationY;
+            imageLocationY = (float)x.imageLocationY;
+
+            imageOptical = x.imageOptical;
+            vldImageOptical.Value = x.imageOptical;
+
+            imageLocationMode = x.imageLocationMode;
+
             switch (x.imageLocationMode)
             {
                 case LocationModes.Custom:
-                    rdbWSLocation.Checked = true;
+                    rdbWILocation.Checked = true;
+                    nudWSLocationX.Enabled = nudWSLocationY.Enabled = rdbWILocation.Checked;
                     break;
                 case LocationModes.TopLeft:
+                    rdbWITopLeft.Checked = true;
                     break;
                 case LocationModes.TopCenter:
+                    rdbWITopCenter.Checked = true;
                     break;
                 case LocationModes.TopRight:
+                    rdbWITopRight.Checked = true;
                     break;
                 case LocationModes.MiddleLeft:
+                    rdbWIMiddleLeft.Checked = true;
                     break;
                 case LocationModes.MiddleCenter:
+                    rdbWIMiddleCenter.Checked = true;
                     break;
                 case LocationModes.MiddleRight:
+                    rdbWIMiddleRight.Checked = true;
                     break;
                 case LocationModes.BottomLeft:
+                    rdbWIBottomLeft.Checked = true;
                     break;
                 case LocationModes.BottomCenter:
+                    rdbWIBottomCenter.Checked = true;
                     break;
                 case LocationModes.BottomRight:
+                    rdbWIBottomRight.Checked = true;
                     break;
                 default:
                     break;
             }
+            nudWIX.Enabled = nudWIY.Enabled = rdbWILocation.Checked;
 
+            imageRotateAngle = x.imageRotateAngle;
+            vccImage.Value = x.imageRotateAngle;
         }
 
         private void SaveSettings()
@@ -224,75 +282,17 @@ namespace ImgRW_WF
 
         }
 
-        //=============================================================================================
-        //Changed font style
-        private void ckbFontStyle_Changed(object sender, EventArgs e)
+        private void FormMain_Load(object sender, EventArgs e)
         {
-            GenerateFont();
-            RedrawPreview();
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
+            cmbFont.Invoke((Action)(() =>
             {
-                FileStream openStream = new FileStream(@"D:\b1628f6d7b35b7a957f3026c9459e22.jpg", FileMode.Open);
-                Image source = Image.FromStream(openStream);
-                openStream.Dispose();
-                openStream.Close();
-
-                var re = Resizer.ResizeImage(source, 1400, 1800);
-                source.Dispose();
-
-                FileStream saveStream = new FileStream(@"D:\re.png", FileMode.Create);
-                re.Save(saveStream, ImageFormat.Png);
-                saveStream.Close();
-                re.Dispose();
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        //Draw Watermark String or not
-        private void ckbString_CheckedChanged(object sender, EventArgs e)
-        {
-            panelWatermarkString.Enabled = ckbString.Checked;
-        }
-
-        //Draw Watermark Image or not
-        private void ckbWatermarkImage_CheckedChanged(object sender, EventArgs e)
-        {
-            panelWatermarkImage.Enabled = ckbWatermarkImage.Checked;
-        }
-
-
-        //Resize images or not
-        private void ckbResize_CheckedChanged(object sender, EventArgs e)
-        {
-            panelResize.Enabled = ckbResize.Checked;
-        }
-
-        //Set ResizeMode
-        private void radResizeMode_CheckedChanged(object sender, EventArgs e)
-        {
-            var ob = (RadioButton)sender;
-            if (!ob.Checked) return;
-            if (ob.Name == radFixHeight.Name)
-            {
-                ResizeMode = ResizeModes.FixHeight;
-            }
-            else if (ob.Name == radFixWidth.Name)
-            {
-                ResizeMode = ResizeModes.FixWidth;
-            }
-            else if (ob.Name == radScale.Name)
-            {
-                ResizeMode = ResizeModes.Scale;
-            }
-
+                FontNames = (new InstalledFontCollection()).Families.Select(f => f.Name).ToList();
+                FontNames.Sort();
+                cmbFont.DataSource = FontNames;
+            }));
+            LoadSettings();
+            InitialEvents();
         }
 
 
@@ -355,9 +355,6 @@ namespace ImgRW_WF
                 lsvFiles.Items.Clear();
             }
         }
-
-
-
         //delete selected files
         private void lsvFiles_KeyDown(object sender, KeyEventArgs e)
         {
@@ -370,6 +367,65 @@ namespace ImgRW_WF
                     lsvFiles.Items.Remove(item);
                 }
             }
+        }
+
+
+
+        #region FIELDS===============================================================================================
+        Bitmap PreviewLayer;
+        
+        //Resize images or not
+        bool resizeImages;
+        float resizeValue;
+        private ResizeModes resizeMode;
+
+
+        //Watermark string
+        string content;
+        bool drawString;
+        LocationModes stringLocationMode;
+        float stringLocationX;
+        float stringLocationY;
+        Font stringFont;
+        FontStyle wsFontStyle;
+        bool drawStringFrame;
+        float frameLineWidth;
+        float stringRotateAngle;
+        Color stringColor;
+
+
+        //Watermark image------------------------------------------------------------------
+        LocationModes imageLocationMode;
+        float imageLocationX;
+        float imageLocationY;
+        float imageRotateAngle;
+        float imageOptical;
+        string imagePath;
+        bool drawImage;
+        #endregion
+
+        #region WATERMARK STRING EVENTS============================================================================================
+        //Changed font style
+        private void ckbFontStyle_Changed(object sender, EventArgs e)
+        {
+            GenerateFont();
+            RedrawPreview();
+        }
+
+        //Draw Watermark String or not
+        private void ckbString_CheckedChanged(object sender, EventArgs e)
+        {
+            panelWatermarkString.Enabled = ckbString.Checked;
+            drawString = ckbString.Checked;
+            RedrawPreview();
+        }
+
+        //string custom location
+        private void nudWSLocation_ValueChanged(object sender, EventArgs e)
+        {
+            stringLocationX = (float)nudWSLocationX.Value;
+            stringLocationY = (float)nudWSLocationY.Value;
+            RedrawPreview();
         }
 
         //changed font
@@ -392,8 +448,7 @@ namespace ImgRW_WF
         }
 
         //Generate font and style from UI controls
-        Font wsFont;
-        FontStyle wsFontStyle;
+
         private void GenerateFont()
         {
             var bold = (ckbBold.Enabled & ckbBold.Checked) ? 1 : 0;
@@ -401,11 +456,10 @@ namespace ImgRW_WF
             var underline = (ckbUnderline.Enabled & ckbUnderline.Checked) ? 4 : 0;
             wsFontStyle = (FontStyle)(bold | italic | underline);
 
-            wsFont = new Font((string)cmbFont.SelectedItem, (float)nudFontSize.Value, wsFontStyle);
+            stringFont = new Font((string)cmbFont.SelectedItem, (float)nudFontSize.Value, wsFontStyle);
         }
 
         //String content
-        string content;
         private void txbWString_TextChanged(object sender, EventArgs e)
         {
             if (txbWString.Text.Length == 0) return;
@@ -413,25 +467,21 @@ namespace ImgRW_WF
             RedrawPreview();
         }
 
-        Bitmap PreviewLayer;
 
         //Frame around string
-        bool drawStringFrame;
         private void ckbFrame_CheckedChanged(object sender, EventArgs e)
         {
             drawStringFrame = ckbFrame.Checked;
             RedrawPreview();
         }
 
-        float frameLineWidth;
-        private void nudFrameSize_ValueChanged(object sender, EventArgs e)
+        private void nudFrameLineWidth_ValueChanged(object sender, EventArgs e)
         {
-            frameLineWidth = (float)nudFrameSize.Value;
+            frameLineWidth = (float)nudFrameLineWidth.Value;
             RedrawPreview();
         }
 
         //String watermark locations
-        LocationModes stringLocationMode;
         private void rdbStingLocationModes_CheckedChanged(object sender, EventArgs e)
         {
             var r = (RadioButton)sender;
@@ -481,31 +531,34 @@ namespace ImgRW_WF
         }
 
         //String watermark rotation angle
-        float stringRotateAngle;
         private void valueCircular1_ValueChanged(object sender, float e)
         {
-            stringRotateAngle = valueCircular1.Value;
+            stringRotateAngle = vccString.Value;
             RedrawPreview();
         }
 
         //String watermark color
-        Color stringColor;
         private void colorPanel1_CurrentColor_Changed(object sender, Color e)
         {
             stringColor = colorPanel1.CurrentColor;
             RedrawPreview();
         }
+        #endregion
 
-        private void pibPreview_BackgroundImageChanged(object sender, EventArgs e)
+        #region WATERMARK IMAGE EVENTS================================================================================
+
+        //Draw Watermark Image or not
+        private void ckbWatermarkImage_CheckedChanged(object sender, EventArgs e)
         {
-            if (pibPreview.BackgroundImage == null) return;
-            if (!ckbWatermarkImage.Checked) return;
+            panelWatermarkImage.Enabled = ckbWatermarkImage.Checked;
+            drawImage = ckbWatermarkImage.Checked;
             RedrawPreview();
         }
 
         private void pibWatermarkImage_BackgroundImageChanged(object sender, EventArgs e)
         {
-
+            if (pibWatermarkImage.BackgroundImage == null) return;
+            RedrawPreview();
         }
 
         private void pibWatermarkImage_Click(object sender, EventArgs e)
@@ -528,8 +581,118 @@ namespace ImgRW_WF
             ofd.Dispose();
         }
 
+        //image location
+        private void nudWILocation_ValueChanged(object sender, EventArgs e)
+        {
+            imageLocationX = (float)nudWIX.Value;
+            imageLocationY = (float)nudWIY.Value;
+            RedrawPreview();
+        }
 
-        //METHODS================================================================================================================
+        //image location mode
+        private void rdbWILocation_CheckChanged(object sender, EventArgs e)
+        {
+            var r = (RadioButton)sender;
+            if (r.Name == rdbWILocation.Name)
+            {
+                imageLocationMode = LocationModes.Custom;
+            }
+            else if (r.Name == rdbWITopLeft.Name)
+            {
+                imageLocationMode = LocationModes.TopLeft;
+            }
+            else if (r.Name == rdbWITopCenter.Name)
+            {
+                imageLocationMode = LocationModes.TopCenter;
+            }
+            else if (r.Name == rdbWITopRight.Name)
+            {
+                imageLocationMode = LocationModes.TopRight;
+            }
+            else if (r.Name == rdbWIMiddleLeft.Name)
+            {
+                imageLocationMode = LocationModes.MiddleLeft;
+            }
+            else if (r.Name == rdbWIMiddleCenter.Name)
+            {
+                imageLocationMode = LocationModes.MiddleCenter;
+            }
+            else if (r.Name == rdbWIMiddleRight.Name)
+            {
+                imageLocationMode = LocationModes.MiddleRight;
+            }
+            else if (r.Name == rdbWIBottomLeft.Name)
+            {
+                imageLocationMode = LocationModes.BottomLeft;
+            }
+            else if (r.Name == rdbWIBottomCenter.Name)
+            {
+                imageLocationMode = LocationModes.BottomCenter;
+            }
+            else if (r.Name == rdbWIBottomRight.Name)
+            {
+                imageLocationMode = LocationModes.BottomRight;
+            }
+
+            nudWIX.Enabled = nudWIY.Enabled = rdbWILocation.Checked;
+
+            RedrawPreview();
+        }
+
+        //image Optical
+        private void VldImageOptical_ValueChanged(object sender, float e)
+        {
+            imageOptical = vldImageOptical.Value;
+            RedrawPreview();
+        }
+
+        //rotate image
+        private void VccImage_ValueChanged(object sender, float e)
+        {
+            imageRotateAngle = vccImage.Value;
+            RedrawPreview();
+        }
+        #endregion
+
+        #region RESIZES EVENTS=============================================================================================
+        private void ckbResize_CheckedChanged(object sender, EventArgs e)
+        {
+            panelResize.Enabled = ckbResize.Checked;
+            resizeImages = ckbResize.Checked;
+        }
+
+        private void radResizeMode_CheckedChanged(object sender, EventArgs e)
+        {
+            var ob = (RadioButton)sender;
+            if (!ob.Checked) return;
+            if (ob.Name == radFixHeight.Name)
+            {
+                resizeMode = ResizeModes.FixHeight;
+            }
+            else if (ob.Name == radFixWidth.Name)
+            {
+                resizeMode = ResizeModes.FixWidth;
+            }
+            else if (ob.Name == radScale.Name)
+            {
+                resizeMode = ResizeModes.Scale;
+            }
+
+        }
+
+
+        #endregion
+
+        #region DRAW AND OTHERS METHODS ===================================================================================
+        
+        private void pibPreview_BackgroundImageChanged(object sender, EventArgs e)
+        {
+            if (pibPreview.BackgroundImage == null) return;
+            if (!ckbWatermarkImage.Checked) return;
+
+            RedrawPreview();
+        }
+
         void RedrawPreview()
         {
             PreviewLayer?.Dispose();
@@ -540,19 +703,73 @@ namespace ImgRW_WF
 
         private void DrawWatermarkLayer(Bitmap previewLayer)
         {
-            if (ckbString.Checked)
+            if (drawString)
             {
                 DrawString(previewLayer);
             }
-            if (ckbWatermarkImage.Checked)
+            if (drawImage && pibWatermarkImage.BackgroundImage != null)
             {
-                DrawImage(previewLayer);
+                Bitmap imageWatermark = pibWatermarkImage.BackgroundImage.Clone() as Bitmap;
+                DrawImage(previewLayer, imageWatermark);
+                imageWatermark.Dispose();
             }
         }
 
-        private void DrawImage(Bitmap previewLayer)
+        private void DrawImage(Bitmap previewLayer, Bitmap imgWatermark)
         {
-            //throw new NotImplementedException();
+            Graphics graph = Graphics.FromImage(previewLayer);
+            graph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            graph.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            graph.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            graph.TextRenderingHint = TextRenderingHint.AntiAlias;
+            var size = imgWatermark.Size;
+            PointF location;
+            switch (imageLocationMode)
+            {
+                case LocationModes.Custom:
+                    location = new PointF(imageLocationX, imageLocationY);
+                    break;
+                case LocationModes.TopLeft:
+                    location = new PointF(0, 0);
+                    break;
+                case LocationModes.TopCenter:
+                    location = new PointF((previewLayer.Width - size.Width) / 2, 0);
+                    break;
+                case LocationModes.TopRight:
+                    location = new PointF((previewLayer.Width - size.Width), 0);
+                    break;
+                case LocationModes.MiddleLeft:
+                    location = new PointF(0, (previewLayer.Height - size.Height) / 2);
+                    break;
+                case LocationModes.MiddleCenter:
+                    location = new PointF((previewLayer.Width - size.Width) / 2, (previewLayer.Height - size.Height) / 2);
+                    break;
+                case LocationModes.MiddleRight:
+                    location = new PointF((previewLayer.Width - size.Width), (previewLayer.Height - size.Height) / 2);
+                    break;
+                case LocationModes.BottomLeft:
+                    location = new PointF(0, (previewLayer.Height - size.Height));
+                    break;
+                case LocationModes.BottomCenter:
+                    location = new PointF((previewLayer.Width - size.Width) / 2, (previewLayer.Height - size.Height));
+                    break;
+                case LocationModes.BottomRight:
+                    location = new PointF((previewLayer.Width - size.Width), (previewLayer.Height - size.Height));
+                    break;
+                default:
+                    location = new PointF(0, 0);
+                    break;
+            }
+
+            using (ImageAttributes ia = new ImageAttributes())
+            {
+                ia.SetColorMatrix(new ColorMatrix() { Matrix33 = imageOptical });
+                graph.TranslateTransform(location.X, location.Y);
+                graph.RotateTransform(0 - imageRotateAngle);
+                graph.DrawImage(imgWatermark, new Rectangle(0, 0, size.Width, size.Height),
+                    0, 0, size.Width, size.Height, GraphicsUnit.Pixel, ia);
+            }
+            graph.Dispose();
         }
 
         private void DrawString(Bitmap previewLayer)
@@ -564,12 +781,12 @@ namespace ImgRW_WF
             graph.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             graph.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             graph.TextRenderingHint = TextRenderingHint.AntiAlias;
-            var size = graph.MeasureString(content, wsFont);
+            var size = graph.MeasureString(content, stringFont);
             PointF location;
             switch (stringLocationMode)
             {
                 case LocationModes.Custom:
-                    location = new PointF((float)nudWSLocationX.Value, (float)nudWSLocationY.Value);
+                    location = new PointF(stringLocationX, stringLocationY);
                     break;
                 case LocationModes.TopLeft:
                     location = new PointF((drawStringFrame ? (float)(frameLineWidth / 2) : 0),
@@ -610,19 +827,19 @@ namespace ImgRW_WF
                     location = new PointF(0, 0);
                     break;
             }
-            graph.TranslateTransform(location.X + size.Width / 2, location.Y + size.Height / 2);
+            graph.TranslateTransform(location.X, location.Y);
             graph.RotateTransform(0 - stringRotateAngle);
             //graph.FillRectangle(Brushes.Black, 0, 0, 256, 256); //test
 
             using (Brush b = new SolidBrush(stringColor))
             {
-                graph.DrawString(content, wsFont, b, -size.Width / 2, -size.Height / 2);
+                graph.DrawString(content, stringFont, b, 0, 0);
                 if (drawStringFrame)
                 {
                     using (Pen p = new Pen(b))
                     {
                         p.Width = frameLineWidth;
-                        graph.DrawRectangle(p, -size.Width / 2, -size.Height / 2, size.Width, size.Height);
+                        graph.DrawRectangle(p, 0, 0, size.Width, size.Height);
                     }
                 }
             }
@@ -671,5 +888,7 @@ namespace ImgRW_WF
 
             return cal.ToString("0") + rs;
         }
+        #endregion 
+
     }
 }

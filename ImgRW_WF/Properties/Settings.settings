@@ -39,10 +39,10 @@
       <Value Profile="(Default)">12</Value>
     </Setting>
     <Setting Name="stringColor" Type="System.String" Scope="User">
-      <Value Profile="(Default)">#FF01FFFF</Value>
+      <Value Profile="(Default)">#AA003182</Value>
     </Setting>
     <Setting Name="stringLocationMode" Type="ImageModifier.LocationModes" Scope="User">
-      <Value Profile="(Default)">Custom</Value>
+      <Value Profile="(Default)">BottomCenter</Value>
     </Setting>
     <Setting Name="stringLocationX" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">128</Value>
@@ -57,22 +57,22 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="imageLocationMode" Type="ImageModifier.LocationModes" Scope="User">
-      <Value Profile="(Default)">Custom</Value>
+      <Value Profile="(Default)">BottomCenter</Value>
     </Setting>
     <Setting Name="stringRotateAngle" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">90</Value>
-    </Setting>
-    <Setting Name="imageLocationX" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="imageLocationY" Type="System.Double" Scope="User">
+    <Setting Name="imageLocationX" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="imageRotateAngle" Type="System.String" Scope="User">
+    <Setting Name="imageLocationY" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="imageRotateAngle" Type="System.Single" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="imageOptical" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">200</Value>
+      <Value Profile="(Default)">0.8</Value>
     </Setting>
   </Settings>
 </SettingsFile>

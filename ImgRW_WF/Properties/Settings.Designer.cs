@@ -169,7 +169,7 @@ namespace ImgRW_WF.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#FF01FFFF")]
+        [global::System.Configuration.DefaultSettingValueAttribute("#AA003182")]
         public string stringColor {
             get {
                 return ((string)(this["stringColor"]));
@@ -181,7 +181,7 @@ namespace ImgRW_WF.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Custom")]
+        [global::System.Configuration.DefaultSettingValueAttribute("BottomCenter")]
         public global::ImageModifier.LocationModes stringLocationMode {
             get {
                 return ((global::ImageModifier.LocationModes)(this["stringLocationMode"]));
@@ -241,7 +241,7 @@ namespace ImgRW_WF.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Custom")]
+        [global::System.Configuration.DefaultSettingValueAttribute("BottomCenter")]
         public global::ImageModifier.LocationModes imageLocationMode {
             get {
                 return ((global::ImageModifier.LocationModes)(this["imageLocationMode"]));
@@ -253,7 +253,7 @@ namespace ImgRW_WF.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("90")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public float stringRotateAngle {
             get {
                 return ((float)(this["stringRotateAngle"]));
@@ -266,9 +266,9 @@ namespace ImgRW_WF.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double imageLocationX {
+        public decimal imageLocationX {
             get {
-                return ((double)(this["imageLocationX"]));
+                return ((decimal)(this["imageLocationX"]));
             }
             set {
                 this["imageLocationX"] = value;
@@ -278,9 +278,9 @@ namespace ImgRW_WF.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double imageLocationY {
+        public decimal imageLocationY {
             get {
-                return ((double)(this["imageLocationY"]));
+                return ((decimal)(this["imageLocationY"]));
             }
             set {
                 this["imageLocationY"] = value;
@@ -290,9 +290,9 @@ namespace ImgRW_WF.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public string imageRotateAngle {
+        public float imageRotateAngle {
             get {
-                return ((string)(this["imageRotateAngle"]));
+                return ((float)(this["imageRotateAngle"]));
             }
             set {
                 this["imageRotateAngle"] = value;
@@ -301,7 +301,7 @@ namespace ImgRW_WF.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("200")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.8")]
         public float imageOptical {
             get {
                 return ((float)(this["imageOptical"]));
