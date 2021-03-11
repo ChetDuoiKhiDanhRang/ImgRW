@@ -157,7 +157,7 @@ namespace ImgRW_WF.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("12")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
         public decimal frameLineWidth {
             get {
                 return ((decimal)(this["frameLineWidth"]));
@@ -169,7 +169,7 @@ namespace ImgRW_WF.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#AA003182")]
+        [global::System.Configuration.DefaultSettingValueAttribute("#9900FF82")]
         public string stringColor {
             get {
                 return ((string)(this["stringColor"]));

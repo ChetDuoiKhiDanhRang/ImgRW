@@ -20,7 +20,7 @@ namespace ImgRW_WF
         public List<string> FontNames { get; set; }
 
         public event EventHandler<string> LanguageChanged;
-        private string language;
+        private string language = "vi";
         public string Language
         {
             get => language;
@@ -39,12 +39,6 @@ namespace ImgRW_WF
             //PreviewLayer = new Bitmap(pibPreview.BackgroundImage.Width, pibPreview.BackgroundImage.Height, PixelFormat.Format32bppArgb);
             files = new Dictionary<string, ListViewItem>();
             PreviewLayer = new Bitmap(pibPreview.BackgroundImage.Width, pibPreview.BackgroundImage.Height, PixelFormat.Format32bppArgb);
-            //LoadSettings();
-
-
-
-
-            //InitialEvents();
         }
 
         private void InitialEvents()
@@ -109,8 +103,6 @@ namespace ImgRW_WF
             nudWIX.ValueChanged += nudWILocation_ValueChanged;
         }
 
-
-
         private void LoadSettings()
         {
 
@@ -151,6 +143,7 @@ namespace ImgRW_WF
                 if ((string)item == x.fontName)
                 {
                     cmbFont.SelectedItem = item;
+
                     break;
                 }
             }
@@ -172,7 +165,7 @@ namespace ImgRW_WF
 
 
             colorPanel1.CurrentColorHexString = x.stringColor;
-            stringColor = ColorTranslator.FromHtml(x.stringColor);
+            stringColor = x.stringColor;
 
             stringRotateAngle = vccString.Value = x.stringRotateAngle;
 
@@ -299,6 +292,7 @@ namespace ImgRW_WF
             }));
             LoadSettings();
             InitialEvents();
+            RedrawPreview();
         }
 
         //add and remove files list
@@ -323,8 +317,10 @@ namespace ImgRW_WF
                             using (FileStream fileStream = new FileStream(item, FileMode.Open))
                             {
                                 Image i = Image.FromStream(fileStream);
+
                                 FileInfo fi = new FileInfo(item);
                                 ListViewItem li = new ListViewItem(fi.Name);
+
                                 li.SubItems.Add(CalculateBytes(fi.Length));
                                 li.SubItems.Add(i.Width.ToString() + "×" + i.Height.ToString());
                                 li.Tag = item;
@@ -389,12 +385,14 @@ namespace ImgRW_WF
         LocationModes stringLocationMode;
         float stringLocationX;
         float stringLocationY;
-        Font stringFont;
+        string fontName;
+        float fontSize;
+
         FontStyle wsFontStyle;
         bool drawStringFrame;
         float frameLineWidth;
         float stringRotateAngle;
-        Color stringColor;
+        string stringColor;
 
 
         //Watermark image------------------------------------------------------------------
@@ -436,8 +434,8 @@ namespace ImgRW_WF
         private void cmbFont_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbFont.SelectedIndex < 0) return;
-            string fontName = (string)cmbFont.SelectedItem;
-            FontFamily fm = new FontFamily(fontName);
+
+            FontFamily fm = new FontFamily((string)cmbFont.SelectedItem);
             ckbBold.Enabled = fm.IsStyleAvailable(FontStyle.Bold);
             ckbItalic.Enabled = fm.IsStyleAvailable(FontStyle.Italic);
             ckbUnderline.Enabled = fm.IsStyleAvailable(FontStyle.Underline);
@@ -452,14 +450,17 @@ namespace ImgRW_WF
         }
 
         //Generate font and style from UI controls
-        private void GenerateFont()
+        private Font GenerateFont()
         {
+            fontName = (string)cmbFont.SelectedItem;
+            fontSize = (float)nudFontSize.Value;
+
             var bold = (ckbBold.Enabled & ckbBold.Checked) ? 1 : 0;
             var italic = (ckbItalic.Enabled & ckbItalic.Checked) ? 2 : 0;
             var underline = (ckbUnderline.Enabled & ckbUnderline.Checked) ? 4 : 0;
             wsFontStyle = (FontStyle)(bold | italic | underline);
 
-            stringFont = new Font((string)cmbFont.SelectedItem, (float)nudFontSize.Value, wsFontStyle);
+            return new Font(fontName, fontSize, wsFontStyle);
         }
 
         //String content
@@ -469,7 +470,6 @@ namespace ImgRW_WF
             content = txbWString.Text;
             RedrawPreview();
         }
-
 
         //Frame around string
         private void ckbFrame_CheckedChanged(object sender, EventArgs e)
@@ -543,7 +543,7 @@ namespace ImgRW_WF
         //String watermark color
         private void colorPanel1_CurrentColor_Changed(object sender, Color e)
         {
-            stringColor = colorPanel1.CurrentColor;
+            stringColor = colorPanel1.CurrentColorHexString;
             RedrawPreview();
         }
         #endregion
@@ -558,7 +558,7 @@ namespace ImgRW_WF
             RedrawPreview();
         }
 
-        //change image waterimage
+        //change image watermark
         private void pibWatermarkImage_BackgroundImageChanged(object sender, EventArgs e)
         {
             if (pibWatermarkImage.BackgroundImage == null) return;
@@ -578,7 +578,8 @@ namespace ImgRW_WF
             {
                 using (FileStream fs = new FileStream(ofd.FileName, FileMode.Open))
                 {
-                    Image background = Image.FromStream(fs);
+                    Bitmap background = new Bitmap(Image.FromStream(fs));
+                    background.SetResolution(96, 96);
                     pibWatermarkImage.BackgroundImage?.Dispose();
                     pibWatermarkImage.BackgroundImage = background;
                 }
@@ -690,14 +691,28 @@ namespace ImgRW_WF
 
         private void pibPreview_BackgroundImageChanged(object sender, EventArgs e)
         {
+            if (pibPreview.BackgroundImage == null) return;
+            if (nudWSLocationX.Value > pibPreview.BackgroundImage.Width)
+            {
+                nudWSLocationX.Value = pibPreview.BackgroundImage.Width / 2;
+            }
+            nudWSLocationX.Maximum = pibPreview.BackgroundImage.Width;
+
+            if (nudWSLocationY.Value > pibPreview.BackgroundImage.Height)
+            {
+                nudWSLocationY.Value = pibPreview.BackgroundImage.Height / 2;
+            }
+            nudWSLocationY.Maximum = pibPreview.BackgroundImage.Height;
 
             RedrawPreview();
         }
+
 
         void RedrawPreview()
         {
             PreviewLayer?.Dispose();
             PreviewLayer = new Bitmap(pibPreview.BackgroundImage.Width, pibPreview.BackgroundImage.Height, PixelFormat.Format32bppArgb);
+            //PreviewLayer.SetResolution(96F, 96F);
             DrawWatermarkLayer(PreviewLayer);
             pibPreview.Image = PreviewLayer;
         }
@@ -764,8 +779,10 @@ namespace ImgRW_WF
                 using (ImageAttributes ia = new ImageAttributes())
                 {
                     ia.SetColorMatrix(new ColorMatrix() { Matrix33 = imageOptical });
+
                     graph.TranslateTransform(location.X, location.Y);
-                    graph.RotateTransform(0-imageRotateAngle);
+                    graph.RotateTransform(0 - imageRotateAngle);
+
                     graph.DrawImage(imgWatermark, new Rectangle(0, 0, size.Width, size.Height), 0, 0, size.Width, size.Height, GraphicsUnit.Pixel, ia);
                 }
             }
@@ -780,7 +797,8 @@ namespace ImgRW_WF
             graph.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             graph.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             graph.TextRenderingHint = TextRenderingHint.AntiAlias;
-            var size = graph.MeasureString(content, stringFont);
+            Font drawFont = GenerateFont();
+            var size = graph.MeasureString(content, drawFont);
             PointF location;
             switch (stringLocationMode)
             {
@@ -830,9 +848,9 @@ namespace ImgRW_WF
             graph.RotateTransform(0 - stringRotateAngle);
             //graph.FillRectangle(Brushes.Black, 0, 0, 256, 256); //test
 
-            using (Brush b = new SolidBrush(stringColor))
+            using (Brush b = new SolidBrush(ColorTranslator.FromHtml(stringColor)))
             {
-                graph.DrawString(content, stringFont, b, 0, 0);
+                graph.DrawString(content, drawFont, b, 0, 0);
                 if (drawStringFrame)
                 {
                     using (Pen p = new Pen(b))
@@ -887,7 +905,72 @@ namespace ImgRW_WF
 
             return cal.ToString("0") + rs;
         }
-        #endregion 
+        #endregion
 
+        //preview select image
+        private void lsvFiles_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var item = lsvFiles.GetItemAt(e.X, e.Y);
+            if (item == null) return;
+            string filePath = (string)item.Tag;
+            if (File.Exists(filePath))
+            {
+                using (FileStream fs = new FileStream(filePath, FileMode.Open))
+                {
+                    Image img = Image.FromStream(fs);
+                    Bitmap tmp = new Bitmap(img);
+                    tmp.SetResolution(96F, 96F);
+                    Bitmap background;
+                    if (resizeImages)
+                    {
+                        background = ResizeBitmap(tmp, resizeMode, resizeValue);
+                    }
+                    else
+                    {
+                        background = ResizeBitmap(tmp, ResizeModes.Scale, 100);
+                    }
+                    pibPreview.BackgroundImage?.Dispose();
+                    pibPreview.BackgroundImage = background;
+                    tmp.Dispose();
+                }
+            }
+            else
+            {
+                string content;
+                if (Language == "vi")
+                {
+                    content = "Tập tin không tồn tại!";
+                }
+                else
+                {
+                    content = "File not existed!";
+                }
+                MessageBox.Show(content, "!!!", MessageBoxButtons.OK);
+            }
+
+        }
+
+        private Bitmap ResizeBitmap(Bitmap tmp, ResizeModes resizeMode, float resizeValue)
+        {
+            var originalSize = tmp.Size;
+            Size newSize = originalSize;
+            switch (resizeMode)
+            {
+                case ResizeModes.FixWidth:
+                    newSize = new Size((int)resizeValue, (int)(originalSize.Height * resizeValue / originalSize.Width));
+                    break;
+                case ResizeModes.FixHeight:
+                    newSize = new Size((int)(originalSize.Width * resizeValue / originalSize.Height), (int)resizeValue);
+                    break;
+                case ResizeModes.Scale:
+                    newSize = new Size((int)(originalSize.Width * resizeValue / 100), (int)(originalSize.Height * resizeValue / 100));
+                    break;
+                default:
+                    break;
+            }
+            Bitmap result = Resizer.ResizeImage(tmp, newSize);
+
+            return result;
+        }
     }
 }

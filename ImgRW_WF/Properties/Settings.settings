@@ -36,10 +36,10 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="frameLineWidth" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">12</Value>
+      <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="stringColor" Type="System.String" Scope="User">
-      <Value Profile="(Default)">#AA003182</Value>
+      <Value Profile="(Default)">#9900FF82</Value>
     </Setting>
     <Setting Name="stringLocationMode" Type="ImageModifier.LocationModes" Scope="User">
       <Value Profile="(Default)">BottomCenter</Value>

@@ -124,7 +124,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\WindowsXPBliss_mod1.jpg" />
+    <None Include="Resources\WindowsXP.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="icons\file.png" />
