@@ -323,6 +323,7 @@ namespace ImgRW_WF
 
                                 li.SubItems.Add(CalculateBytes(fi.Length));
                                 li.SubItems.Add(i.Width.ToString() + "×" + i.Height.ToString());
+                                li.SubItems.Add(i.HorizontalResolution.ToString() + "/" + i.VerticalResolution.ToString() + "(dpi)");
                                 li.Tag = item;
                                 i.Dispose();
                                 files.Add(item, li);
@@ -562,6 +563,7 @@ namespace ImgRW_WF
         private void pibWatermarkImage_BackgroundImageChanged(object sender, EventArgs e)
         {
             if (pibWatermarkImage.BackgroundImage == null) return;
+            imageWatermark?.Dispose();
             imageWatermark = pibWatermarkImage.BackgroundImage.Clone() as Bitmap;
             RedrawPreview();
         }
@@ -719,7 +721,7 @@ namespace ImgRW_WF
 
         private void DrawWatermarkLayer(Bitmap previewLayer)
         {
-            if (drawImage && pibWatermarkImage.BackgroundImage != null)
+            if (drawImage && imageWatermark != null)
             {
                 DrawImage(previewLayer, imageWatermark);
             }
@@ -931,7 +933,9 @@ namespace ImgRW_WF
                     }
                     pibPreview.BackgroundImage?.Dispose();
                     pibPreview.BackgroundImage = background;
+
                     tmp.Dispose();
+                    img.Dispose();
                 }
             }
             else
@@ -950,6 +954,7 @@ namespace ImgRW_WF
 
         }
 
+        //resize a bitmap
         private Bitmap ResizeBitmap(Bitmap tmp, ResizeModes resizeMode, float resizeValue)
         {
             var originalSize = tmp.Size;
