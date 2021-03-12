@@ -331,7 +331,7 @@ namespace ImgRW_WF
 
                                 li.SubItems.Add(CalculateBytes(fi.Length));
                                 li.SubItems.Add(i.Width.ToString() + "×" + i.Height.ToString());
-                                li.SubItems.Add(i.HorizontalResolution.ToString() + "/" + i.VerticalResolution.ToString() + "(dpi)");
+                                li.SubItems.Add(i.HorizontalResolution.ToString("0") + "/" + i.VerticalResolution.ToString("0") + "(dpi)");
                                 li.Tag = item;
                                 i.Dispose();
                                 files.Add(item, li);
@@ -1070,7 +1070,7 @@ namespace ImgRW_WF
                 }
                 txbStatus.Invoke((Action)(() =>
                 {
-                    txbStatus.Text += "\n[RSZ]..." + input;
+                    txbStatus.AppendText("\r\n[RSZ] " + input);
                 }));
 
 
@@ -1080,7 +1080,7 @@ namespace ImgRW_WF
                 }
                 txbStatus.Invoke((Action)(() =>
                 {
-                    txbStatus.Text += "\n[DST]..." + input + ".[v]";
+                    txbStatus.AppendText("\r\n[DST] " + input + ".[v]");
                 }));
 
                 if (drawImage && imageWatermark != null)
@@ -1089,7 +1089,7 @@ namespace ImgRW_WF
                 }
                 txbStatus.Invoke((Action)(() =>
                 {
-                    txbStatus.Text += "\n[DIM]..." + input;
+                    txbStatus.AppendText("\r\n[DIM] " + input);
                 }));
 
                 string outputFile = GenerateOutputFileName(inputFile, outputPath, outputFormat);
@@ -1116,7 +1116,7 @@ namespace ImgRW_WF
                 result.Save(outputFile, saveFormat);
                 txbStatus.Invoke((Action)(() =>
                 {
-                    txbStatus.Text += "\n[v.SAV]..." + input;
+                    txbStatus.AppendText("\r\n[SAV] " + input);
                 }));
             //}
             //catch (Exception ex)
@@ -1146,19 +1146,16 @@ namespace ImgRW_WF
 
             imgWMs = new Bitmap[files.Count];
             currentIndex = 0;
+            Task[] listTask = new Task[files.Count];
             for (int i = 0; i < files.Count; i++)
             {
                 imgWMs[i] = imageWatermark.Clone() as Bitmap;
-            }
-            List<Task> listTask = new List<Task>();
-            foreach (var item in files.Keys)
-            {
-                var input = item;
-                txbStatus.Text += "\n[PRC] " + input;
-                listTask.Add(Task.Factory.StartNew(new Action<object>(HandleImage), input));
+                var input = files.Keys.ToArray()[i];
+                txbStatus.AppendText("\r\n[PRC] " + input);
+                listTask[i] = (Task.Factory.StartNew(new Action<object>(HandleImage), input));
             }
 
-            //Task.WaitAll(listTask.ToArray());
+            Task.WaitAll(listTask);
 
             //for (int i = 0; i < files.Count; i++)
             //{

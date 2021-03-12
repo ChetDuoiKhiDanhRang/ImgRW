@@ -1065,9 +1065,11 @@
             this.txbStatus.Location = new System.Drawing.Point(11, 326);
             this.txbStatus.Multiline = true;
             this.txbStatus.Name = "txbStatus";
+            this.txbStatus.ReadOnly = true;
             this.txbStatus.Size = new System.Drawing.Size(225, 200);
             this.txbStatus.TabIndex = 15;
             this.txbStatus.Text = "...";
+            this.txbStatus.WordWrap = false;
             // 
             // FormConfig
             // 
