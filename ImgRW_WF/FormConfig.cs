@@ -1157,7 +1157,7 @@ namespace ImgRW_WF
                 txbStatus.Text += "\n[PRC] " + input;
                 listTask.Add(Task.Factory.StartNew(new Action<object>(HandleImage), input));
             }
-            
+
             //Task.WaitAll(listTask.ToArray());
 
             //for (int i = 0; i < files.Count; i++)
