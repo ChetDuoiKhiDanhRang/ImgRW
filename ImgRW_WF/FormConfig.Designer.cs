@@ -1060,7 +1060,7 @@
             // txbStatus
             // 
             this.txbStatus.BackColor = System.Drawing.Color.Teal;
-            this.txbStatus.Font = new System.Drawing.Font("Consolas", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbStatus.Font = new System.Drawing.Font("Consolas", 8F);
             this.txbStatus.ForeColor = System.Drawing.SystemColors.MenuBar;
             this.txbStatus.Location = new System.Drawing.Point(11, 326);
             this.txbStatus.Multiline = true;
