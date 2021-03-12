@@ -9,6 +9,7 @@ using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -107,6 +108,13 @@ namespace ImgRW_WF
         {
 
             var x = Properties.Settings.Default;
+
+            outputPath = x.outputPath;
+            txbOutputPath.Text = x.outputPath;
+
+            outputFormat = x.outputFormat;
+            cmbOutputFormat.SelectedIndex = x.outputFormat;
+
             //Resize
             ckbResize.Checked = x.resize;
             panelResize.Enabled = ckbResize.Checked;
@@ -373,6 +381,8 @@ namespace ImgRW_WF
 
         #region FIELDS===============================================================================================
         Bitmap PreviewLayer;
+        string outputPath;
+        byte outputFormat;
 
         //Resize images or not
         bool resizeImages;
@@ -731,9 +741,11 @@ namespace ImgRW_WF
             }
         }
 
-        private void DrawImage(Bitmap previewLayer, Bitmap imgWatermark)
+        private void DrawImage(Bitmap imageLayer, Bitmap imgWatermark)
         {
-            using (Graphics graph = Graphics.FromImage(previewLayer))
+            currentIndex++; //just for Tasks when process image list
+            if (imgWatermark == null) return;
+            using (Graphics graph = Graphics.FromImage(imageLayer))
             {
                 //graph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
                 //graph.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
@@ -750,28 +762,28 @@ namespace ImgRW_WF
                         location = new PointF(0, 0);
                         break;
                     case LocationModes.TopCenter:
-                        location = new PointF((previewLayer.Width - size.Width) / 2, 0);
+                        location = new PointF((imageLayer.Width - size.Width) / 2, 0);
                         break;
                     case LocationModes.TopRight:
-                        location = new PointF((previewLayer.Width - size.Width), 0);
+                        location = new PointF((imageLayer.Width - size.Width), 0);
                         break;
                     case LocationModes.MiddleLeft:
-                        location = new PointF(0, (previewLayer.Height - size.Height) / 2);
+                        location = new PointF(0, (imageLayer.Height - size.Height) / 2);
                         break;
                     case LocationModes.MiddleCenter:
-                        location = new PointF((previewLayer.Width - size.Width) / 2, (previewLayer.Height - size.Height) / 2);
+                        location = new PointF((imageLayer.Width - size.Width) / 2, (imageLayer.Height - size.Height) / 2);
                         break;
                     case LocationModes.MiddleRight:
-                        location = new PointF((previewLayer.Width - size.Width), (previewLayer.Height - size.Height) / 2);
+                        location = new PointF((imageLayer.Width - size.Width), (imageLayer.Height - size.Height) / 2);
                         break;
                     case LocationModes.BottomLeft:
-                        location = new PointF(0, (previewLayer.Height - size.Height));
+                        location = new PointF(0, (imageLayer.Height - size.Height));
                         break;
                     case LocationModes.BottomCenter:
-                        location = new PointF((previewLayer.Width - size.Width) / 2, (previewLayer.Height - size.Height));
+                        location = new PointF((imageLayer.Width - size.Width) / 2, (imageLayer.Height - size.Height));
                         break;
                     case LocationModes.BottomRight:
-                        location = new PointF((previewLayer.Width - size.Width), (previewLayer.Height - size.Height));
+                        location = new PointF((imageLayer.Width - size.Width), (imageLayer.Height - size.Height));
                         break;
                     default:
                         location = new PointF(0, 0);
@@ -799,7 +811,7 @@ namespace ImgRW_WF
             graph.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             graph.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             graph.TextRenderingHint = TextRenderingHint.AntiAlias;
-            Font drawFont = GenerateFont();
+            Font drawFont = new Font(fontName, fontSize, wsFontStyle);
             var size = graph.MeasureString(content, drawFont);
             PointF location;
             switch (stringLocationMode)
@@ -976,6 +988,184 @@ namespace ImgRW_WF
             Bitmap result = Resizer.ResizeImage(tmp, newSize);
 
             return result;
+        }
+
+        //select output path
+        private void pibOutputPath_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog()
+            {
+                ShowNewFolderButton = true,
+                RootFolder = Environment.SpecialFolder.MyComputer
+            };
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                txbOutputPath.Text = fbd.SelectedPath;
+                outputPath = fbd.SelectedPath;
+            }
+            fbd.Dispose();
+        }
+
+        //Generate utput file name
+        string GenerateOutputFileName(string originalFilePath, string outputPath, byte outputFormat)
+        {
+            string outputName;
+            string outputExtension = "";
+            outputName = Path.GetFileNameWithoutExtension(originalFilePath);
+
+            if (outputFormat == 0)
+            {
+                outputExtension = Path.GetExtension(originalFilePath);
+            }
+            else if (outputFormat == 1)
+            {
+                outputExtension = ".png";
+            }
+            else if (outputFormat == 2)
+            {
+                outputExtension = ".jpg";
+            }
+            else if (outputFormat == 3)
+            {
+                outputExtension = ".bmp";
+            }
+            int count = 0;
+            while (File.Exists(outputPath + "\\" + outputName + (count > 0 ? count.ToString() : "") + outputExtension))
+            {
+                count++;
+            }
+
+            return (outputPath + "\\" + outputName + (count > 0 ? count.ToString() : "") + outputExtension);
+        }
+
+
+        //select output format
+        private void cmbOutputFormat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            outputFormat = (byte)cmbOutputFormat.SelectedIndex;
+        }
+
+        Bitmap[] imgWMs;
+        long currentIndex = 0;
+        void HandleImage(object input)
+        {
+            //try
+            //{
+                string inputFile = (string)input;
+                Image img;
+                Bitmap bmp;
+                using (FileStream fs = new FileStream(inputFile, FileMode.Open))
+                {
+                    img = Image.FromStream(fs);
+                    bmp = new Bitmap(img);
+                }
+                Bitmap result;
+                if (resizeImages)
+                {
+                    result = ResizeBitmap(bmp, resizeMode, resizeValue);
+                }
+                else
+                {
+                    result = ResizeBitmap(bmp, ResizeModes.Scale, 100);
+                }
+                txbStatus.Invoke((Action)(() =>
+                {
+                    txbStatus.Text += "\n[RSZ]..." + input;
+                }));
+
+
+                if (drawString)
+                {
+                    DrawString(result);
+                }
+                txbStatus.Invoke((Action)(() =>
+                {
+                    txbStatus.Text += "\n[DST]..." + input + ".[v]";
+                }));
+
+                if (drawImage && imageWatermark != null)
+                {
+                    DrawImage(result, imgWMs[currentIndex]);
+                }
+                txbStatus.Invoke((Action)(() =>
+                {
+                    txbStatus.Text += "\n[DIM]..." + input;
+                }));
+
+                string outputFile = GenerateOutputFileName(inputFile, outputPath, outputFormat);
+                ImageFormat saveFormat = img.RawFormat;
+                if (outputFormat == 0)
+                {
+                    saveFormat = img.RawFormat;
+                }
+                else if (outputFormat == 1)
+                {
+                    saveFormat = ImageFormat.Png;
+                }
+                else if (outputFormat == 2)
+                {
+                    saveFormat = ImageFormat.Jpeg;
+                }
+                else if (outputFormat == 3)
+                {
+                    saveFormat = ImageFormat.Bmp;
+                }
+
+                bmp.Dispose();
+                img.Dispose();
+                result.Save(outputFile, saveFormat);
+                txbStatus.Invoke((Action)(() =>
+                {
+                    txbStatus.Text += "\n[v.SAV]..." + input;
+                }));
+            //}
+            //catch (Exception ex)
+            //{
+            //    txbStatus.Invoke((Action)(() =>
+            //    {
+            //        txbStatus.Text += "\n[ERR]..." + ex.Message;
+            //    }));
+            //}
+        }
+
+        private void pibRun_Click(object sender, EventArgs e)
+        {
+            txbStatus.Text = "";
+
+            if (!Directory.Exists(outputPath))
+            {
+                txbOutputPath.ForeColor = Color.DarkRed;
+                txbStatus.ForeColor = Color.DarkRed;
+                txbStatus.Text = language == "vi" ? "Thư mục ra không tồn tại!" : "Output path no exist";
+                return;
+            }
+            txbOutputPath.ForeColor = DefaultForeColor;
+            txbStatus.ForeColor = Color.White;
+
+            if (files.Count == 0) return;
+
+            imgWMs = new Bitmap[files.Count];
+            currentIndex = 0;
+            for (int i = 0; i < files.Count; i++)
+            {
+                imgWMs[i] = imageWatermark.Clone() as Bitmap;
+            }
+            List<Task> listTask = new List<Task>();
+            foreach (var item in files.Keys)
+            {
+                var input = item;
+                txbStatus.Text += "\n[PRC] " + input;
+                listTask.Add(Task.Factory.StartNew(new Action<object>(HandleImage), input));
+            }
+            
+            //Task.WaitAll(listTask.ToArray());
+
+            //for (int i = 0; i < files.Count; i++)
+            //{
+            //    imgWMs[i].Dispose();
+            //}
+
+
         }
     }
 }

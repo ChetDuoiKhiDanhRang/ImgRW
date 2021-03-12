@@ -33,6 +33,7 @@
             this.col1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.col2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.col3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.col4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ctmMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ctmAddFiles = new System.Windows.Forms.ToolStripMenuItem();
             this.ctmDeleteSelected = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +50,7 @@
             this.radFixWidth = new System.Windows.Forms.RadioButton();
             this.ckbResize = new System.Windows.Forms.CheckBox();
             this.panelWatermarkString = new System.Windows.Forms.Panel();
+            this.colorPanel1 = new CxxLibs_CustomControlsDFW.ColorPanel();
             this.rdbWSLocation = new System.Windows.Forms.RadioButton();
             this.rdbBottomCenter = new System.Windows.Forms.RadioButton();
             this.rdbBottomRight = new System.Windows.Forms.RadioButton();
@@ -74,6 +76,7 @@
             this.txbWString = new System.Windows.Forms.TextBox();
             this.ckbString = new System.Windows.Forms.CheckBox();
             this.panelWatermarkImage = new System.Windows.Forms.Panel();
+            this.vldImageOptical = new CxxLibs_CustomControlsDFW.ValueSlider();
             this.pibWatermarkImage = new System.Windows.Forms.PictureBox();
             this.rdbWILocation = new System.Windows.Forms.RadioButton();
             this.rdbWIBottomCenter = new System.Windows.Forms.RadioButton();
@@ -91,8 +94,8 @@
             this.ckbWatermarkImage = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pibOpenOutput = new System.Windows.Forms.PictureBox();
+            this.pibRun = new System.Windows.Forms.PictureBox();
             this.pibOutputPath = new System.Windows.Forms.PictureBox();
             this.txbOutputPath = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -101,9 +104,7 @@
             this.vccImage = new CxxLibs_CustomControlsDFW.ValueCircular();
             this.vccString = new CxxLibs_CustomControlsDFW.ValueCircular();
             this.valueSlider2 = new CxxLibs_CustomControlsDFW.ValueSlider();
-            this.colorPanel1 = new CxxLibs_CustomControlsDFW.ColorPanel();
-            this.vldImageOptical = new CxxLibs_CustomControlsDFW.ValueSlider();
-            this.col4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.txbStatus = new System.Windows.Forms.TextBox();
             this.ctmMenu.SuspendLayout();
             this.panelResize.SuspendLayout();
             this.panelWatermarkString.SuspendLayout();
@@ -117,8 +118,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudWIX)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pibOpenOutput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pibRun)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pibOutputPath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).BeginInit();
             this.SuspendLayout();
@@ -150,19 +151,26 @@
             // 
             // col1
             // 
-            this.col1.Text = "[ - ]";
+            this.col1.Text = "[- -]";
             this.col1.Width = 100;
             // 
             // col2
             // 
+            this.col2.DisplayIndex = 3;
             this.col2.Text = "[↔]";
             this.col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.col2.Width = 40;
             // 
             // col3
             // 
+            this.col3.DisplayIndex = 1;
             this.col3.Text = "[ × ]";
             this.col3.Width = 80;
+            // 
+            // col4
+            // 
+            this.col4.DisplayIndex = 2;
+            this.col4.Text = "[ ÷ ]";
             // 
             // ctmMenu
             // 
@@ -365,6 +373,21 @@
             this.panelWatermarkString.Padding = new System.Windows.Forms.Padding(6);
             this.panelWatermarkString.Size = new System.Drawing.Size(321, 217);
             this.panelWatermarkString.TabIndex = 2;
+            // 
+            // colorPanel1
+            // 
+            this.colorPanel1.AutoSize = true;
+            this.colorPanel1.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
+            this.colorPanel1.CurrentColorHexString = "#88FFAA00";
+            this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorPanel1.Location = new System.Drawing.Point(6, 85);
+            this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
+            this.colorPanel1.Name = "colorPanel1";
+            this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
+            this.colorPanel1.PanelStyle = CxxLibs_CustomControlsDFW.PanelStyles.Wheel;
+            this.colorPanel1.RefControl = null;
+            this.colorPanel1.Size = new System.Drawing.Size(152, 131);
+            this.colorPanel1.TabIndex = 6;
             // 
             // rdbWSLocation
             // 
@@ -680,6 +703,26 @@
             this.panelWatermarkImage.Size = new System.Drawing.Size(321, 151);
             this.panelWatermarkImage.TabIndex = 5;
             // 
+            // vldImageOptical
+            // 
+            this.vldImageOptical.Location = new System.Drawing.Point(5, 124);
+            this.vldImageOptical.MaxValue = 1F;
+            this.vldImageOptical.MinValue = 0F;
+            this.vldImageOptical.Name = "vldImageOptical";
+            this.vldImageOptical.OffsetLines = false;
+            this.vldImageOptical.OffsetLinesColor = System.Drawing.Color.DarkGray;
+            this.vldImageOptical.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
+            this.vldImageOptical.PointerSize = 6;
+            this.vldImageOptical.PointerStyle = CxxLibs_CustomControlsDFW.PointerStyles.Dot;
+            this.vldImageOptical.Size = new System.Drawing.Size(304, 11);
+            this.vldImageOptical.Style = CxxLibs_CustomControlsDFW.ValueSliderStyles.GradientLine;
+            this.vldImageOptical.TabIndex = 11;
+            this.vldImageOptical.Text = "valueSlider1";
+            this.vldImageOptical.Value = 0.8F;
+            this.vldImageOptical.ValueBackColor = System.Drawing.Color.LightGray;
+            this.vldImageOptical.ValueColor = System.Drawing.Color.DodgerBlue;
+            this.vldImageOptical.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
             // pibWatermarkImage
             // 
             this.pibWatermarkImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -852,15 +895,15 @@
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.pictureBox3);
-            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.pibOpenOutput);
+            this.panel1.Controls.Add(this.pibRun);
             this.panel1.Controls.Add(this.pibOutputPath);
             this.panel1.Controls.Add(this.txbOutputPath);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.cmbOutputFormat);
             this.panel1.Location = new System.Drawing.Point(11, 143);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(225, 132);
+            this.panel1.Size = new System.Drawing.Size(225, 176);
             this.panel1.TabIndex = 12;
             // 
             // pictureBox1
@@ -873,21 +916,23 @@
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
-            // pictureBox3
+            // pibOpenOutput
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(117, 97);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(103, 30);
-            this.pictureBox3.TabIndex = 5;
-            this.pictureBox3.TabStop = false;
+            this.pibOpenOutput.Location = new System.Drawing.Point(149, 97);
+            this.pibOpenOutput.Name = "pibOpenOutput";
+            this.pibOpenOutput.Size = new System.Drawing.Size(71, 30);
+            this.pibOpenOutput.TabIndex = 5;
+            this.pibOpenOutput.TabStop = false;
             // 
-            // pictureBox2
+            // pibRun
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(3, 97);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(108, 30);
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
+            this.pibRun.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pibRun.Location = new System.Drawing.Point(3, 97);
+            this.pibRun.Name = "pibRun";
+            this.pibRun.Size = new System.Drawing.Size(143, 30);
+            this.pibRun.TabIndex = 5;
+            this.pibRun.TabStop = false;
+            this.pibRun.Click += new System.EventHandler(this.pibRun_Click);
             // 
             // pibOutputPath
             // 
@@ -897,12 +942,14 @@
             this.pibOutputPath.Size = new System.Drawing.Size(25, 25);
             this.pibOutputPath.TabIndex = 5;
             this.pibOutputPath.TabStop = false;
+            this.pibOutputPath.Click += new System.EventHandler(this.pibOutputPath_Click);
             // 
             // txbOutputPath
             // 
+            this.txbOutputPath.Font = new System.Drawing.Font("Consolas", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbOutputPath.Location = new System.Drawing.Point(34, 68);
             this.txbOutputPath.Name = "txbOutputPath";
-            this.txbOutputPath.Size = new System.Drawing.Size(186, 21);
+            this.txbOutputPath.Size = new System.Drawing.Size(186, 20);
             this.txbOutputPath.TabIndex = 4;
             // 
             // label9
@@ -918,12 +965,19 @@
             // cmbOutputFormat
             // 
             this.cmbOutputFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbOutputFormat.Font = new System.Drawing.Font("Consolas", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbOutputFormat.FormattingEnabled = true;
             this.cmbOutputFormat.IntegralHeight = false;
+            this.cmbOutputFormat.Items.AddRange(new object[] {
+            "x → x",
+            "PNG (Portable Network Graphics)",
+            "JPG (Joint Photographic Experts Group)",
+            "BMP (Bitmap)"});
             this.cmbOutputFormat.Location = new System.Drawing.Point(34, 32);
             this.cmbOutputFormat.Name = "cmbOutputFormat";
-            this.cmbOutputFormat.Size = new System.Drawing.Size(186, 23);
+            this.cmbOutputFormat.Size = new System.Drawing.Size(186, 21);
             this.cmbOutputFormat.TabIndex = 3;
+            this.cmbOutputFormat.SelectedIndexChanged += new System.EventHandler(this.cmbOutputFormat_SelectedIndexChanged);
             // 
             // pibPreview
             // 
@@ -1003,44 +1057,17 @@
             this.valueSlider2.ValueColor = System.Drawing.Color.DodgerBlue;
             this.valueSlider2.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // colorPanel1
+            // txbStatus
             // 
-            this.colorPanel1.AutoSize = true;
-            this.colorPanel1.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
-            this.colorPanel1.CurrentColorHexString = "#88FFAA00";
-            this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorPanel1.Location = new System.Drawing.Point(6, 85);
-            this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
-            this.colorPanel1.Name = "colorPanel1";
-            this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
-            this.colorPanel1.PanelStyle = CxxLibs_CustomControlsDFW.PanelStyles.Wheel;
-            this.colorPanel1.RefControl = null;
-            this.colorPanel1.Size = new System.Drawing.Size(152, 131);
-            this.colorPanel1.TabIndex = 6;
-            // 
-            // vldImageOptical
-            // 
-            this.vldImageOptical.Location = new System.Drawing.Point(5, 124);
-            this.vldImageOptical.MaxValue = 1F;
-            this.vldImageOptical.MinValue = 0F;
-            this.vldImageOptical.Name = "vldImageOptical";
-            this.vldImageOptical.OffsetLines = false;
-            this.vldImageOptical.OffsetLinesColor = System.Drawing.Color.DarkGray;
-            this.vldImageOptical.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
-            this.vldImageOptical.PointerSize = 6;
-            this.vldImageOptical.PointerStyle = CxxLibs_CustomControlsDFW.PointerStyles.Dot;
-            this.vldImageOptical.Size = new System.Drawing.Size(304, 11);
-            this.vldImageOptical.Style = CxxLibs_CustomControlsDFW.ValueSliderStyles.GradientLine;
-            this.vldImageOptical.TabIndex = 11;
-            this.vldImageOptical.Text = "valueSlider1";
-            this.vldImageOptical.Value = 0.8F;
-            this.vldImageOptical.ValueBackColor = System.Drawing.Color.LightGray;
-            this.vldImageOptical.ValueColor = System.Drawing.Color.DodgerBlue;
-            this.vldImageOptical.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // col4
-            // 
-            this.col4.Text = "[÷]";
+            this.txbStatus.BackColor = System.Drawing.Color.Teal;
+            this.txbStatus.Font = new System.Drawing.Font("Consolas", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbStatus.ForeColor = System.Drawing.SystemColors.MenuBar;
+            this.txbStatus.Location = new System.Drawing.Point(11, 326);
+            this.txbStatus.Multiline = true;
+            this.txbStatus.Name = "txbStatus";
+            this.txbStatus.Size = new System.Drawing.Size(225, 200);
+            this.txbStatus.TabIndex = 15;
+            this.txbStatus.Text = "...";
             // 
             // FormConfig
             // 
@@ -1048,6 +1075,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1012, 537);
+            this.Controls.Add(this.txbStatus);
             this.Controls.Add(this.vccImage);
             this.Controls.Add(this.vccString);
             this.Controls.Add(this.valueSlider2);
@@ -1082,8 +1110,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pibOpenOutput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pibRun)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pibOutputPath)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).EndInit();
             this.ResumeLayout(false);
@@ -1154,8 +1182,8 @@
         private System.Windows.Forms.ComboBox cmbOutputFormat;
         private CxxLibs_CustomControlsDFW.ValueSlider valueSlider2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pibOpenOutput;
+        private System.Windows.Forms.PictureBox pibRun;
         private System.Windows.Forms.PictureBox pibOutputPath;
         private System.Windows.Forms.TextBox txbOutputPath;
         private CxxLibs_CustomControlsDFW.ValueCircular vccString;
@@ -1168,6 +1196,7 @@
         private System.Windows.Forms.ColumnHeader col2;
         private System.Windows.Forms.ColumnHeader col3;
         private System.Windows.Forms.ColumnHeader col4;
+        private System.Windows.Forms.TextBox txbStatus;
     }
 }
 
