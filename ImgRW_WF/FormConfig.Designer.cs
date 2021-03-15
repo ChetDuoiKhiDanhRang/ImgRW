@@ -101,10 +101,10 @@
             this.label9 = new System.Windows.Forms.Label();
             this.cmbOutputFormat = new System.Windows.Forms.ComboBox();
             this.pibPreview = new System.Windows.Forms.PictureBox();
+            this.txbStatus = new System.Windows.Forms.TextBox();
             this.vccImage = new CxxLibs_CustomControlsDFW.ValueCircular();
             this.vccString = new CxxLibs_CustomControlsDFW.ValueCircular();
             this.valueSlider2 = new CxxLibs_CustomControlsDFW.ValueSlider();
-            this.txbStatus = new System.Windows.Forms.TextBox();
             this.ctmMenu.SuspendLayout();
             this.panelResize.SuspendLayout();
             this.panelWatermarkString.SuspendLayout();
@@ -262,6 +262,7 @@
             this.txbScale.TabIndex = 1;
             this.txbScale.Text = "50";
             this.txbScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txbScale.TextChanged += new System.EventHandler(this.txbResizeValue_TextChanged);
             // 
             // txbFixHeight
             // 
@@ -273,6 +274,7 @@
             this.txbFixHeight.TabIndex = 1;
             this.txbFixHeight.Text = "700";
             this.txbFixHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txbFixHeight.TextChanged += new System.EventHandler(this.txbResizeValue_TextChanged);
             // 
             // txbFixWidth
             // 
@@ -284,6 +286,7 @@
             this.txbFixWidth.TabIndex = 1;
             this.txbFixWidth.Text = "700";
             this.txbFixWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txbFixWidth.TextChanged += new System.EventHandler(this.txbResizeValue_TextChanged);
             // 
             // radScale
             // 
@@ -705,7 +708,7 @@
             // 
             // vldImageOptical
             // 
-            this.vldImageOptical.Location = new System.Drawing.Point(5, 124);
+            this.vldImageOptical.Location = new System.Drawing.Point(5, 127);
             this.vldImageOptical.MaxValue = 1F;
             this.vldImageOptical.MinValue = 0F;
             this.vldImageOptical.Name = "vldImageOptical";
@@ -903,7 +906,7 @@
             this.panel1.Controls.Add(this.cmbOutputFormat);
             this.panel1.Location = new System.Drawing.Point(11, 143);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(225, 176);
+            this.panel1.Size = new System.Drawing.Size(225, 144);
             this.panel1.TabIndex = 12;
             // 
             // pictureBox1
@@ -918,6 +921,7 @@
             // 
             // pibOpenOutput
             // 
+            this.pibOpenOutput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pibOpenOutput.Location = new System.Drawing.Point(149, 97);
             this.pibOpenOutput.Name = "pibOpenOutput";
             this.pibOpenOutput.Size = new System.Drawing.Size(71, 30);
@@ -951,6 +955,7 @@
             this.txbOutputPath.Name = "txbOutputPath";
             this.txbOutputPath.Size = new System.Drawing.Size(186, 20);
             this.txbOutputPath.TabIndex = 4;
+            this.txbOutputPath.TextChanged += new System.EventHandler(this.txbOutputPath_TextChanged);
             // 
             // label9
             // 
@@ -992,6 +997,20 @@
             this.pibPreview.TabIndex = 0;
             this.pibPreview.TabStop = false;
             this.pibPreview.BackgroundImageChanged += new System.EventHandler(this.pibPreview_BackgroundImageChanged);
+            // 
+            // txbStatus
+            // 
+            this.txbStatus.BackColor = System.Drawing.Color.Teal;
+            this.txbStatus.Font = new System.Drawing.Font("Consolas", 8F);
+            this.txbStatus.ForeColor = System.Drawing.SystemColors.MenuBar;
+            this.txbStatus.Location = new System.Drawing.Point(11, 293);
+            this.txbStatus.Multiline = true;
+            this.txbStatus.Name = "txbStatus";
+            this.txbStatus.ReadOnly = true;
+            this.txbStatus.Size = new System.Drawing.Size(225, 233);
+            this.txbStatus.TabIndex = 15;
+            this.txbStatus.Text = "...";
+            this.txbStatus.WordWrap = false;
             // 
             // vccImage
             // 
@@ -1057,20 +1076,6 @@
             this.valueSlider2.ValueColor = System.Drawing.Color.DodgerBlue;
             this.valueSlider2.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // txbStatus
-            // 
-            this.txbStatus.BackColor = System.Drawing.Color.Teal;
-            this.txbStatus.Font = new System.Drawing.Font("Consolas", 8F);
-            this.txbStatus.ForeColor = System.Drawing.SystemColors.MenuBar;
-            this.txbStatus.Location = new System.Drawing.Point(11, 326);
-            this.txbStatus.Multiline = true;
-            this.txbStatus.Name = "txbStatus";
-            this.txbStatus.ReadOnly = true;
-            this.txbStatus.Size = new System.Drawing.Size(225, 200);
-            this.txbStatus.TabIndex = 15;
-            this.txbStatus.Text = "...";
-            this.txbStatus.WordWrap = false;
-            // 
             // FormConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1093,6 +1098,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormConfig";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.ctmMenu.ResumeLayout(false);

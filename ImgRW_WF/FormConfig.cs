@@ -1,16 +1,14 @@
-﻿using ImageModifier;
+﻿using Controls_dotNetFrw;
+using ImageModifier;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ImgRW_WF
@@ -686,14 +684,18 @@ namespace ImgRW_WF
             if (ob.Name == radFixHeight.Name)
             {
                 resizeMode = ResizeModes.FixHeight;
+                txbResizeValue_TextChanged(radFixHeight, null);
             }
             else if (ob.Name == radFixWidth.Name)
             {
                 resizeMode = ResizeModes.FixWidth;
+                txbResizeValue_TextChanged(radFixWidth, null);
+
             }
             else if (ob.Name == radScale.Name)
             {
                 resizeMode = ResizeModes.Scale;
+                txbResizeValue_TextChanged(radScale, null);
             }
 
         }
@@ -743,7 +745,6 @@ namespace ImgRW_WF
 
         private void DrawImage(Bitmap imageLayer, Bitmap imgWatermark)
         {
-            currentIndex++; //just for Tasks when process image list
             if (imgWatermark == null) return;
             using (Graphics graph = Graphics.FromImage(imageLayer))
             {
@@ -1001,12 +1002,11 @@ namespace ImgRW_WF
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 txbOutputPath.Text = fbd.SelectedPath;
-                outputPath = fbd.SelectedPath;
             }
             fbd.Dispose();
         }
 
-        //Generate utput file name
+        //Generate output file name
         string GenerateOutputFileName(string originalFilePath, string outputPath, byte outputFormat)
         {
             string outputName;
@@ -1030,12 +1030,12 @@ namespace ImgRW_WF
                 outputExtension = ".bmp";
             }
             int count = 0;
-            while (File.Exists(outputPath + "\\" + outputName + "_" + (count > 0 ? count.ToString() : "") + outputExtension))
+            while (File.Exists(outputPath + "\\" + outputName +  (count > 0 ? ("_" + count.ToString()) : "") + outputExtension))
             {
                 count++;
             }
 
-            return (outputPath + "\\" + outputName + "_" + (count > 0 ? count.ToString() : "") + outputExtension);
+            return (outputPath + "\\" + outputName +  (count > 0 ? ("_" + count.ToString()) : "") + outputExtension);
         }
 
 
@@ -1045,12 +1045,26 @@ namespace ImgRW_WF
             outputFormat = (byte)cmbOutputFormat.SelectedIndex;
         }
 
+        //Process images with thread
         Bitmap[] imgWMs;
-        long currentIndex = 0;
+        int currentIndex = 0;
+
         void HandleImage(object input)
         {
+            long index = currentIndex; //safety current index
+            currentIndex++;
+
+            txbStatus.BeginInvoke((Action)(() =>
+            {
+                txbStatus.AppendText("\r\n[Index: " + index.ToString("000") + " ] ");
+            }));
+
             string inputFile = (string)input;
-            string threadID = Thread.CurrentThread.ManagedThreadId.ToString();
+            string threadID = Thread.CurrentThread.ManagedThreadId.ToString("000");
+            Image img = null;
+            Bitmap bmp = null;
+            Bitmap result = null;
+
             try
             {
                 txbStatus.BeginInvoke((Action)(() =>
@@ -1059,14 +1073,11 @@ namespace ImgRW_WF
                     txbStatus.AppendText("\r\n[PRC] " + inputFile);
                 }));
 
-                Image img;
-                Bitmap bmp;
                 using (FileStream fs = new FileStream(inputFile, FileMode.Open))
                 {
                     img = Image.FromStream(fs);
                     bmp = new Bitmap(img);
                 }
-                Bitmap result;
 
                 //Resize images
                 if (resizeImages)
@@ -1077,28 +1088,33 @@ namespace ImgRW_WF
                 {
                     result = ResizeBitmap(bmp, ResizeModes.Scale, 100);
                 }
+
                 txbStatus.BeginInvoke((Action)(() =>
                 {
                     txbStatus.AppendText("\r\n[RSZ] " + input);
                 }));
 
+                //draw image watermark
+                if (drawImage && imgWMs[index] != null)
+                {
+                    DrawImage(result, imgWMs[index]);
+
+                    txbStatus.BeginInvoke((Action)(() =>
+                    {
+                        txbStatus.AppendText("\r\n[DIM] " + input);
+                    }));
+
+                    imgWMs[index]?.Dispose();
+                }
+
                 //Draw string watermark
                 if (drawString)
                 {
                     DrawString(result);
-                    txbStatus.BeginInvoke((Action)(() =>
-                    {
-                        txbStatus.AppendText("\r\n[DST] " + input + ".[v]");
-                    }));
-                }
 
-                //draw image watermark
-                if (drawImage && imgWMs[currentIndex] != null)
-                {
-                    DrawImage(result, imgWMs[currentIndex]);
                     txbStatus.BeginInvoke((Action)(() =>
                     {
-                        txbStatus.AppendText("\r\n[DIM] " + input);
+                        txbStatus.AppendText("\r\n[DST] " + input);
                     }));
                 }
 
@@ -1121,13 +1137,13 @@ namespace ImgRW_WF
                     saveFormat = ImageFormat.Bmp;
                 }
 
-                bmp.Dispose();
-                img.Dispose();
+
                 result.Save(outputFile, saveFormat);
+
                 txbStatus.BeginInvoke((Action)(() =>
                 {
-                    txbStatus.AppendText("\r\n[Thread end, managed ID: " + threadID + "]");
                     txbStatus.AppendText("\r\n[SAV] " + input);
+                    txbStatus.AppendText("\r\n[Thread end, managed ID: " + threadID + "]");
                 }));
                 valueSlider2.BeginInvoke((Action)(() => { valueSlider2.Value += 1; }));
             }
@@ -1135,9 +1151,18 @@ namespace ImgRW_WF
             {
                 txbStatus.Invoke((Action)(() =>
                 {
-                    txbStatus.Text += "\n[ERR Thrd.ID: " + threadID + "]..." + ex.Message;
+                    txbStatus.Text += "\r\n[Thread error, manage ID: " + threadID + "] " + ex.Message;
                 }));
             }
+            finally
+            {
+                result?.Dispose();
+                bmp?.Dispose();
+                img?.Dispose();
+
+                //Thread.Sleep(100);
+            }
+
         }
 
         private void pibRun_Click(object sender, EventArgs e)
@@ -1148,7 +1173,8 @@ namespace ImgRW_WF
             {
                 txbOutputPath.ForeColor = Color.DarkRed;
                 txbStatus.ForeColor = Color.DarkRed;
-                txbStatus.Text = language == "vi" ? "Thư mục ra không tồn tại!" : "Output path no exist";
+                txbStatus.Text = language == "vi" ? "Thư mục ra không tồn tại!" : "Output path not exist";
+                txbOutputPath.SelectAll();
                 return;
             }
             txbOutputPath.ForeColor = DefaultForeColor;
@@ -1163,7 +1189,6 @@ namespace ImgRW_WF
                 for (int i = 0; i < files.Count; i++)
                 {
                     imgWMs[i] = imageWatermark.Clone() as Bitmap;
-
                 }
             }
 
@@ -1181,18 +1206,30 @@ namespace ImgRW_WF
                 t.Start(inputs[i]);
             }
 
-            foreach (Thread item in threads)
+            //foreach (Thread item in threads)
+            //{
+            //    item.Join();
+            //}
+        }
+
+        private void txbOutputPath_TextChanged(object sender, EventArgs e)
+        {
+            outputPath = txbOutputPath.Text;
+        }
+
+        private void txbResizeValue_TextChanged(object sender, EventArgs e)
+        {
+            TextBox txb = (TextBox)sender;
+            int rsValue;
+            if (int.TryParse(txb.Text, out rsValue))
             {
-                item.Join();
+                txb.ForeColor = DefaultForeColor;
+                resizeValue = rsValue;
             }
-
-            for (int i = 0; i < files.Count; i++)
+            else
             {
-                imgWMs[i]?.Dispose();
+                txb.ForeColor = Color.DarkRed;
             }
-            txbStatus.AppendText("\r\n=======================================");
-
-
         }
     }
 }
