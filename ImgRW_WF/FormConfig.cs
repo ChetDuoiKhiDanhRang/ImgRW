@@ -1,5 +1,4 @@
-﻿using Controls_dotNetFrw;
-using ImageModifier;
+﻿using ImageModifier;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -175,7 +174,7 @@ namespace ImgRW_WF
 
             stringRotateAngle = vccString.Value = x.stringRotateAngle;
 
-            stringLocationMode = x.imageLocationMode;
+            stringLocationMode = x.stringLocationMode;
             switch (x.stringLocationMode)
             {
                 case LocationModes.Custom:
@@ -284,7 +283,41 @@ namespace ImgRW_WF
 
         private void SaveSettings()
         {
+            var x = Properties.Settings.Default;
+            x.resize = resizeImages;
+            x.resizeMode = resizeMode;
+            x.resizeValue = resizeValue;
 
+            x.drawString = drawString;
+            x.content = content;
+            x.fontName = fontName;
+            x.fontSize = (decimal)fontSize;
+
+            x.fontStyleBold = ((wsFontStyle & FontStyle.Bold)) == FontStyle.Bold;
+            x.fontStyleItalic = ((wsFontStyle & FontStyle.Italic)) == FontStyle.Italic;
+            x.fontStyleUnderline = ((wsFontStyle & FontStyle.Underline)) == FontStyle.Underline;
+
+            x.frameString = drawStringFrame;
+            x.frameLineWidth = (decimal)frameLineWidth;
+            x.stringColor = stringColor;
+
+            x.stringLocationMode = stringLocationMode;
+            x.stringLocationX = (decimal)stringLocationX;
+            x.stringLocationY = (decimal)stringLocationY;
+            x.stringRotateAngle = stringRotateAngle;
+
+            x.drawImage = drawImage;
+            x.imageLocationMode = imageLocationMode;
+            x.imageLocationX = (decimal)imageLocationX;
+            x.imageLocationY = (decimal)imageLocationY;
+            x.imageOptical = imageOptical;
+            x.imageRotateAngle = imageRotateAngle;
+            x.imagePath = imagePath;
+
+            x.outputFormat = outputFormat;
+            x.outputPath = outputPath;
+
+            x.Save();
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -384,7 +417,7 @@ namespace ImgRW_WF
 
         //Resize images or not
         bool resizeImages;
-        float resizeValue;
+        int resizeValue;
         private ResizeModes resizeMode;
 
 
@@ -593,6 +626,7 @@ namespace ImgRW_WF
                     pibWatermarkImage.BackgroundImage?.Dispose();
                     pibWatermarkImage.BackgroundImage = background;
                 }
+                imagePath = ofd.FileName;
             }
             ofd.Dispose();
         }
@@ -1030,12 +1064,12 @@ namespace ImgRW_WF
                 outputExtension = ".bmp";
             }
             int count = 0;
-            while (File.Exists(outputPath + "\\" + outputName +  (count > 0 ? ("_" + count.ToString()) : "") + outputExtension))
+            while (File.Exists(outputPath + "\\" + outputName + (count > 0 ? ("_" + count.ToString()) : "") + outputExtension))
             {
                 count++;
             }
 
-            return (outputPath + "\\" + outputName +  (count > 0 ? ("_" + count.ToString()) : "") + outputExtension);
+            return (outputPath + "\\" + outputName + (count > 0 ? ("_" + count.ToString()) : "") + outputExtension);
         }
 
 
@@ -1230,6 +1264,11 @@ namespace ImgRW_WF
             {
                 txb.ForeColor = Color.DarkRed;
             }
+        }
+
+        private void FormConfig_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            SaveSettings();
         }
     }
 }
