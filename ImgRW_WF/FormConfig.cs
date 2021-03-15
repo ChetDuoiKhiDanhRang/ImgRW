@@ -1246,10 +1246,12 @@ namespace ImgRW_WF
             //}
         }
 
+        //output path
         private void txbOutputPath_TextChanged(object sender, EventArgs e)
         {
             outputPath = txbOutputPath.Text;
         }
+
 
         private void txbResizeValue_TextChanged(object sender, EventArgs e)
         {
