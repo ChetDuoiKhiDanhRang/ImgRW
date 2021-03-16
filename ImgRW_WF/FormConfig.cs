@@ -334,80 +334,10 @@ namespace ImgRW_WF
             RedrawPreview();
         }
 
-        //add and remove files list
-        private void ctmMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        //save setting when close
+        private void FormConfig_FormClosed(object sender, FormClosedEventArgs e)
         {
-            ctmMenu.Visible = false;
-            if (e.ClickedItem.Name == "ctmAddFiles")
-            {
-                using (OpenFileDialog ofd = new OpenFileDialog())
-                {
-                    ofd.Filter = "Image files|*.png;*.bmp;*.jpg;*.jpeg;*.gif;*.tiff";
-                    ofd.RestoreDirectory = true;
-                    ofd.Multiselect = true;
-                    if (ofd.ShowDialog() == DialogResult.OK)
-                    {
-                        foreach (var item in ofd.FileNames)
-                        {
-                            if (files.ContainsKey(item))
-                            {
-                                continue;
-                            }
-                            using (FileStream fileStream = new FileStream(item, FileMode.Open))
-                            {
-                                Image i = Image.FromStream(fileStream);
-
-                                FileInfo fi = new FileInfo(item);
-                                ListViewItem li = new ListViewItem(fi.Name);
-
-                                li.SubItems.Add(CalculateBytes(fi.Length));
-                                li.SubItems.Add(i.Width.ToString() + "×" + i.Height.ToString());
-                                li.SubItems.Add(i.HorizontalResolution.ToString("0") + "/" + i.VerticalResolution.ToString("0") + "(dpi)");
-                                li.Tag = item;
-                                i.Dispose();
-                                files.Add(item, li);
-                            }
-                        }
-
-                        lsvFiles.Items.Clear();
-                        foreach (var item in files)
-                        {
-                            lsvFiles.Items.Add(item.Value);
-                        }
-                        for (int i = 0; i < lsvFiles.Columns.Count; i++)
-                        {
-                            lsvFiles.Columns[i].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
-                        }
-                    }
-                }
-            }
-            else if (e.ClickedItem.Name == "ctmDeleteSelected")
-            {
-                if (lsvFiles.SelectedItems.Count == 0) return;
-                foreach (ListViewItem item in lsvFiles.SelectedItems)
-                {
-                    files.Remove((string)item.Tag);
-                    lsvFiles.Items.Remove(item);
-                }
-            }
-            else if (e.ClickedItem.Name == "ctmClearList")
-            {
-                files.Clear();
-                lsvFiles.Items.Clear();
-            }
-        }
-        //delete selected files
-        private void lsvFiles_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Delete)
-            {
-                if (lsvFiles.SelectedItems.Count == 0) return;
-                foreach (ListViewItem item in lsvFiles.SelectedItems)
-                {
-                    files.Remove((string)item.Tag);
-                    lsvFiles.Items.Remove(item);
-                }
-            }
+            SaveSettings();
         }
 
         #region FIELDS===============================================================================================
@@ -448,7 +378,7 @@ namespace ImgRW_WF
         Bitmap imageWatermark;
         #endregion
 
-        #region WATERMARK STRING EVENTS============================================================================================
+        #region WATERMARK STRING EVENTS & METHODS============================================================================================
         //Changed font style
         private void ckbFontStyle_Changed(object sender, EventArgs e)
         {
@@ -718,20 +648,120 @@ namespace ImgRW_WF
             if (ob.Name == radFixHeight.Name)
             {
                 resizeMode = ResizeModes.FixHeight;
-                txbResizeValue_TextChanged(radFixHeight, null);
+                txbResizeValue_TextChanged(txbFixHeight, null);
             }
             else if (ob.Name == radFixWidth.Name)
             {
                 resizeMode = ResizeModes.FixWidth;
-                txbResizeValue_TextChanged(radFixWidth, null);
+                txbResizeValue_TextChanged(txbFixWidth, null);
 
             }
             else if (ob.Name == radScale.Name)
             {
                 resizeMode = ResizeModes.Scale;
-                txbResizeValue_TextChanged(radScale, null);
+                txbResizeValue_TextChanged(txbScale, null);
             }
 
+        }
+
+        private void txbResizeValue_TextChanged(object sender, EventArgs e)
+        {
+            TextBox txb = (TextBox)sender;
+            int rsValue;
+
+            if (txb.Name == txbFixHeight.Name)
+            {
+                if (!radFixHeight.Checked)
+                {
+                    radFixHeight.Checked = true;
+                }
+            }
+            else if (txb.Name == txbFixWidth.Name)
+            {
+                if (!radFixWidth.Checked)
+                {
+                    radFixWidth.Checked = true;
+                }
+            }
+            else if (txbFixHeight.Name == txbScale.Name)
+            {
+                if (!radScale.Checked)
+                {
+                    radScale.Checked = true;
+                }
+            }
+
+            if (int.TryParse(txb.Text, out rsValue))
+            {
+                txb.ForeColor = DefaultForeColor;
+                resizeValue = rsValue;
+            }
+            else
+            {
+                txb.ForeColor = Color.DarkRed;
+            }
+        }
+        #endregion
+
+        #region OUTPUT=========================================================================================
+
+        //select output path
+        private void pibOutputPath_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog()
+            {
+                ShowNewFolderButton = true,
+                RootFolder = Environment.SpecialFolder.MyComputer
+            };
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                txbOutputPath.Text = fbd.SelectedPath;
+            }
+            fbd.Dispose();
+        }
+
+        //generate output file name
+        string GenerateOutputFileName(string originalFilePath, string outputPath, byte outputFormat)
+        {
+            string outputName;
+            string outputExtension = "";
+            outputName = Path.GetFileNameWithoutExtension(originalFilePath);
+
+            if (outputFormat == 0)
+            {
+                outputExtension = Path.GetExtension(originalFilePath);
+            }
+            else if (outputFormat == 1)
+            {
+                outputExtension = ".png";
+            }
+            else if (outputFormat == 2)
+            {
+                outputExtension = ".jpg";
+            }
+            else if (outputFormat == 3)
+            {
+                outputExtension = ".bmp";
+            }
+            int count = 0;
+            while (File.Exists(outputPath + "\\" + outputName + (count > 0 ? ("_" + count.ToString()) : "") + outputExtension))
+            {
+                count++;
+            }
+
+            return (outputPath + "\\" + outputName + (count > 0 ? ("_" + count.ToString()) : "") + outputExtension);
+        }
+
+        //select output format
+        private void cmbOutputFormat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            outputFormat = (byte)cmbOutputFormat.SelectedIndex;
+        }
+
+        //output path
+        private void txbOutputPath_TextChanged(object sender, EventArgs e)
+        {
+            outputPath = txbOutputPath.Text;
         }
         #endregion
 
@@ -754,7 +784,6 @@ namespace ImgRW_WF
 
             RedrawPreview();
         }
-
 
         void RedrawPreview()
         {
@@ -913,6 +942,30 @@ namespace ImgRW_WF
             graph.Dispose();
         }
 
+        //resize a bitmap
+        private Bitmap ResizeBitmap(Bitmap tmp, ResizeModes resizeMode, float resizeValue)
+        {
+            var originalSize = tmp.Size;
+            Size newSize = originalSize;
+            switch (resizeMode)
+            {
+                case ResizeModes.FixWidth:
+                    newSize = new Size((int)resizeValue, (int)(originalSize.Height * resizeValue / originalSize.Width));
+                    break;
+                case ResizeModes.FixHeight:
+                    newSize = new Size((int)(originalSize.Width * resizeValue / originalSize.Height), (int)resizeValue);
+                    break;
+                case ResizeModes.Scale:
+                    newSize = new Size((int)(originalSize.Width * resizeValue / 100), (int)(originalSize.Height * resizeValue / 100));
+                    break;
+                default:
+                    break;
+            }
+            Bitmap result = Resizer.ResizeImage(tmp, newSize);
+
+            return result;
+        }
+
         //Length of files in friendly
         string CalculateBytes(long _value)
         {
@@ -1001,88 +1054,10 @@ namespace ImgRW_WF
 
         }
 
-        //resize a bitmap
-        private Bitmap ResizeBitmap(Bitmap tmp, ResizeModes resizeMode, float resizeValue)
-        {
-            var originalSize = tmp.Size;
-            Size newSize = originalSize;
-            switch (resizeMode)
-            {
-                case ResizeModes.FixWidth:
-                    newSize = new Size((int)resizeValue, (int)(originalSize.Height * resizeValue / originalSize.Width));
-                    break;
-                case ResizeModes.FixHeight:
-                    newSize = new Size((int)(originalSize.Width * resizeValue / originalSize.Height), (int)resizeValue);
-                    break;
-                case ResizeModes.Scale:
-                    newSize = new Size((int)(originalSize.Width * resizeValue / 100), (int)(originalSize.Height * resizeValue / 100));
-                    break;
-                default:
-                    break;
-            }
-            Bitmap result = Resizer.ResizeImage(tmp, newSize);
-
-            return result;
-        }
-
-        //select output path
-        private void pibOutputPath_Click(object sender, EventArgs e)
-        {
-            FolderBrowserDialog fbd = new FolderBrowserDialog()
-            {
-                ShowNewFolderButton = true,
-                RootFolder = Environment.SpecialFolder.MyComputer
-            };
-            if (fbd.ShowDialog() == DialogResult.OK)
-            {
-                txbOutputPath.Text = fbd.SelectedPath;
-            }
-            fbd.Dispose();
-        }
-
-        //Generate output file name
-        string GenerateOutputFileName(string originalFilePath, string outputPath, byte outputFormat)
-        {
-            string outputName;
-            string outputExtension = "";
-            outputName = Path.GetFileNameWithoutExtension(originalFilePath);
-
-            if (outputFormat == 0)
-            {
-                outputExtension = Path.GetExtension(originalFilePath);
-            }
-            else if (outputFormat == 1)
-            {
-                outputExtension = ".png";
-            }
-            else if (outputFormat == 2)
-            {
-                outputExtension = ".jpg";
-            }
-            else if (outputFormat == 3)
-            {
-                outputExtension = ".bmp";
-            }
-            int count = 0;
-            while (File.Exists(outputPath + "\\" + outputName + (count > 0 ? ("_" + count.ToString()) : "") + outputExtension))
-            {
-                count++;
-            }
-
-            return (outputPath + "\\" + outputName + (count > 0 ? ("_" + count.ToString()) : "") + outputExtension);
-        }
-
-
-        //select output format
-        private void cmbOutputFormat_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            outputFormat = (byte)cmbOutputFormat.SelectedIndex;
-        }
 
         //Process images with thread
         Bitmap[] imgWMs;
         int currentIndex = 0;
-
         void HandleImage(object input)
         {
             long index = currentIndex; //safety current index
@@ -1090,7 +1065,7 @@ namespace ImgRW_WF
 
             txbStatus.BeginInvoke((Action)(() =>
             {
-                txbStatus.AppendText("\r\n[Index: " + index.ToString("000") + " ] ");
+                txbStatus.AppendText("\r\n[Index: " + index.ToString("000") + " ]");
             }));
 
             string inputFile = (string)input;
@@ -1103,8 +1078,8 @@ namespace ImgRW_WF
             {
                 txbStatus.BeginInvoke((Action)(() =>
                 {
-                    txbStatus.AppendText("\r\n[Thread start, managed ID: " + threadID + " ] ");
-                    txbStatus.AppendText("\r\n[PRC] " + inputFile);
+                    txbStatus.AppendText("\r\n[Thread start, managed ID: " + threadID + " ]");
+                    txbStatus.AppendText("\r\n[Thrd:" + threadID + "-PRC] " + inputFile);
                 }));
 
                 using (FileStream fs = new FileStream(inputFile, FileMode.Open))
@@ -1125,7 +1100,7 @@ namespace ImgRW_WF
 
                 txbStatus.BeginInvoke((Action)(() =>
                 {
-                    txbStatus.AppendText("\r\n[RSZ] " + input);
+                    txbStatus.AppendText("\r\n[Thrd:" + threadID + "-RSZ] " + input);
                 }));
 
                 //draw image watermark
@@ -1135,7 +1110,7 @@ namespace ImgRW_WF
 
                     txbStatus.BeginInvoke((Action)(() =>
                     {
-                        txbStatus.AppendText("\r\n[DIM] " + input);
+                        txbStatus.AppendText("\r\n[Thrd:" + threadID + "-DIM] " + input);
                     }));
 
                     imgWMs[index]?.Dispose();
@@ -1148,7 +1123,7 @@ namespace ImgRW_WF
 
                     txbStatus.BeginInvoke((Action)(() =>
                     {
-                        txbStatus.AppendText("\r\n[DST] " + input);
+                        txbStatus.AppendText("\r\n[Thrd:" + threadID + "-DST] " + input);
                     }));
                 }
 
@@ -1176,10 +1151,9 @@ namespace ImgRW_WF
 
                 txbStatus.BeginInvoke((Action)(() =>
                 {
-                    txbStatus.AppendText("\r\n[SAV] " + input);
+                    txbStatus.AppendText("\r\n[Thrd:" + threadID + "-SAV] " + outputFile);
                     txbStatus.AppendText("\r\n[Thread end, managed ID: " + threadID + "]");
                 }));
-                valueSlider2.BeginInvoke((Action)(() => { valueSlider2.Value += 1; }));
             }
             catch (Exception ex)
             {
@@ -1198,11 +1172,13 @@ namespace ImgRW_WF
             }
 
         }
-
         private void pibRun_Click(object sender, EventArgs e)
         {
+            if (inprocess)
+            {
+                return;
+            }
             txbStatus.Text = "";
-
             if (!Directory.Exists(outputPath))
             {
                 txbOutputPath.ForeColor = Color.DarkRed;
@@ -1213,6 +1189,7 @@ namespace ImgRW_WF
             }
             txbOutputPath.ForeColor = DefaultForeColor;
             txbStatus.ForeColor = Color.White;
+            inprocess = true;
 
             if (files.Count == 0) return;
 
@@ -1226,8 +1203,11 @@ namespace ImgRW_WF
                 }
             }
 
-            valueSlider2.MinValue = valueSlider2.Value = 0;
-            valueSlider2.MaxValue = files.Count;
+            valueSlider2.Invoke((Action)(() =>
+            {
+                valueSlider2.MinValue = valueSlider2.Value = 0;
+                valueSlider2.MaxValue = files.Count;
+            }));
             currentIndex = 0;
             var inputs = files.Keys.ToArray();
             List<Thread> threads = new List<Thread>();
@@ -1238,39 +1218,169 @@ namespace ImgRW_WF
                 t.Name = "thread handle image: " + i;
                 threads.Add(t);
                 t.Start(inputs[i]);
+                valueSlider2.BeginInvoke((Action)(() => { valueSlider2.Value += 1; }));
             }
-
-            //foreach (Thread item in threads)
-            //{
-            //    item.Join();
-            //}
         }
 
-        //output path
-        private void txbOutputPath_TextChanged(object sender, EventArgs e)
+        #region FILES MANAGE==============================================================================================
+        //add and remove files list
+        private void ctmMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            outputPath = txbOutputPath.Text;
-        }
-
-
-        private void txbResizeValue_TextChanged(object sender, EventArgs e)
-        {
-            TextBox txb = (TextBox)sender;
-            int rsValue;
-            if (int.TryParse(txb.Text, out rsValue))
+            ctmMenu.Visible = false;
+            if (e.ClickedItem.Name == "ctmAddFiles")
             {
-                txb.ForeColor = DefaultForeColor;
-                resizeValue = rsValue;
+                using (OpenFileDialog ofd = new OpenFileDialog())
+                {
+                    ofd.Filter = "Image files|*.png;*.bmp;*.jpg;*.jpeg;*.gif;*.tiff";
+                    ofd.RestoreDirectory = true;
+                    ofd.Multiselect = true;
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        ofd.FileName.ToList().Sort();
+                        foreach (var item in ofd.FileNames)
+                        {
+                            if (files.ContainsKey(item))
+                            {
+                                continue;
+                            }
+                            using (FileStream fileStream = new FileStream(item, FileMode.Open))
+                            {
+                                Image i = Image.FromStream(fileStream);
+
+                                FileInfo fi = new FileInfo(item);
+                                ListViewItem li = new ListViewItem(fi.Name);
+
+                                li.SubItems.Add(CalculateBytes(fi.Length));
+                                li.SubItems.Add(i.Width.ToString() + "×" + i.Height.ToString());
+                                li.SubItems.Add(i.HorizontalResolution.ToString("0") + "/" + i.VerticalResolution.ToString("0") + "(dpi)");
+                                li.Tag = item;
+                                i.Dispose();
+                                files.Add(item, li);
+                            }
+                        }
+
+                        lsvFiles.Items.Clear();
+                        int count = 0;
+                        foreach (var item in files)
+                        {
+                            count++;
+                            item.Value.SubItems.Add((count).ToString());
+                            lsvFiles.Items.Add(item.Value);
+                        }
+                        for (int i = 0; i < lsvFiles.Columns.Count; i++)
+                        {
+                            lsvFiles.Columns[i].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
+                        }
+                    }
+                }
+            }
+            else if (e.ClickedItem.Name == "ctmDeleteSelected")
+            {
+                if (lsvFiles.SelectedItems.Count == 0) return;
+                foreach (ListViewItem item in lsvFiles.SelectedItems)
+                {
+                    files.Remove((string)item.Tag);
+                    lsvFiles.Items.Remove(item);
+                }
+            }
+            else if (e.ClickedItem.Name == "ctmClearList")
+            {
+                files.Clear();
+                lsvFiles.Items.Clear();
+            }
+        }
+        private void FormConfig_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == (Keys.Control | Keys.O))
+            {
+                ctmMenu_ItemClicked(this, new ToolStripItemClickedEventArgs(ctmAddFiles));
+            }
+        }
+
+        //delete selected files
+        private void lsvFiles_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                if (lsvFiles.SelectedItems.Count == 0) return;
+                foreach (ListViewItem item in lsvFiles.SelectedItems)
+                {
+                    files.Remove((string)item.Tag);
+                    lsvFiles.Items.Remove(item);
+                }
+            }
+        }
+
+        //drag files
+
+        #endregion
+
+        //process end flag
+        bool inprocess = false;
+        private void valueSlider2_ValueChanged(object sender, float e)
+        {
+            if (e == valueSlider2.MaxValue)
+            {
+                inprocess = false;
+            }
+        }
+
+        private void panelWatermarkImage_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
             }
             else
             {
-                txb.ForeColor = Color.DarkRed;
+                e.Effect = DragDropEffects.None;
             }
+
         }
 
-        private void FormConfig_FormClosed(object sender, FormClosedEventArgs e)
+        private void panelWatermarkImage_DragDrop(object sender, DragEventArgs e)
         {
-            SaveSettings();
+            List<string> extension = new List<string>() { ".png", ".jpg", ".bmp", ".gif" };
+            var filesList = ((string[])e.Data.GetData(DataFormats.FileDrop)).Where(x => extension.Contains(Path.GetExtension(x))).ToList();
+            filesList.Sort();
+            if (filesList.Count == 0)
+            {
+                return;
+            }
+            foreach (var file in filesList)
+            {
+                if (files.ContainsKey(file))
+                {
+                    continue;
+                }
+                using (FileStream fileStream = new FileStream(file, FileMode.Open))
+                {
+                    Image i = Image.FromStream(fileStream);
+
+                    FileInfo fi = new FileInfo(file);
+                    ListViewItem li = new ListViewItem(fi.Name);
+
+                    li.SubItems.Add(CalculateBytes(fi.Length));
+                    li.SubItems.Add(i.Width.ToString() + "×" + i.Height.ToString());
+                    li.SubItems.Add(i.HorizontalResolution.ToString("0") + "/" + i.VerticalResolution.ToString("0") + "(dpi)");
+                    li.Tag = file;
+                    i.Dispose();
+                    files.Add(file, li);
+
+                    //refresh listview files
+                    lsvFiles.Items.Clear();
+                    int count = 0;
+                    foreach (var item in files)
+                    {
+                        item.Value.SubItems.Add(count.ToString());
+                        lsvFiles.Items.Add(item.Value);
+                    }
+                    for (int j = 0; j < lsvFiles.Columns.Count; j++)
+                    {
+                        lsvFiles.Columns[j].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
+                    }
+                }
+            }
         }
     }
 }
