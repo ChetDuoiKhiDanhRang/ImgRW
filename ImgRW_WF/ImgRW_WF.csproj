@@ -141,5 +141,17 @@
   <ItemGroup>
     <None Include="icons\remove.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CloseFolder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trans24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\Run.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
