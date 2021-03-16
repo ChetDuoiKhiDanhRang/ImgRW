@@ -152,8 +152,8 @@
             this.lsvFiles.TabIndex = 1;
             this.lsvFiles.UseCompatibleStateImageBehavior = false;
             this.lsvFiles.View = System.Windows.Forms.View.Details;
-            this.lsvFiles.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelWatermarkImage_DragDrop);
-            this.lsvFiles.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelWatermarkImage_DragEnter);
+            this.lsvFiles.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragFiles_DragDrop);
+            this.lsvFiles.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragFiles_DragEnter);
             this.lsvFiles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lsvFiles_MouseDoubleClick);
             // 
             // col1

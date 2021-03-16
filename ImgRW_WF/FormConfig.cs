@@ -1311,21 +1311,8 @@ namespace ImgRW_WF
             }
         }
 
-        //drag files
-
-        #endregion
-
-        //process end flag
-        bool inprocess = false;
-        private void valueSlider2_ValueChanged(object sender, float e)
-        {
-            if (e == valueSlider2.MaxValue)
-            {
-                inprocess = false;
-            }
-        }
-
-        private void panelWatermarkImage_DragEnter(object sender, DragEventArgs e)
+        //drag and drop files
+        private void DragFiles_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
@@ -1337,8 +1324,7 @@ namespace ImgRW_WF
             }
 
         }
-
-        private void panelWatermarkImage_DragDrop(object sender, DragEventArgs e)
+        private void DragFiles_DragDrop(object sender, DragEventArgs e)
         {
             List<string> extension = new List<string>() { ".png", ".jpg", ".bmp", ".gif" };
             var filesList = ((string[])e.Data.GetData(DataFormats.FileDrop)).Where(x => extension.Contains(Path.GetExtension(x))).ToList();
@@ -1382,5 +1368,18 @@ namespace ImgRW_WF
                 }
             }
         }
+
+        #endregion
+
+        //process end flag
+        bool inprocess = false;
+        private void valueSlider2_ValueChanged(object sender, float e)
+        {
+            if (e == valueSlider2.MaxValue)
+            {
+                inprocess = false;
+            }
+        }
+
     }
 }
