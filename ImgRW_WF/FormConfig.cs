@@ -1283,26 +1283,33 @@ namespace ImgRW_WF
                     if (ofd.ShowDialog() == DialogResult.OK)
                     {
                         ofd.FileName.ToList().Sort();
-                        foreach (var item in ofd.FileNames)
+                        try
                         {
-                            if (files.ContainsKey(item))
+                            foreach (var item in ofd.FileNames)
                             {
-                                continue;
-                            }
-                            using (FileStream fileStream = new FileStream(item, FileMode.Open))
-                            {
-                                Image i = Image.FromStream(fileStream);
+                                if (files.ContainsKey(item))
+                                {
+                                    continue;
+                                }
+                                using (FileStream fileStream = new FileStream(item, FileMode.Open))
+                                {
+                                    Image i = Image.FromStream(fileStream);
 
-                                FileInfo fi = new FileInfo(item);
-                                ListViewItem li = new ListViewItem(fi.Name);
+                                    FileInfo fi = new FileInfo(item);
+                                    ListViewItem li = new ListViewItem(fi.Name);
 
-                                li.SubItems.Add(CalculateBytes(fi.Length));
-                                li.SubItems.Add(i.Width.ToString() + "×" + i.Height.ToString());
-                                li.SubItems.Add(i.HorizontalResolution.ToString("0") + "/" + i.VerticalResolution.ToString("0") + "(dpi)");
-                                li.Tag = item;
-                                i.Dispose();
-                                files.Add(item, li);
+                                    li.SubItems.Add(CalculateBytes(fi.Length));
+                                    li.SubItems.Add(i.Width.ToString() + "×" + i.Height.ToString());
+                                    li.SubItems.Add(i.HorizontalResolution.ToString("0") + "/" + i.VerticalResolution.ToString("0") + "(dpi)");
+                                    li.Tag = item;
+                                    i.Dispose();
+                                    files.Add(item, li);
+                                }
                             }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK);
                         }
 
                         lsvFiles.Items.Clear();
