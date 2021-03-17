@@ -154,6 +154,7 @@
     <None Include="icons\Run_.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="icons\Run2.png" />
     <Content Include="ImgRW.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
