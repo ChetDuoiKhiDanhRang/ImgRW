@@ -36,6 +36,9 @@
             this.col4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.col5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ctmMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ctmAddFiles = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctmDeleteSelected = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctmClearList = new System.Windows.Forms.ToolStripMenuItem();
             this.panelResize = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -75,6 +78,7 @@
             this.ckbString = new System.Windows.Forms.CheckBox();
             this.panelWatermarkImage = new System.Windows.Forms.Panel();
             this.vldImageOptical = new CxxLibs_CustomControlsDFW.ValueSlider();
+            this.pibWatermarkImage = new System.Windows.Forms.PictureBox();
             this.vccImage = new CxxLibs_CustomControlsDFW.ValueCircular();
             this.rdbWILocation = new System.Windows.Forms.RadioButton();
             this.rdbWIBottomCenter = new System.Windows.Forms.RadioButton();
@@ -91,21 +95,17 @@
             this.rdbWIMiddleLeft = new System.Windows.Forms.RadioButton();
             this.ckbWatermarkImage = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnLang = new System.Windows.Forms.Button();
+            this.btnRun = new System.Windows.Forms.Button();
+            this.btnOpenOutputPath = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pibOutputPath = new System.Windows.Forms.PictureBox();
             this.txbOutputPath = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cmbOutputFormat = new System.Windows.Forms.ComboBox();
             this.txbStatus = new System.Windows.Forms.TextBox();
             this.valueSlider2 = new CxxLibs_CustomControlsDFW.ValueSlider();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pibLang = new System.Windows.Forms.PictureBox();
-            this.pibOpenOutput = new System.Windows.Forms.PictureBox();
-            this.pibRun = new System.Windows.Forms.PictureBox();
-            this.pibOutputPath = new System.Windows.Forms.PictureBox();
             this.pibPreview = new System.Windows.Forms.PictureBox();
-            this.ctmAddFiles = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctmDeleteSelected = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctmClearList = new System.Windows.Forms.ToolStripMenuItem();
-            this.pibWatermarkImage = new System.Windows.Forms.PictureBox();
             this.ctmMenu.SuspendLayout();
             this.panelResize.SuspendLayout();
             this.panelWatermarkString.SuspendLayout();
@@ -114,16 +114,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudWSLocationX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudFrameLineWidth)).BeginInit();
             this.panelWatermarkImage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pibWatermarkImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWIY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWIX)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pibLang)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pibOpenOutput)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pibRun)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pibOutputPath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pibWatermarkImage)).BeginInit();
             this.SuspendLayout();
             // 
             // lsvFiles
@@ -187,15 +184,36 @@
             // 
             // ctmMenu
             // 
-            this.ctmMenu.Font = new System.Drawing.Font("Segoe UI Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctmMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ctmMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.ctmMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ctmAddFiles,
             this.ctmDeleteSelected,
             this.ctmClearList});
             this.ctmMenu.Name = "ctmMenu";
-            this.ctmMenu.Size = new System.Drawing.Size(206, 94);
+            this.ctmMenu.Size = new System.Drawing.Size(190, 94);
             this.ctmMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ctmMenu_ItemClicked);
+            // 
+            // ctmAddFiles
+            // 
+            this.ctmAddFiles.Image = global::ImgRW_WF.Properties.Resources.file;
+            this.ctmAddFiles.Name = "ctmAddFiles";
+            this.ctmAddFiles.Size = new System.Drawing.Size(189, 30);
+            this.ctmAddFiles.Text = "Thêm file ảnh";
+            // 
+            // ctmDeleteSelected
+            // 
+            this.ctmDeleteSelected.Image = global::ImgRW_WF.Properties.Resources.minus;
+            this.ctmDeleteSelected.Name = "ctmDeleteSelected";
+            this.ctmDeleteSelected.Size = new System.Drawing.Size(189, 30);
+            this.ctmDeleteSelected.Text = "Loại bỏ file đã chọn";
+            // 
+            // ctmClearList
+            // 
+            this.ctmClearList.Image = global::ImgRW_WF.Properties.Resources.remove;
+            this.ctmClearList.Name = "ctmClearList";
+            this.ctmClearList.Size = new System.Drawing.Size(189, 30);
+            this.ctmClearList.Text = "Loại bỏ danh sách";
             // 
             // panelResize
             // 
@@ -414,7 +432,7 @@
             this.vccString.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vccString.HandColor = System.Drawing.Color.Black;
             this.vccString.HandWidth = 1F;
-            this.vccString.Label = "Xoay chuỗi";
+            this.vccString.Label = "";
             this.vccString.LineWidth = 1F;
             this.vccString.Location = new System.Drawing.Point(317, 66);
             this.vccString.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -656,9 +674,9 @@
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(65, 37);
+            this.label4.Location = new System.Drawing.Point(6, 37);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 15);
+            this.label4.Size = new System.Drawing.Size(116, 15);
             this.label4.TabIndex = 2;
             this.label4.Text = "Font chữ:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -674,7 +692,6 @@
             // 
             // ckbString
             // 
-            this.ckbString.AutoSize = true;
             this.ckbString.BackColor = System.Drawing.SystemColors.Control;
             this.ckbString.Checked = true;
             this.ckbString.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -684,6 +701,7 @@
             this.ckbString.Size = new System.Drawing.Size(119, 19);
             this.ckbString.TabIndex = 4;
             this.ckbString.Text = "Đặt dấu chuỗi:";
+            this.ckbString.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ckbString.UseVisualStyleBackColor = false;
             // 
             // panelWatermarkImage
@@ -732,6 +750,20 @@
             this.vldImageOptical.ValueColor = System.Drawing.Color.DodgerBlue;
             this.vldImageOptical.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
             // 
+            // pibWatermarkImage
+            // 
+            this.pibWatermarkImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pibWatermarkImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pibWatermarkImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pibWatermarkImage.Location = new System.Drawing.Point(158, 9);
+            this.pibWatermarkImage.Name = "pibWatermarkImage";
+            this.pibWatermarkImage.Size = new System.Drawing.Size(146, 110);
+            this.pibWatermarkImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pibWatermarkImage.TabIndex = 0;
+            this.pibWatermarkImage.TabStop = false;
+            this.pibWatermarkImage.BackgroundImageChanged += new System.EventHandler(this.pibWatermarkImage_BackgroundImageChanged);
+            this.pibWatermarkImage.Click += new System.EventHandler(this.pibWatermarkImage_Click);
+            // 
             // vccImage
             // 
             this.vccImage.ColorStyle = System.Drawing.Color.LightSeaGreen;
@@ -740,7 +772,7 @@
             this.vccImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vccImage.HandColor = System.Drawing.Color.Black;
             this.vccImage.HandWidth = 1F;
-            this.vccImage.Label = "Xoay hình";
+            this.vccImage.Label = "";
             this.vccImage.LineWidth = 1F;
             this.vccImage.Location = new System.Drawing.Point(317, 9);
             this.vccImage.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -894,16 +926,16 @@
             // 
             // ckbWatermarkImage
             // 
-            this.ckbWatermarkImage.AutoSize = true;
             this.ckbWatermarkImage.BackColor = System.Drawing.SystemColors.Control;
             this.ckbWatermarkImage.Checked = true;
             this.ckbWatermarkImage.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckbWatermarkImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ckbWatermarkImage.Location = new System.Drawing.Point(20, 227);
             this.ckbWatermarkImage.Name = "ckbWatermarkImage";
-            this.ckbWatermarkImage.Size = new System.Drawing.Size(108, 19);
+            this.ckbWatermarkImage.Size = new System.Drawing.Size(119, 19);
             this.ckbWatermarkImage.TabIndex = 4;
             this.ckbWatermarkImage.Text = "Đặt dấu ảnh:";
+            this.ckbWatermarkImage.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ckbWatermarkImage.UseVisualStyleBackColor = false;
             // 
             // panel1
@@ -912,10 +944,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnLang);
+            this.panel1.Controls.Add(this.btnRun);
+            this.panel1.Controls.Add(this.btnOpenOutputPath);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.pibLang);
-            this.panel1.Controls.Add(this.pibOpenOutput);
-            this.panel1.Controls.Add(this.pibRun);
             this.panel1.Controls.Add(this.pibOutputPath);
             this.panel1.Controls.Add(this.txbOutputPath);
             this.panel1.Controls.Add(this.label9);
@@ -924,6 +956,64 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(280, 134);
             this.panel1.TabIndex = 12;
+            // 
+            // btnLang
+            // 
+            this.btnLang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLang.BackgroundImage = global::ImgRW_WF.Properties.Resources.trans24;
+            this.btnLang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnLang.Location = new System.Drawing.Point(219, 94);
+            this.btnLang.Name = "btnLang";
+            this.btnLang.Size = new System.Drawing.Size(53, 32);
+            this.btnLang.TabIndex = 6;
+            this.btnLang.UseVisualStyleBackColor = true;
+            this.btnLang.Click += new System.EventHandler(this.btnLang_Click);
+            // 
+            // btnRun
+            // 
+            this.btnRun.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRun.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRun.Image = global::ImgRW_WF.Properties.Resources.Run;
+            this.btnRun.Location = new System.Drawing.Point(8, 94);
+            this.btnRun.Name = "btnRun";
+            this.btnRun.Size = new System.Drawing.Size(146, 32);
+            this.btnRun.TabIndex = 6;
+            this.btnRun.UseVisualStyleBackColor = true;
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
+            // 
+            // btnOpenOutputPath
+            // 
+            this.btnOpenOutputPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenOutputPath.BackgroundImage = global::ImgRW_WF.Properties.Resources.CloseFolder;
+            this.btnOpenOutputPath.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnOpenOutputPath.Location = new System.Drawing.Point(160, 94);
+            this.btnOpenOutputPath.Name = "btnOpenOutputPath";
+            this.btnOpenOutputPath.Size = new System.Drawing.Size(53, 32);
+            this.btnOpenOutputPath.TabIndex = 6;
+            this.btnOpenOutputPath.UseVisualStyleBackColor = true;
+            this.btnOpenOutputPath.Click += new System.EventHandler(this.btnOpenOutputPath_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::ImgRW_WF.Properties.Resources.picture;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Location = new System.Drawing.Point(8, 36);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pibOutputPath
+            // 
+            this.pibOutputPath.BackgroundImage = global::ImgRW_WF.Properties.Resources.output;
+            this.pibOutputPath.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pibOutputPath.Location = new System.Drawing.Point(8, 63);
+            this.pibOutputPath.Name = "pibOutputPath";
+            this.pibOutputPath.Size = new System.Drawing.Size(25, 25);
+            this.pibOutputPath.TabIndex = 5;
+            this.pibOutputPath.TabStop = false;
+            this.pibOutputPath.Click += new System.EventHandler(this.pibOutputPath_Click);
             // 
             // txbOutputPath
             // 
@@ -1005,60 +1095,6 @@
             this.valueSlider2.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
             this.valueSlider2.ValueChanged += new System.EventHandler<float>(this.valueSlider2_ValueChanged);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::ImgRW_WF.Properties.Resources.picture;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Location = new System.Drawing.Point(8, 36);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pibLang
-            // 
-            this.pibLang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pibLang.BackgroundImage = global::ImgRW_WF.Properties.Resources.trans24;
-            this.pibLang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pibLang.Location = new System.Drawing.Point(219, 94);
-            this.pibLang.Name = "pibLang";
-            this.pibLang.Size = new System.Drawing.Size(53, 32);
-            this.pibLang.TabIndex = 5;
-            this.pibLang.TabStop = false;
-            // 
-            // pibOpenOutput
-            // 
-            this.pibOpenOutput.BackgroundImage = global::ImgRW_WF.Properties.Resources.CloseFolder;
-            this.pibOpenOutput.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pibOpenOutput.Location = new System.Drawing.Point(8, 94);
-            this.pibOpenOutput.Name = "pibOpenOutput";
-            this.pibOpenOutput.Size = new System.Drawing.Size(53, 32);
-            this.pibOpenOutput.TabIndex = 5;
-            this.pibOpenOutput.TabStop = false;
-            // 
-            // pibRun
-            // 
-            this.pibRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.pibRun.BackgroundImage = global::ImgRW_WF.Properties.Resources.Run;
-            this.pibRun.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pibRun.Location = new System.Drawing.Point(67, 94);
-            this.pibRun.Name = "pibRun";
-            this.pibRun.Size = new System.Drawing.Size(146, 32);
-            this.pibRun.TabIndex = 5;
-            this.pibRun.TabStop = false;
-            this.pibRun.Click += new System.EventHandler(this.pibRun_Click);
-            // 
-            // pibOutputPath
-            // 
-            this.pibOutputPath.BackgroundImage = global::ImgRW_WF.Properties.Resources.save;
-            this.pibOutputPath.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pibOutputPath.Location = new System.Drawing.Point(8, 63);
-            this.pibOutputPath.Name = "pibOutputPath";
-            this.pibOutputPath.Size = new System.Drawing.Size(25, 25);
-            this.pibOutputPath.TabIndex = 5;
-            this.pibOutputPath.TabStop = false;
-            this.pibOutputPath.Click += new System.EventHandler(this.pibOutputPath_Click);
-            // 
             // pibPreview
             // 
             this.pibPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1076,41 +1112,6 @@
             this.pibPreview.TabIndex = 0;
             this.pibPreview.TabStop = false;
             this.pibPreview.BackgroundImageChanged += new System.EventHandler(this.pibPreview_BackgroundImageChanged);
-            // 
-            // ctmAddFiles
-            // 
-            this.ctmAddFiles.Image = global::ImgRW_WF.Properties.Resources.picture;
-            this.ctmAddFiles.Name = "ctmAddFiles";
-            this.ctmAddFiles.Size = new System.Drawing.Size(205, 30);
-            this.ctmAddFiles.Text = "Thêm file ảnh";
-            // 
-            // ctmDeleteSelected
-            // 
-            this.ctmDeleteSelected.Image = global::ImgRW_WF.Properties.Resources.minus;
-            this.ctmDeleteSelected.Name = "ctmDeleteSelected";
-            this.ctmDeleteSelected.Size = new System.Drawing.Size(205, 30);
-            this.ctmDeleteSelected.Text = "Loại bỏ file đã chọn";
-            // 
-            // ctmClearList
-            // 
-            this.ctmClearList.Image = global::ImgRW_WF.Properties.Resources.remove;
-            this.ctmClearList.Name = "ctmClearList";
-            this.ctmClearList.Size = new System.Drawing.Size(205, 30);
-            this.ctmClearList.Text = "Loại bỏ danh sách";
-            // 
-            // pibWatermarkImage
-            // 
-            this.pibWatermarkImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pibWatermarkImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pibWatermarkImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pibWatermarkImage.Location = new System.Drawing.Point(158, 9);
-            this.pibWatermarkImage.Name = "pibWatermarkImage";
-            this.pibWatermarkImage.Size = new System.Drawing.Size(146, 110);
-            this.pibWatermarkImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pibWatermarkImage.TabIndex = 0;
-            this.pibWatermarkImage.TabStop = false;
-            this.pibWatermarkImage.BackgroundImageChanged += new System.EventHandler(this.pibWatermarkImage_BackgroundImageChanged);
-            this.pibWatermarkImage.Click += new System.EventHandler(this.pibWatermarkImage_Click);
             // 
             // FormConfig
             // 
@@ -1150,17 +1151,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudFrameLineWidth)).EndInit();
             this.panelWatermarkImage.ResumeLayout(false);
             this.panelWatermarkImage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pibWatermarkImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWIY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWIX)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pibLang)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pibOpenOutput)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pibRun)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pibOutputPath)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pibWatermarkImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1228,8 +1226,6 @@
         private System.Windows.Forms.ComboBox cmbOutputFormat;
         private CxxLibs_CustomControlsDFW.ValueSlider valueSlider2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pibOpenOutput;
-        private System.Windows.Forms.PictureBox pibRun;
         private System.Windows.Forms.PictureBox pibOutputPath;
         private System.Windows.Forms.TextBox txbOutputPath;
         private CxxLibs_CustomControlsDFW.ValueCircular vccString;
@@ -1244,7 +1240,9 @@
         private System.Windows.Forms.ColumnHeader col4;
         private System.Windows.Forms.TextBox txbStatus;
         private System.Windows.Forms.ColumnHeader col5;
-        private System.Windows.Forms.PictureBox pibLang;
+        private System.Windows.Forms.Button btnLang;
+        private System.Windows.Forms.Button btnRun;
+        private System.Windows.Forms.Button btnOpenOutputPath;
     }
 }
 

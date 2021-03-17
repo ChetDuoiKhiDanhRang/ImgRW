@@ -80,5 +80,8 @@
     <Setting Name="outputFormat" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
+    <Setting Name="lang" Type="System.String" Scope="User">
+      <Value Profile="(Default)">en</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

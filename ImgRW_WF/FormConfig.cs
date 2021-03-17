@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
@@ -34,9 +35,55 @@ namespace ImgRW_WF
         public FormConfig()
         {
             InitializeComponent();
+            LanguageChanged += FormConfig_LanguageChanged;
             //PreviewLayer = new Bitmap(pibPreview.BackgroundImage.Width, pibPreview.BackgroundImage.Height, PixelFormat.Format32bppArgb);
             files = new Dictionary<string, ListViewItem>();
             PreviewLayer = new Bitmap(pibPreview.BackgroundImage.Width, pibPreview.BackgroundImage.Height, PixelFormat.Format32bppArgb);
+        }
+
+        //Language change
+        private void FormConfig_LanguageChanged(object sender, string e)
+        {
+            if (e == "vi")
+            {
+                this.Text = "Đặt kích thước và đóng dấu ảnh";
+                ckbResize.Text = "Đặt kích thước";
+                radFixHeight.Text = "Theo chiều cao:";
+                radFixWidth.Text = "Theo chiều rộng:";
+                radScale.Text = "Theo tỉ lệ:";
+
+                label9.Text = "Tập tin xuất";
+
+                ckbString.Text = "Đặt dấu chuỗi:";
+                label4.Text = "Font chữ:";
+                ckbFrame.Text = "Khung viền:";
+
+                ckbWatermarkImage.Text = "Đặt dấu ảnh:";
+
+                ctmAddFiles.Text = "Thêm tập tin ảnh";
+                ctmDeleteSelected.Text = "Xóa tập tin khỏi danh sách";
+                ctmClearList.Text = "Xóa danh sách";
+            }
+            else if (e == "en")
+            {
+                this.Text = "Image resize and watermark";
+                ckbResize.Text = "Resize";
+                radFixHeight.Text = "Fix height:";
+                radFixWidth.Text = "Fix width:";
+                radScale.Text = "Scale:";
+
+                label9.Text = "Output";
+
+                ckbString.Text = "Draw string:";
+                label4.Text = "Font style:";
+                ckbFrame.Text = "Frame:";
+
+                ckbWatermarkImage.Text = "Draw image:";
+
+                ctmAddFiles.Text = "Add image files";
+                ctmDeleteSelected.Text = "Delete selected files";
+                ctmClearList.Text = "Clear list";
+            }
         }
 
         private void InitialEvents()
@@ -105,6 +152,7 @@ namespace ImgRW_WF
         {
 
             var x = Properties.Settings.Default;
+            Language = x.lang;
 
             outputPath = x.outputPath;
             txbOutputPath.Text = x.outputPath;
@@ -317,6 +365,7 @@ namespace ImgRW_WF
             x.outputFormat = outputFormat;
             x.outputPath = outputPath;
 
+            
             x.Save();
         }
 
@@ -1172,7 +1221,7 @@ namespace ImgRW_WF
             }
 
         }
-        private void pibRun_Click(object sender, EventArgs e)
+        private void btnRun_Click(object sender, EventArgs e)
         {
             if (inprocess)
             {
@@ -1189,10 +1238,10 @@ namespace ImgRW_WF
             }
             txbOutputPath.ForeColor = DefaultForeColor;
             txbStatus.ForeColor = Color.White;
-            inprocess = true;
 
             if (files.Count == 0) return;
 
+            inprocess = true;
             //Generate images list for watermark
             imgWMs = new Bitmap[files.Count];
             if (drawImage && imageWatermark != null)
@@ -1381,5 +1430,24 @@ namespace ImgRW_WF
             }
         }
 
+        private void btnOpenOutputPath_Click(object sender, EventArgs e)
+        {
+            Process p = new Process();
+            p.StartInfo = new ProcessStartInfo(outputPath);
+            p.Start();
+        }
+
+        //vi <-> en
+        private void btnLang_Click(object sender, EventArgs e)
+        {
+            if (language == "vi")
+            {
+                Language = "en";
+            }
+            else
+            {
+                Language = "vi";
+            }
+        }
     }
 }

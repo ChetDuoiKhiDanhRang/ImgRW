@@ -334,5 +334,17 @@ namespace ImgRW_WF.Properties {
                 this["outputFormat"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("en")]
+        public string lang {
+            get {
+                return ((string)(this["lang"]));
+            }
+            set {
+                this["lang"] = value;
+            }
+        }
     }
 }
