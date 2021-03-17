@@ -93,6 +93,16 @@ namespace ImgRW_WF.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap openOutput {
+            get {
+                object obj = ResourceManager.GetObject("openOutput", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap output {
             get {
                 object obj = ResourceManager.GetObject("output", resourceCulture);
@@ -146,6 +156,16 @@ namespace ImgRW_WF.Properties {
         internal static System.Drawing.Bitmap save {
             get {
                 object obj = ResourceManager.GetObject("save", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap switchLang {
+            get {
+                object obj = ResourceManager.GetObject("switchLang", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

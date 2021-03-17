@@ -155,6 +155,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="icons\Run2.png" />
+    <None Include="icons\openOutput.png" />
+    <None Include="icons\switchLang.png" />
     <Content Include="ImgRW.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

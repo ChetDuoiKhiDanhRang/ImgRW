@@ -49,8 +49,10 @@
             this.radFixWidth = new System.Windows.Forms.RadioButton();
             this.ckbResize = new System.Windows.Forms.CheckBox();
             this.panelWatermarkString = new System.Windows.Forms.Panel();
+            this.colorPanel1 = new CxxLibs_CustomControlsDFW.ColorPanel();
             this.rdbWSLocation = new System.Windows.Forms.RadioButton();
             this.rdbBottomCenter = new System.Windows.Forms.RadioButton();
+            this.vccString = new CxxLibs_CustomControlsDFW.ValueCircular();
             this.rdbBottomRight = new System.Windows.Forms.RadioButton();
             this.rdbMiddleCenter = new System.Windows.Forms.RadioButton();
             this.rdbMiddleRight = new System.Windows.Forms.RadioButton();
@@ -73,6 +75,8 @@
             this.txbWString = new System.Windows.Forms.TextBox();
             this.ckbString = new System.Windows.Forms.CheckBox();
             this.panelWatermarkImage = new System.Windows.Forms.Panel();
+            this.vldImageOptical = new CxxLibs_CustomControlsDFW.ValueSlider();
+            this.vccImage = new CxxLibs_CustomControlsDFW.ValueCircular();
             this.rdbWILocation = new System.Windows.Forms.RadioButton();
             this.rdbWIBottomCenter = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
@@ -93,12 +97,8 @@
             this.cmbOutputFormat = new System.Windows.Forms.ComboBox();
             this.txbStatus = new System.Windows.Forms.TextBox();
             this.valueSlider2 = new CxxLibs_CustomControlsDFW.ValueSlider();
-            this.colorPanel1 = new CxxLibs_CustomControlsDFW.ColorPanel();
-            this.vccString = new CxxLibs_CustomControlsDFW.ValueCircular();
-            this.vldImageOptical = new CxxLibs_CustomControlsDFW.ValueSlider();
-            this.vccImage = new CxxLibs_CustomControlsDFW.ValueCircular();
-            this.btnRun = new System.Windows.Forms.Button();
             this.btnLang = new System.Windows.Forms.Button();
+            this.btnRun = new System.Windows.Forms.Button();
             this.btnOpenOutputPath = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pibOutputPath = new System.Windows.Forms.PictureBox();
@@ -368,6 +368,21 @@
             this.panelWatermarkString.Size = new System.Drawing.Size(463, 197);
             this.panelWatermarkString.TabIndex = 2;
             // 
+            // colorPanel1
+            // 
+            this.colorPanel1.AutoSize = true;
+            this.colorPanel1.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
+            this.colorPanel1.CurrentColorHexString = "#88FFAA00";
+            this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorPanel1.Location = new System.Drawing.Point(6, 66);
+            this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
+            this.colorPanel1.Name = "colorPanel1";
+            this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
+            this.colorPanel1.PanelStyle = CxxLibs_CustomControlsDFW.PanelStyles.Wheel;
+            this.colorPanel1.RefControl = null;
+            this.colorPanel1.Size = new System.Drawing.Size(152, 131);
+            this.colorPanel1.TabIndex = 6;
+            // 
             // rdbWSLocation
             // 
             this.rdbWSLocation.AutoSize = true;
@@ -388,6 +403,28 @@
             this.rdbBottomCenter.TabIndex = 10;
             this.rdbBottomCenter.TabStop = true;
             this.rdbBottomCenter.UseVisualStyleBackColor = true;
+            // 
+            // vccString
+            // 
+            this.vccString.ColorStyle = System.Drawing.Color.MediumSeaGreen;
+            this.vccString.DigitNumber = 0;
+            this.vccString.FillWithGradient = true;
+            this.vccString.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vccString.HandColor = System.Drawing.Color.Black;
+            this.vccString.HandWidth = 1F;
+            this.vccString.Label = "";
+            this.vccString.LineWidth = 1F;
+            this.vccString.Location = new System.Drawing.Point(317, 66);
+            this.vccString.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.vccString.MaxValue = 360F;
+            this.vccString.MinValue = 0F;
+            this.vccString.Name = "vccString";
+            this.vccString.Orthor = true;
+            this.vccString.ShowValue = true;
+            this.vccString.Size = new System.Drawing.Size(140, 125);
+            this.vccString.TabIndex = 14;
+            this.vccString.UnitString = "˚";
+            this.vccString.Value = 0F;
             // 
             // rdbBottomRight
             // 
@@ -673,6 +710,48 @@
             this.panelWatermarkImage.Size = new System.Drawing.Size(463, 151);
             this.panelWatermarkImage.TabIndex = 5;
             // 
+            // vldImageOptical
+            // 
+            this.vldImageOptical.Location = new System.Drawing.Point(5, 127);
+            this.vldImageOptical.MaxValue = 1F;
+            this.vldImageOptical.MinValue = 0F;
+            this.vldImageOptical.Name = "vldImageOptical";
+            this.vldImageOptical.OffsetLines = false;
+            this.vldImageOptical.OffsetLinesColor = System.Drawing.Color.DarkGray;
+            this.vldImageOptical.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
+            this.vldImageOptical.PointerSize = 6;
+            this.vldImageOptical.PointerStyle = CxxLibs_CustomControlsDFW.PointerStyles.Dot;
+            this.vldImageOptical.Size = new System.Drawing.Size(304, 11);
+            this.vldImageOptical.Style = CxxLibs_CustomControlsDFW.ValueSliderStyles.GradientLine;
+            this.vldImageOptical.TabIndex = 11;
+            this.vldImageOptical.Text = "valueSlider1";
+            this.vldImageOptical.Value = 0.8F;
+            this.vldImageOptical.ValueBackColor = System.Drawing.Color.LightGray;
+            this.vldImageOptical.ValueColor = System.Drawing.Color.DodgerBlue;
+            this.vldImageOptical.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // vccImage
+            // 
+            this.vccImage.ColorStyle = System.Drawing.Color.LightSeaGreen;
+            this.vccImage.DigitNumber = 0;
+            this.vccImage.FillWithGradient = true;
+            this.vccImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vccImage.HandColor = System.Drawing.Color.Black;
+            this.vccImage.HandWidth = 1F;
+            this.vccImage.Label = "";
+            this.vccImage.LineWidth = 1F;
+            this.vccImage.Location = new System.Drawing.Point(317, 9);
+            this.vccImage.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.vccImage.MaxValue = 360F;
+            this.vccImage.MinValue = 0F;
+            this.vccImage.Name = "vccImage";
+            this.vccImage.Orthor = true;
+            this.vccImage.ShowValue = true;
+            this.vccImage.Size = new System.Drawing.Size(140, 125);
+            this.vccImage.TabIndex = 14;
+            this.vccImage.UnitString = "˚";
+            this.vccImage.Value = 30F;
+            // 
             // rdbWILocation
             // 
             this.rdbWILocation.AutoSize = true;
@@ -924,84 +1003,17 @@
             this.valueSlider2.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
             this.valueSlider2.ValueChanged += new System.EventHandler<float>(this.valueSlider2_ValueChanged);
             // 
-            // colorPanel1
+            // btnLang
             // 
-            this.colorPanel1.AutoSize = true;
-            this.colorPanel1.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
-            this.colorPanel1.CurrentColorHexString = "#88FFAA00";
-            this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorPanel1.Location = new System.Drawing.Point(6, 66);
-            this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
-            this.colorPanel1.Name = "colorPanel1";
-            this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
-            this.colorPanel1.PanelStyle = CxxLibs_CustomControlsDFW.PanelStyles.Wheel;
-            this.colorPanel1.RefControl = null;
-            this.colorPanel1.Size = new System.Drawing.Size(152, 131);
-            this.colorPanel1.TabIndex = 6;
-            // 
-            // vccString
-            // 
-            this.vccString.ColorStyle = System.Drawing.Color.MediumSeaGreen;
-            this.vccString.DigitNumber = 0;
-            this.vccString.FillWithGradient = true;
-            this.vccString.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vccString.HandColor = System.Drawing.Color.Black;
-            this.vccString.HandWidth = 1F;
-            this.vccString.Label = "";
-            this.vccString.LineWidth = 1F;
-            this.vccString.Location = new System.Drawing.Point(317, 66);
-            this.vccString.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.vccString.MaxValue = 360F;
-            this.vccString.MinValue = 0F;
-            this.vccString.Name = "vccString";
-            this.vccString.Orthor = true;
-            this.vccString.ShowValue = true;
-            this.vccString.Size = new System.Drawing.Size(140, 125);
-            this.vccString.TabIndex = 14;
-            this.vccString.UnitString = "˚";
-            this.vccString.Value = 0F;
-            // 
-            // vldImageOptical
-            // 
-            this.vldImageOptical.Location = new System.Drawing.Point(5, 127);
-            this.vldImageOptical.MaxValue = 1F;
-            this.vldImageOptical.MinValue = 0F;
-            this.vldImageOptical.Name = "vldImageOptical";
-            this.vldImageOptical.OffsetLines = false;
-            this.vldImageOptical.OffsetLinesColor = System.Drawing.Color.DarkGray;
-            this.vldImageOptical.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
-            this.vldImageOptical.PointerSize = 6;
-            this.vldImageOptical.PointerStyle = CxxLibs_CustomControlsDFW.PointerStyles.Dot;
-            this.vldImageOptical.Size = new System.Drawing.Size(304, 11);
-            this.vldImageOptical.Style = CxxLibs_CustomControlsDFW.ValueSliderStyles.GradientLine;
-            this.vldImageOptical.TabIndex = 11;
-            this.vldImageOptical.Text = "valueSlider1";
-            this.vldImageOptical.Value = 0.8F;
-            this.vldImageOptical.ValueBackColor = System.Drawing.Color.LightGray;
-            this.vldImageOptical.ValueColor = System.Drawing.Color.DodgerBlue;
-            this.vldImageOptical.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // vccImage
-            // 
-            this.vccImage.ColorStyle = System.Drawing.Color.LightSeaGreen;
-            this.vccImage.DigitNumber = 0;
-            this.vccImage.FillWithGradient = true;
-            this.vccImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vccImage.HandColor = System.Drawing.Color.Black;
-            this.vccImage.HandWidth = 1F;
-            this.vccImage.Label = "";
-            this.vccImage.LineWidth = 1F;
-            this.vccImage.Location = new System.Drawing.Point(317, 9);
-            this.vccImage.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.vccImage.MaxValue = 360F;
-            this.vccImage.MinValue = 0F;
-            this.vccImage.Name = "vccImage";
-            this.vccImage.Orthor = true;
-            this.vccImage.ShowValue = true;
-            this.vccImage.Size = new System.Drawing.Size(140, 125);
-            this.vccImage.TabIndex = 14;
-            this.vccImage.UnitString = "˚";
-            this.vccImage.Value = 30F;
+            this.btnLang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLang.BackgroundImage = global::ImgRW_WF.Properties.Resources.switchLang;
+            this.btnLang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnLang.Location = new System.Drawing.Point(203, 94);
+            this.btnLang.Name = "btnLang";
+            this.btnLang.Size = new System.Drawing.Size(69, 32);
+            this.btnLang.TabIndex = 6;
+            this.btnLang.UseVisualStyleBackColor = true;
+            this.btnLang.Click += new System.EventHandler(this.btnLang_Click);
             // 
             // btnRun
             // 
@@ -1011,31 +1023,19 @@
             this.btnRun.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnRun.Location = new System.Drawing.Point(8, 94);
             this.btnRun.Name = "btnRun";
-            this.btnRun.Size = new System.Drawing.Size(146, 32);
+            this.btnRun.Size = new System.Drawing.Size(113, 32);
             this.btnRun.TabIndex = 6;
             this.btnRun.UseVisualStyleBackColor = true;
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
-            // btnLang
-            // 
-            this.btnLang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLang.BackgroundImage = global::ImgRW_WF.Properties.Resources.trans24;
-            this.btnLang.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnLang.Location = new System.Drawing.Point(219, 94);
-            this.btnLang.Name = "btnLang";
-            this.btnLang.Size = new System.Drawing.Size(53, 32);
-            this.btnLang.TabIndex = 6;
-            this.btnLang.UseVisualStyleBackColor = true;
-            this.btnLang.Click += new System.EventHandler(this.btnLang_Click);
-            // 
             // btnOpenOutputPath
             // 
             this.btnOpenOutputPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenOutputPath.BackgroundImage = global::ImgRW_WF.Properties.Resources.CloseFolder;
+            this.btnOpenOutputPath.BackgroundImage = global::ImgRW_WF.Properties.Resources.openOutput;
             this.btnOpenOutputPath.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnOpenOutputPath.Location = new System.Drawing.Point(160, 94);
+            this.btnOpenOutputPath.Location = new System.Drawing.Point(128, 94);
             this.btnOpenOutputPath.Name = "btnOpenOutputPath";
-            this.btnOpenOutputPath.Size = new System.Drawing.Size(53, 32);
+            this.btnOpenOutputPath.Size = new System.Drawing.Size(69, 32);
             this.btnOpenOutputPath.TabIndex = 6;
             this.btnOpenOutputPath.UseVisualStyleBackColor = true;
             this.btnOpenOutputPath.Click += new System.EventHandler(this.btnOpenOutputPath_Click);

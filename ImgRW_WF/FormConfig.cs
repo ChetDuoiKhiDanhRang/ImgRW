@@ -1226,6 +1226,8 @@ namespace ImgRW_WF
             {
                 return;
             }
+            valueSlider2.MinValue = valueSlider2.Value = 0;
+            valueSlider2.MaxValue = files.Count;
             txbStatus.Text = "";
             if (!Directory.Exists(outputPath))
             {
@@ -1249,11 +1251,10 @@ namespace ImgRW_WF
                 }
             }
 
-            valueSlider2.Invoke((Action)(() =>
-            {
-                valueSlider2.MinValue = valueSlider2.Value = 0;
-                valueSlider2.MaxValue = files.Count;
-            }));
+            //valueSlider2.Invoke((Action)(() =>
+            //{
+
+            //}));
             currentIndex = 0;
             var inputs = files.Keys.ToArray();
             List<Thread> threads = new List<Thread>();
