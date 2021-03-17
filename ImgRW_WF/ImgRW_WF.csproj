@@ -47,12 +47,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ImgRW.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing.Common, Version=4.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Drawing.Common.5.0.1\lib\net461\System.Drawing.Common.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums.cs" />
     <Compile Include="FormConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +78,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resizer.cs" />
     <Compile Include="Watermark.cs" />
     <EmbeddedResource Include="FormConfig.resx">
       <DependentUpon>FormConfig.cs</DependentUpon>
@@ -104,11 +106,6 @@
     <ProjectReference Include="..\..\CxxLibs\Controls_dotNetFrw\CxxLibs_CustomControlsDFW.csproj">
       <Project>{90aba1df-b297-4696-94f9-c8ddb4238719}</Project>
       <Name>CxxLibs_CustomControlsDFW</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ImageModifier\ImageModifier.csproj">
-      <Project>{38971893-fb83-46bb-b12e-5d64afb48dc1}</Project>
-      <Name>ImageModifier</Name>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +152,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="icons\Run_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ImgRW.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -38,9 +38,9 @@ namespace ImgRW_WF.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("FixWidth")]
-        public global::ImageModifier.ResizeModes resizeMode {
+        public global::ImgRW_WF.ResizeModes resizeMode {
             get {
-                return ((global::ImageModifier.ResizeModes)(this["resizeMode"]));
+                return ((global::ImgRW_WF.ResizeModes)(this["resizeMode"]));
             }
             set {
                 this["resizeMode"] = value;
@@ -182,9 +182,9 @@ namespace ImgRW_WF.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("BottomCenter")]
-        public global::ImageModifier.LocationModes stringLocationMode {
+        public global::ImgRW_WF.LocationModes stringLocationMode {
             get {
-                return ((global::ImageModifier.LocationModes)(this["stringLocationMode"]));
+                return ((global::ImgRW_WF.LocationModes)(this["stringLocationMode"]));
             }
             set {
                 this["stringLocationMode"] = value;
@@ -242,9 +242,9 @@ namespace ImgRW_WF.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("BottomCenter")]
-        public global::ImageModifier.LocationModes imageLocationMode {
+        public global::ImgRW_WF.LocationModes imageLocationMode {
             get {
-                return ((global::ImageModifier.LocationModes)(this["imageLocationMode"]));
+                return ((global::ImgRW_WF.LocationModes)(this["imageLocationMode"]));
             }
             set {
                 this["imageLocationMode"] = value;

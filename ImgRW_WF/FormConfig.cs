@@ -1,5 +1,4 @@
-﻿using ImageModifier;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
@@ -1231,13 +1230,11 @@ namespace ImgRW_WF
             if (!Directory.Exists(outputPath))
             {
                 txbOutputPath.ForeColor = Color.DarkRed;
-                txbStatus.ForeColor = Color.DarkRed;
                 txbStatus.Text = language == "vi" ? "Thư mục ra không tồn tại!" : "Output path not exist";
                 txbOutputPath.SelectAll();
                 return;
             }
             txbOutputPath.ForeColor = DefaultForeColor;
-            txbStatus.ForeColor = Color.White;
 
             if (files.Count == 0) return;
 

@@ -8,9 +8,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImgRW_WF", "ImgRW_WF\ImgRW_
 		{90ABA1DF-B297-4696-94F9-C8DDB4238719} = {90ABA1DF-B297-4696-94F9-C8DDB4238719}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageModifier", "ImageModifier\ImageModifier.csproj", "{38971893-FB83-46BB-B12E-5D64AFB48DC1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CxxLibs_CustomControlsDFW", "..\CxxLibs\Controls_dotNetFrw\CxxLibs_CustomControlsDFW.csproj", "{90ABA1DF-B297-4696-94F9-C8DDB4238719}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ImgRW_Installer", "ImgRW_Installer\ImgRW_Installer.vdproj", "{438B043F-1752-42BD-B2F8-3383ACC29962}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,14 +22,12 @@ Global
 		{40B63D36-AE04-4FAF-B956-5FD009808806}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40B63D36-AE04-4FAF-B956-5FD009808806}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40B63D36-AE04-4FAF-B956-5FD009808806}.Release|Any CPU.Build.0 = Release|Any CPU
-		{38971893-FB83-46BB-B12E-5D64AFB48DC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{38971893-FB83-46BB-B12E-5D64AFB48DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{38971893-FB83-46BB-B12E-5D64AFB48DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{38971893-FB83-46BB-B12E-5D64AFB48DC1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{90ABA1DF-B297-4696-94F9-C8DDB4238719}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{90ABA1DF-B297-4696-94F9-C8DDB4238719}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90ABA1DF-B297-4696-94F9-C8DDB4238719}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90ABA1DF-B297-4696-94F9-C8DDB4238719}.Release|Any CPU.Build.0 = Release|Any CPU
+		{438B043F-1752-42BD-B2F8-3383ACC29962}.Debug|Any CPU.ActiveCfg = Debug
+		{438B043F-1752-42BD-B2F8-3383ACC29962}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
