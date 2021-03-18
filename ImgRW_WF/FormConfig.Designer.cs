@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormConfig));
             this.lsvFiles = new System.Windows.Forms.ListView();
-            this.col1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.col2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.col3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.col4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -49,10 +48,8 @@
             this.radFixWidth = new System.Windows.Forms.RadioButton();
             this.ckbResize = new System.Windows.Forms.CheckBox();
             this.panelWatermarkString = new System.Windows.Forms.Panel();
-            this.colorPanel1 = new CxxLibs_CustomControlsDFW.ColorPanel();
             this.rdbWSLocation = new System.Windows.Forms.RadioButton();
             this.rdbBottomCenter = new System.Windows.Forms.RadioButton();
-            this.vccString = new CxxLibs_CustomControlsDFW.ValueCircular();
             this.rdbBottomRight = new System.Windows.Forms.RadioButton();
             this.rdbMiddleCenter = new System.Windows.Forms.RadioButton();
             this.rdbMiddleRight = new System.Windows.Forms.RadioButton();
@@ -75,8 +72,6 @@
             this.txbWString = new System.Windows.Forms.TextBox();
             this.ckbString = new System.Windows.Forms.CheckBox();
             this.panelWatermarkImage = new System.Windows.Forms.Panel();
-            this.vldImageOptical = new CxxLibs_CustomControlsDFW.ValueSlider();
-            this.vccImage = new CxxLibs_CustomControlsDFW.ValueCircular();
             this.rdbWILocation = new System.Windows.Forms.RadioButton();
             this.rdbWIBottomCenter = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
@@ -96,17 +91,21 @@
             this.label9 = new System.Windows.Forms.Label();
             this.cmbOutputFormat = new System.Windows.Forms.ComboBox();
             this.txbStatus = new System.Windows.Forms.TextBox();
-            this.valueSlider2 = new CxxLibs_CustomControlsDFW.ValueSlider();
             this.btnLang = new System.Windows.Forms.Button();
             this.btnRun = new System.Windows.Forms.Button();
             this.btnOpenOutputPath = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pibOutputPath = new System.Windows.Forms.PictureBox();
             this.pibPreview = new System.Windows.Forms.PictureBox();
-            this.pibWatermarkImage = new System.Windows.Forms.PictureBox();
             this.ctmAddFiles = new System.Windows.Forms.ToolStripMenuItem();
             this.ctmDeleteSelected = new System.Windows.Forms.ToolStripMenuItem();
             this.ctmClearList = new System.Windows.Forms.ToolStripMenuItem();
+            this.pibWatermarkImage = new System.Windows.Forms.PictureBox();
+            this.valueSlider2 = new CxxLibs_CustomControlsDFW.ValueSlider();
+            this.colorPanel1 = new CxxLibs_CustomControlsDFW.ColorPanel();
+            this.vccString = new CxxLibs_CustomControlsDFW.ValueCircular();
+            this.vldImageOptical = new CxxLibs_CustomControlsDFW.ValueSlider();
+            this.vccImage = new CxxLibs_CustomControlsDFW.ValueCircular();
             this.ctmMenu.SuspendLayout();
             this.panelResize.SuspendLayout();
             this.panelWatermarkString.SuspendLayout();
@@ -132,7 +131,6 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lsvFiles.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lsvFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.col1,
             this.col2,
             this.col3,
             this.col4,
@@ -154,15 +152,9 @@
             this.lsvFiles.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragFiles_DragEnter);
             this.lsvFiles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lsvFiles_MouseDoubleClick);
             // 
-            // col1
-            // 
-            this.col1.DisplayIndex = 1;
-            this.col1.Text = "[- -]";
-            this.col1.Width = 100;
-            // 
             // col2
             // 
-            this.col2.DisplayIndex = 4;
+            this.col2.DisplayIndex = 3;
             this.col2.Text = "[↔]";
             this.col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.col2.Width = 40;
@@ -368,21 +360,6 @@
             this.panelWatermarkString.Size = new System.Drawing.Size(463, 197);
             this.panelWatermarkString.TabIndex = 2;
             // 
-            // colorPanel1
-            // 
-            this.colorPanel1.AutoSize = true;
-            this.colorPanel1.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
-            this.colorPanel1.CurrentColorHexString = "#88FFAA00";
-            this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorPanel1.Location = new System.Drawing.Point(6, 66);
-            this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
-            this.colorPanel1.Name = "colorPanel1";
-            this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
-            this.colorPanel1.PanelStyle = CxxLibs_CustomControlsDFW.PanelStyles.Wheel;
-            this.colorPanel1.RefControl = null;
-            this.colorPanel1.Size = new System.Drawing.Size(152, 131);
-            this.colorPanel1.TabIndex = 6;
-            // 
             // rdbWSLocation
             // 
             this.rdbWSLocation.AutoSize = true;
@@ -403,28 +380,6 @@
             this.rdbBottomCenter.TabIndex = 10;
             this.rdbBottomCenter.TabStop = true;
             this.rdbBottomCenter.UseVisualStyleBackColor = true;
-            // 
-            // vccString
-            // 
-            this.vccString.ColorStyle = System.Drawing.Color.MediumSeaGreen;
-            this.vccString.DigitNumber = 0;
-            this.vccString.FillWithGradient = true;
-            this.vccString.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vccString.HandColor = System.Drawing.Color.Black;
-            this.vccString.HandWidth = 1F;
-            this.vccString.Label = "";
-            this.vccString.LineWidth = 1F;
-            this.vccString.Location = new System.Drawing.Point(317, 66);
-            this.vccString.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.vccString.MaxValue = 360F;
-            this.vccString.MinValue = 0F;
-            this.vccString.Name = "vccString";
-            this.vccString.Orthor = true;
-            this.vccString.ShowValue = true;
-            this.vccString.Size = new System.Drawing.Size(140, 125);
-            this.vccString.TabIndex = 14;
-            this.vccString.UnitString = "˚";
-            this.vccString.Value = 0F;
             // 
             // rdbBottomRight
             // 
@@ -710,48 +665,6 @@
             this.panelWatermarkImage.Size = new System.Drawing.Size(463, 151);
             this.panelWatermarkImage.TabIndex = 5;
             // 
-            // vldImageOptical
-            // 
-            this.vldImageOptical.Location = new System.Drawing.Point(5, 127);
-            this.vldImageOptical.MaxValue = 1F;
-            this.vldImageOptical.MinValue = 0F;
-            this.vldImageOptical.Name = "vldImageOptical";
-            this.vldImageOptical.OffsetLines = false;
-            this.vldImageOptical.OffsetLinesColor = System.Drawing.Color.DarkGray;
-            this.vldImageOptical.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
-            this.vldImageOptical.PointerSize = 6;
-            this.vldImageOptical.PointerStyle = CxxLibs_CustomControlsDFW.PointerStyles.Dot;
-            this.vldImageOptical.Size = new System.Drawing.Size(304, 11);
-            this.vldImageOptical.Style = CxxLibs_CustomControlsDFW.ValueSliderStyles.GradientLine;
-            this.vldImageOptical.TabIndex = 11;
-            this.vldImageOptical.Text = "valueSlider1";
-            this.vldImageOptical.Value = 0.8F;
-            this.vldImageOptical.ValueBackColor = System.Drawing.Color.LightGray;
-            this.vldImageOptical.ValueColor = System.Drawing.Color.DodgerBlue;
-            this.vldImageOptical.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // vccImage
-            // 
-            this.vccImage.ColorStyle = System.Drawing.Color.LightSeaGreen;
-            this.vccImage.DigitNumber = 0;
-            this.vccImage.FillWithGradient = true;
-            this.vccImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vccImage.HandColor = System.Drawing.Color.Black;
-            this.vccImage.HandWidth = 1F;
-            this.vccImage.Label = "";
-            this.vccImage.LineWidth = 1F;
-            this.vccImage.Location = new System.Drawing.Point(317, 9);
-            this.vccImage.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.vccImage.MaxValue = 360F;
-            this.vccImage.MinValue = 0F;
-            this.vccImage.Name = "vccImage";
-            this.vccImage.Orthor = true;
-            this.vccImage.ShowValue = true;
-            this.vccImage.Size = new System.Drawing.Size(140, 125);
-            this.vccImage.TabIndex = 14;
-            this.vccImage.UnitString = "˚";
-            this.vccImage.Value = 30F;
-            // 
             // rdbWILocation
             // 
             this.rdbWILocation.AutoSize = true;
@@ -980,29 +893,6 @@
             this.txbStatus.Text = "...";
             this.txbStatus.WordWrap = false;
             // 
-            // valueSlider2
-            // 
-            this.valueSlider2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.valueSlider2.Location = new System.Drawing.Point(12, 600);
-            this.valueSlider2.MaxValue = 100F;
-            this.valueSlider2.MinValue = 0F;
-            this.valueSlider2.Name = "valueSlider2";
-            this.valueSlider2.OffsetLines = false;
-            this.valueSlider2.OffsetLinesColor = System.Drawing.Color.DarkGray;
-            this.valueSlider2.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
-            this.valueSlider2.PointerSize = 6;
-            this.valueSlider2.PointerStyle = CxxLibs_CustomControlsDFW.PointerStyles.None;
-            this.valueSlider2.Size = new System.Drawing.Size(984, 10);
-            this.valueSlider2.Style = CxxLibs_CustomControlsDFW.ValueSliderStyles.SolidRounded;
-            this.valueSlider2.TabIndex = 11;
-            this.valueSlider2.Text = "valueSlider1";
-            this.valueSlider2.Value = 0F;
-            this.valueSlider2.ValueBackColor = System.Drawing.Color.LightGray;
-            this.valueSlider2.ValueColor = System.Drawing.Color.DodgerBlue;
-            this.valueSlider2.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
-            this.valueSlider2.ValueChanged += new System.EventHandler<float>(this.valueSlider2_ValueChanged);
-            // 
             // btnLang
             // 
             this.btnLang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1079,20 +969,6 @@
             this.pibPreview.TabStop = false;
             this.pibPreview.BackgroundImageChanged += new System.EventHandler(this.pibPreview_BackgroundImageChanged);
             // 
-            // pibWatermarkImage
-            // 
-            this.pibWatermarkImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pibWatermarkImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pibWatermarkImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pibWatermarkImage.Location = new System.Drawing.Point(158, 9);
-            this.pibWatermarkImage.Name = "pibWatermarkImage";
-            this.pibWatermarkImage.Size = new System.Drawing.Size(146, 110);
-            this.pibWatermarkImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pibWatermarkImage.TabIndex = 0;
-            this.pibWatermarkImage.TabStop = false;
-            this.pibWatermarkImage.BackgroundImageChanged += new System.EventHandler(this.pibWatermarkImage_BackgroundImageChanged);
-            this.pibWatermarkImage.Click += new System.EventHandler(this.pibWatermarkImage_Click);
-            // 
             // ctmAddFiles
             // 
             this.ctmAddFiles.Image = global::ImgRW_WF.Properties.Resources.file;
@@ -1113,6 +989,122 @@
             this.ctmClearList.Name = "ctmClearList";
             this.ctmClearList.Size = new System.Drawing.Size(189, 30);
             this.ctmClearList.Text = "Loại bỏ danh sách";
+            // 
+            // pibWatermarkImage
+            // 
+            this.pibWatermarkImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pibWatermarkImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pibWatermarkImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pibWatermarkImage.Location = new System.Drawing.Point(158, 9);
+            this.pibWatermarkImage.Name = "pibWatermarkImage";
+            this.pibWatermarkImage.Size = new System.Drawing.Size(146, 110);
+            this.pibWatermarkImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pibWatermarkImage.TabIndex = 0;
+            this.pibWatermarkImage.TabStop = false;
+            this.pibWatermarkImage.BackgroundImageChanged += new System.EventHandler(this.pibWatermarkImage_BackgroundImageChanged);
+            this.pibWatermarkImage.Click += new System.EventHandler(this.pibWatermarkImage_Click);
+            // 
+            // valueSlider2
+            // 
+            this.valueSlider2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.valueSlider2.Location = new System.Drawing.Point(12, 600);
+            this.valueSlider2.MaxValue = 100F;
+            this.valueSlider2.MinValue = 0F;
+            this.valueSlider2.Name = "valueSlider2";
+            this.valueSlider2.OffsetLines = false;
+            this.valueSlider2.OffsetLinesColor = System.Drawing.Color.DarkGray;
+            this.valueSlider2.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
+            this.valueSlider2.PointerSize = 6;
+            this.valueSlider2.PointerStyle = CxxLibs_CustomControlsDFW.PointerStyles.None;
+            this.valueSlider2.Size = new System.Drawing.Size(984, 10);
+            this.valueSlider2.Style = CxxLibs_CustomControlsDFW.ValueSliderStyles.SolidRounded;
+            this.valueSlider2.TabIndex = 11;
+            this.valueSlider2.Text = "valueSlider1";
+            this.valueSlider2.Value = 0F;
+            this.valueSlider2.ValueBackColor = System.Drawing.Color.LightGray;
+            this.valueSlider2.ValueColor = System.Drawing.Color.DodgerBlue;
+            this.valueSlider2.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
+            this.valueSlider2.ValueChanged += new System.EventHandler<float>(this.valueSlider2_ValueChanged);
+            // 
+            // colorPanel1
+            // 
+            this.colorPanel1.AutoSize = true;
+            this.colorPanel1.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
+            this.colorPanel1.CurrentColorHexString = "#88FFAA00";
+            this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorPanel1.Location = new System.Drawing.Point(6, 66);
+            this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
+            this.colorPanel1.Name = "colorPanel1";
+            this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
+            this.colorPanel1.PanelStyle = CxxLibs_CustomControlsDFW.PanelStyles.Wheel;
+            this.colorPanel1.RefControl = null;
+            this.colorPanel1.Size = new System.Drawing.Size(152, 131);
+            this.colorPanel1.TabIndex = 6;
+            // 
+            // vccString
+            // 
+            this.vccString.ColorStyle = System.Drawing.Color.MediumSeaGreen;
+            this.vccString.DigitNumber = 0;
+            this.vccString.FillWithGradient = true;
+            this.vccString.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vccString.HandColor = System.Drawing.Color.Black;
+            this.vccString.HandWidth = 1F;
+            this.vccString.Label = "";
+            this.vccString.LineWidth = 1F;
+            this.vccString.Location = new System.Drawing.Point(317, 66);
+            this.vccString.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.vccString.MaxValue = 360F;
+            this.vccString.MinValue = 0F;
+            this.vccString.Name = "vccString";
+            this.vccString.Orthor = true;
+            this.vccString.ShowValue = true;
+            this.vccString.Size = new System.Drawing.Size(140, 125);
+            this.vccString.TabIndex = 14;
+            this.vccString.UnitString = "˚";
+            this.vccString.Value = 0F;
+            // 
+            // vldImageOptical
+            // 
+            this.vldImageOptical.Location = new System.Drawing.Point(5, 127);
+            this.vldImageOptical.MaxValue = 1F;
+            this.vldImageOptical.MinValue = 0F;
+            this.vldImageOptical.Name = "vldImageOptical";
+            this.vldImageOptical.OffsetLines = false;
+            this.vldImageOptical.OffsetLinesColor = System.Drawing.Color.DarkGray;
+            this.vldImageOptical.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
+            this.vldImageOptical.PointerSize = 6;
+            this.vldImageOptical.PointerStyle = CxxLibs_CustomControlsDFW.PointerStyles.Dot;
+            this.vldImageOptical.Size = new System.Drawing.Size(304, 11);
+            this.vldImageOptical.Style = CxxLibs_CustomControlsDFW.ValueSliderStyles.GradientLine;
+            this.vldImageOptical.TabIndex = 11;
+            this.vldImageOptical.Text = "valueSlider1";
+            this.vldImageOptical.Value = 0.8F;
+            this.vldImageOptical.ValueBackColor = System.Drawing.Color.LightGray;
+            this.vldImageOptical.ValueColor = System.Drawing.Color.DodgerBlue;
+            this.vldImageOptical.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // vccImage
+            // 
+            this.vccImage.ColorStyle = System.Drawing.Color.LightSeaGreen;
+            this.vccImage.DigitNumber = 0;
+            this.vccImage.FillWithGradient = true;
+            this.vccImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vccImage.HandColor = System.Drawing.Color.Black;
+            this.vccImage.HandWidth = 1F;
+            this.vccImage.Label = "";
+            this.vccImage.LineWidth = 1F;
+            this.vccImage.Location = new System.Drawing.Point(317, 9);
+            this.vccImage.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.vccImage.MaxValue = 360F;
+            this.vccImage.MinValue = 0F;
+            this.vccImage.Name = "vccImage";
+            this.vccImage.Orthor = true;
+            this.vccImage.ShowValue = true;
+            this.vccImage.Size = new System.Drawing.Size(140, 125);
+            this.vccImage.TabIndex = 14;
+            this.vccImage.UnitString = "˚";
+            this.vccImage.Value = 30F;
             // 
             // FormConfig
             // 
@@ -1236,7 +1228,6 @@
         private System.Windows.Forms.ToolStripMenuItem ctmAddFiles;
         private System.Windows.Forms.ToolStripMenuItem ctmDeleteSelected;
         private System.Windows.Forms.ToolStripMenuItem ctmClearList;
-        private System.Windows.Forms.ColumnHeader col1;
         private System.Windows.Forms.ColumnHeader col2;
         private System.Windows.Forms.ColumnHeader col3;
         private System.Windows.Forms.ColumnHeader col4;

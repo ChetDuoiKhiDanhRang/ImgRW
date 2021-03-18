@@ -364,7 +364,7 @@ namespace ImgRW_WF
             x.outputFormat = outputFormat;
             x.outputPath = outputPath;
 
-            
+
             x.Save();
         }
 
@@ -1314,11 +1314,8 @@ namespace ImgRW_WF
                         }
 
                         lsvFiles.Items.Clear();
-                        int count = 0;
                         foreach (var item in files)
                         {
-                            count++;
-                            item.Value.SubItems.Add((count).ToString());
                             lsvFiles.Items.Add(item.Value);
                         }
                         for (int i = 0; i < lsvFiles.Columns.Count; i++)
@@ -1409,10 +1406,8 @@ namespace ImgRW_WF
 
                     //refresh listview files
                     lsvFiles.Items.Clear();
-                    int count = 0;
                     foreach (var item in files)
                     {
-                        item.Value.SubItems.Add(count.ToString());
                         lsvFiles.Items.Add(item.Value);
                     }
                     for (int j = 0; j < lsvFiles.Columns.Count; j++)
