@@ -103,10 +103,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pibOutputPath = new System.Windows.Forms.PictureBox();
             this.pibPreview = new System.Windows.Forms.PictureBox();
+            this.pibWatermarkImage = new System.Windows.Forms.PictureBox();
             this.ctmAddFiles = new System.Windows.Forms.ToolStripMenuItem();
             this.ctmDeleteSelected = new System.Windows.Forms.ToolStripMenuItem();
             this.ctmClearList = new System.Windows.Forms.ToolStripMenuItem();
-            this.pibWatermarkImage = new System.Windows.Forms.PictureBox();
             this.ctmMenu.SuspendLayout();
             this.panelResize.SuspendLayout();
             this.panelWatermarkString.SuspendLayout();
@@ -1042,7 +1042,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::ImgRW_WF.Properties.Resources.picture;
+            this.pictureBox1.BackgroundImage = global::ImgRW_WF.Properties.Resources.file;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox1.Location = new System.Drawing.Point(8, 36);
             this.pictureBox1.Name = "pictureBox1";
@@ -1079,6 +1079,20 @@
             this.pibPreview.TabStop = false;
             this.pibPreview.BackgroundImageChanged += new System.EventHandler(this.pibPreview_BackgroundImageChanged);
             // 
+            // pibWatermarkImage
+            // 
+            this.pibWatermarkImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pibWatermarkImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pibWatermarkImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pibWatermarkImage.Location = new System.Drawing.Point(158, 9);
+            this.pibWatermarkImage.Name = "pibWatermarkImage";
+            this.pibWatermarkImage.Size = new System.Drawing.Size(146, 110);
+            this.pibWatermarkImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pibWatermarkImage.TabIndex = 0;
+            this.pibWatermarkImage.TabStop = false;
+            this.pibWatermarkImage.BackgroundImageChanged += new System.EventHandler(this.pibWatermarkImage_BackgroundImageChanged);
+            this.pibWatermarkImage.Click += new System.EventHandler(this.pibWatermarkImage_Click);
+            // 
             // ctmAddFiles
             // 
             this.ctmAddFiles.Image = global::ImgRW_WF.Properties.Resources.file;
@@ -1099,20 +1113,6 @@
             this.ctmClearList.Name = "ctmClearList";
             this.ctmClearList.Size = new System.Drawing.Size(189, 30);
             this.ctmClearList.Text = "Loại bỏ danh sách";
-            // 
-            // pibWatermarkImage
-            // 
-            this.pibWatermarkImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pibWatermarkImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pibWatermarkImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pibWatermarkImage.Location = new System.Drawing.Point(158, 9);
-            this.pibWatermarkImage.Name = "pibWatermarkImage";
-            this.pibWatermarkImage.Size = new System.Drawing.Size(146, 110);
-            this.pibWatermarkImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pibWatermarkImage.TabIndex = 0;
-            this.pibWatermarkImage.TabStop = false;
-            this.pibWatermarkImage.BackgroundImageChanged += new System.EventHandler(this.pibWatermarkImage_BackgroundImageChanged);
-            this.pibWatermarkImage.Click += new System.EventHandler(this.pibWatermarkImage_Click);
             // 
             // FormConfig
             // 
