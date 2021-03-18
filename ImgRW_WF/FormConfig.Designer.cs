@@ -233,7 +233,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(179, 96);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 15);
+            this.label3.Size = new System.Drawing.Size(24, 14);
             this.label3.TabIndex = 4;
             this.label3.Text = "(%)";
             // 
@@ -242,7 +242,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(179, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 15);
+            this.label2.Size = new System.Drawing.Size(42, 14);
             this.label2.TabIndex = 4;
             this.label2.Text = "(pixel)";
             // 
@@ -251,7 +251,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(179, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 15);
+            this.label1.Size = new System.Drawing.Size(42, 14);
             this.label1.TabIndex = 4;
             this.label1.Text = "(pixel)";
             // 
@@ -261,7 +261,7 @@
             this.txbScale.Margin = new System.Windows.Forms.Padding(4);
             this.txbScale.MaxLength = 4;
             this.txbScale.Name = "txbScale";
-            this.txbScale.Size = new System.Drawing.Size(50, 21);
+            this.txbScale.Size = new System.Drawing.Size(50, 22);
             this.txbScale.TabIndex = 1;
             this.txbScale.Text = "50";
             this.txbScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -273,7 +273,7 @@
             this.txbFixHeight.Margin = new System.Windows.Forms.Padding(4);
             this.txbFixHeight.MaxLength = 4;
             this.txbFixHeight.Name = "txbFixHeight";
-            this.txbFixHeight.Size = new System.Drawing.Size(50, 21);
+            this.txbFixHeight.Size = new System.Drawing.Size(50, 22);
             this.txbFixHeight.TabIndex = 1;
             this.txbFixHeight.Text = "700";
             this.txbFixHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -285,7 +285,7 @@
             this.txbFixWidth.Margin = new System.Windows.Forms.Padding(4);
             this.txbFixWidth.MaxLength = 4;
             this.txbFixWidth.Name = "txbFixWidth";
-            this.txbFixWidth.Size = new System.Drawing.Size(50, 21);
+            this.txbFixWidth.Size = new System.Drawing.Size(50, 22);
             this.txbFixWidth.TabIndex = 1;
             this.txbFixWidth.Text = "700";
             this.txbFixWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -298,7 +298,7 @@
             this.radScale.Location = new System.Drawing.Point(9, 94);
             this.radScale.Margin = new System.Windows.Forms.Padding(4);
             this.radScale.Name = "radScale";
-            this.radScale.Size = new System.Drawing.Size(84, 20);
+            this.radScale.Size = new System.Drawing.Size(85, 19);
             this.radScale.TabIndex = 0;
             this.radScale.Text = "Theo tỉ lệ:";
             this.radScale.UseVisualStyleBackColor = true;
@@ -310,7 +310,7 @@
             this.radFixHeight.Location = new System.Drawing.Point(9, 66);
             this.radFixHeight.Margin = new System.Windows.Forms.Padding(4);
             this.radFixHeight.Name = "radFixHeight";
-            this.radFixHeight.Size = new System.Drawing.Size(118, 20);
+            this.radFixHeight.Size = new System.Drawing.Size(116, 19);
             this.radFixHeight.TabIndex = 0;
             this.radFixHeight.Text = "Theo chiều cao:";
             this.radFixHeight.UseVisualStyleBackColor = true;
@@ -323,7 +323,7 @@
             this.radFixWidth.Location = new System.Drawing.Point(9, 38);
             this.radFixWidth.Margin = new System.Windows.Forms.Padding(4);
             this.radFixWidth.Name = "radFixWidth";
-            this.radFixWidth.Size = new System.Drawing.Size(123, 20);
+            this.radFixWidth.Size = new System.Drawing.Size(121, 19);
             this.radFixWidth.TabIndex = 0;
             this.radFixWidth.TabStop = true;
             this.radFixWidth.Text = "Theo chiều rộng:";
@@ -400,7 +400,7 @@
             this.rdbWSLocation.AutoSize = true;
             this.rdbWSLocation.Location = new System.Drawing.Point(163, 113);
             this.rdbWSLocation.Name = "rdbWSLocation";
-            this.rdbWSLocation.Size = new System.Drawing.Size(36, 19);
+            this.rdbWSLocation.Size = new System.Drawing.Size(34, 18);
             this.rdbWSLocation.TabIndex = 10;
             this.rdbWSLocation.TabStop = true;
             this.rdbWSLocation.Text = "X:";
@@ -533,7 +533,7 @@
             0,
             0});
             this.nudFontSize.Name = "nudFontSize";
-            this.nudFontSize.Size = new System.Drawing.Size(42, 21);
+            this.nudFontSize.Size = new System.Drawing.Size(42, 22);
             this.nudFontSize.TabIndex = 8;
             this.nudFontSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nudFontSize.Value = new decimal(new int[] {
@@ -552,7 +552,7 @@
             0,
             0});
             this.nudWSLocationY.Name = "nudWSLocationY";
-            this.nudWSLocationY.Size = new System.Drawing.Size(42, 21);
+            this.nudWSLocationY.Size = new System.Drawing.Size(42, 22);
             this.nudWSLocationY.TabIndex = 8;
             this.nudWSLocationY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nudWSLocationY.Value = new decimal(new int[] {
@@ -571,7 +571,7 @@
             0,
             0});
             this.nudWSLocationX.Name = "nudWSLocationX";
-            this.nudWSLocationX.Size = new System.Drawing.Size(42, 21);
+            this.nudWSLocationX.Size = new System.Drawing.Size(42, 22);
             this.nudWSLocationX.TabIndex = 8;
             this.nudWSLocationX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nudWSLocationX.Value = new decimal(new int[] {
@@ -590,7 +590,7 @@
             0,
             0});
             this.nudFrameLineWidth.Name = "nudFrameLineWidth";
-            this.nudFrameLineWidth.Size = new System.Drawing.Size(42, 21);
+            this.nudFrameLineWidth.Size = new System.Drawing.Size(42, 22);
             this.nudFrameLineWidth.TabIndex = 8;
             this.nudFrameLineWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nudFrameLineWidth.Value = new decimal(new int[] {
@@ -604,7 +604,7 @@
             this.ckbFrame.AutoSize = true;
             this.ckbFrame.Location = new System.Drawing.Point(164, 77);
             this.ckbFrame.Name = "ckbFrame";
-            this.ckbFrame.Size = new System.Drawing.Size(90, 19);
+            this.ckbFrame.Size = new System.Drawing.Size(88, 18);
             this.ckbFrame.TabIndex = 7;
             this.ckbFrame.Text = "Khung viền:";
             this.ckbFrame.UseVisualStyleBackColor = true;
@@ -652,7 +652,7 @@
             this.cmbFont.IntegralHeight = false;
             this.cmbFont.Location = new System.Drawing.Point(131, 34);
             this.cmbFont.Name = "cmbFont";
-            this.cmbFont.Size = new System.Drawing.Size(180, 23);
+            this.cmbFont.Size = new System.Drawing.Size(180, 22);
             this.cmbFont.TabIndex = 3;
             // 
             // label6
@@ -660,7 +660,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(249, 114);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(17, 15);
+            this.label6.Size = new System.Drawing.Size(15, 14);
             this.label6.TabIndex = 2;
             this.label6.Text = "Y:";
             // 
@@ -677,7 +677,7 @@
             // 
             this.txbWString.Location = new System.Drawing.Point(131, 7);
             this.txbWString.Name = "txbWString";
-            this.txbWString.Size = new System.Drawing.Size(326, 21);
+            this.txbWString.Size = new System.Drawing.Size(326, 22);
             this.txbWString.TabIndex = 1;
             this.txbWString.Text = "ImgRW";
             this.txbWString.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -783,7 +783,7 @@
             this.rdbWILocation.AutoSize = true;
             this.rdbWILocation.Location = new System.Drawing.Point(5, 33);
             this.rdbWILocation.Name = "rdbWILocation";
-            this.rdbWILocation.Size = new System.Drawing.Size(36, 19);
+            this.rdbWILocation.Size = new System.Drawing.Size(34, 18);
             this.rdbWILocation.TabIndex = 10;
             this.rdbWILocation.TabStop = true;
             this.rdbWILocation.Text = "X:";
@@ -804,7 +804,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(90, 35);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 15);
+            this.label5.Size = new System.Drawing.Size(15, 14);
             this.label5.TabIndex = 2;
             this.label5.Text = "Y:";
             // 
@@ -823,7 +823,7 @@
             this.nudWIY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nudWIY.Location = new System.Drawing.Point(108, 33);
             this.nudWIY.Name = "nudWIY";
-            this.nudWIY.Size = new System.Drawing.Size(42, 21);
+            this.nudWIY.Size = new System.Drawing.Size(42, 22);
             this.nudWIY.TabIndex = 8;
             this.nudWIY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nudWIY.Value = new decimal(new int[] {
@@ -847,7 +847,7 @@
             this.nudWIX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nudWIX.Location = new System.Drawing.Point(43, 33);
             this.nudWIX.Name = "nudWIX";
-            this.nudWIX.Size = new System.Drawing.Size(42, 21);
+            this.nudWIX.Size = new System.Drawing.Size(42, 22);
             this.nudWIX.TabIndex = 8;
             this.nudWIX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nudWIX.Value = new decimal(new int[] {
@@ -1122,14 +1122,14 @@
             this.Controls.Add(this.pibPreview);
             this.Controls.Add(this.lsvFiles);
             this.Controls.Add(this.panelWatermarkImage);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1024, 661);
             this.Name = "FormConfig";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.Text = "Form1";
+            this.Text = "Images resize and watermark";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormConfig_FormClosed);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormConfig_KeyDown);
