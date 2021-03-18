@@ -36,6 +36,9 @@
             this.col4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.col5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ctmMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ctmAddFiles = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctmDeleteSelected = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctmClearList = new System.Windows.Forms.ToolStripMenuItem();
             this.panelResize = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,8 +51,10 @@
             this.radFixWidth = new System.Windows.Forms.RadioButton();
             this.ckbResize = new System.Windows.Forms.CheckBox();
             this.panelWatermarkString = new System.Windows.Forms.Panel();
+            this.colorPanel1 = new CxxLibs_CustomControlsDFW.ColorPanel();
             this.rdbWSLocation = new System.Windows.Forms.RadioButton();
             this.rdbBottomCenter = new System.Windows.Forms.RadioButton();
+            this.vccString = new CxxLibs_CustomControlsDFW.ValueCircular();
             this.rdbBottomRight = new System.Windows.Forms.RadioButton();
             this.rdbMiddleCenter = new System.Windows.Forms.RadioButton();
             this.rdbMiddleRight = new System.Windows.Forms.RadioButton();
@@ -72,6 +77,9 @@
             this.txbWString = new System.Windows.Forms.TextBox();
             this.ckbString = new System.Windows.Forms.CheckBox();
             this.panelWatermarkImage = new System.Windows.Forms.Panel();
+            this.vldImageOptical = new CxxLibs_CustomControlsDFW.ValueSlider();
+            this.pibWatermarkImage = new System.Windows.Forms.PictureBox();
+            this.vccImage = new CxxLibs_CustomControlsDFW.ValueCircular();
             this.rdbWILocation = new System.Windows.Forms.RadioButton();
             this.rdbWIBottomCenter = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
@@ -87,25 +95,17 @@
             this.rdbWIMiddleLeft = new System.Windows.Forms.RadioButton();
             this.ckbWatermarkImage = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txbOutputPath = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.cmbOutputFormat = new System.Windows.Forms.ComboBox();
-            this.txbStatus = new System.Windows.Forms.TextBox();
             this.btnLang = new System.Windows.Forms.Button();
             this.btnRun = new System.Windows.Forms.Button();
             this.btnOpenOutputPath = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pibOutputPath = new System.Windows.Forms.PictureBox();
+            this.txbOutputPath = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cmbOutputFormat = new System.Windows.Forms.ComboBox();
+            this.txbStatus = new System.Windows.Forms.TextBox();
             this.pibPreview = new System.Windows.Forms.PictureBox();
-            this.ctmAddFiles = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctmDeleteSelected = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctmClearList = new System.Windows.Forms.ToolStripMenuItem();
-            this.pibWatermarkImage = new System.Windows.Forms.PictureBox();
             this.valueSlider2 = new CxxLibs_CustomControlsDFW.ValueSlider();
-            this.colorPanel1 = new CxxLibs_CustomControlsDFW.ColorPanel();
-            this.vccString = new CxxLibs_CustomControlsDFW.ValueCircular();
-            this.vldImageOptical = new CxxLibs_CustomControlsDFW.ValueSlider();
-            this.vccImage = new CxxLibs_CustomControlsDFW.ValueCircular();
             this.ctmMenu.SuspendLayout();
             this.panelResize.SuspendLayout();
             this.panelWatermarkString.SuspendLayout();
@@ -114,13 +114,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudWSLocationX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudFrameLineWidth)).BeginInit();
             this.panelWatermarkImage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pibWatermarkImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWIY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWIX)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pibOutputPath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pibWatermarkImage)).BeginInit();
             this.SuspendLayout();
             // 
             // lsvFiles
@@ -154,26 +154,25 @@
             // 
             // col2
             // 
-            this.col2.DisplayIndex = 3;
-            this.col2.Text = "[↔]";
-            this.col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.col2.Text = "[ - ]";
             this.col2.Width = 40;
             // 
             // col3
             // 
-            this.col3.Text = "[ × ]";
+            this.col3.Text = "[↔]";
+            this.col3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.col3.Width = 80;
             // 
             // col4
             // 
-            this.col4.Text = "[ ÷ ]";
+            this.col4.Text = "[ × ]";
+            this.col4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // col5
             // 
-            this.col5.DisplayIndex = 0;
-            this.col5.Text = "#";
+            this.col5.Text = "[ ÷ ]";
             this.col5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.col5.Width = 25;
+            this.col5.Width = 35;
             // 
             // ctmMenu
             // 
@@ -186,6 +185,27 @@
             this.ctmMenu.Name = "ctmMenu";
             this.ctmMenu.Size = new System.Drawing.Size(190, 94);
             this.ctmMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ctmMenu_ItemClicked);
+            // 
+            // ctmAddFiles
+            // 
+            this.ctmAddFiles.Image = global::ImgRW_WF.Properties.Resources.file;
+            this.ctmAddFiles.Name = "ctmAddFiles";
+            this.ctmAddFiles.Size = new System.Drawing.Size(189, 30);
+            this.ctmAddFiles.Text = "Thêm file ảnh";
+            // 
+            // ctmDeleteSelected
+            // 
+            this.ctmDeleteSelected.Image = global::ImgRW_WF.Properties.Resources.minus;
+            this.ctmDeleteSelected.Name = "ctmDeleteSelected";
+            this.ctmDeleteSelected.Size = new System.Drawing.Size(189, 30);
+            this.ctmDeleteSelected.Text = "Loại bỏ file đã chọn";
+            // 
+            // ctmClearList
+            // 
+            this.ctmClearList.Image = global::ImgRW_WF.Properties.Resources.remove;
+            this.ctmClearList.Name = "ctmClearList";
+            this.ctmClearList.Size = new System.Drawing.Size(189, 30);
+            this.ctmClearList.Text = "Loại bỏ danh sách";
             // 
             // panelResize
             // 
@@ -360,6 +380,21 @@
             this.panelWatermarkString.Size = new System.Drawing.Size(463, 197);
             this.panelWatermarkString.TabIndex = 2;
             // 
+            // colorPanel1
+            // 
+            this.colorPanel1.AutoSize = true;
+            this.colorPanel1.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
+            this.colorPanel1.CurrentColorHexString = "#88FFAA00";
+            this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.colorPanel1.Location = new System.Drawing.Point(6, 66);
+            this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
+            this.colorPanel1.Name = "colorPanel1";
+            this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
+            this.colorPanel1.PanelStyle = CxxLibs_CustomControlsDFW.PanelStyles.Wheel;
+            this.colorPanel1.RefControl = null;
+            this.colorPanel1.Size = new System.Drawing.Size(152, 131);
+            this.colorPanel1.TabIndex = 6;
+            // 
             // rdbWSLocation
             // 
             this.rdbWSLocation.AutoSize = true;
@@ -380,6 +415,28 @@
             this.rdbBottomCenter.TabIndex = 10;
             this.rdbBottomCenter.TabStop = true;
             this.rdbBottomCenter.UseVisualStyleBackColor = true;
+            // 
+            // vccString
+            // 
+            this.vccString.ColorStyle = System.Drawing.Color.MediumSeaGreen;
+            this.vccString.DigitNumber = 0;
+            this.vccString.FillWithGradient = true;
+            this.vccString.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vccString.HandColor = System.Drawing.Color.Black;
+            this.vccString.HandWidth = 1F;
+            this.vccString.Label = "";
+            this.vccString.LineWidth = 1F;
+            this.vccString.Location = new System.Drawing.Point(317, 66);
+            this.vccString.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.vccString.MaxValue = 360F;
+            this.vccString.MinValue = 0F;
+            this.vccString.Name = "vccString";
+            this.vccString.Orthor = true;
+            this.vccString.ShowValue = true;
+            this.vccString.Size = new System.Drawing.Size(140, 125);
+            this.vccString.TabIndex = 14;
+            this.vccString.UnitString = "˚";
+            this.vccString.Value = 0F;
             // 
             // rdbBottomRight
             // 
@@ -665,6 +722,62 @@
             this.panelWatermarkImage.Size = new System.Drawing.Size(463, 151);
             this.panelWatermarkImage.TabIndex = 5;
             // 
+            // vldImageOptical
+            // 
+            this.vldImageOptical.Location = new System.Drawing.Point(5, 127);
+            this.vldImageOptical.MaxValue = 1F;
+            this.vldImageOptical.MinValue = 0F;
+            this.vldImageOptical.Name = "vldImageOptical";
+            this.vldImageOptical.OffsetLines = false;
+            this.vldImageOptical.OffsetLinesColor = System.Drawing.Color.DarkGray;
+            this.vldImageOptical.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
+            this.vldImageOptical.PointerSize = 6;
+            this.vldImageOptical.PointerStyle = CxxLibs_CustomControlsDFW.PointerStyles.Dot;
+            this.vldImageOptical.Size = new System.Drawing.Size(304, 11);
+            this.vldImageOptical.Style = CxxLibs_CustomControlsDFW.ValueSliderStyles.GradientLine;
+            this.vldImageOptical.TabIndex = 11;
+            this.vldImageOptical.Text = "valueSlider1";
+            this.vldImageOptical.Value = 0.8F;
+            this.vldImageOptical.ValueBackColor = System.Drawing.Color.LightGray;
+            this.vldImageOptical.ValueColor = System.Drawing.Color.DodgerBlue;
+            this.vldImageOptical.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // pibWatermarkImage
+            // 
+            this.pibWatermarkImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pibWatermarkImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pibWatermarkImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pibWatermarkImage.Location = new System.Drawing.Point(158, 9);
+            this.pibWatermarkImage.Name = "pibWatermarkImage";
+            this.pibWatermarkImage.Size = new System.Drawing.Size(146, 110);
+            this.pibWatermarkImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pibWatermarkImage.TabIndex = 0;
+            this.pibWatermarkImage.TabStop = false;
+            this.pibWatermarkImage.BackgroundImageChanged += new System.EventHandler(this.pibWatermarkImage_BackgroundImageChanged);
+            this.pibWatermarkImage.Click += new System.EventHandler(this.pibWatermarkImage_Click);
+            // 
+            // vccImage
+            // 
+            this.vccImage.ColorStyle = System.Drawing.Color.LightSeaGreen;
+            this.vccImage.DigitNumber = 0;
+            this.vccImage.FillWithGradient = true;
+            this.vccImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vccImage.HandColor = System.Drawing.Color.Black;
+            this.vccImage.HandWidth = 1F;
+            this.vccImage.Label = "";
+            this.vccImage.LineWidth = 1F;
+            this.vccImage.Location = new System.Drawing.Point(317, 9);
+            this.vccImage.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.vccImage.MaxValue = 360F;
+            this.vccImage.MinValue = 0F;
+            this.vccImage.Name = "vccImage";
+            this.vccImage.Orthor = true;
+            this.vccImage.ShowValue = true;
+            this.vccImage.Size = new System.Drawing.Size(140, 125);
+            this.vccImage.TabIndex = 14;
+            this.vccImage.UnitString = "˚";
+            this.vccImage.Value = 30F;
+            // 
             // rdbWILocation
             // 
             this.rdbWILocation.AutoSize = true;
@@ -836,63 +949,6 @@
             this.panel1.Size = new System.Drawing.Size(280, 134);
             this.panel1.TabIndex = 12;
             // 
-            // txbOutputPath
-            // 
-            this.txbOutputPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbOutputPath.Font = new System.Drawing.Font("Consolas", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbOutputPath.Location = new System.Drawing.Point(39, 66);
-            this.txbOutputPath.Name = "txbOutputPath";
-            this.txbOutputPath.Size = new System.Drawing.Size(233, 20);
-            this.txbOutputPath.TabIndex = 4;
-            this.txbOutputPath.TextChanged += new System.EventHandler(this.txbOutputPath_TextChanged);
-            // 
-            // label9
-            // 
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(5, 7);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(103, 20);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Tập tin xuất:";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cmbOutputFormat
-            // 
-            this.cmbOutputFormat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbOutputFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbOutputFormat.Font = new System.Drawing.Font("Consolas", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbOutputFormat.FormattingEnabled = true;
-            this.cmbOutputFormat.IntegralHeight = false;
-            this.cmbOutputFormat.Items.AddRange(new object[] {
-            "x → x",
-            "PNG (Portable Network Graphics)",
-            "JPG (Joint Photographic Experts Group)",
-            "BMP (Bitmap)"});
-            this.cmbOutputFormat.Location = new System.Drawing.Point(39, 38);
-            this.cmbOutputFormat.Name = "cmbOutputFormat";
-            this.cmbOutputFormat.Size = new System.Drawing.Size(233, 21);
-            this.cmbOutputFormat.TabIndex = 3;
-            this.cmbOutputFormat.SelectedIndexChanged += new System.EventHandler(this.cmbOutputFormat_SelectedIndexChanged);
-            // 
-            // txbStatus
-            // 
-            this.txbStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbStatus.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.txbStatus.Font = new System.Drawing.Font("Consolas", 8F);
-            this.txbStatus.ForeColor = System.Drawing.SystemColors.MenuBar;
-            this.txbStatus.Location = new System.Drawing.Point(13, 518);
-            this.txbStatus.Multiline = true;
-            this.txbStatus.Name = "txbStatus";
-            this.txbStatus.ReadOnly = true;
-            this.txbStatus.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txbStatus.Size = new System.Drawing.Size(983, 76);
-            this.txbStatus.TabIndex = 15;
-            this.txbStatus.Text = "...";
-            this.txbStatus.WordWrap = false;
-            // 
             // btnLang
             // 
             this.btnLang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -951,6 +1007,63 @@
             this.pibOutputPath.TabStop = false;
             this.pibOutputPath.Click += new System.EventHandler(this.pibOutputPath_Click);
             // 
+            // txbOutputPath
+            // 
+            this.txbOutputPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbOutputPath.Font = new System.Drawing.Font("Consolas", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbOutputPath.Location = new System.Drawing.Point(39, 66);
+            this.txbOutputPath.Name = "txbOutputPath";
+            this.txbOutputPath.Size = new System.Drawing.Size(233, 20);
+            this.txbOutputPath.TabIndex = 4;
+            this.txbOutputPath.TextChanged += new System.EventHandler(this.txbOutputPath_TextChanged);
+            // 
+            // label9
+            // 
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(5, 7);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(103, 20);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Tập tin xuất:";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cmbOutputFormat
+            // 
+            this.cmbOutputFormat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbOutputFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbOutputFormat.Font = new System.Drawing.Font("Consolas", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbOutputFormat.FormattingEnabled = true;
+            this.cmbOutputFormat.IntegralHeight = false;
+            this.cmbOutputFormat.Items.AddRange(new object[] {
+            "x → x",
+            "PNG (Portable Network Graphics)",
+            "JPG (Joint Photographic Experts Group)",
+            "BMP (Bitmap)"});
+            this.cmbOutputFormat.Location = new System.Drawing.Point(39, 38);
+            this.cmbOutputFormat.Name = "cmbOutputFormat";
+            this.cmbOutputFormat.Size = new System.Drawing.Size(233, 21);
+            this.cmbOutputFormat.TabIndex = 3;
+            this.cmbOutputFormat.SelectedIndexChanged += new System.EventHandler(this.cmbOutputFormat_SelectedIndexChanged);
+            // 
+            // txbStatus
+            // 
+            this.txbStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbStatus.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.txbStatus.Font = new System.Drawing.Font("Consolas", 8F);
+            this.txbStatus.ForeColor = System.Drawing.SystemColors.MenuBar;
+            this.txbStatus.Location = new System.Drawing.Point(13, 518);
+            this.txbStatus.Multiline = true;
+            this.txbStatus.Name = "txbStatus";
+            this.txbStatus.ReadOnly = true;
+            this.txbStatus.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txbStatus.Size = new System.Drawing.Size(983, 76);
+            this.txbStatus.TabIndex = 15;
+            this.txbStatus.Text = "...";
+            this.txbStatus.WordWrap = false;
+            // 
             // pibPreview
             // 
             this.pibPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -968,41 +1081,6 @@
             this.pibPreview.TabIndex = 0;
             this.pibPreview.TabStop = false;
             this.pibPreview.BackgroundImageChanged += new System.EventHandler(this.pibPreview_BackgroundImageChanged);
-            // 
-            // ctmAddFiles
-            // 
-            this.ctmAddFiles.Image = global::ImgRW_WF.Properties.Resources.file;
-            this.ctmAddFiles.Name = "ctmAddFiles";
-            this.ctmAddFiles.Size = new System.Drawing.Size(189, 30);
-            this.ctmAddFiles.Text = "Thêm file ảnh";
-            // 
-            // ctmDeleteSelected
-            // 
-            this.ctmDeleteSelected.Image = global::ImgRW_WF.Properties.Resources.minus;
-            this.ctmDeleteSelected.Name = "ctmDeleteSelected";
-            this.ctmDeleteSelected.Size = new System.Drawing.Size(189, 30);
-            this.ctmDeleteSelected.Text = "Loại bỏ file đã chọn";
-            // 
-            // ctmClearList
-            // 
-            this.ctmClearList.Image = global::ImgRW_WF.Properties.Resources.remove;
-            this.ctmClearList.Name = "ctmClearList";
-            this.ctmClearList.Size = new System.Drawing.Size(189, 30);
-            this.ctmClearList.Text = "Loại bỏ danh sách";
-            // 
-            // pibWatermarkImage
-            // 
-            this.pibWatermarkImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pibWatermarkImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pibWatermarkImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pibWatermarkImage.Location = new System.Drawing.Point(158, 9);
-            this.pibWatermarkImage.Name = "pibWatermarkImage";
-            this.pibWatermarkImage.Size = new System.Drawing.Size(146, 110);
-            this.pibWatermarkImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pibWatermarkImage.TabIndex = 0;
-            this.pibWatermarkImage.TabStop = false;
-            this.pibWatermarkImage.BackgroundImageChanged += new System.EventHandler(this.pibWatermarkImage_BackgroundImageChanged);
-            this.pibWatermarkImage.Click += new System.EventHandler(this.pibWatermarkImage_Click);
             // 
             // valueSlider2
             // 
@@ -1026,85 +1104,6 @@
             this.valueSlider2.ValueColor = System.Drawing.Color.DodgerBlue;
             this.valueSlider2.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
             this.valueSlider2.ValueChanged += new System.EventHandler<float>(this.valueSlider2_ValueChanged);
-            // 
-            // colorPanel1
-            // 
-            this.colorPanel1.AutoSize = true;
-            this.colorPanel1.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
-            this.colorPanel1.CurrentColorHexString = "#88FFAA00";
-            this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorPanel1.Location = new System.Drawing.Point(6, 66);
-            this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
-            this.colorPanel1.Name = "colorPanel1";
-            this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
-            this.colorPanel1.PanelStyle = CxxLibs_CustomControlsDFW.PanelStyles.Wheel;
-            this.colorPanel1.RefControl = null;
-            this.colorPanel1.Size = new System.Drawing.Size(152, 131);
-            this.colorPanel1.TabIndex = 6;
-            // 
-            // vccString
-            // 
-            this.vccString.ColorStyle = System.Drawing.Color.MediumSeaGreen;
-            this.vccString.DigitNumber = 0;
-            this.vccString.FillWithGradient = true;
-            this.vccString.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vccString.HandColor = System.Drawing.Color.Black;
-            this.vccString.HandWidth = 1F;
-            this.vccString.Label = "";
-            this.vccString.LineWidth = 1F;
-            this.vccString.Location = new System.Drawing.Point(317, 66);
-            this.vccString.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.vccString.MaxValue = 360F;
-            this.vccString.MinValue = 0F;
-            this.vccString.Name = "vccString";
-            this.vccString.Orthor = true;
-            this.vccString.ShowValue = true;
-            this.vccString.Size = new System.Drawing.Size(140, 125);
-            this.vccString.TabIndex = 14;
-            this.vccString.UnitString = "˚";
-            this.vccString.Value = 0F;
-            // 
-            // vldImageOptical
-            // 
-            this.vldImageOptical.Location = new System.Drawing.Point(5, 127);
-            this.vldImageOptical.MaxValue = 1F;
-            this.vldImageOptical.MinValue = 0F;
-            this.vldImageOptical.Name = "vldImageOptical";
-            this.vldImageOptical.OffsetLines = false;
-            this.vldImageOptical.OffsetLinesColor = System.Drawing.Color.DarkGray;
-            this.vldImageOptical.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
-            this.vldImageOptical.PointerSize = 6;
-            this.vldImageOptical.PointerStyle = CxxLibs_CustomControlsDFW.PointerStyles.Dot;
-            this.vldImageOptical.Size = new System.Drawing.Size(304, 11);
-            this.vldImageOptical.Style = CxxLibs_CustomControlsDFW.ValueSliderStyles.GradientLine;
-            this.vldImageOptical.TabIndex = 11;
-            this.vldImageOptical.Text = "valueSlider1";
-            this.vldImageOptical.Value = 0.8F;
-            this.vldImageOptical.ValueBackColor = System.Drawing.Color.LightGray;
-            this.vldImageOptical.ValueColor = System.Drawing.Color.DodgerBlue;
-            this.vldImageOptical.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // vccImage
-            // 
-            this.vccImage.ColorStyle = System.Drawing.Color.LightSeaGreen;
-            this.vccImage.DigitNumber = 0;
-            this.vccImage.FillWithGradient = true;
-            this.vccImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vccImage.HandColor = System.Drawing.Color.Black;
-            this.vccImage.HandWidth = 1F;
-            this.vccImage.Label = "";
-            this.vccImage.LineWidth = 1F;
-            this.vccImage.Location = new System.Drawing.Point(317, 9);
-            this.vccImage.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.vccImage.MaxValue = 360F;
-            this.vccImage.MinValue = 0F;
-            this.vccImage.Name = "vccImage";
-            this.vccImage.Orthor = true;
-            this.vccImage.ShowValue = true;
-            this.vccImage.Size = new System.Drawing.Size(140, 125);
-            this.vccImage.TabIndex = 14;
-            this.vccImage.UnitString = "˚";
-            this.vccImage.Value = 30F;
             // 
             // FormConfig
             // 
@@ -1145,6 +1144,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudFrameLineWidth)).EndInit();
             this.panelWatermarkImage.ResumeLayout(false);
             this.panelWatermarkImage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pibWatermarkImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWIY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWIX)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -1152,7 +1152,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pibOutputPath)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pibWatermarkImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
