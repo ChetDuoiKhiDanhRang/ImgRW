@@ -346,5 +346,17 @@ namespace ImgRW_WF.Properties {
                 this["lang"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public decimal imgScale {
+            get {
+                return ((decimal)(this["imgScale"]));
+            }
+            set {
+                this["imgScale"] = value;
+            }
+        }
     }
 }

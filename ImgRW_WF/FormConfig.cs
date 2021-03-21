@@ -52,6 +52,7 @@ namespace ImgRW_WF
                 radScale.Text = "Theo tỉ lệ:";
 
                 label9.Text = "Tập tin xuất";
+                label7.Text = "Tỉ lệ (%):";
 
                 ckbString.Text = "Đặt dấu chuỗi:";
                 label4.Text = "Font chữ:";
@@ -72,6 +73,7 @@ namespace ImgRW_WF
                 radScale.Text = "Scale:";
 
                 label9.Text = "Output";
+                label7.Text = "Scale (%):";
 
                 ckbString.Text = "Draw string:";
                 label4.Text = "Font style:";
@@ -145,7 +147,12 @@ namespace ImgRW_WF
             vldImageOptical.ValueChanged += VldImageOptical_ValueChanged;
             vccImage.ValueChanged += VccImage_ValueChanged;
             nudWIX.ValueChanged += nudWILocation_ValueChanged;
+            nudWIY.ValueChanged += nudWILocation_ValueChanged;
+
+            nudImgWIScale.ValueChanged += NudImgWIScale_ValueChanged;
         }
+
+
 
         private void LoadSettings()
         {
@@ -281,6 +288,9 @@ namespace ImgRW_WF
             nudWIY.Value = x.imageLocationY;
             imageLocationY = (float)x.imageLocationY;
 
+            nudImgWIScale.Value = x.imgScale;
+            imgScale = (float)x.imgScale;
+
             imageOptical = x.imageOptical;
             vldImageOptical.Value = x.imageOptical;
 
@@ -361,6 +371,9 @@ namespace ImgRW_WF
             x.imageRotateAngle = imageRotateAngle;
             x.imagePath = imagePath;
 
+            x.imgScale = (decimal)imgScale;
+
+
             x.outputFormat = outputFormat;
             x.outputPath = outputPath;
 
@@ -423,6 +436,7 @@ namespace ImgRW_WF
         float imageOptical;
         string imagePath;
         bool drawImage;
+        float imgScale;
         Bitmap imageWatermark;
         #endregion
 
@@ -582,9 +596,11 @@ namespace ImgRW_WF
         private void pibWatermarkImage_BackgroundImageChanged(object sender, EventArgs e)
         {
             if (pibWatermarkImage.BackgroundImage == null) return;
+            var img = pibWatermarkImage.BackgroundImage.Clone() as Bitmap;
             imageWatermark?.Dispose();
-            imageWatermark = pibWatermarkImage.BackgroundImage.Clone() as Bitmap;
+            imageWatermark = ResizeBitmap(img, ResizeModes.Scale, imgScale);
             RedrawPreview();
+            img.Dispose();
         }
 
         private void pibWatermarkImage_Click(object sender, EventArgs e)
@@ -615,6 +631,19 @@ namespace ImgRW_WF
             imageLocationX = (float)nudWIX.Value;
             imageLocationY = (float)nudWIY.Value;
             RedrawPreview();
+        }
+
+
+        //scale image watermark
+        private void NudImgWIScale_ValueChanged(object sender, EventArgs e)
+        {
+            imgScale = (float)nudImgWIScale.Value;
+            if (pibWatermarkImage.BackgroundImage == null) return;
+            var img = pibWatermarkImage.BackgroundImage.Clone() as Bitmap;
+            imageWatermark?.Dispose();
+            imageWatermark = ResizeBitmap(img, ResizeModes.Scale, imgScale);
+            RedrawPreview();
+            img.Dispose();
         }
 
         //image location mode
