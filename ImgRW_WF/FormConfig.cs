@@ -38,7 +38,13 @@ namespace ImgRW_WF
             //PreviewLayer = new Bitmap(pibPreview.BackgroundImage.Width, pibPreview.BackgroundImage.Height, PixelFormat.Format32bppArgb);
             files = new Dictionary<string, ListViewItem>();
             PreviewLayer = new Bitmap(pibPreview.BackgroundImage.Width, pibPreview.BackgroundImage.Height, PixelFormat.Format32bppArgb);
+            //curDragString = new Cursor()
         }
+
+        Cursor curDragString;
+        Cursor curDragImg;
+        Cursor curDraggingString;
+        Cursor curDraggingImg;
 
         //Language change
         private void FormConfig_LanguageChanged(object sender, string e)
@@ -151,8 +157,6 @@ namespace ImgRW_WF
 
             nudImgWIScale.ValueChanged += NudImgWIScale_ValueChanged;
         }
-
-
 
         private void LoadSettings()
         {
@@ -274,6 +278,9 @@ namespace ImgRW_WF
             drawImage = x.drawImage;
             panelWatermarkImage.Enabled = ckbWatermarkImage.Checked;
 
+            nudImgWIScale.Value = x.imgScale;
+            imgScale = (float)x.imgScale;
+
             imagePath = x.imagePath;
             if (File.Exists(imagePath))
             {
@@ -288,8 +295,6 @@ namespace ImgRW_WF
             nudWIY.Value = x.imageLocationY;
             imageLocationY = (float)x.imageLocationY;
 
-            nudImgWIScale.Value = x.imgScale;
-            imgScale = (float)x.imgScale;
 
             imageOptical = x.imageOptical;
             vldImageOptical.Value = x.imageOptical;
@@ -341,6 +346,7 @@ namespace ImgRW_WF
         private void SaveSettings()
         {
             var x = Properties.Settings.Default;
+            x.lang = Language;
             x.resize = resizeImages;
             x.resizeMode = resizeMode;
             x.resizeValue = resizeValue;
@@ -383,7 +389,6 @@ namespace ImgRW_WF
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-
             cmbFont.Invoke((Action)(() =>
             {
                 FontNames = (new InstalledFontCollection()).Families.Select(f => f.Name).ToList();
@@ -393,6 +398,7 @@ namespace ImgRW_WF
             LoadSettings();
             InitialEvents();
             RedrawPreview();
+            pibPreview_BackgroundImageChanged(this, null);
         }
 
         //save setting when close
@@ -843,23 +849,36 @@ namespace ImgRW_WF
         #endregion
 
         #region DRAW AND OTHERS METHODS ===================================================================================
-
+        float scalePreview;
         private void pibPreview_BackgroundImageChanged(object sender, EventArgs e)
         {
             if (pibPreview.BackgroundImage == null) return;
+
             if (nudWSLocationX.Value > pibPreview.BackgroundImage.Width)
             {
                 nudWSLocationX.Value = pibPreview.BackgroundImage.Width / 2;
             }
-            nudWSLocationX.Maximum = pibPreview.BackgroundImage.Width;
+            if (nudWIX.Value > pibPreview.BackgroundImage.Width)
+            {
+                nudWIX.Value = pibPreview.BackgroundImage.Width / 2;
+            }
+            nudWIX.Maximum = nudWSLocationX.Maximum = pibPreview.BackgroundImage.Width;
 
             if (nudWSLocationY.Value > pibPreview.BackgroundImage.Height)
             {
                 nudWSLocationY.Value = pibPreview.BackgroundImage.Height / 2;
             }
-            nudWSLocationY.Maximum = pibPreview.BackgroundImage.Height;
+            if (nudWIY.Value > pibPreview.BackgroundImage.Height)
+            {
+                nudWIY.Value = pibPreview.BackgroundImage.Height / 2;
+            }
+            nudWIY.Maximum = nudWSLocationY.Maximum = pibPreview.BackgroundImage.Height;
 
+            float scaleX = (float)pibPreview.BackgroundImage.Width / pibPreview.Width;
+            float scaleY = (float)pibPreview.BackgroundImage.Height / pibPreview.Height;
+            scalePreview = Math.Max(scaleX, scaleY);
             RedrawPreview();
+
         }
 
         void RedrawPreview()
@@ -1375,7 +1394,19 @@ namespace ImgRW_WF
             {
                 ctmMenu_ItemClicked(this, new ToolStripItemClickedEventArgs(ctmAddFiles));
             }
+            else if (e.KeyData == (Keys.Control | Keys.L)) //switch language
+            {
+                btnLang_Click(this, null);
+            }
+            else if (e.KeyData == (Keys.Control | Keys.ControlKey)) //switch drag flags
+            {
+                dragString = false;
+                dragImg = true;
+            }
         }
+        //drag flags
+        bool dragString = true;
+        bool dragImg = false;
 
         //delete selected files
         private void lsvFiles_KeyDown(object sender, KeyEventArgs e)
@@ -1477,6 +1508,76 @@ namespace ImgRW_WF
             {
                 Language = "vi";
             }
+        }
+
+        //switch drag string and image flags
+        private void FormConfig_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == (Keys.ControlKey))
+            {
+                dragString = true;
+                dragImg = false;
+            }
+        }
+
+        bool dragMode = false;
+        float startX;
+        float startY;
+        decimal nudStartX;
+        decimal nudStartY;
+        private void pibPreview_MouseDown(object sender, MouseEventArgs e)
+        {
+            dragMode = true;
+            //pibPreview.Cursor = new Cursor()
+            startX = e.X;
+            startY = e.Y;
+            if (dragString)
+            {
+                nudStartX = nudWSLocationX.Value;
+                nudStartY = nudWSLocationY.Value;
+            }
+            else if (dragImg)
+            {
+                nudStartX = nudWIX.Value;
+                nudStartY = nudWIY.Value;
+            }
+        }
+
+        private void pibPreview_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (dragMode)
+            {
+                var newX = nudStartX + (decimal)((e.X - startX) * scalePreview);
+                var newY = nudStartY + (decimal)((e.Y - startY) * scalePreview);
+                if (dragString)
+                {
+                    nudWSLocationX.Value = (newX < 0 || newX > nudWSLocationX.Maximum) ? nudWSLocationX.Value : newX;
+                    nudWSLocationY.Value = (newY < 0 || newY > nudWSLocationY.Maximum) ? nudWSLocationY.Value : newY;
+                }
+                else if (dragImg)
+                {
+                    nudWIX.Value = (newX < 0 || newX > nudWIX.Maximum) ? nudWIX.Value : newX;
+                    nudWIY.Value = (newY < 0 || newY > nudWIY.Maximum) ? nudWIY.Value : newY;
+                }
+            }
+
+        }
+
+        private void pibPreview_MouseUp(object sender, MouseEventArgs e)
+        {
+            dragMode = false;
+        }
+
+        private void pibPreview_MouseEnter(object sender, EventArgs e)
+        {
+            pibPreview.Cursor = Cursors.SizeAll;
+        }
+
+        private void pibPreview_SizeChanged(object sender, EventArgs e)
+        {
+            float scaleX = (float)pibPreview.BackgroundImage.Width / pibPreview.Width;
+            float scaleY = (float)pibPreview.BackgroundImage.Height / pibPreview.Height;
+            scalePreview = Math.Max(scaleX, scaleY);
         }
     }
 }

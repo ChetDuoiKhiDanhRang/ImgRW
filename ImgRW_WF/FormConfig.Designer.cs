@@ -86,6 +86,7 @@
             this.rdbWIBottomRight = new System.Windows.Forms.RadioButton();
             this.nudWIY = new System.Windows.Forms.NumericUpDown();
             this.rdbWIMiddleCenter = new System.Windows.Forms.RadioButton();
+            this.nudImgWIScale = new System.Windows.Forms.NumericUpDown();
             this.nudWIX = new System.Windows.Forms.NumericUpDown();
             this.rdbWIMiddleRight = new System.Windows.Forms.RadioButton();
             this.rdbWITopLeft = new System.Windows.Forms.RadioButton();
@@ -107,7 +108,6 @@
             this.txbStatus = new System.Windows.Forms.TextBox();
             this.pibPreview = new System.Windows.Forms.PictureBox();
             this.valueSlider2 = new CxxLibs_CustomControlsDFW.ValueSlider();
-            this.nudImgWIScale = new System.Windows.Forms.NumericUpDown();
             this.ctmMenu.SuspendLayout();
             this.panelResize.SuspendLayout();
             this.panelWatermarkString.SuspendLayout();
@@ -118,12 +118,12 @@
             this.panelWatermarkImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pibWatermarkImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWIY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudImgWIScale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWIX)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pibOutputPath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudImgWIScale)).BeginInit();
             this.SuspendLayout();
             // 
             // lsvFiles
@@ -661,7 +661,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(249, 114);
+            this.label6.Location = new System.Drawing.Point(249, 115);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(15, 14);
             this.label6.TabIndex = 2;
@@ -827,6 +827,11 @@
             // 
             this.nudWIY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nudWIY.Location = new System.Drawing.Point(108, 33);
+            this.nudWIY.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             this.nudWIY.Name = "nudWIY";
             this.nudWIY.Size = new System.Drawing.Size(42, 22);
             this.nudWIY.TabIndex = 8;
@@ -846,6 +851,25 @@
             this.rdbWIMiddleCenter.TabIndex = 10;
             this.rdbWIMiddleCenter.TabStop = true;
             this.rdbWIMiddleCenter.UseVisualStyleBackColor = true;
+            // 
+            // nudImgWIScale
+            // 
+            this.nudImgWIScale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nudImgWIScale.Location = new System.Drawing.Point(108, 124);
+            this.nudImgWIScale.Maximum = new decimal(new int[] {
+            150,
+            0,
+            0,
+            0});
+            this.nudImgWIScale.Name = "nudImgWIScale";
+            this.nudImgWIScale.Size = new System.Drawing.Size(42, 22);
+            this.nudImgWIScale.TabIndex = 8;
+            this.nudImgWIScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nudImgWIScale.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // nudWIX
             // 
@@ -1100,6 +1124,11 @@
             this.pibPreview.TabIndex = 0;
             this.pibPreview.TabStop = false;
             this.pibPreview.BackgroundImageChanged += new System.EventHandler(this.pibPreview_BackgroundImageChanged);
+            this.pibPreview.SizeChanged += new System.EventHandler(this.pibPreview_SizeChanged);
+            this.pibPreview.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pibPreview_MouseDown);
+            this.pibPreview.MouseEnter += new System.EventHandler(this.pibPreview_MouseEnter);
+            this.pibPreview.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pibPreview_MouseMove);
+            this.pibPreview.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pibPreview_MouseUp);
             // 
             // valueSlider2
             // 
@@ -1123,25 +1152,6 @@
             this.valueSlider2.ValueColor = System.Drawing.Color.DodgerBlue;
             this.valueSlider2.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
             this.valueSlider2.ValueChanged += new System.EventHandler<float>(this.valueSlider2_ValueChanged);
-            // 
-            // nudImgWIScale
-            // 
-            this.nudImgWIScale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nudImgWIScale.Location = new System.Drawing.Point(108, 124);
-            this.nudImgWIScale.Maximum = new decimal(new int[] {
-            150,
-            0,
-            0,
-            0});
-            this.nudImgWIScale.Name = "nudImgWIScale";
-            this.nudImgWIScale.Size = new System.Drawing.Size(42, 22);
-            this.nudImgWIScale.TabIndex = 8;
-            this.nudImgWIScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.nudImgWIScale.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
             // 
             // FormConfig
             // 
@@ -1171,6 +1181,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormConfig_FormClosed);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormConfig_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FormConfig_KeyUp);
             this.ctmMenu.ResumeLayout(false);
             this.panelResize.ResumeLayout(false);
             this.panelResize.PerformLayout();
@@ -1184,13 +1195,13 @@
             this.panelWatermarkImage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pibWatermarkImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWIY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudImgWIScale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWIX)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pibOutputPath)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudImgWIScale)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
