@@ -121,42 +121,32 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\WindowsXP.jpg" />
+    <EmbeddedResource Include="icons\file.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="icons\file.png" />
+    <EmbeddedResource Include="icons\minus.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="icons\picture.png" />
+    <EmbeddedResource Include="icons\remove.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="icons\folder.png" />
+    <EmbeddedResource Include="Resources\save.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="icons\minus.png" />
+    <EmbeddedResource Include="Resources\CloseFolder.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="icons\remove.png" />
+    <EmbeddedResource Include="icons\output.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\save.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CloseFolder.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\trans24.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\output.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\Run_.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\Run2.png" />
-    <None Include="icons\openOutput.png" />
-    <None Include="icons\switchLang.png" />
+    <EmbeddedResource Include="Resources\dragString.ico" />
+    <EmbeddedResource Include="Resources\dragImg.ico" />
+    <EmbeddedResource Include="Resources\dragingImg.ico" />
+    <EmbeddedResource Include="Resources\dragingString.ico" />
+    <Content Include="Resources\WindowsXP.jpg" />
+    <EmbeddedResource Include="icons\Run2.png" />
+    <EmbeddedResource Include="icons\openOutput.png" />
+    <EmbeddedResource Include="icons\switchLang.png" />
     <Content Include="ImgRW.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

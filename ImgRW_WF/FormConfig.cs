@@ -12,7 +12,6 @@ using System.Windows.Forms;
 
 namespace ImgRW_WF
 {
-
     public partial class FormConfig : Form
     {
         public List<string> FontNames { get; set; }
@@ -38,7 +37,11 @@ namespace ImgRW_WF
             //PreviewLayer = new Bitmap(pibPreview.BackgroundImage.Width, pibPreview.BackgroundImage.Height, PixelFormat.Format32bppArgb);
             files = new Dictionary<string, ListViewItem>();
             PreviewLayer = new Bitmap(pibPreview.BackgroundImage.Width, pibPreview.BackgroundImage.Height, PixelFormat.Format32bppArgb);
-            //curDragString = new Cursor()
+            curDragString = new Cursor(Properties.Resources.dragString.Handle);
+            curDragImg = new Cursor(Properties.Resources.dragImg.Handle);
+            curDraggingString = new Cursor(Properties.Resources.dragingString.Handle);
+            curDraggingImg = new Cursor(Properties.Resources.dragingImg.Handle);
+            curDragImg.Size.Width = 24;
         }
 
         Cursor curDragString;
@@ -1398,15 +1401,7 @@ namespace ImgRW_WF
             {
                 btnLang_Click(this, null);
             }
-            else if (e.KeyData == (Keys.Control | Keys.ControlKey)) //switch drag flags
-            {
-                dragString = false;
-                dragImg = true;
-            }
         }
-        //drag flags
-        bool dragString = true;
-        bool dragImg = false;
 
         //delete selected files
         private void lsvFiles_KeyDown(object sender, KeyEventArgs e)
@@ -1492,6 +1487,7 @@ namespace ImgRW_WF
 
         private void btnOpenOutputPath_Click(object sender, EventArgs e)
         {
+            if (!Directory.Exists(outputPath)) return;
             Process p = new Process();
             p.StartInfo = new ProcessStartInfo(outputPath);
             p.Start();
@@ -1510,16 +1506,6 @@ namespace ImgRW_WF
             }
         }
 
-        //switch drag string and image flags
-        private void FormConfig_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == (Keys.ControlKey))
-            {
-                dragString = true;
-                dragImg = false;
-            }
-        }
-
         bool dragMode = false;
         float startX;
         float startY;
@@ -1531,15 +1517,17 @@ namespace ImgRW_WF
             //pibPreview.Cursor = new Cursor()
             startX = e.X;
             startY = e.Y;
-            if (dragString)
+            if (e.Button == MouseButtons.Left)
             {
                 nudStartX = nudWSLocationX.Value;
                 nudStartY = nudWSLocationY.Value;
+                pibPreview.Cursor = curDraggingString;
             }
-            else if (dragImg)
+            else if (e.Button == MouseButtons.Right)
             {
                 nudStartX = nudWIX.Value;
                 nudStartY = nudWIY.Value;
+                pibPreview.Cursor = curDraggingImg;
             }
         }
 
@@ -1549,12 +1537,12 @@ namespace ImgRW_WF
             {
                 var newX = nudStartX + (decimal)((e.X - startX) * scalePreview);
                 var newY = nudStartY + (decimal)((e.Y - startY) * scalePreview);
-                if (dragString)
+                if (e.Button == MouseButtons.Left)
                 {
                     nudWSLocationX.Value = (newX < 0 || newX > nudWSLocationX.Maximum) ? nudWSLocationX.Value : newX;
                     nudWSLocationY.Value = (newY < 0 || newY > nudWSLocationY.Maximum) ? nudWSLocationY.Value : newY;
                 }
-                else if (dragImg)
+                else if (e.Button == MouseButtons.Right)
                 {
                     nudWIX.Value = (newX < 0 || newX > nudWIX.Maximum) ? nudWIX.Value : newX;
                     nudWIY.Value = (newY < 0 || newY > nudWIY.Maximum) ? nudWIY.Value : newY;
@@ -1566,11 +1554,15 @@ namespace ImgRW_WF
         private void pibPreview_MouseUp(object sender, MouseEventArgs e)
         {
             dragMode = false;
+                pibPreview.Cursor = curDragString;
+                pibPreview.Cursor = curDragImg;
         }
 
         private void pibPreview_MouseEnter(object sender, EventArgs e)
         {
-            pibPreview.Cursor = Cursors.SizeAll;
+
+                pibPreview.Cursor = curDragString;
+
         }
 
         private void pibPreview_SizeChanged(object sender, EventArgs e)

@@ -1181,7 +1181,6 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormConfig_FormClosed);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormConfig_KeyDown);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FormConfig_KeyUp);
             this.ctmMenu.ResumeLayout(false);
             this.panelResize.ResumeLayout(false);
             this.panelResize.PerformLayout();

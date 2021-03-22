@@ -142,4 +142,16 @@
   <data name="switchLang" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icons\switchLang.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="dragImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dragImg.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dragingImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dragingImg.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dragingString" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dragingString.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dragString" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dragString.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
