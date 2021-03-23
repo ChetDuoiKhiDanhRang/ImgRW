@@ -34,7 +34,6 @@ namespace ImgRW_WF
         {
             InitializeComponent();
             LanguageChanged += FormConfig_LanguageChanged;
-            //PreviewLayer = new Bitmap(pibPreview.BackgroundImage.Width, pibPreview.BackgroundImage.Height, PixelFormat.Format32bppArgb);
             files = new Dictionary<string, ListViewItem>();
             PreviewLayer = new Bitmap(pibPreview.BackgroundImage.Width, pibPreview.BackgroundImage.Height, PixelFormat.Format32bppArgb);
             //curDrag = new Cursor(Properties.Resources.drag.Handle);
@@ -1154,15 +1153,22 @@ namespace ImgRW_WF
         //Process images with thread
         Bitmap[] imgWMs;
         int currentIndex = 0;
-        void HandleImage(object input)
+        void ProcessImagesList(object input)
         {
             long index = currentIndex; //safety current index
             currentIndex++;
 
-            txbStatus.BeginInvoke((Action)(() =>
+            if (txbStatus.InvokeRequired)
+            {
+                txbStatus.BeginInvoke((Action)(() =>
+                    {
+                        txbStatus.AppendText("\r\n[Index: " + index.ToString("000") + " ]");
+                    }));
+            }
+            else
             {
                 txbStatus.AppendText("\r\n[Index: " + index.ToString("000") + " ]");
-            }));
+            }
 
             string inputFile = (string)input;
             string threadID = Thread.CurrentThread.ManagedThreadId.ToString("000");
@@ -1172,11 +1178,19 @@ namespace ImgRW_WF
 
             try
             {
-                txbStatus.BeginInvoke((Action)(() =>
+                if (txbStatus.InvokeRequired)
+                {
+                    txbStatus.BeginInvoke((Action)(() =>
+                            {
+                                txbStatus.AppendText("\r\n[Thread start, managed ID: " + threadID + " ]");
+                                txbStatus.AppendText("\r\n[Thrd:" + threadID + "-PRC] " + inputFile);
+                            }));
+                }
+                else
                 {
                     txbStatus.AppendText("\r\n[Thread start, managed ID: " + threadID + " ]");
                     txbStatus.AppendText("\r\n[Thrd:" + threadID + "-PRC] " + inputFile);
-                }));
+                }
 
                 using (FileStream fs = new FileStream(inputFile, FileMode.Open))
                 {
@@ -1194,20 +1208,34 @@ namespace ImgRW_WF
                     result = ResizeBitmap(bmp, ResizeModes.Scale, 100);
                 }
 
-                txbStatus.BeginInvoke((Action)(() =>
+                if (txbStatus.InvokeRequired)
+                {
+                    txbStatus.BeginInvoke((Action)(() =>
+                            {
+                                txbStatus.AppendText("\r\n[Thrd:" + threadID + "-RSZ] " + input);
+                            }));
+                }
+                else
                 {
                     txbStatus.AppendText("\r\n[Thrd:" + threadID + "-RSZ] " + input);
-                }));
+                }
 
                 //draw image watermark
                 if (drawImage && imgWMs[index] != null)
                 {
                     DrawImage(result, imgWMs[index]);
 
-                    txbStatus.BeginInvoke((Action)(() =>
+                    if (txbStatus.InvokeRequired)
+                    {
+                        txbStatus.BeginInvoke((Action)(() =>
+                                    {
+                                        txbStatus.AppendText("\r\n[Thrd:" + threadID + "-DIM] " + input);
+                                    }));
+                    }
+                    else
                     {
                         txbStatus.AppendText("\r\n[Thrd:" + threadID + "-DIM] " + input);
-                    }));
+                    }
 
                     imgWMs[index]?.Dispose();
                 }
@@ -1217,10 +1245,17 @@ namespace ImgRW_WF
                 {
                     DrawString(result);
 
-                    txbStatus.BeginInvoke((Action)(() =>
+                    if (txbStatus.InvokeRequired)
+                    {
+                        txbStatus.BeginInvoke((Action)(() =>
+                                    {
+                                        txbStatus.AppendText("\r\n[Thrd:" + threadID + "-DST] " + input);
+                                    }));
+                    }
+                    else
                     {
                         txbStatus.AppendText("\r\n[Thrd:" + threadID + "-DST] " + input);
-                    }));
+                    }
                 }
 
                 string outputFile = GenerateOutputFileName(inputFile, outputPath, outputFormat);
@@ -1245,18 +1280,33 @@ namespace ImgRW_WF
 
                 result.Save(outputFile, saveFormat);
 
-                txbStatus.BeginInvoke((Action)(() =>
+                if (txbStatus.InvokeRequired)
+                {
+                    txbStatus.BeginInvoke((Action)(() =>
+                            {
+                                txbStatus.AppendText("\r\n[Thrd:" + threadID + "-SAV] " + outputFile);
+                                txbStatus.AppendText("\r\n[Thread end, managed ID: " + threadID + "]");
+                            }));
+                }
+                else
                 {
                     txbStatus.AppendText("\r\n[Thrd:" + threadID + "-SAV] " + outputFile);
                     txbStatus.AppendText("\r\n[Thread end, managed ID: " + threadID + "]");
-                }));
+                }
             }
             catch (Exception ex)
             {
-                txbStatus.Invoke((Action)(() =>
+                if (txbStatus.InvokeRequired)
+                {
+                    txbStatus.Invoke((Action)(() =>
+                            {
+                                txbStatus.Text += "\r\n[Thread error, manage ID: " + threadID + "] " + ex.Message;
+                            }));
+                }
+                else
                 {
                     txbStatus.Text += "\r\n[Thread error, manage ID: " + threadID + "] " + ex.Message;
-                }));
+                }
             }
             finally
             {
@@ -1308,7 +1358,7 @@ namespace ImgRW_WF
             List<Thread> threads = new List<Thread>();
             for (int i = 0; i < files.Count; i++)
             {
-                Thread t = new Thread(HandleImage);
+                Thread t = new Thread(ProcessImagesList);
                 t.IsBackground = true;
                 t.Name = "thread handle image: " + i;
                 threads.Add(t);
@@ -1398,6 +1448,14 @@ namespace ImgRW_WF
             {
                 btnLang_Click(this, null);
             }
+            else if (e.KeyData == (Keys.Control|Keys.Shift|Keys.O)) //open output path
+            {
+                btnOpenOutputPath_Click(this, null);
+            }
+            else if (e.KeyData == (Keys.Control|Keys.R)) //Process images list
+            {
+                btnRun_Click(this, null);
+            }
         }
 
         //delete selected files
@@ -1469,7 +1527,6 @@ namespace ImgRW_WF
                 }
             }
         }
-
         #endregion
 
         //process end flag
@@ -1479,6 +1536,13 @@ namespace ImgRW_WF
             if (e == valueSlider2.MaxValue)
             {
                 inprocess = false;
+                //if (txbStatus.InvokeRequired)
+                //{
+                //    txbStatus.BeginInvoke((Action)(() =>
+                //    {
+                //        txbStatus.AppendText("\r\nEND!");
+                //    }));
+                //}
             }
         }
 
