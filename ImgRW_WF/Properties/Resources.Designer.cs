@@ -63,9 +63,9 @@ namespace ImgRW_WF.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon dragImg {
+        internal static System.Drawing.Icon drag {
             get {
-                object obj = ResourceManager.GetObject("dragImg", resourceCulture);
+                object obj = ResourceManager.GetObject("drag", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace ImgRW_WF.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon dragingImg {
+        internal static System.Drawing.Icon draggingImg {
             get {
-                object obj = ResourceManager.GetObject("dragingImg", resourceCulture);
+                object obj = ResourceManager.GetObject("draggingImg", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -83,19 +83,9 @@ namespace ImgRW_WF.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon dragingString {
+        internal static System.Drawing.Icon draggingString {
             get {
-                object obj = ResourceManager.GetObject("dragingString", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon dragString {
-            get {
-                object obj = ResourceManager.GetObject("dragString", resourceCulture);
+                object obj = ResourceManager.GetObject("draggingString", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

@@ -191,6 +191,7 @@
             // 
             // ctmAddFiles
             // 
+            this.ctmAddFiles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ctmAddFiles.Image = global::ImgRW_WF.Properties.Resources.file;
             this.ctmAddFiles.Name = "ctmAddFiles";
             this.ctmAddFiles.Size = new System.Drawing.Size(189, 30);
@@ -198,6 +199,7 @@
             // 
             // ctmDeleteSelected
             // 
+            this.ctmDeleteSelected.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ctmDeleteSelected.Image = global::ImgRW_WF.Properties.Resources.minus;
             this.ctmDeleteSelected.Name = "ctmDeleteSelected";
             this.ctmDeleteSelected.Size = new System.Drawing.Size(189, 30);
@@ -205,6 +207,7 @@
             // 
             // ctmClearList
             // 
+            this.ctmClearList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ctmClearList.Image = global::ImgRW_WF.Properties.Resources.remove;
             this.ctmClearList.Name = "ctmClearList";
             this.ctmClearList.Size = new System.Drawing.Size(189, 30);

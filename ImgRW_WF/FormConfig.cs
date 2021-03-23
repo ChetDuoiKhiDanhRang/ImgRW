@@ -37,17 +37,14 @@ namespace ImgRW_WF
             //PreviewLayer = new Bitmap(pibPreview.BackgroundImage.Width, pibPreview.BackgroundImage.Height, PixelFormat.Format32bppArgb);
             files = new Dictionary<string, ListViewItem>();
             PreviewLayer = new Bitmap(pibPreview.BackgroundImage.Width, pibPreview.BackgroundImage.Height, PixelFormat.Format32bppArgb);
-            curDragString = new Cursor(Properties.Resources.dragString.Handle);
-            curDragImg = new Cursor(Properties.Resources.dragImg.Handle);
-            curDraggingString = new Cursor(Properties.Resources.dragingString.Handle);
-            curDraggingImg = new Cursor(Properties.Resources.dragingImg.Handle);
-            curDragImg.Size.Width = 24;
+            //curDrag = new Cursor(Properties.Resources.drag.Handle);
+            //curDraggingString = new Cursor(Properties.Resources.draggingString.Handle);
+            //curDraggingImg = new Cursor(Properties.Resources.draggingImg.Handle);
         }
 
-        Cursor curDragString;
-        Cursor curDragImg;
-        Cursor curDraggingString;
-        Cursor curDraggingImg;
+        //Cursor curDrag;
+        //Cursor curDraggingString;
+        //Cursor curDraggingImg;
 
         //Language change
         private void FormConfig_LanguageChanged(object sender, string e)
@@ -789,7 +786,7 @@ namespace ImgRW_WF
         }
         #endregion
 
-        #region OUTPUT=========================================================================================
+        #region OUTPUT=====================================================================================================
 
         //select output path
         private void pibOutputPath_Click(object sender, EventArgs e)
@@ -1521,13 +1518,13 @@ namespace ImgRW_WF
             {
                 nudStartX = nudWSLocationX.Value;
                 nudStartY = nudWSLocationY.Value;
-                pibPreview.Cursor = curDraggingString;
+                pibPreview.Cursor = new Cursor(Properties.Resources.draggingString.Handle);
             }
             else if (e.Button == MouseButtons.Right)
             {
                 nudStartX = nudWIX.Value;
                 nudStartY = nudWIY.Value;
-                pibPreview.Cursor = curDraggingImg;
+                pibPreview.Cursor = new Cursor(Properties.Resources.draggingImg.Handle);
             }
         }
 
@@ -1548,22 +1545,21 @@ namespace ImgRW_WF
                     nudWIY.Value = (newY < 0 || newY > nudWIY.Maximum) ? nudWIY.Value : newY;
                 }
             }
-
         }
 
         private void pibPreview_MouseUp(object sender, MouseEventArgs e)
         {
             dragMode = false;
-                pibPreview.Cursor = curDragString;
-                pibPreview.Cursor = curDragImg;
+            GC.Collect();
+            pibPreview.Cursor = new Cursor(Properties.Resources.drag.Handle);
         }
 
         private void pibPreview_MouseEnter(object sender, EventArgs e)
         {
-
-                pibPreview.Cursor = curDragString;
-
+            GC.Collect();
+            pibPreview.Cursor = new Cursor(Properties.Resources.drag.Handle);
         }
+
 
         private void pibPreview_SizeChanged(object sender, EventArgs e)
         {

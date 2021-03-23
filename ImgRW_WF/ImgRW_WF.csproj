@@ -139,10 +139,9 @@
     <EmbeddedResource Include="icons\output.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\dragString.ico" />
-    <EmbeddedResource Include="Resources\dragImg.ico" />
-    <EmbeddedResource Include="Resources\dragingImg.ico" />
-    <EmbeddedResource Include="Resources\dragingString.ico" />
+    <EmbeddedResource Include="Resources\drag.ico" />
+    <EmbeddedResource Include="Resources\draggingString.ico" />
+    <None Include="Resources\draggingImg.ico" />
     <Content Include="Resources\WindowsXP.jpg" />
     <EmbeddedResource Include="icons\Run2.png" />
     <EmbeddedResource Include="icons\openOutput.png" />
