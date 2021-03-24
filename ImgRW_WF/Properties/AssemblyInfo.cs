@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("ImgRW_WF")]
-[assembly: AssemblyDescription("Image resize and watermark")]
+[assembly: AssemblyDescription("Images resize and watermark")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Cxx")]
 [assembly: AssemblyProduct("ImgRW_WF")]
@@ -17,7 +17,7 @@ using System.Runtime.InteropServices;
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
 // COM, set the ComVisible attribute to true on that type.
-[assembly: ComVisible(false)]
+[assembly: ComVisible(true)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("40b63d36-ae04-4faf-b956-5fd009808806")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("23.3.18.0")]
-[assembly: AssemblyFileVersion("23.3.18.0")]
+[assembly: AssemblyVersion("21.3.24.0")]
+[assembly: AssemblyFileVersion("21.3.24.0")]
