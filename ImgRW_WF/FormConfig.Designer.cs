@@ -100,14 +100,13 @@
             this.btnLang = new System.Windows.Forms.Button();
             this.btnRun = new System.Windows.Forms.Button();
             this.btnOpenOutputPath = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pibOutputFormat = new System.Windows.Forms.PictureBox();
             this.pibOutputPath = new System.Windows.Forms.PictureBox();
             this.txbOutputPath = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cmbOutputFormat = new System.Windows.Forms.ComboBox();
             this.txbStatus = new System.Windows.Forms.TextBox();
             this.pibPreview = new System.Windows.Forms.PictureBox();
-            this.valueSlider2 = new CxxLibs_CustomControlsDFW.ValueSlider();
             this.ctmMenu.SuspendLayout();
             this.panelResize.SuspendLayout();
             this.panelWatermarkString.SuspendLayout();
@@ -121,7 +120,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudImgWIScale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWIX)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pibOutputFormat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pibOutputPath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).BeginInit();
             this.SuspendLayout();
@@ -858,7 +857,7 @@
             // nudImgWIScale
             // 
             this.nudImgWIScale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nudImgWIScale.Location = new System.Drawing.Point(108, 124);
+            this.nudImgWIScale.Location = new System.Drawing.Point(73, 124);
             this.nudImgWIScale.Maximum = new decimal(new int[] {
             150,
             0,
@@ -957,7 +956,7 @@
             // 
             this.label7.Location = new System.Drawing.Point(6, 122);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(96, 22);
+            this.label7.Size = new System.Drawing.Size(61, 22);
             this.label7.TabIndex = 2;
             this.label7.Text = "Scale (%):";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -985,7 +984,7 @@
             this.panel1.Controls.Add(this.btnLang);
             this.panel1.Controls.Add(this.btnRun);
             this.panel1.Controls.Add(this.btnOpenOutputPath);
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.pibOutputFormat);
             this.panel1.Controls.Add(this.pibOutputPath);
             this.panel1.Controls.Add(this.txbOutputPath);
             this.panel1.Controls.Add(this.label9);
@@ -1032,15 +1031,15 @@
             this.btnOpenOutputPath.UseVisualStyleBackColor = true;
             this.btnOpenOutputPath.Click += new System.EventHandler(this.btnOpenOutputPath_Click);
             // 
-            // pictureBox1
+            // pibOutputFormat
             // 
-            this.pictureBox1.BackgroundImage = global::ImgRW_WF.Properties.Resources.file;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Location = new System.Drawing.Point(8, 36);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
+            this.pibOutputFormat.BackgroundImage = global::ImgRW_WF.Properties.Resources.file;
+            this.pibOutputFormat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pibOutputFormat.Location = new System.Drawing.Point(8, 36);
+            this.pibOutputFormat.Name = "pibOutputFormat";
+            this.pibOutputFormat.Size = new System.Drawing.Size(25, 25);
+            this.pibOutputFormat.TabIndex = 5;
+            this.pibOutputFormat.TabStop = false;
             // 
             // pibOutputPath
             // 
@@ -1105,7 +1104,7 @@
             this.txbStatus.Name = "txbStatus";
             this.txbStatus.ReadOnly = true;
             this.txbStatus.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txbStatus.Size = new System.Drawing.Size(983, 76);
+            this.txbStatus.Size = new System.Drawing.Size(983, 92);
             this.txbStatus.TabIndex = 15;
             this.txbStatus.Text = "...";
             this.txbStatus.WordWrap = false;
@@ -1133,29 +1132,6 @@
             this.pibPreview.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pibPreview_MouseMove);
             this.pibPreview.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pibPreview_MouseUp);
             // 
-            // valueSlider2
-            // 
-            this.valueSlider2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.valueSlider2.Location = new System.Drawing.Point(12, 600);
-            this.valueSlider2.MaxValue = 100F;
-            this.valueSlider2.MinValue = 0F;
-            this.valueSlider2.Name = "valueSlider2";
-            this.valueSlider2.OffsetLines = false;
-            this.valueSlider2.OffsetLinesColor = System.Drawing.Color.DarkGray;
-            this.valueSlider2.PointerColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(10)))), ((int)(((byte)(130)))), ((int)(((byte)(210)))));
-            this.valueSlider2.PointerSize = 6;
-            this.valueSlider2.PointerStyle = CxxLibs_CustomControlsDFW.PointerStyles.None;
-            this.valueSlider2.Size = new System.Drawing.Size(984, 10);
-            this.valueSlider2.Style = CxxLibs_CustomControlsDFW.ValueSliderStyles.SolidRounded;
-            this.valueSlider2.TabIndex = 11;
-            this.valueSlider2.Text = "valueSlider1";
-            this.valueSlider2.Value = 0F;
-            this.valueSlider2.ValueBackColor = System.Drawing.Color.LightGray;
-            this.valueSlider2.ValueColor = System.Drawing.Color.DodgerBlue;
-            this.valueSlider2.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
-            this.valueSlider2.ValueChanged += new System.EventHandler<float>(this.valueSlider2_ValueChanged);
-            // 
             // FormConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1163,7 +1139,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 622);
             this.Controls.Add(this.txbStatus);
-            this.Controls.Add(this.valueSlider2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.ckbWatermarkImage);
             this.Controls.Add(this.ckbString);
@@ -1201,7 +1176,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudWIX)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pibOutputFormat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pibOutputPath)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pibPreview)).EndInit();
             this.ResumeLayout(false);
@@ -1269,8 +1244,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbOutputFormat;
-        private CxxLibs_CustomControlsDFW.ValueSlider valueSlider2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pibOutputFormat;
         private System.Windows.Forms.PictureBox pibOutputPath;
         private System.Windows.Forms.TextBox txbOutputPath;
         private CxxLibs_CustomControlsDFW.ValueCircular vccString;

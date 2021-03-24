@@ -1149,6 +1149,8 @@ namespace ImgRW_WF
 
         }
 
+        //process end flag
+        bool inprocess = false;
 
         //Process images with thread
         Bitmap[] imgWMs;
@@ -1293,6 +1295,9 @@ namespace ImgRW_WF
                     txbStatus.AppendText("\r\n[Thrd:" + threadID + "-SAV] " + outputFile);
                     txbStatus.AppendText("\r\n[Thread end, managed ID: " + threadID + "]");
                 }
+
+                if (index < imgWMs.Count()-1) return;
+                inprocess = false;
             }
             catch (Exception ex)
             {
@@ -1324,8 +1329,6 @@ namespace ImgRW_WF
             {
                 return;
             }
-            valueSlider2.MinValue = valueSlider2.Value = 0;
-            valueSlider2.MaxValue = files.Count;
             txbStatus.Text = "";
             if (!Directory.Exists(outputPath))
             {
@@ -1349,10 +1352,6 @@ namespace ImgRW_WF
                 }
             }
 
-            //valueSlider2.Invoke((Action)(() =>
-            //{
-
-            //}));
             currentIndex = 0;
             var inputs = files.Keys.ToArray();
             List<Thread> threads = new List<Thread>();
@@ -1363,8 +1362,8 @@ namespace ImgRW_WF
                 t.Name = "thread handle image: " + i;
                 threads.Add(t);
                 t.Start(inputs[i]);
-                valueSlider2.BeginInvoke((Action)(() => { valueSlider2.Value += 1; }));
             }
+
         }
 
         #region FILES MANAGE==============================================================================================
@@ -1415,6 +1414,7 @@ namespace ImgRW_WF
                         foreach (var item in files)
                         {
                             lsvFiles.Items.Add(item.Value);
+                            txbStatus.Text = files.Count.ToString();
                         }
                         for (int i = 0; i < lsvFiles.Columns.Count; i++)
                         {
@@ -1529,23 +1529,7 @@ namespace ImgRW_WF
         }
         #endregion
 
-        //process end flag
-        bool inprocess = false;
-        private void valueSlider2_ValueChanged(object sender, float e)
-        {
-            if (e == valueSlider2.MaxValue)
-            {
-                inprocess = false;
-                //if (txbStatus.InvokeRequired)
-                //{
-                //    txbStatus.BeginInvoke((Action)(() =>
-                //    {
-                //        txbStatus.AppendText("\r\nEND!");
-                //    }));
-                //}
-            }
-        }
-
+        //open output path
         private void btnOpenOutputPath_Click(object sender, EventArgs e)
         {
             if (!Directory.Exists(outputPath)) return;
@@ -1567,6 +1551,7 @@ namespace ImgRW_WF
             }
         }
 
+        //
         bool dragMode = false;
         float startX;
         float startY;
@@ -1575,9 +1560,9 @@ namespace ImgRW_WF
         private void pibPreview_MouseDown(object sender, MouseEventArgs e)
         {
             dragMode = true;
-            //pibPreview.Cursor = new Cursor()
             startX = e.X;
             startY = e.Y;
+
             if (e.Button == MouseButtons.Left)
             {
                 nudStartX = nudWSLocationX.Value;
@@ -1623,7 +1608,6 @@ namespace ImgRW_WF
             GC.Collect();
             pibPreview.Cursor = new Cursor(Properties.Resources.drag.Handle);
         }
-
 
         private void pibPreview_SizeChanged(object sender, EventArgs e)
         {
