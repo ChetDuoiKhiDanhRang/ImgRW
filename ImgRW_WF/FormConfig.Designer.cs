@@ -391,13 +391,13 @@
             this.colorPanel1.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
             this.colorPanel1.CurrentColorHexString = "#88FFAA00";
             this.colorPanel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.colorPanel1.Location = new System.Drawing.Point(6, 66);
+            this.colorPanel1.Location = new System.Drawing.Point(5, 66);
             this.colorPanel1.MinimumSize = new System.Drawing.Size(64, 64);
             this.colorPanel1.Name = "colorPanel1";
             this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
             this.colorPanel1.PanelStyle = CxxLibs_CustomControlsDFW.PanelStyles.Wheel;
             this.colorPanel1.RefControl = null;
-            this.colorPanel1.Size = new System.Drawing.Size(152, 131);
+            this.colorPanel1.Size = new System.Drawing.Size(152, 135);
             this.colorPanel1.TabIndex = 6;
             // 
             // rdbWSLocation
