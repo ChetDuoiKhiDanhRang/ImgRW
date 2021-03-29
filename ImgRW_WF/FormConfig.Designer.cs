@@ -397,7 +397,7 @@
             this.colorPanel1.Padding = new System.Windows.Forms.Padding(1);
             this.colorPanel1.PanelStyle = CxxLibs_CustomControlsDFW.PanelStyles.Wheel;
             this.colorPanel1.RefControl = null;
-            this.colorPanel1.Size = new System.Drawing.Size(152, 135);
+            this.colorPanel1.Size = new System.Drawing.Size(153, 124);
             this.colorPanel1.TabIndex = 6;
             // 
             // rdbWSLocation
