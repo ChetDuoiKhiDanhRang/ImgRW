@@ -8,6 +8,7 @@ using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ImgRW_WF
@@ -1157,6 +1158,7 @@ namespace ImgRW_WF
         int currentIndex = 0;
         void ProcessImagesList(object input)
         {
+            Stopwatch sw = Stopwatch.StartNew();
             long index = currentIndex; //safety current index
             currentIndex++;
 
@@ -1287,17 +1289,12 @@ namespace ImgRW_WF
                     txbStatus.BeginInvoke((Action)(() =>
                             {
                                 txbStatus.AppendText("\r\n[Thrd:" + threadID + "-SAV] " + outputFile);
-                                txbStatus.AppendText("\r\n[Thread end, managed ID: " + threadID + "]");
                             }));
                 }
                 else
                 {
                     txbStatus.AppendText("\r\n[Thrd:" + threadID + "-SAV] " + outputFile);
-                    txbStatus.AppendText("\r\n[Thread end, managed ID: " + threadID + "]");
                 }
-
-                if (index < imgWMs.Count()-1) return;
-                inprocess = false;
             }
             catch (Exception ex)
             {
@@ -1305,21 +1302,34 @@ namespace ImgRW_WF
                 {
                     txbStatus.Invoke((Action)(() =>
                             {
-                                txbStatus.Text += "\r\n[Thread error, manage ID: " + threadID + "] " + ex.Message;
+                                txbStatus.AppendText("\r\n[Thread error, manage ID: " + threadID + "] " + ex.Message);
                             }));
                 }
                 else
                 {
-                    txbStatus.Text += "\r\n[Thread error, manage ID: " + threadID + "] " + ex.Message;
+                    txbStatus.AppendText("\r\n[Thread error, manage ID: " + threadID + "] " + ex.Message);
                 }
             }
             finally
             {
+                sw.Stop();
+                if (txbStatus.InvokeRequired)
+                {
+                    txbStatus.Invoke((Action)(() =>
+                    {
+                        txbStatus.AppendText("\r\n[END thread, manage ID: " + threadID + "] " + input + " " + sw.ElapsedMilliseconds.ToString() + "ms");
+                    }));
+                }
+                else
+                {
+                    txbStatus.AppendText("\r\n[END thread, manage ID: " + threadID + "] " + input + " " + sw.ElapsedMilliseconds.ToString() + "ms");
+                }
+
                 result?.Dispose();
                 bmp?.Dispose();
                 img?.Dispose();
-
                 //Thread.Sleep(100);
+                if (index >= imgWMs.Count() - 1) inprocess = false;
             }
 
         }
@@ -1329,6 +1339,7 @@ namespace ImgRW_WF
             {
                 return;
             }
+
             txbStatus.Text = "";
             if (!Directory.Exists(outputPath))
             {
@@ -1357,13 +1368,32 @@ namespace ImgRW_WF
             List<Thread> threads = new List<Thread>();
             for (int i = 0; i < files.Count; i++)
             {
+                //Task tsk = new Task(new Action<object>(ProcessImagesList), inputs[i]);
                 Thread t = new Thread(ProcessImagesList);
                 t.IsBackground = true;
                 t.Name = "thread handle image: " + i;
                 threads.Add(t);
                 t.Start(inputs[i]);
+                //var tsk = Task.Factory.StartNew((Action<object>)ProcessImagesList, inputs[i]);
+                //tsk.Start();
+                //threads.Add(tsk);
+                //tsk.Start();
             }
-
+            //Task.WaitAll(threads.ToArray());
+            //if (txbStatus.InvokeRequired)
+            //{
+            //    txbStatus.BeginInvoke((Action)(() =>
+            //    {
+            //        txbStatus.AppendText("\r\n" + (Language == "vi" ? "Hoàn thành trong: " : "Completed!"));
+            //        txbStatus.AppendText(sw.ElapsedMilliseconds.ToString() + "ms");
+            //    }));
+            //}
+            //else
+            //{
+            //    txbStatus.AppendText("\r\n" + (Language == "vi" ? "Hoàn thành!" : "Completed!"));
+            //    txbStatus.AppendText(sw.ElapsedMilliseconds.ToString() + "ms");
+            //}
+            
         }
 
         #region FILES MANAGE==============================================================================================
