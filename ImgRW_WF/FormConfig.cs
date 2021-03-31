@@ -1335,10 +1335,7 @@ namespace ImgRW_WF
         }
         private void btnRun_Click(object sender, EventArgs e)
         {
-            if (inprocess)
-            {
-                return;
-            }
+            if (inprocess) return;
 
             txbStatus.Text = "";
             if (!Directory.Exists(outputPath))
