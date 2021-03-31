@@ -1365,35 +1365,31 @@ namespace ImgRW_WF
 
             currentIndex = 0;
             var inputs = files.Keys.ToArray();
-            List<Thread> threads = new List<Thread>();
+            List<Task> threads = new List<Task>();
             for (int i = 0; i < files.Count; i++)
             {
-                //Task tsk = new Task(new Action<object>(ProcessImagesList), inputs[i]);
-                Thread t = new Thread(ProcessImagesList);
-                t.IsBackground = true;
-                t.Name = "thread handle image: " + i;
-                threads.Add(t);
-                t.Start(inputs[i]);
-                //var tsk = Task.Factory.StartNew((Action<object>)ProcessImagesList, inputs[i]);
-                //tsk.Start();
-                //threads.Add(tsk);
-                //tsk.Start();
+                //Thread t = new Thread(ProcessImagesList);
+                //t.IsBackground = true;
+                //t.Name = "thread handle image: " + i;
+                //threads.Add(t);
+                //t.Start(inputs[i]);
+                Task tsk = new Task(new Action<object>(ProcessImagesList), inputs[i]);
+                threads.Add(tsk);
+                tsk.Start();
             }
             //Task.WaitAll(threads.ToArray());
             //if (txbStatus.InvokeRequired)
             //{
             //    txbStatus.BeginInvoke((Action)(() =>
             //    {
-            //        txbStatus.AppendText("\r\n" + (Language == "vi" ? "Hoàn thành trong: " : "Completed!"));
-            //        txbStatus.AppendText(sw.ElapsedMilliseconds.ToString() + "ms");
+            //        txbStatus.AppendText("\r\n" + (Language == "vi" ? "Hoàn thành!" : "Completed!"));
             //    }));
             //}
             //else
             //{
             //    txbStatus.AppendText("\r\n" + (Language == "vi" ? "Hoàn thành!" : "Completed!"));
-            //    txbStatus.AppendText(sw.ElapsedMilliseconds.ToString() + "ms");
             //}
-            
+
         }
 
         #region FILES MANAGE==============================================================================================
