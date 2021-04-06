@@ -15,26 +15,8 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_3B6A8B4ECECC4CFF92D31801C07C601D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_A98C00E68B754FE2A12BC5079F297789"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B220D87DDA5E7DD901365206C5873587"
-        "OwnerKey" = "8:_A98C00E68B754FE2A12BC5079F297789"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B7327F953DACDF45C1307217A4A2F48C"
-        "OwnerKey" = "8:_3B6A8B4ECECC4CFF92D31801C07C601D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -52,19 +34,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3B6A8B4ECECC4CFF92D31801C07C601D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_A98C00E68B754FE2A12BC5079F297789"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B220D87DDA5E7DD901365206C5873587"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -168,37 +138,6 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B220D87DDA5E7DD901365206C5873587"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Controls_dotNetFrw, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_B220D87DDA5E7DD901365206C5873587"
-                    {
-                    "Name" = "8:Controls_dotNetFrw.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Controls_dotNetFrw.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_742E073D763C4148B12BB57F0B43C3D1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B7327F953DACDF45C1307217A4A2F48C"
             {
             "AssemblyRegister" = "3:1"
@@ -840,34 +779,6 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3B6A8B4ECECC4CFF92D31801C07C601D"
-            {
-            "SourcePath" = "8:..\\..\\CxxLibs\\Controls_dotNetFrw\\obj\\Debug\\Controls_dotNetFrw.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_742E073D763C4148B12BB57F0B43C3D1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{90ABA1DF-B297-4696-94F9-C8DDB4238719}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A98C00E68B754FE2A12BC5079F297789"
             {
             "SourcePath" = "8:..\\ImgRW_WF\\obj\\Debug\\ImgRW_WF.exe"

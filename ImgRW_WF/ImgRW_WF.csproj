@@ -103,12 +103,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CxxLibs\Controls_dotNetFrw\CxxLibs_CustomControlsDFW.csproj">
-      <Project>{90aba1df-b297-4696-94f9-c8ddb4238719}</Project>
-      <Name>CxxLibs_CustomControlsDFW</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
@@ -147,6 +141,14 @@
     <EmbeddedResource Include="icons\openOutput.png" />
     <EmbeddedResource Include="icons\switchLang.png" />
     <Content Include="ImgRW.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CxxLibs\Controls_dotNetFrw\CxxControls_DNFWK.csproj">
+      <Project>{90aba1df-b297-4696-94f9-c8ddb4238719}</Project>
+      <Name>CxxControls_DNFWK</Name>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
