@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_74D4095F4D1711058B46772BDAB2A3BA"
+        "OwnerKey" = "8:_A98C00E68B754FE2A12BC5079F297789"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A98C00E68B754FE2A12BC5079F297789"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -35,6 +41,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_A98C00E68B754FE2A12BC5079F297789"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_74D4095F4D1711058B46772BDAB2A3BA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -138,6 +150,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_74D4095F4D1711058B46772BDAB2A3BA"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:CxxControls_dotNetFrw, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_74D4095F4D1711058B46772BDAB2A3BA"
+                    {
+                    "Name" = "8:CxxControls_dotNetFrw.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:CxxControls_dotNetFrw.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_742E073D763C4148B12BB57F0B43C3D1"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B7327F953DACDF45C1307217A4A2F48C"
             {
             "AssemblyRegister" = "3:1"
@@ -245,15 +288,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ImgRW"
-        "ProductCode" = "8:{95E48697-4FBB-4B03-A474-0424591B8BBB}"
-        "PackageCode" = "8:{9115BE6B-62D1-4609-A807-765148E484A8}"
+        "ProductCode" = "8:{77363B75-988F-4037-B4B1-E3E70621FE18}"
+        "PackageCode" = "8:{E517A787-A60F-44C7-96D3-41BDD7CE9F55}"
         "UpgradeCode" = "8:{0C37C489-4480-412C-BD8A-8BD3A9FE342C}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:21.03.31"
+        "ProductVersion" = "8:21.04.07"
         "Manufacturer" = "8:Cxx"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
