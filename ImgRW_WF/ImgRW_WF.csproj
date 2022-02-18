@@ -146,8 +146,6 @@
     <ProjectReference Include="..\..\CxxLibs\Controls_dotNetFrw\CxxControls_DNFWK.csproj">
       <Project>{90aba1df-b297-4696-94f9-c8ddb4238719}</Project>
       <Name>CxxControls_DNFWK</Name>
-      <Private>True</Private>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

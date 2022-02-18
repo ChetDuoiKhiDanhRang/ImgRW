@@ -744,7 +744,7 @@
             this.vldImageOptical.Style = CxxControls_DNFWK.ValueSliderStyles.GradientLine;
             this.vldImageOptical.TabIndex = 11;
             this.vldImageOptical.Text = "valueSlider1";
-            this.vldImageOptical.Value = 0.8F;
+            this.vldImageOptical.CurrentValue = 0.8F;
             this.vldImageOptical.ValueBackColor = System.Drawing.Color.LightGray;
             this.vldImageOptical.ValueColor = System.Drawing.Color.DodgerBlue;
             this.vldImageOptical.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;

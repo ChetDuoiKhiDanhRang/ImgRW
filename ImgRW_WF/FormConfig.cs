@@ -297,7 +297,7 @@ namespace ImgRW_WF
 
 
             imageOptical = x.imageOptical;
-            vldImageOptical.Value = x.imageOptical;
+            vldImageOptical.CurrentValue = x.imageOptical;
 
             imageLocationMode = x.imageLocationMode;
 
@@ -705,7 +705,7 @@ namespace ImgRW_WF
         //image Optical
         private void VldImageOptical_ValueChanged(object sender, float e)
         {
-            imageOptical = vldImageOptical.Value;
+            imageOptical = vldImageOptical.CurrentValue;
             RedrawPreview();
         }
 
