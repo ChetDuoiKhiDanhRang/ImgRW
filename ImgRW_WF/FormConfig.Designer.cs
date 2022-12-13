@@ -731,6 +731,7 @@
             // 
             // vldImageOptical
             // 
+            this.vldImageOptical.CurrentValue = 0.8F;
             this.vldImageOptical.Location = new System.Drawing.Point(158, 127);
             this.vldImageOptical.MaxValue = 1F;
             this.vldImageOptical.MinValue = 0F;
@@ -744,7 +745,6 @@
             this.vldImageOptical.Style = CxxControls_DNFWK.ValueSliderStyles.GradientLine;
             this.vldImageOptical.TabIndex = 11;
             this.vldImageOptical.Text = "valueSlider1";
-            this.vldImageOptical.CurrentValue = 0.8F;
             this.vldImageOptical.ValueBackColor = System.Drawing.Color.LightGray;
             this.vldImageOptical.ValueColor = System.Drawing.Color.DodgerBlue;
             this.vldImageOptical.ValueSliderOrientation = System.Windows.Forms.Orientation.Horizontal;
@@ -1115,7 +1115,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pibPreview.BackColor = System.Drawing.Color.MintCream;
-            this.pibPreview.BackgroundImage = global::ImgRW_WF.Properties.Resources.WindowsXPBliss_mod1;
+            this.pibPreview.BackgroundImage = global::ImgRW_WF.Properties.Resources.CXTD_OrangeF;
             this.pibPreview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pibPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pibPreview.Location = new System.Drawing.Point(484, 12);
