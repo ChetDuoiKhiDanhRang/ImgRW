@@ -690,8 +690,6 @@
             // ckbString
             // 
             this.ckbString.BackColor = System.Drawing.SystemColors.Control;
-            this.ckbString.Checked = true;
-            this.ckbString.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckbString.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ckbString.Location = new System.Drawing.Point(20, 23);
             this.ckbString.Name = "ckbString";
